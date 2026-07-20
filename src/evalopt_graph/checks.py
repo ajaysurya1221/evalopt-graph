@@ -13,6 +13,7 @@ import subprocess
 from collections.abc import Callable, Iterable
 from dataclasses import asdict, dataclass
 from typing import Any
+from urllib.parse import urlsplit
 
 # gate name -> key in profile["commands"]
 GATE_TO_CMD_KEY = {"tests": "test", "lint": "lint", "typecheck": "typecheck", "build": "build"}
@@ -144,11 +145,36 @@ def is_git_repo(repo_path: str) -> bool:
     return code == 0 and out.strip() == "true"
 
 
+_SCP_REMOTE_RE = re.compile(r"^(?:[^@/:\s]+@)?(?P<host>[^/:\s]+):\S+$")
+
+
+def _remote_hostname(remote_url: str) -> str | None:
+    """Return a normalized hostname for URL and Git scp-style remotes."""
+    candidate = remote_url.strip()
+    if not candidate:
+        return None
+    try:
+        if "://" in candidate:
+            parsed = urlsplit(candidate)
+            if parsed.scheme.lower() not in {"git", "http", "https", "ssh"}:
+                return None
+            hostname = parsed.hostname
+        else:
+            match = _SCP_REMOTE_RE.fullmatch(candidate)
+            hostname = match.group("host") if match else None
+    except ValueError:
+        return None
+    return hostname.removesuffix(".").lower() if hostname else None
+
+
 def is_github_repo(repo_path: str) -> bool:
     """True if the repo has a github.com remote or a .github directory (best-effort, read-only)."""
     code, out = _git(repo_path, "remote", "-v")
-    if code == 0 and "github.com" in out.lower():
-        return True
+    if code == 0:
+        for line in out.splitlines():
+            fields = line.split()
+            if len(fields) >= 2 and _remote_hostname(fields[1]) == "github.com":
+                return True
     return os.path.isdir(os.path.join(repo_path, ".github"))
 
 

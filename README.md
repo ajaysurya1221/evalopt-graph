@@ -6,8 +6,8 @@
 
 [![Release](https://img.shields.io/github/v/release/ajaysurya1221/evalopt-graph?display_name=tag&sort=semver)](https://github.com/ajaysurya1221/evalopt-graph/releases/latest)
 [![CI](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml/badge.svg)](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/evalopt-graph)](https://pypi.org/project/evalopt-graph/)
-[![Python](https://img.shields.io/pypi/pyversions/evalopt-graph)](https://pypi.org/project/evalopt-graph/)
+[![PyPI](https://img.shields.io/pypi/v/evalopt-graph?cacheSeconds=300)](https://pypi.org/project/evalopt-graph/)
+[![Python](https://img.shields.io/pypi/pyversions/evalopt-graph?cacheSeconds=300)](https://pypi.org/project/evalopt-graph/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-49C6B8.svg)](https://github.com/ajaysurya1221/evalopt-graph/blob/main/LICENSE)
 
 **Agents propose. Policy decides.**

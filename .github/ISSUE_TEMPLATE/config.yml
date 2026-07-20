@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and integration help
+    url: https://github.com/ajaysurya1221/evalopt-graph/discussions
+    about: Ask usage questions and share integration ideas in Discussions.
+  - name: Security vulnerability
+    url: https://github.com/ajaysurya1221/evalopt-graph/security/advisories/new
+    about: Report vulnerabilities privately. Do not disclose them in a public issue.
+  - name: Documentation
+    url: https://github.com/ajaysurya1221/evalopt-graph#readme
+    about: Read the quickstart, boundaries, evidence status, and project documentation.

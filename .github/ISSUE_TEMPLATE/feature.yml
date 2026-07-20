@@ -1,0 +1,59 @@
+name: Design proposal
+description: Propose a focused kernel, adapter, documentation, or conformance improvement.
+title: "[Proposal]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        evalopt deliberately keeps orchestration outside its stable kernel. Explain the trust-boundary impact of the proposal and the smallest public surface that solves the problem.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What concrete user or integration problem needs to be solved?
+    validations:
+      required: true
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Primary area
+      options:
+        - Stable governance kernel
+        - Host or verifier adapter
+        - Deprecated compatibility surface
+        - Documentation or examples
+        - Conformance or evaluation
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior
+      description: Describe inputs, outputs, invariants, and failure behavior without assuming a specific agent runtime.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Could the host own this behavior without changing the kernel?
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and evidence impact
+      description: Note effects on the ten-symbol API, serialized records, replay, reason codes, or evidence claims.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and discussions.
+          required: true
+        - label: I have not presented authored or generated cases as benchmark or SOTA evidence.
+          required: true

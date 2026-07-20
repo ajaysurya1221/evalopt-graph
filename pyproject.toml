@@ -1,16 +1,31 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling==1.31.0"]
 build-backend = "hatchling.build"
 
 [project]
 name = "evalopt-graph"
 version = "0.1.0"
-description = "Host-independent deterministic governance and evidence-integrity kernel."
+description = "A zero-dependency governance and evidence-integrity kernel for any agent runtime."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Ajay Surya Senthilrajan" }]
+maintainers = [{ name = "Ajay Surya Senthilrajan" }]
 keywords = ["agents", "governance", "evaluation", "evidence", "reproducibility"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Quality Assurance",
+]
 
 # The stable kernel has zero required dependencies and imports no host runtime or provider SDK.
 dependencies = []
@@ -24,8 +39,44 @@ all = ["evalopt-graph[llm,yaml,dev]"]         # self-referential to avoid constr
 [project.scripts]
 evalopt = "evalopt_graph.cli:main"
 
+[project.urls]
+Homepage = "https://github.com/ajaysurya1221/evalopt-graph"
+Documentation = "https://github.com/ajaysurya1221/evalopt-graph#readme"
+Repository = "https://github.com/ajaysurya1221/evalopt-graph"
+Issues = "https://github.com/ajaysurya1221/evalopt-graph/issues"
+Changelog = "https://github.com/ajaysurya1221/evalopt-graph/blob/main/CHANGELOG.md"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/evalopt_graph"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/.gitignore",
+    "/src",
+    "/tests",
+    "/bench/harbor",
+    "/claude_assets",
+    "/docs",
+    "/scripts",
+    "/CHANGELOG.md",
+    "/CODE_OF_CONDUCT.md",
+    "/CONTRIBUTING.md",
+    "/LICENSE",
+    "/README.md",
+    "/SECURITY.md",
+    "/pyproject.toml",
+]
+exclude = [
+    "/.backups",
+    "/.context",
+    "/.evalopt",
+    "/.github",
+    "/.pytest_cache",
+    "/.ruff_cache",
+    "/.venv",
+    "/build",
+    "/dist",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

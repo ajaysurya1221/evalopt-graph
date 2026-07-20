@@ -1,0 +1,11 @@
+title = "evalopt-graph secret scanning"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Exact synthetic OpenAI-shaped token used by redaction and credential-boundary tests"
+condition = "AND"
+paths = ['''^tests/(test_context_hygiene|test_unattended)\.py$''']
+regexTarget = "match"
+regexes = ['''sk-abcdefghij1234567890''']

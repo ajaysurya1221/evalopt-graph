@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" role="img" aria-labelledby="t-final d-final">
+  <title id="t-final">evalopt — Verified Signal: a noisy proposal is de-noised through GATES, EVIDENCE and BOUNDS into a stabilized teal decision line that forks into ACCEPTED and BLOCKED</title>
+  <desc id="d-final">A restrained decision-ledger banner on a near-black field. The wordmark evalopt sits top-left above the tagline Agents propose. Policy decides. and the subline deterministic acceptance, evidence integrity, replayable decisions. Below, a single horizontal signal enters at the left as a white jagged proposal whose amplitude damps as it passes two square checkpoints labeled GATES and EVIDENCE; at EVIDENCE it resolves into a clean teal decision line that passes a third checkpoint labeled BOUNDS and reaches a fork, which splits into a teal ACCEPTED stamp above and an amber BLOCKED stamp below.</desc>
+
+  <style>
+    .mono{font-family:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;}
+    .sans{font-family:-apple-system,'Segoe UI',system-ui,Roboto,Helvetica,Arial,sans-serif;}
+  </style>
+
+  <rect width="1600" height="480" fill="#0A0F14"/>
+
+  <!-- ===== wordmark + required copy (kept in the top-left safe area) ===== -->
+  <text x="90" y="176" class="sans" font-size="104" font-weight="700" letter-spacing="-3" fill="#EAF1F5">evalopt</text>
+  <text x="92" y="230" class="sans" font-size="38" font-weight="600" fill="#EAF1F5">Agents propose. Policy decides.</text>
+  <text x="92" y="270" class="mono" font-size="24" letter-spacing="0.2" fill="#8B9AAA">deterministic acceptance · evidence integrity · replayable decisions</text>
+
+  <!-- ===== decision axis: noisy proposal -> de-noised -> stabilized teal line ===== -->
+  <!-- raw proposal: white jagged signal, amplitude damping across GATES and EVIDENCE -->
+  <polyline fill="none" stroke="#EAF1F5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+    points="92,356 106,323 122,387 140,327 158,386 176,329 196,382 216,332 238,379 260,335 282,377 306,337 330,374 354,339 380,372 406,341 432,371 452,342 468,356 486,343 506,369 528,344 552,367 578,346 606,366 636,347 668,364 702,349 738,362 780,356"/>
+  <!-- stabilized decision line: validated teal hairline, tiny residual settling to flat, through BOUNDS to the fork -->
+  <polyline fill="none" stroke="#49C6B8" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"
+    points="780,356 812,352 848,359 888,354 934,358 986,356 1060,356 1180,356"/>
+
+  <!-- proposal tag -->
+  <text x="92" y="432" class="mono" font-size="12" letter-spacing="1.5" fill="#8B9AAA">PROPOSAL</text>
+
+  <!-- checkpoint 1 — GATES -->
+  <g>
+    <rect x="459" y="347" width="18" height="18" fill="#0A0F14" stroke="#EAF1F5" stroke-width="2"/>
+    <path d="M462,356 l4,4 l8,-9" fill="none" stroke="#49C6B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="468" y="320" class="mono" font-size="15" font-weight="700" letter-spacing="1.5" text-anchor="middle" fill="#EAF1F5">GATES</text>
+    <text x="468" y="392" class="mono" font-size="11" letter-spacing="0.8" text-anchor="middle" fill="#8B9AAA">admissible</text>
+  </g>
+  <!-- checkpoint 2 — EVIDENCE (raw signal resolves to the validated teal line here) -->
+  <g>
+    <rect x="771" y="347" width="18" height="18" fill="#0A0F14" stroke="#EAF1F5" stroke-width="2"/>
+    <path d="M774,356 l4,4 l8,-9" fill="none" stroke="#49C6B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="780" y="320" class="mono" font-size="15" font-weight="700" letter-spacing="1.5" text-anchor="middle" fill="#EAF1F5">EVIDENCE</text>
+    <text x="780" y="392" class="mono" font-size="11" letter-spacing="0.8" text-anchor="middle" fill="#8B9AAA">verified</text>
+  </g>
+  <!-- checkpoint 3 — BOUNDS -->
+  <g>
+    <rect x="1051" y="347" width="18" height="18" fill="#0A0F14" stroke="#EAF1F5" stroke-width="2"/>
+    <path d="M1054,356 l4,4 l8,-9" fill="none" stroke="#49C6B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1060" y="320" class="mono" font-size="15" font-weight="700" letter-spacing="1.5" text-anchor="middle" fill="#EAF1F5">BOUNDS</text>
+    <text x="1060" y="392" class="mono" font-size="11" letter-spacing="0.8" text-anchor="middle" fill="#8B9AAA">in-range</text>
+  </g>
+
+  <!-- fork node -->
+  <path d="M1180,344 L1192,356 L1180,368 L1168,356 Z" fill="#0A0F14" stroke="#EAF1F5" stroke-width="2"/>
+
+  <!-- ACCEPTED outcome stamp -->
+  <polyline fill="none" stroke="#49C6B8" stroke-width="1.8" points="1180,344 1218,330 1252,327"/>
+  <rect x="1252" y="302" width="232" height="50" rx="4" fill="#0A0F14" stroke="#49C6B8" stroke-width="2"/>
+  <path d="M1268,327 l6,6 l12,-13" fill="none" stroke="#49C6B8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1300" y="334" class="mono" font-size="21" font-weight="700" letter-spacing="2.2" fill="#49C6B8">ACCEPTED</text>
+
+  <!-- BLOCKED outcome stamp -->
+  <polyline fill="none" stroke="#E7B84B" stroke-width="1.8" points="1180,368 1218,422 1252,425"/>
+  <rect x="1252" y="400" width="232" height="50" rx="4" fill="#0A0F14" stroke="#E7B84B" stroke-width="2"/>
+  <path d="M1270,417 l16,16 M1286,417 l-16,16" stroke="#E7B84B" stroke-width="2.6" stroke-linecap="round"/>
+  <text x="1302" y="432" class="mono" font-size="21" font-weight="700" letter-spacing="2.2" fill="#E7B84B">BLOCKED</text>
+</svg>

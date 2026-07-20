@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.context/
+.backups/
+
+# Secrets / env
+.env
+
+# eval-opt run artifacts (keep contract + config, ignore per-run traces & Codex worktrees)
+.evalopt/runs/
+.evalopt/state.json
+.evalopt/worktrees/
+.evalopt/knowledge/
+.evalopt/context/
+.evalopt/overnight/
+.evalopt/cache/
+.evalopt/perf.json
+.evalopt/permission_blocks.jsonl
+.evalopt/audit/
+
+# Generated benchmark and conformance outputs
+/metrics.json
+bench/metrics.json
+bench/**/*_metrics*.json
+bench/harbor/**/tests/*.whl

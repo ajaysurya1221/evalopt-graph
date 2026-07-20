@@ -1,0 +1,212 @@
+# .evalopt/config.yaml — tuning surface for an Evaluator-Optimizer Graph run.
+# Materialized into a target repo's .evalopt/ by `evalopt --write` and edited per project.
+#
+# WHO READS THIS FILE: the Layer-1 `/eval-opt` Claude Code skill reads it *conversationally* to
+# shape a run. The standalone Python runner (this package's `evalopt` CLI / library) is configured
+# via CLI flags and `new_state(...)` / `RunContext(...)` arguments — it does NOT parse this YAML.
+# So values below are the skill's defaults + human-readable documentation of every knob.
+
+task: ""                      # set per run (or pass via CLI / skill)
+
+project:
+  type: auto                  # auto-detected: javascript|typescript|python|rust|go|java-*|ruby
+  package_manager: auto
+
+# Gate commands. `auto` lets project_detect infer them; override any to pin an exact command.
+commands:
+  test: auto                  # e.g. "python -m pytest -q" / "npm test" / "cargo test"
+  lint: auto                  # e.g. "ruff check ." / "npm run lint"
+  typecheck: auto             # e.g. "mypy ." / "tsc --noEmit"
+  build: auto                 # e.g. "python -m build" / "npm run build"
+  runtime: null               # optional manual/runtime verification steps
+
+# Which gates MUST pass. Unconfigured gates are skipped (not failed).
+required_gates: [tests, lint, typecheck, build]
+
+# --- Tool router: deterministic planner that routes the local toolbelt by diff + task + risk -----
+# Runs after project_scan and before deterministic_verification. It chooses OPTIONAL gates
+# (security/lint/structural/perf), research tools, browser checks, Codex mode and Docker vs native,
+# and records every selection + every skip-with-reason in the run trace. Core test/lint/typecheck/
+# build gates above always apply; optional gates layer on top, diff-scoped.
+tool_router:
+  enabled: true
+  diff_base: auto                 # auto = merge-base with origin/HEAD|main|master; or pin e.g. origin/main
+  use_absolute_binaries: true     # call /opt/homebrew/bin/<tool>, fall back to PATH (resolved path recorded)
+  optional_gates_default: advisory  # advisory | blocking — default posture for non-security optional gates
+  make_security_gates_blocking_when_risk_high: true
+  docs_fetches_are_gates: false   # Context7/claude-code-docs/web never decide pass/fail
+  remote_mutations_require_human_gate: true  # gh merge/create/push need explicit human approval
+
+optional_gates:
+  gitleaks:                       # secret scan — fast, fully offline, runs whenever files changed
+    enabled: auto
+    blocking: true
+    run_when: any_files_changed
+  semgrep:                        # SAST — diff-scoped (--baseline-commit), --error so findings fail
+    enabled: auto
+    blocking_when_risk_high: true
+    run_when: [risk_high, auth_or_security_touched, input_or_deserialization_touched]
+  trivy:                          # vuln/secret/misconfig + IaC — --exit-code 1
+    enabled: auto
+    blocking_when_dependency_or_iac_changed: true
+    offline_db: false             # set true after pre-warming (trivy image --download-db-only)
+    run_when: [dependency_or_lockfile_changed, docker_or_iac_changed]
+  shellcheck:
+    enabled: auto
+    run_when: shell_files_changed
+  shfmt:
+    enabled: auto
+    mode: check_only              # -d (diff) / -l only; never -w in a gate
+    run_when: shell_files_changed
+  hadolint:
+    enabled: auto
+    run_when: dockerfile_changed
+  actionlint:
+    enabled: auto
+    run_when: github_actions_changed
+  ast_grep:
+    enabled: auto
+    run_when: [sgconfig_present, structural_refactor, codemod_task]
+  hyperfine:
+    enabled: explicit_only        # only when performance is an explicit acceptance criterion
+    command: null                 # benchmark command to time, e.g. "./target/release/app < bench_input"
+    max_mean_seconds: null        # absolute budget (jq: .results[0].mean <= N)
+    max_ratio: 1.05               # else ratio-vs-baseline budget (jq: head/base mean <= ratio)
+    run_when: perf_acceptance_criterion_present
+
+research_tools:                   # generate/reflect aids — NEVER gates (a fetch failure is a no-op)
+  context7:
+    enabled: auto
+    gate: false
+    use_when: library_or_framework_api_uncertain
+  claude_code_docs:
+    enabled: auto
+    gate: false
+    use_when: claude_code_config_touched
+  web_fetch_or_curl:
+    enabled: auto
+    gate: false
+    use_when: current_external_docs_needed
+
+browser_verification:
+  playwright_mcp:                 # pinned, headless, isolated for a deterministic browser gate
+    enabled: auto
+    blocking_when_ui_acceptance_criterion_present: true
+    run_when: [ui_or_web_surface_changed, app_route_changed, browser_behavior_acceptance_criterion_present]
+
+github_observability:
+  gh:
+    enabled: read_only            # gh pr checks / run view --log-failed / api (GET) only
+    remote_mutations_require_human_gate: true
+
+thresholds:
+  quality_threshold: 0.90     # LLM rubric score required (when a rubric is used)
+
+limits:
+  max_iterations: 6           # hard iteration ceiling; raise deliberately
+  stuck_repeat_threshold: 3   # same failure signature N times -> stuck -> human gate
+
+policy:
+  require_tests: false        # if true, refuse to claim PASS without executed tests
+  risk: low                   # low|med|high — high forces a security pass + human gate on risky ops
+  forbid_test_weakening: true
+  forbid_faked_success: true
+  forbid_secrets: true
+
+provider:
+  name: mock                  # mock|anthropic|openai (mock = offline, deterministic)
+  model: null                 # e.g. claude-opus-4-8 / gpt-4o (real providers need an API key via env)
+
+backend: pure                 # compatibility host only; alternate orchestration backends are removed
+
+# --- Codex: controlled-autonomous second agentic worker (review/patch/adversarial) ---
+# Enabled by default *here* because `codex` is on PATH. Repo/worktree-bounded; never machine-wide.
+# (The Python library's own default is OFF so unit tests stay hermetic; this file turns it on.)
+codex:
+  enabled: true
+  mode: auto                  # off | review | patch | adversarial | auto
+  invoke_on:
+    - after_first_failed_verification
+    - before_final_pass
+    - repeated_failure
+    - security_sensitive_change
+    - architecture_uncertainty
+  sandbox: workspace-write    # read-only for review/adversarial/final; workspace-write for patch
+  approval_policy: never_for_repo_local_else_fail   # non-interactive: out-of-repo/network FAIL, not escalate
+  prefer_worktree: true       # patch mode runs in .evalopt/worktrees/codex-<ts>/
+  max_codex_calls_per_run: 4
+  max_codex_calls_per_iteration: 1
+  full_access_allowed: false  # danger-full-access / yolo NOT allowed by default (high-risk escalation)
+  log_prompts: true
+  log_outputs: true
+  require_diff_review_before_merge: true
+  model: null                 # optional Codex model override
+
+# --- Epistemic governor: evidence/claim/contradiction layer that stops hallucination propagation ---
+# No agent may pass a naked conclusion downstream. Every important claim becomes an evidence packet;
+# downstream nodes may only rely on USABLE claims (confirmed / user-provided / deterministic).
+epistemic_governor:
+  enabled: true
+  require_claim_evidence: true
+  prevent_unverified_claim_propagation: true
+  model_consensus_is_not_proof: true           # T4 (claude/codex) cannot confirm a claim alone
+  require_contradiction_search_before_final: true
+  require_source_verification_for_research: true
+  trust_tier_required_for_central_claims: T2_official_docs   # central claims need T0/T1/T2 evidence
+  deterministic_evidence_overrides_model_opinion: true       # T0 beats T4 in adjudication
+  max_parallel_agents: 6
+  max_research_rounds: 4
+  max_tool_calls_per_round: 30
+
+# --- Research mode: decompose -> search -> verify -> contradiction-hunt -> synthesize (cited) ---
+research_mode:
+  enabled: true
+  default_freshness_check: auto                 # stale sources fail freshness-sensitive claims
+  require_source_table: true
+  require_confidence_by_section: true
+  require_unresolved_uncertainty_section: true
+
+# --- Stability controller: self-healing + bounded loops (all wired in the pure runner) ---
+stability_controller:
+  detect_patch_oscillation: true                # A->B->A->B patches route to stuck-analysis (always on)
+  detect_repeated_failures: true                # (always on)
+  repeated_failure_threshold: 3                 # HONORED: same failure N consecutive iters -> stuck analysis
+  flaky_test_reruns: 3                           # HONORED: rerun a transient-failing tests gate up to N times
+  retry_transient_tool_failures_once: true      # HONORED: only transient failures (network/timeout) are retried
+  stop_on_low_information_gain: true            # HONORED (research): stop when marginal new confirmed claims is low
+
+# --- Unattended autonomy: run overnight without waiting for a human (opt-in) ---
+# The governor makes safe repo-local decisions itself, takes the safest reversible default for
+# ambiguous-but-reversible choices, and DEFERS destructive/global/credentialed/remote-mutating
+# actions (records a blocked decision + non-destructive fallback) instead of waiting. It stops only
+# when every remaining useful path needs a blocked action — and writes .evalopt/overnight/MORNING_REPORT.md.
+unattended:
+  enabled: false                 # opt-in only (CLI: --unattended / --overnight)
+  autonomy_level: high
+  max_wall_clock_hours: 8
+  max_iters: 12
+  max_research_rounds: 6
+  max_codex_calls_per_run: 8
+  max_tool_calls_per_round: 40
+  never_wait_for_human_input: true
+  destructive_actions: defer_and_continue
+  credentialed_actions: defer_and_continue
+  remote_mutations: defer_and_continue
+  global_state_changes: defer_and_continue
+  reversible_repo_local_actions: auto_decide
+  ambiguous_safe_choices: choose_conservative_default
+  if_all_paths_blocked: stop_with_morning_report
+  write_morning_report: true
+  keep_mac_awake_hint: true
+
+# --- Docker: optional reproducible verification backend (daemon must be running) ---
+docker:
+  enabled: auto               # auto | true | false
+  prefer_for:
+    - dockerfile_present
+    - compose_present
+    - native_dependency_failure
+  build_timeout_seconds: 900
+  test_timeout_seconds: 900
+  allow_network_during_build: true
+  allow_network_during_test: false

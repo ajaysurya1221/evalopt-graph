@@ -1,0 +1,28 @@
+{
+  "schema_version": "evalopt.harbor-observation.v1",
+  "policy": {
+    "schema_version": "evalopt.governance-policy.v1",
+    "required_gates": ["tests"],
+    "minimum_trust": "T2_official_docs",
+    "quality_threshold": 0.9,
+    "require_evaluator": true,
+    "max_evidence_age_seconds": 2592000,
+    "required_claim_ids": [],
+    "disqualified_claim_ids": [],
+    "allowed_verifiers": [["evalopt.lexical_support", "2"]],
+    "allowed_authority_policies": [],
+    "authorized_record_sha256": []
+  },
+  "acceptance_input": {
+    "schema_version": "evalopt.acceptance-input.v1",
+    "observed_at": "2026-07-11T12:00:00+00:00",
+    "gate_results": [["tests", "PASS"]],
+    "criteria": ["The deterministic adapter smoke completed."],
+    "claims": [],
+    "contradictions": [],
+    "attestations": [],
+    "assessments": [],
+    "tests_weakened": false,
+    "evaluator_score": 1.0
+  }
+}

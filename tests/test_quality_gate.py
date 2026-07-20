@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import subprocess
 import sys
 
 from evalopt_graph import MockProvider, evaluate, passes_quality_gate
@@ -10,6 +11,7 @@ from evalopt_graph.checks import (
     all_required_pass,
     detect_test_weakening,
     failing_gates,
+    is_github_repo,
     run_gates,
 )
 
@@ -88,6 +90,61 @@ def test_run_gates_real_subprocess_fail():
     results = run_gates(profile, ".", required_gates=["tests"])
     assert results[0].result == "FAIL"
     assert results[0].exit_code == 3
+
+
+def _set_remote(tmp_path, remote_url: str):
+    repo = tmp_path / "repo"
+    if not repo.exists():
+        subprocess.run(["git", "init", "-q", str(repo)], check=True)
+        subprocess.run(["git", "-C", str(repo), "remote", "add", "origin", remote_url], check=True)
+    else:
+        subprocess.run(["git", "-C", str(repo), "remote", "set-url", "origin", remote_url], check=True)
+    return repo
+
+
+def test_is_github_repo_accepts_exact_github_remote_hosts(tmp_path):
+    repo = _set_remote(tmp_path, "https://github.com/owner/repo.git")
+    assert is_github_repo(str(repo)) is True
+
+    _set_remote(tmp_path, "git@github.com:owner/repo.git")
+    assert is_github_repo(str(repo)) is True
+
+    _set_remote(tmp_path, "ssh://git@github.com/owner/repo.git")
+    assert is_github_repo(str(repo)) is True
+
+    _set_remote(tmp_path, "https://GitHub.com./owner/repo.git")
+    assert is_github_repo(str(repo)) is True
+
+
+def test_is_github_repo_rejects_github_text_outside_exact_host(tmp_path):
+    repo = _set_remote(tmp_path, "https://evil.example/github.com/owner/repo.git")
+    assert is_github_repo(str(repo)) is False
+
+    _set_remote(tmp_path, "https://github.com.evil.example/owner/repo.git")
+    assert is_github_repo(str(repo)) is False
+
+    _set_remote(tmp_path, "https://github.com@evil.example/owner/repo.git")
+    assert is_github_repo(str(repo)) is False
+
+    _set_remote(tmp_path, "git@github.com.evil.example:owner/repo.git")
+    assert is_github_repo(str(repo)) is False
+
+    _set_remote(tmp_path, "https://github.com.../owner/repo.git")
+    assert is_github_repo(str(repo)) is False
+
+    _set_remote(tmp_path, "file:///tmp/github.com/owner/repo.git")
+    assert is_github_repo(str(repo)) is False
+
+    _set_remote(tmp_path, "file://github.com/owner/repo.git")
+    assert is_github_repo(str(repo)) is False
+
+
+def test_is_github_repo_preserves_dot_github_fallback(tmp_path):
+    repo = tmp_path / "not-a-git-repo"
+    repo.mkdir()
+    assert is_github_repo(str(repo)) is False
+    (repo / ".github").mkdir(parents=True)
+    assert is_github_repo(str(repo)) is True
 
 
 # ---------------- anti-gaming: test-weakening detector ----------------

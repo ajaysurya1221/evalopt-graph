@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Offline smoke test for the Evaluator-Optimizer Graph template.
+# Offline smoke test for the evalopt compatibility host.
 # Requires NO API keys and does NOT install LangGraph. Uses uv if present, else python venv.
 set -euo pipefail
 

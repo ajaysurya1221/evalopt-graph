@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/assets/evalopt-hero-v1.svg" alt="evalopt: Agents propose. Policy decides. A noisy proposal signal passes through Gates, Evidence, and Bounds, then forks to Accepted or Blocked." width="100%">
+  <img src="https://github.com/ajaysurya1221/evalopt-graph/raw/main/docs/assets/evalopt-hero-v1.svg" alt="evalopt: Agents propose. Policy decides. A noisy proposal signal passes through Gates, Evidence, and Bounds, then forks to Accepted or Blocked." width="100%">
 </div>
 
 <div align="center">
@@ -8,7 +8,7 @@
 [![CI](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml/badge.svg)](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/evalopt-graph)](https://pypi.org/project/evalopt-graph/)
 [![Python](https://img.shields.io/pypi/pyversions/evalopt-graph)](https://pypi.org/project/evalopt-graph/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-49C6B8.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-49C6B8.svg)](https://github.com/ajaysurya1221/evalopt-graph/blob/main/LICENSE)
 
 **Agents propose. Policy decides.**
 
@@ -84,8 +84,10 @@ from evalopt_graph import (
 - `evaluate_acceptance` evaluates a complete immutable observation once and returns a replayable
   `AcceptanceDecision`.
 
-See [`kernel.py`](src/evalopt_graph/kernel.py) for the compact public contract and
-[`test_kernel.py`](tests/test_kernel.py) for complete evidence-authority examples.
+See [`kernel.py`](https://github.com/ajaysurya1221/evalopt-graph/blob/main/src/evalopt_graph/kernel.py)
+for the compact public contract and
+[`test_kernel.py`](https://github.com/ajaysurya1221/evalopt-graph/blob/main/tests/test_kernel.py) for
+complete evidence-authority examples.
 
 ## Kernel owns / host owns
 
@@ -125,9 +127,11 @@ prove semantic truth, deployed behavior, source correctness, or model capability
   boundary mechanism.
 - **Not established:** benchmark superiority, external comparison, independent reproduction, or SOTA.
 
-Read the [evidence report](docs/BENCHMARK_RESULTS.md) and
-[prospective external protocol](docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps. There is
-no live-model governance campaign or official Docker SWE-bench result in this release.
+Read the
+[evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) and
+[prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md)
+for the claims, controls, and gaps. There is no live-model governance campaign or official Docker
+SWE-bench result in this release.
 
 ## Integrate it anywhere
 
@@ -135,9 +139,10 @@ The kernel is host-independent: adapt observations from Codex, Claude Code, Open
 or your own runtime into `AcceptanceInput`, then store the returned decision beside the policy and input
 used to create it.
 
-An optional [Harbor 0.18 conformance task](bench/harbor/README.md) demonstrates verifier-side mapping
-without importing Harbor into the kernel. It validates integration wiring only; it is not an external
-benchmark.
+An optional
+[Harbor 0.18 conformance task](https://github.com/ajaysurya1221/evalopt-graph/blob/main/bench/harbor/README.md)
+demonstrates verifier-side mapping without importing Harbor into the kernel. It validates integration
+wiring only; it is not an external benchmark.
 
 The historical graph, standalone CLI, provider clients, Codex bridge, research loop, and filesystem
 adapters remain as **deprecated compatibility surfaces for one migration cycle**. They are not stable
@@ -145,21 +150,24 @@ API or policy authorities. New integrations should depend only on the ten root e
 
 ## Documentation
 
-- [Architecture and trust boundaries](docs/architecture.md)
-- [Evidence results and limitations](docs/BENCHMARK_RESULTS.md)
-- [Prospective benchmark protocol](docs/BENCHMARK_PROTOCOL.md)
-- [Harbor integration](bench/harbor/README.md)
-- [v0.1.0 release notes](docs/releases/v0.1.0.md)
-- [Changelog](CHANGELOG.md)
+- [Architecture and trust boundaries](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/architecture.md)
+- [Evidence results and limitations](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md)
+- [Prospective benchmark protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md)
+- [Harbor integration](https://github.com/ajaysurya1221/evalopt-graph/blob/main/bench/harbor/README.md)
+- [v0.1.0 release notes](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/releases/v0.1.0.md)
+- [Changelog](https://github.com/ajaysurya1221/evalopt-graph/blob/main/CHANGELOG.md)
 
 ## Community and security
 
 Bug reports, focused proposals, documentation improvements, and integrations are welcome. Start with
-the [contribution guide](CONTRIBUTING.md) and follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+the [contribution guide](https://github.com/ajaysurya1221/evalopt-graph/blob/main/CONTRIBUTING.md) and
+follow the [Code of Conduct](https://github.com/ajaysurya1221/evalopt-graph/blob/main/CODE_OF_CONDUCT.md).
 
 Please report vulnerabilities privately using
 [GitHub Security Advisories](https://github.com/ajaysurya1221/evalopt-graph/security/advisories/new), not a
-public issue. See the [security policy](SECURITY.md) for supported versions and response expectations.
+public issue. See the
+[security policy](https://github.com/ajaysurya1221/evalopt-graph/blob/main/SECURITY.md) for supported
+versions and response expectations.
 
 ## Development
 
@@ -180,4 +188,5 @@ uv build
 
 ## License
 
-Released under the [MIT License](LICENSE). Copyright © 2026 Ajay Surya Senthilrajan.
+Released under the [MIT License](https://github.com/ajaysurya1221/evalopt-graph/blob/main/LICENSE).
+Copyright © 2026 Ajay Surya Senthilrajan.

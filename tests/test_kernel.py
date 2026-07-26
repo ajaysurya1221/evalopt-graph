@@ -245,6 +245,27 @@ def test_nested_input_rows_are_copied_before_evaluation():
     assert before.status == "ACCEPTED"
 
 
+def test_gate_result_rows_reject_bare_strings_instead_of_splitting_characters():
+    with pytest.raises(ValueError, match="gate_results entries"):
+        kernel.AcceptanceInput(observed_at=NOW, gate_results=("ok",))
+
+    with pytest.raises(ValueError, match="gate_results entries"):
+        kernel.AcceptanceInput.from_dict(
+            {
+                "schema_version": "evalopt.acceptance-input.v1",
+                "observed_at": NOW,
+                "gate_results": ["ok"],
+                "criteria": [],
+                "claims": [],
+                "contradictions": [],
+                "attestations": [],
+                "assessments": [],
+                "tests_weakened": False,
+                "evaluator_score": None,
+            }
+        )
+
+
 def test_contradiction_enums_are_normalized_and_unknown_values_rejected():
     policy, input_ = _input(contradictions=(("x1", "HIGH", "RESOLVED"),))
 

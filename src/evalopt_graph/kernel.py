@@ -160,7 +160,11 @@ class AcceptanceInput:
             if isinstance(values, str | bytes):
                 raise ValueError(f"{name} entries require {width} string fields")
             normalized: list[tuple[str, ...]] = []
-            for row in values:
+            try:
+                iterator = iter(values)
+            except TypeError as exc:
+                raise ValueError(f"{name} entries require {width} string fields") from exc
+            for row in iterator:
                 if isinstance(row, str | bytes):
                     raise ValueError(f"{name} entries require {width} string fields")
                 try:

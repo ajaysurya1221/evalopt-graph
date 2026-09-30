@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "evalopt-graph"
 version = "0.1.0"
-description = "A zero-dependency governance and evidence-integrity kernel for any agent runtime."
+description = "Deterministic acceptance policy for AI coding agents: turns gate results, claims and hash-bound evidence into a replayable ACCEPT / BLOCK / UNVERIFIED decision. Zero runtime dependencies, Python 3.10-3.14."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"

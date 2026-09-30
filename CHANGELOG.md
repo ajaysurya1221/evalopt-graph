@@ -7,6 +7,9 @@ All notable changes to evalopt are documented here. The project follows
 
 ### Changed
 
+- The README opening and the package summary now describe the kernel plainly as a deterministic
+  acceptance policy for AI coding agents and show the `FAILED` and `BLOCKED` paths next to
+  `ACCEPTED`. The PyPI summary changes with the next release.
 - Build artifacts pin core metadata 2.4 (`core-metadata-version` on both hatch targets) so a
   hatchling upgrade cannot change the wheel or sdist metadata shape; `scripts/verify_artifacts.py`
   now asserts it.

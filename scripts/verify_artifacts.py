@@ -10,6 +10,7 @@ import tarfile
 import zipfile
 from pathlib import Path, PurePosixPath
 
+EXPECTED_METADATA_VERSION = "2.4"
 ALLOWED_SDIST_ROOTS = {
     ".gitignore",
     "CHANGELOG.md",
@@ -57,6 +58,20 @@ def fail(message: str) -> None:
     raise AssertionError(message)
 
 
+def check_metadata_version(kind: str, found: str | None) -> None:
+    """The build backend must emit the pinned core metadata version.
+
+    ``core-metadata-version`` is pinned in ``pyproject.toml`` so the artifacts do not change
+    shape when hatchling is upgraded (hatchling >= 1.32 defaults to 2.5, which the pinned
+    ``twine`` release rejects). 2.4 is the first version carrying ``License-Expression``.
+    """
+    if found != EXPECTED_METADATA_VERSION:
+        fail(
+            f"{kind} declares core metadata {found!r}; expected {EXPECTED_METADATA_VERSION!r} "
+            "(see core-metadata-version in pyproject.toml)"
+        )
+
+
 def check_common(path: PurePosixPath, data: bytes | None = None) -> None:
     if any(part in FORBIDDEN_COMPONENTS for part in path.parts):
         fail(f"forbidden artifact path: {path}")
@@ -95,6 +110,7 @@ def verify_wheel(wheel: Path, version: str) -> None:
 
         metadata_path = next(path for path in names if path.parts == (dist_info, "METADATA"))
         metadata = email.message_from_bytes(archive.read(str(metadata_path)))
+        check_metadata_version("wheel", metadata["Metadata-Version"])
         if metadata["Name"] != "evalopt-graph" or metadata["Version"] != version:
             fail("wheel name/version metadata does not match the release")
         if metadata["License-Expression"] != "MIT":
@@ -150,6 +166,10 @@ def verify_sdist(sdist: Path, version: str) -> None:
         expected_root = f"evalopt_graph-{version}"
         if archive_root != expected_root:
             fail(f"sdist root is {archive_root!r}, expected {expected_root!r}")
+        pkg_info = email.message_from_bytes(paths[PurePosixPath("PKG-INFO")])
+        check_metadata_version("sdist", pkg_info["Metadata-Version"])
+        if pkg_info["Name"] != "evalopt-graph" or pkg_info["Version"] != version:
+            fail("sdist name/version metadata does not match the release")
 
 
 def main() -> int:

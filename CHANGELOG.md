@@ -5,7 +5,11 @@ All notable changes to evalopt are documented here. The project follows
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### Changed
+
+- Build artifacts pin core metadata 2.4 (`core-metadata-version` on both hatch targets) so a
+  hatchling upgrade cannot change the wheel or sdist metadata shape; `scripts/verify_artifacts.py`
+  now asserts it.
 
 ## [0.1.0] - 2026-07-20
 

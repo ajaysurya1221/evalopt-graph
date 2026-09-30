@@ -10,6 +10,8 @@ from __future__ import annotations
 import importlib.util
 import os
 
+import pytest
+
 from evalopt_graph import checks, epistemic, graph, permissions, reflection, stability
 from evalopt_graph import state as S
 from evalopt_graph.claim_ledger import ClaimLedger
@@ -400,9 +402,10 @@ def test_git_worktree_force_remove_and_branch_delete_not_allowed():
 
 
 def _load_hook():
-    path = os.path.join(
-        os.path.dirname(__file__), "..", "claude_assets", "hooks", "pretool_evalopt_safety.py"
-    )
+    examples = os.path.join(os.path.dirname(__file__), "..", "examples", "claude-code-overnight")
+    if not os.path.isdir(examples):  # the examples tree is not shipped in the sdist
+        pytest.skip("example Claude Code hooks are not present")
+    path = os.path.join(examples, "hooks", "pretool_evalopt_safety.py")
     spec = importlib.util.spec_from_file_location("pretool_hook", os.path.abspath(path))
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)

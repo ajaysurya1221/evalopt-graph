@@ -6,9 +6,9 @@ which first backs up the existing settings to settings.json.bak.<timestamp>, mer
 (union allow/deny rules + append hooks), preserves all unrelated settings, validates JSON, and writes.
 
 Usage:
-    python scripts/apply_overnight_permissions.py                 # dry-run (default)
-    python scripts/apply_overnight_permissions.py --apply         # actually write (creates backup)
-    python scripts/apply_overnight_permissions.py --settings <p> --block <p> --apply
+    python examples/claude-code-overnight/apply_overnight_permissions.py                 # dry-run (default)
+    python examples/claude-code-overnight/apply_overnight_permissions.py --apply         # write (creates backup)
+    python examples/claude-code-overnight/apply_overnight_permissions.py --settings <p> --block <p> --apply
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 from evalopt_graph import permissions  # noqa: E402
 
 DEFAULT_BLOCK = os.path.expanduser("~/.claude/evalopt-overnight-permissions.example.json")

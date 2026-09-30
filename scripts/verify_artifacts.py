@@ -21,7 +21,6 @@ ALLOWED_SDIST_ROOTS = {
     "README.md",
     "SECURITY.md",
     "bench",
-    "claude_assets",
     "docs",
     "pyproject.toml",
     "scripts",
@@ -43,15 +42,11 @@ FORBIDDEN_COMPONENTS = {
     "dist",
     "runs",
 }
-PERSONAL_MARKERS = tuple(
-    "".join(parts).encode()
-    for parts in (
-        ("/Users/", "ajay/"),
-        ("evalopt-graph-", "template"),
-        ("conductor/", "workspaces"),
-        ("~/", "Developer/"),
-    )
-)
+# Absolute home-directory paths (macOS, Linux, Windows) reveal a private workspace. Placeholder
+# user names used by docs and tests, and regex fragments such as ``/home/[^/]+``, are tolerated.
+_HOME_PATH_RE = re.compile(rb"(?:/Users/|/home/|[A-Za-z]:\\+Users\\+)([^/\\\s\"'`]+)[/\\]")
+_PLACEHOLDER_USERS = {b"example", b"user", b"username", b"you", b"me", b"x", b"someone", b"name"}
+_REAL_USER_RE = re.compile(rb"[A-Za-z][A-Za-z0-9._-]*")
 
 
 def fail(message: str) -> None:
@@ -72,6 +67,15 @@ def check_metadata_version(kind: str, found: str | None) -> None:
         )
 
 
+def personal_paths(data: bytes) -> list[bytes]:
+    """Return absolute home-directory paths that look like a real person's workspace."""
+    return [
+        match.group(0)
+        for match in _HOME_PATH_RE.finditer(data)
+        if _REAL_USER_RE.fullmatch(match.group(1)) and match.group(1).lower() not in _PLACEHOLDER_USERS
+    ]
+
+
 def check_common(path: PurePosixPath, data: bytes | None = None) -> None:
     if any(part in FORBIDDEN_COMPONENTS for part in path.parts):
         fail(f"forbidden artifact path: {path}")
@@ -79,9 +83,8 @@ def check_common(path: PurePosixPath, data: bytes | None = None) -> None:
     if name == ".env" or name.startswith(".env.") or name.endswith((".pyc", ".pyo")):
         fail(f"environment or cache file in artifact: {path}")
     if data is not None and b"\x00" not in data[:8192]:
-        for marker in PERSONAL_MARKERS:
-            if marker in data:
-                fail(f"personal workspace marker {marker!r} in {path}")
+        for hit in personal_paths(data):
+            fail(f"personal workspace path {hit!r} in {path}")
 
 
 def verify_wheel(wheel: Path, version: str) -> None:

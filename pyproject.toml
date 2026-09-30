@@ -59,7 +59,6 @@ include = [
     "/src",
     "/tests",
     "/bench/harbor",
-    "/claude_assets",
     "/docs",
     "/scripts",
     "/CHANGELOG.md",

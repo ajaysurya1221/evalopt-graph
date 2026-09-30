@@ -14,6 +14,12 @@ All notable changes to evalopt are documented here. The project follows
   hatchling upgrade cannot change the wheel or sdist metadata shape; `scripts/verify_artifacts.py`
   now asserts it.
 
+### Removed
+
+- The Claude Code overnight hooks and the `~/.claude/settings.json` helper scripts moved out of the
+  package into `examples/claude-code-overnight/`. They are no longer shipped in the sdist, and the
+  artifact check now rejects any absolute home-directory path instead of naming a workspace.
+
 ## [0.1.0] - 2026-07-20
 
 ### Added

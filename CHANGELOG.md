@@ -14,6 +14,9 @@ All notable changes to evalopt are documented here. The project follows
   hatchling upgrade cannot change the wheel or sdist metadata shape; `scripts/verify_artifacts.py`
   now asserts it.
 
+- The detected Python test gate now runs `<sys.executable> -m pytest -q` instead of a bare
+  `python`, so the gate runs in the interpreter that imported evalopt.
+
 ### Removed
 
 - The Claude Code overnight hooks and the `~/.claude/settings.json` helper scripts moved out of the

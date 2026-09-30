@@ -4,7 +4,21 @@ from __future__ import annotations
 
 import json
 import os
+import shlex
+import sys
 from typing import Any
+
+
+def _python_command() -> str:
+    """The interpreter running evalopt, quoted for the shell that runs gate commands.
+
+    Using ``sys.executable`` keeps the test gate hermetic: it runs in the environment that
+    imported evalopt rather than whatever ``python`` is first on PATH.
+    """
+    executable = sys.executable or "python"
+    if os.name == "nt":
+        return f'"{executable}"' if " " in executable else executable
+    return shlex.quote(executable)
 
 
 def _exists(repo: str, *names: str) -> bool:
@@ -89,7 +103,7 @@ def detect_project(repo_path: str) -> dict[str, Any]:
                 py = ""
         has_tests = os.path.isdir(os.path.join(repo, "tests")) or "pytest" in py
         profile["has_tests"] = has_tests
-        cmds["test"] = "python -m pytest -q" if has_tests else None
+        cmds["test"] = f"{_python_command()} -m pytest -q" if has_tests else None
         if "[tool.ruff" in py or _exists(repo, "ruff.toml", ".ruff.toml"):
             cmds["lint"] = "ruff check ."
         if "[tool.mypy" in py or _exists(repo, "mypy.ini"):

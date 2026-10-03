@@ -245,6 +245,51 @@ def test_nested_input_rows_are_copied_before_evaluation():
     assert before.status == "ACCEPTED"
 
 
+@pytest.mark.parametrize(
+    ("field", "bad_row"),
+    [
+        ("gate_results", "ok"),
+        ("gate_results", b"ok"),
+        ("contradictions", "abc"),
+        ("contradictions", b"abc"),
+    ],
+)
+def test_acceptance_input_rows_reject_scalar_rows_instead_of_splitting_characters(field, bad_row):
+    with pytest.raises(ValueError, match=f"{field} entries"):
+        kernel.AcceptanceInput(observed_at=NOW, **{field: (bad_row,)})
+
+    with pytest.raises(ValueError, match=f"{field} entries"):
+        kernel.AcceptanceInput.from_dict(
+            {
+                "schema_version": "evalopt.acceptance-input.v1",
+                "observed_at": NOW,
+                "gate_results": [],
+                "criteria": [],
+                "claims": [],
+                "contradictions": [],
+                "attestations": [],
+                "assessments": [],
+                "tests_weakened": False,
+                "evaluator_score": None,
+                field: [bad_row],
+            }
+        )
+
+
+@pytest.mark.parametrize(
+    ("field", "bad_value"),
+    [
+        ("gate_results", None),
+        ("gate_results", 1),
+        ("contradictions", None),
+        ("contradictions", 1),
+    ],
+)
+def test_acceptance_input_rows_reject_non_iterable_row_containers(field, bad_value):
+    with pytest.raises(ValueError, match=f"{field} entries"):
+        kernel.AcceptanceInput(observed_at=NOW, **{field: bad_value})
+
+
 def test_contradiction_enums_are_normalized_and_unknown_values_rejected():
     policy, input_ = _input(contradictions=(("x1", "HIGH", "RESOLVED"),))
 

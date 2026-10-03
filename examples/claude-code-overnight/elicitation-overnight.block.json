@@ -1,0 +1,21 @@
+{
+  "_README": "Example Elicitation hook block for an overnight run. First copy the hook: `cp examples/claude-code-overnight/hooks/elicitation_evalopt_overnight.py ~/.claude/hooks/` (or another location; adjust the command paths below). Then merge this block into ~/.claude/settings.json with the example installer (union/append, backs up first): `python examples/claude-code-overnight/apply_overnight_permissions.py --block examples/claude-code-overnight/elicitation-overnight.block.json --apply`. Auto-declines MCP elicitation during overnight runs so unattended runs never pause; no-op interactively.",
+  "hooks": {
+    "Elicitation": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          { "type": "command", "command": "python3 \"$HOME/.claude/hooks/elicitation_evalopt_overnight.py\"" }
+        ]
+      }
+    ],
+    "ElicitationResult": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          { "type": "command", "command": "python3 \"$HOME/.claude/hooks/elicitation_evalopt_overnight.py\"" }
+        ]
+      }
+    ]
+  }
+}

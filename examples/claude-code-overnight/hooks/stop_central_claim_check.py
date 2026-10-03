@@ -14,7 +14,7 @@ from pathlib import Path
 
 _CANDIDATES = [
     os.environ.get("EVALOPT_SRC", ""),
-    str(Path(__file__).resolve().parents[2] / "src"),
+    str(Path(__file__).resolve().parents[3] / "src"),
 ]
 _gov = None
 for _p in _CANDIDATES:

@@ -1,7 +1,7 @@
 """Epistemic core: typed Claim / Source models, trust tiers, and the reliance rules that stop
 hallucination from propagating.
 
-The central invariant (see SKILL.md → anti-hallucination rules): **no agent may pass a naked
+The central invariant (the anti-hallucination rule): **no agent may pass a naked
 conclusion downstream**. Every important claim is an evidence packet with a ``status`` and
 ``trust`` provenance, and only claims that are *usable* (confirmed / user-provided / deterministic)
 may be relied on as premises by a downstream node.

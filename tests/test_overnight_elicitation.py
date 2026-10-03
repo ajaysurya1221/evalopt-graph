@@ -8,14 +8,17 @@ from __future__ import annotations
 import importlib.util
 import os
 
+import pytest
+
 from evalopt_graph import permissions
 
-_HOOK = os.path.join(
-    os.path.dirname(__file__), "..", "claude_assets", "hooks", "elicitation_evalopt_overnight.py"
-)
+_EXAMPLES = os.path.join(os.path.dirname(__file__), "..", "examples", "claude-code-overnight")
+_HOOK = os.path.join(_EXAMPLES, "hooks", "elicitation_evalopt_overnight.py")
 
 
 def _load_hook():
+    if not os.path.isdir(_EXAMPLES):  # the examples tree is not shipped in the sdist
+        pytest.skip("example Claude Code hooks are not present")
     spec = importlib.util.spec_from_file_location("elicitation_hook", os.path.abspath(_HOOK))
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)

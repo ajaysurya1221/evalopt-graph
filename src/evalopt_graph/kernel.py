@@ -157,10 +157,23 @@ class AcceptanceInput:
             raise ValueError("observed_at must be a string")
 
         def rows(name: str, values: Iterable[Iterable[str]], width: int) -> tuple[tuple[str, ...], ...]:
-            normalized = tuple(tuple(row) for row in values)
+            if isinstance(values, str | bytes):
+                raise ValueError(f"{name} entries require {width} string fields")
+            normalized: list[tuple[str, ...]] = []
+            try:
+                iterator = iter(values)
+            except TypeError as exc:
+                raise ValueError(f"{name} entries require {width} string fields") from exc
+            for row in iterator:
+                if isinstance(row, str | bytes):
+                    raise ValueError(f"{name} entries require {width} string fields")
+                try:
+                    normalized.append(tuple(row))
+                except TypeError as exc:
+                    raise ValueError(f"{name} entries require {width} string fields") from exc
             if any(len(row) != width or not all(isinstance(item, str) for item in row) for row in normalized):
                 raise ValueError(f"{name} entries require {width} string fields")
-            return normalized
+            return tuple(normalized)
 
         object.__setattr__(self, "gate_results", rows("gate_results", self.gate_results, 2))
         object.__setattr__(self, "contradictions", rows("contradictions", self.contradictions, 3))
@@ -217,10 +230,10 @@ class AcceptanceInput:
     def from_dict(cls, value: Mapping[str, Any]) -> AcceptanceInput:
         return cls(
             observed_at=str(value.get("observed_at", "")),
-            gate_results=tuple(tuple(item) for item in value.get("gate_results", ())),
+            gate_results=value.get("gate_results", ()),
             criteria=tuple(value.get("criteria", ())),
             claims=tuple(ClaimRecord(**item) for item in value.get("claims", ())),
-            contradictions=tuple(tuple(item) for item in value.get("contradictions", ())),
+            contradictions=value.get("contradictions", ()),
             attestations=tuple(EvidenceAttestation.from_dict(item) for item in value.get("attestations", ())),
             assessments=tuple(SupportAssessment.from_dict(item) for item in value.get("assessments", ())),
             tests_weakened=value.get("tests_weakened", False),

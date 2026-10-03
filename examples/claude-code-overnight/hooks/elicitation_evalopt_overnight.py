@@ -18,7 +18,7 @@ definite answer (clean "user declined") rather than a hang.
 
 When overnight is NOT active this hook is a no-op (prints nothing) so interactive sessions show the
 dialog normally. This file is the canonical, unit-tested source; install it by referencing this path
-from a hook entry, or copy it to ~/.claude/skills/eval-opt/hooks/ for co-location with the others.
+from a hook entry, or copy it to ~/.claude/hooks/ next to the other example hooks.
 """
 
 from __future__ import annotations

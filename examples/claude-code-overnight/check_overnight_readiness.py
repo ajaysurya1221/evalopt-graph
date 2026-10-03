@@ -4,7 +4,7 @@
 Reports READY / READY_WITH_WARNINGS / NOT_READY plus the exact command to start an overnight run.
 
 Usage:
-    python scripts/check_overnight_readiness.py --repo .
+    python examples/claude-code-overnight/check_overnight_readiness.py --repo .
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ import os
 import subprocess
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 from evalopt_graph import permissions  # noqa: E402
 
 SETTINGS = os.path.expanduser("~/.claude/settings.json")

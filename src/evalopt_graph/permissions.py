@@ -6,7 +6,7 @@ Governor (`unattended.py`): safe repo-local & ordinary-verification → allow; d
 remote-mutating / credentialed / outside-repo → deny; ambiguous remote-ish → defer; anything else →
 unknown (which the overnight hook treats as **deny**, never a silent allow).
 
-Verified against official Claude Code docs (see OVERNIGHT_PERMISSIONS_AUDIT.md): this feeds a
+Written against the official Claude Code hook contract: this feeds a
 PreToolUse hook (`hookSpecificOutput.permissionDecision`) and a PermissionRequest hook
 (`hookSpecificOutput.decision.behavior`). Deny rules in settings always win regardless; this layer
 only ever *adds* safety, never overrides a deny rule.
@@ -612,16 +612,19 @@ def assess_readiness(facts: dict[str, Any]) -> dict[str, Any]:
         blocking.append("not a git repository — eval-opt needs git for diff-scoping and worktrees")
     if not facts.get("permission_hooks_installed", False):
         warnings.append(
-            "overnight permission hooks not installed in settings.json — run apply_overnight_permissions.py --apply"
+            "overnight permission hooks not installed in settings.json — see "
+            "examples/claude-code-overnight/README.md (apply_overnight_permissions.py --apply)"
         )
     if not facts.get("elicitation_hook_installed", False):
         warnings.append(
             "MCP Elicitation hook not installed — overnight MCP elicitation could pause the run; "
-            "install it: apply_overnight_permissions.py --block claude_assets/elicitation-overnight.block.json --apply "
-            "(or add the Elicitation hook to ~/.claude/skills/eval-opt/SKILL.md frontmatter)"
+            "merge examples/claude-code-overnight/elicitation-overnight.block.json with "
+            "apply_overnight_permissions.py --apply, or register the Elicitation hook in your Claude Code settings"
         )
     if not facts.get("eval_opt_skill", False):
-        warnings.append("eval-opt skill not found at ~/.claude/skills/eval-opt")
+        warnings.append(
+            "eval-opt skill not installed — it is an external Claude Code skill, not part of this package"
+        )
     if facts.get("permission_mode") not in ("dontAsk", "acceptEdits", "auto", None):
         warnings.append(
             f"permission mode '{facts.get('permission_mode')}' may prompt overnight — prefer dontAsk/acceptEdits/auto"

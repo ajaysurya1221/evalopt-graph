@@ -3,6 +3,8 @@ from __future__ import annotations
 import importlib.util
 import os
 
+import pytest
+
 from evalopt_graph import epistemic
 from evalopt_graph.claim_ledger import ClaimLedger
 from evalopt_graph.governance import unverified_central_claims
@@ -29,9 +31,10 @@ def test_unverified_central_claims_empty_when_no_dir(tmp_path):
 
 
 def _load_stop_hook():
-    path = os.path.join(
-        os.path.dirname(__file__), "..", "claude_assets", "hooks", "stop_central_claim_check.py"
-    )
+    examples = os.path.join(os.path.dirname(__file__), "..", "examples", "claude-code-overnight")
+    if not os.path.isdir(examples):  # the examples tree is not shipped in the sdist
+        pytest.skip("example Claude Code hooks are not present")
+    path = os.path.join(examples, "hooks", "stop_central_claim_check.py")
     spec = importlib.util.spec_from_file_location("stop_hook", os.path.abspath(path))
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)

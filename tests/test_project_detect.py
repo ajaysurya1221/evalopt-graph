@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 
 from evalopt_graph import configured_gates, detect_project
 
@@ -15,7 +16,9 @@ def test_detect_python_with_tests(tmp_path):
     p = detect_project(str(tmp_path))
     assert p["type"] == "python"
     assert p["has_tests"] is True
-    assert p["commands"]["test"] == "python -m pytest -q"
+    # the test gate is pinned to the interpreter that imported evalopt, not a bare `python`
+    assert p["commands"]["test"].endswith(" -m pytest -q")
+    assert sys.executable in p["commands"]["test"]
     assert p["commands"]["lint"] == "ruff check ."
     assert p["commands"]["typecheck"] == "mypy ."
     assert p["commands"]["build"] == "python -m build"

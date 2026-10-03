@@ -12,14 +12,24 @@
 
 **Agents propose. Policy decides.**
 
-A zero-dependency governance and evidence-integrity kernel for any agent runtime.
+Deterministic acceptance policy for AI coding agents.
 
 </div>
 
-`evalopt` turns host observations into one deterministic, content-addressed acceptance decision. It
-does not run models, choose tools, edit repositories, or pretend that retrieved text is true. Your
-agent runtime does the work; the kernel decides whether the resulting evidence satisfies an explicit
-policy.
+Your coding agent says it is done. `evalopt-graph` returns `ACCEPTED` only when the gates your
+harness actually observed passed, no test was weakened, and every load-bearing claim is backed by a
+hash-bound quote from the evidence; otherwise it returns `BLOCKED`, `FAILED`, `UNSUPPORTED`, or
+`UNVERIFIED`, deterministically and replayably.
+
+- **What it checks.** Gate results reported by your harness (tests, lint, typecheck, build); each
+  load-bearing claim against a hash-bound evidence attestation and an independent support
+  assessment; and policy precedence with fail-closed defaults, so a weakened test suite blocks, a
+  failed gate fails, a missing gate is unsupported, and an unbacked claim is unverified.
+- **What it produces.** One content-addressed `AcceptanceDecision` with stable reason codes and
+  hashes for the policy, input, evidence, and decision, which `validate()` and `replay()` can
+  re-check later without trusting the process that wrote it.
+- **What it is not.** No LLM in the loop; no runtime adapters shipped yet (you map your harness's
+  observations into `AcceptanceInput`); zero runtime dependencies; Python 3.10–3.14.
 
 ## Install
 
@@ -27,28 +37,45 @@ policy.
 pip install evalopt-graph
 ```
 
-Python 3.10–3.14 is supported. The stable kernel has no required runtime dependencies.
-
 ## Decide, serialize, replay
 
 ```python
 from evalopt_graph import AcceptanceDecision, AcceptanceInput, GovernancePolicy, evaluate_acceptance
 
 policy = GovernancePolicy(required_gates=("tests", "lint"))
+
+# What the harness observed: both required gates passed, nothing was skipped or deleted.
 observed = AcceptanceInput(
     observed_at="2026-07-20T12:00:00+00:00",
     gate_results=(("tests", "PASS"), ("lint", "PASS")),
 )
-
 decision = evaluate_acceptance(policy, observed)
+print(decision.status, decision.reasons)  # ACCEPTED ('policy_satisfied',)
 
-assert decision.status == "ACCEPTED"
-assert decision.reasons == ("policy_satisfied",)
-assert decision.validate()
+# Same policy, but the test gate failed.
+failed = evaluate_acceptance(
+    policy,
+    AcceptanceInput(
+        observed_at="2026-07-20T12:00:00+00:00",
+        gate_results=(("tests", "FAIL"), ("lint", "PASS")),
+    ),
+)
+print(failed.status, failed.reasons)  # FAILED ('required_gate_failed:tests',)
 
-# Decisions are plain, content-addressed records.
-stored = decision.to_dict()
-restored = AcceptanceDecision.from_dict(stored)
+# Gates pass, but the agent weakened the tests to get there.
+blocked = evaluate_acceptance(
+    policy,
+    AcceptanceInput(
+        observed_at="2026-07-20T12:00:00+00:00",
+        gate_results=(("tests", "PASS"), ("lint", "PASS")),
+        tests_weakened=True,
+    ),
+)
+print(blocked.status, blocked.reasons)  # BLOCKED ('tests_weakened',)
+
+# Decisions are plain, content-addressed records: store them, then re-check them later.
+restored = AcceptanceDecision.from_dict(decision.to_dict())
+assert restored.validate()
 assert restored.replay(policy, observed)
 ```
 
@@ -125,7 +152,9 @@ prove semantic truth, deployed behavior, source correctness, or model capability
   the same kernel decision path.
 - **CONFORMANCE_PROVEN:** deterministic generated and authored cases exercise a bounded evidence
   boundary mechanism.
-- **Not established:** benchmark superiority, external comparison, independent reproduction, or SOTA.
+- **What this does not claim:** external benchmark results, comparison against other tools, or
+  independent reproduction. The conformance cases show the mechanism behaves as specified; they say
+  nothing about model capability.
 
 Read the
 [evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) and

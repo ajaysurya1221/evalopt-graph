@@ -5,7 +5,23 @@ All notable changes to evalopt are documented here. The project follows
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### Changed
+
+- The README opening and the package summary now describe the kernel plainly as a deterministic
+  acceptance policy for AI coding agents and show the `FAILED` and `BLOCKED` paths next to
+  `ACCEPTED`. The PyPI summary changes with the next release.
+- Build artifacts pin core metadata 2.4 (`core-metadata-version` on both hatch targets) so a
+  hatchling upgrade cannot change the wheel or sdist metadata shape; `scripts/verify_artifacts.py`
+  now asserts it.
+
+- The detected Python test gate now runs `<sys.executable> -m pytest -q` instead of a bare
+  `python`, so the gate runs in the interpreter that imported evalopt.
+
+### Removed
+
+- The Claude Code overnight hooks and the `~/.claude/settings.json` helper scripts moved out of the
+  package into `examples/claude-code-overnight/`. They are no longer shipped in the sdist, and the
+  artifact check now rejects any absolute home-directory path instead of naming a workspace.
 
 ## [0.1.0] - 2026-07-20
 

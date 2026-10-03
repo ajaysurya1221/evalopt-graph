@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "evalopt-graph"
 version = "0.1.0"
-description = "A zero-dependency governance and evidence-integrity kernel for any agent runtime."
+description = "Deterministic acceptance policy for AI coding agents: turns gate results, claims and hash-bound evidence into a replayable ACCEPT / BLOCK / UNVERIFIED decision. Zero runtime dependencies, Python 3.10-3.14."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -46,16 +46,19 @@ Repository = "https://github.com/ajaysurya1221/evalopt-graph"
 Issues = "https://github.com/ajaysurya1221/evalopt-graph/issues"
 Changelog = "https://github.com/ajaysurya1221/evalopt-graph/blob/main/CHANGELOG.md"
 
+# Pin the core metadata version so artifacts stay stable across hatchling upgrades
+# (newer hatchling defaults to 2.5, which twine 6.2.0 rejects); 2.4 carries the SPDX license fields.
 [tool.hatch.build.targets.wheel]
 packages = ["src/evalopt_graph"]
+core-metadata-version = "2.4"
 
 [tool.hatch.build.targets.sdist]
+core-metadata-version = "2.4"
 include = [
     "/.gitignore",
     "/src",
     "/tests",
     "/bench/harbor",
-    "/claude_assets",
     "/docs",
     "/scripts",
     "/CHANGELOG.md",

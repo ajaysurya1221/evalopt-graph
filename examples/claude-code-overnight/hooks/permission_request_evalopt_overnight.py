@@ -23,7 +23,7 @@ from pathlib import Path
 # --- locate the canonical classifier; fall back to a conservative embedded one ---------------
 _CANDIDATES = [
     os.environ.get("EVALOPT_SRC", ""),
-    str(Path(__file__).resolve().parents[2] / "src"),
+    str(Path(__file__).resolve().parents[3] / "src"),
 ]
 _perm = None
 for _p in _CANDIDATES:

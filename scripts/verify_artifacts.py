@@ -10,6 +10,7 @@ import tarfile
 import zipfile
 from pathlib import Path, PurePosixPath
 
+EXPECTED_METADATA_VERSION = "2.4"
 ALLOWED_SDIST_ROOTS = {
     ".gitignore",
     "CHANGELOG.md",
@@ -20,7 +21,6 @@ ALLOWED_SDIST_ROOTS = {
     "README.md",
     "SECURITY.md",
     "bench",
-    "claude_assets",
     "docs",
     "pyproject.toml",
     "scripts",
@@ -42,19 +42,38 @@ FORBIDDEN_COMPONENTS = {
     "dist",
     "runs",
 }
-PERSONAL_MARKERS = tuple(
-    "".join(parts).encode()
-    for parts in (
-        ("/Users/", "ajay/"),
-        ("evalopt-graph-", "template"),
-        ("conductor/", "workspaces"),
-        ("~/", "Developer/"),
-    )
-)
+# Absolute home-directory paths (macOS, Linux, Windows) reveal a private workspace. Placeholder
+# user names used by docs and tests, and regex fragments such as ``/home/[^/]+``, are tolerated.
+_HOME_PATH_RE = re.compile(rb"(?:/Users/|/home/|[A-Za-z]:\\+Users\\+)([^/\\\s\"'`]+)[/\\]")
+_PLACEHOLDER_USERS = {b"example", b"user", b"username", b"you", b"me", b"x", b"someone", b"name"}
+_REAL_USER_RE = re.compile(rb"[A-Za-z][A-Za-z0-9._-]*")
 
 
 def fail(message: str) -> None:
     raise AssertionError(message)
+
+
+def check_metadata_version(kind: str, found: str | None) -> None:
+    """The build backend must emit the pinned core metadata version.
+
+    ``core-metadata-version`` is pinned in ``pyproject.toml`` so the artifacts do not change
+    shape when hatchling is upgraded (hatchling >= 1.32 defaults to 2.5, which the pinned
+    ``twine`` release rejects). 2.4 is the first version carrying ``License-Expression``.
+    """
+    if found != EXPECTED_METADATA_VERSION:
+        fail(
+            f"{kind} declares core metadata {found!r}; expected {EXPECTED_METADATA_VERSION!r} "
+            "(see core-metadata-version in pyproject.toml)"
+        )
+
+
+def personal_paths(data: bytes) -> list[bytes]:
+    """Return absolute home-directory paths that look like a real person's workspace."""
+    return [
+        match.group(0)
+        for match in _HOME_PATH_RE.finditer(data)
+        if _REAL_USER_RE.fullmatch(match.group(1)) and match.group(1).lower() not in _PLACEHOLDER_USERS
+    ]
 
 
 def check_common(path: PurePosixPath, data: bytes | None = None) -> None:
@@ -64,9 +83,8 @@ def check_common(path: PurePosixPath, data: bytes | None = None) -> None:
     if name == ".env" or name.startswith(".env.") or name.endswith((".pyc", ".pyo")):
         fail(f"environment or cache file in artifact: {path}")
     if data is not None and b"\x00" not in data[:8192]:
-        for marker in PERSONAL_MARKERS:
-            if marker in data:
-                fail(f"personal workspace marker {marker!r} in {path}")
+        for hit in personal_paths(data):
+            fail(f"personal workspace path {hit!r} in {path}")
 
 
 def verify_wheel(wheel: Path, version: str) -> None:
@@ -95,6 +113,7 @@ def verify_wheel(wheel: Path, version: str) -> None:
 
         metadata_path = next(path for path in names if path.parts == (dist_info, "METADATA"))
         metadata = email.message_from_bytes(archive.read(str(metadata_path)))
+        check_metadata_version("wheel", metadata["Metadata-Version"])
         if metadata["Name"] != "evalopt-graph" or metadata["Version"] != version:
             fail("wheel name/version metadata does not match the release")
         if metadata["License-Expression"] != "MIT":
@@ -150,6 +169,10 @@ def verify_sdist(sdist: Path, version: str) -> None:
         expected_root = f"evalopt_graph-{version}"
         if archive_root != expected_root:
             fail(f"sdist root is {archive_root!r}, expected {expected_root!r}")
+        pkg_info = email.message_from_bytes(paths[PurePosixPath("PKG-INFO")])
+        check_metadata_version("sdist", pkg_info["Metadata-Version"])
+        if pkg_info["Name"] != "evalopt-graph" or pkg_info["Version"] != version:
+            fail("sdist name/version metadata does not match the release")
 
 
 def main() -> int:

@@ -33,7 +33,7 @@ dependencies = []
 [project.optional-dependencies]
 llm = ["anthropic>=0.40", "openai>=1.40"]  # optional real providers (need API keys via env)
 yaml = ["pyyaml>=6"]                        # optional: load .evalopt/config.yaml
-dev = ["pytest>=8", "ruff>=0.6", "jsonschema>=4.25,<5"]
+dev = ["pytest>=8", "ruff>=0.6", "jsonschema>=4.26.0,<5"]
 all = ["evalopt-graph[llm,yaml,dev]"]         # self-referential to avoid constraint drift
 
 [project.scripts]

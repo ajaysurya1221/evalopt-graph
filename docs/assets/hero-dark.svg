@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
+<title id="title">evalopt-graph · acceptance policy kernel: Do the gates, claims and evidence satisfy the acceptance policy?</title>
+<desc id="desc">A zero-dependency kernel turns host-supplied records into one replayable decision with stable reason codes. Evidence card: POLICY · required_gates = ("tests", "lint"). tests PASS · lint PASS → ACCEPTED ('policy_satisfied',); tests FAIL · lint PASS → FAILED ('required_gate_failed:tests',); gates pass · tests_weakened → BLOCKED ('tests_weakened',). README example · decisions are content-addressed; replay() re-checks them later.</desc>
+<rect x="0" y="0" width="1600" height="520" rx="18" fill="#0F1512"/>
+<text x="72" y="84.84" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#A8A397" letter-spacing="0.4"><tspan fill="#4FC3B6" font-weight="700">evalopt-graph</tspan> · acceptance policy kernel</text>
+<text x="72" y="169.31" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="700" fill="#F0ECE2">Do the gates, claims</text>
+<text x="72" y="238.75" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="700" fill="#F0ECE2">and evidence satisfy</text>
+<text x="72" y="308.19" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="700" fill="#F0ECE2">the acceptance policy?</text>
+<text x="72" y="371.56" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="27" fill="#CFC9BC">A zero-dependency kernel turns host-supplied</text>
+<text x="72" y="409.36" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="27" fill="#CFC9BC">records into one replayable decision with</text>
+<text x="72" y="447.16" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="27" fill="#CFC9BC">stable reason codes.</text>
+<rect x="868" y="56" width="660" height="408" rx="16" fill="#F4F1EA"/>
+<text x="902" y="104.45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#6B6A65" letter-spacing="1.36">POLICY · required_gates = ("tests", "lint")</text>
+<text x="902" y="155.15" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#16211D">tests PASS · lint PASS</text>
+<text x="902" y="189.25" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#16211D">→ <tspan fill="#1F7A4D" font-weight="700">ACCEPTED</tspan> <tspan fill="#6B6A65">('policy_satisfied',)</tspan></text>
+<text x="902" y="239.35" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#16211D">tests FAIL · lint PASS</text>
+<text x="902" y="273.45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#16211D">→ <tspan fill="#B8431F" font-weight="700">FAILED</tspan> <tspan fill="#6B6A65">('required_gate_failed:tests',)</tspan></text>
+<text x="902" y="323.55" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#16211D">gates pass · tests_weakened</text>
+<text x="902" y="357.65" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#16211D">→ <tspan fill="#8A5A00" font-weight="700">BLOCKED</tspan> <tspan fill="#6B6A65">('tests_weakened',)</tspan></text>
+<text x="902" y="404.2" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" fill="#6B6A65">README example · decisions are content-addressed;</text>
+<text x="902" y="427.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" fill="#6B6A65">replay() re-checks them later</text>
+</svg>

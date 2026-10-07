@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="856" viewBox="0 0 1600 856" role="img" aria-labelledby="title desc">
+<title id="title">Where evalopt-graph sits: Your host runs the checks and supplies the observations; the kernel applies the policy and returns one of five outcomes.</title>
+<desc id="desc">Two lanes. Host lane: the host runs the checks (tests, lint → PASS/FAIL), detects weakened tests (tests_weakened=True), collects evidence (claims · attestations); it holds the GovernancePolicy (gates, trust, freshness) and builds an AcceptanceInput (immutable observation). Evalopt does not run checks or discover weakened tests. Kernel lane: evaluate_acceptance(policy, input) is pure: same policy + input → same decision; no LLM in the loop · fail-closed defaults. It returns an AcceptanceDecision · status, reasons, hashes, in one of five states: ACCEPTED (policy_satisfied), BLOCKED (tests_weakened), FAILED (required_gate_failed:tests), UNSUPPORTED (required_gate_unavailable:tests), UNVERIFIED (central_claim_unverified:c1). The host stores policy, input and decision. Later, replay(policy, input) recomputes the decision; True only if identical: consistency with the stored input, not its truth.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#A8A397"/></marker>
+<marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#4FC3B6"/></marker>
+</defs>
+<rect x="0" y="0" width="1600" height="856" rx="18" fill="#0F1512"/>
+<text x="64" y="78" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#F0ECE2">Where evalopt-graph sits</text>
+<text x="64" y="118" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#CFC9BC">Your host runs the checks and supplies the observations; the kernel applies the policy and returns one of five outcomes.</text>
+<rect x="40" y="150" width="760" height="676" rx="12" fill="#161E1A"/>
+<rect x="830" y="150" width="730" height="676" rx="12" fill="#1B2621"/>
+<text x="64" y="192" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#A8A397" letter-spacing="1.6">YOUR HOST · CI JOB, AGENT HOOK OR VERIFIER</text>
+<text x="854" y="192" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#A8A397" letter-spacing="1.6">KERNEL · ZERO RUNTIME DEPENDENCIES</text>
+<rect x="64" y="214" width="360" height="96" rx="10" fill="#0F1512" stroke="#34403A" stroke-width="1.5"/>
+<text x="82" y="252.6" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F0ECE2">Runs the checks</text>
+<text x="82" y="284.6" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">tests, lint → PASS/FAIL</text>
+<rect x="64" y="324" width="360" height="96" rx="10" fill="#0F1512" stroke="#34403A" stroke-width="1.5"/>
+<text x="82" y="362.6" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F0ECE2">Detects weakened tests</text>
+<text x="82" y="394.6" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">tests_weakened=True</text>
+<rect x="64" y="434" width="360" height="96" rx="10" fill="#0F1512" stroke="#34403A" stroke-width="1.5"/>
+<text x="82" y="472.6" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F0ECE2">Collects evidence</text>
+<text x="82" y="504.6" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">claims · attestations</text>
+<rect x="476" y="214" width="300" height="96" rx="10" fill="#0F1512" stroke="#34403A" stroke-width="1.5"/>
+<text x="494" y="252.6" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#F0ECE2">GovernancePolicy</text>
+<text x="494" y="284.6" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#CFC9BC">gates, trust, freshness</text>
+<rect x="476" y="344" width="300" height="186" rx="10" fill="#0F1512" stroke="#34403A" stroke-width="1.5"/>
+<text x="494" y="427.6" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#F0ECE2">AcceptanceInput</text>
+<text x="494" y="459.6" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#CFC9BC">immutable observation</text>
+<path d="M 424 262 L 450 262" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 424 372 L 450 372" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 424 482 L 450 482" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 450 262 L 450 482" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 450 437 L 474 437" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="854" y="214" width="682" height="130" rx="12" fill="#F4F1EA" stroke="#4FC3B6" stroke-width="3"/>
+<text x="876" y="258" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="700" fill="#0E6E66">evaluate_acceptance(policy, input)</text>
+<text x="876" y="294" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#16211D">pure: same policy + input → same decision</text>
+<text x="876" y="324" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#16211D">no LLM in the loop · fail-closed defaults</text>
+<path d="M 776 262 L 851 262" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 776 437 L 812 437 L 812 310 L 851 310" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="910" y="386" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#F0ECE2">AcceptanceDecision · status, reasons, hashes</text>
+<rect x="910" y="402" width="626" height="42" rx="8" fill="#0F1512" stroke="#34403A" stroke-width="1.2"/>
+<text x="926" y="431" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#7FD1A8">ACCEPTED</text>
+<text x="1096" y="431" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">policy_satisfied</text>
+<rect x="910" y="450" width="626" height="42" rx="8" fill="#0F1512" stroke="#34403A" stroke-width="1.2"/>
+<text x="926" y="479" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#E8B14A">BLOCKED</text>
+<text x="1096" y="479" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">tests_weakened</text>
+<rect x="910" y="498" width="626" height="42" rx="8" fill="#0F1512" stroke="#34403A" stroke-width="1.2"/>
+<text x="926" y="527" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#F0A48A">FAILED</text>
+<text x="1096" y="527" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">required_gate_failed:tests</text>
+<rect x="910" y="546" width="626" height="42" rx="8" fill="#0F1512" stroke="#34403A" stroke-width="1.2"/>
+<text x="926" y="575" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#F0ECE2">UNSUPPORTED</text>
+<text x="1096" y="575" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">required_gate_unavailable:tests</text>
+<rect x="910" y="594" width="626" height="42" rx="8" fill="#0F1512" stroke="#34403A" stroke-width="1.2"/>
+<text x="926" y="623" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#F0ECE2">UNVERIFIED</text>
+<text x="1096" y="623" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#CFC9BC">central_claim_unverified:c1</text>
+<path d="M 876 423 L 908 423" fill="none" stroke="#4FC3B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-accent)"/>
+<path d="M 876 471 L 908 471" fill="none" stroke="#4FC3B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-accent)"/>
+<path d="M 876 519 L 908 519" fill="none" stroke="#4FC3B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-accent)"/>
+<path d="M 876 567 L 908 567" fill="none" stroke="#4FC3B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-accent)"/>
+<path d="M 876 615 L 908 615" fill="none" stroke="#4FC3B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-accent)"/>
+<path d="M 876 344 L 876 660 L 626 660 L 626 688" fill="none" stroke="#4FC3B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-accent)"/>
+<text x="751" y="650" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#A8A397" text-anchor="middle">decision</text>
+<text x="64" y="746" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#CFC9BC">Evalopt does not run checks</text>
+<text x="64" y="776" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#CFC9BC">or discover weakened tests.</text>
+<rect x="476" y="690" width="300" height="120" rx="10" fill="#0F1512" stroke="#34403A" stroke-width="1.5"/>
+<text x="494" y="740.6" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F0ECE2">Stored by the host</text>
+<text x="494" y="772.6" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#CFC9BC">policy, input, decision</text>
+<rect x="854" y="690" width="682" height="120" rx="10" fill="#0F1512" stroke="#34403A" stroke-width="1.5"/>
+<text x="876" y="728" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#F0ECE2">replay(policy, input)</text>
+<text x="876" y="762" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#F0ECE2">recomputes the decision; True only if identical</text>
+<text x="876" y="792" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#CFC9BC">consistency with the stored input, not its truth</text>
+<path d="M 776 750 L 851 750" fill="none" stroke="#A8A397" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<text x="815" y="732" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#A8A397" text-anchor="middle">later</text>
+</svg>

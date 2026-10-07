@@ -1,42 +1,45 @@
-<div align="center">
-  <img src="https://github.com/ajaysurya1221/evalopt-graph/raw/main/docs/assets/evalopt-hero-v1.svg" alt="evalopt: Agents propose. Policy decides. A noisy proposal signal passes through Gates, Evidence, and Bounds, then forks to Accepted or Blocked." width="100%">
-</div>
+# evalopt-graph
 
-<div align="center">
+**Make acceptance policy explicit and replayable.**
 
-[![Release](https://img.shields.io/github/v/release/ajaysurya1221/evalopt-graph?display_name=tag&sort=semver)](https://github.com/ajaysurya1221/evalopt-graph/releases/latest)
-[![CI](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml/badge.svg)](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/evalopt-graph?cacheSeconds=300)](https://pypi.org/project/evalopt-graph/)
-[![Python](https://img.shields.io/pypi/pyversions/evalopt-graph?cacheSeconds=300)](https://pypi.org/project/evalopt-graph/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-49C6B8.svg)](https://github.com/ajaysurya1221/evalopt-graph/blob/main/LICENSE)
+Your harness runs the checks and supplies observations.
+Evalopt applies the policy and returns a decision with stable reason codes.
 
-**Agents propose. Policy decides.**
+**Expected output from the example below, using authored inputs:**
+```text
+ACCEPTED ('policy_satisfied',)
+FAILED ('required_gate_failed:tests',)
+BLOCKED ('tests_weakened',)
+```
+[Run the example](https://github.com/ajaysurya1221/evalopt-graph#decide-serialize-replay) · [Inspect the kernel](https://github.com/ajaysurya1221/evalopt-graph/blob/main/src/evalopt_graph/kernel.py)
 
-Deterministic acceptance policy for AI coding agents.
+Five outcomes: ACCEPTED, BLOCKED, FAILED, UNSUPPORTED and UNVERIFIED.
 
-**[Run the example](https://github.com/ajaysurya1221/evalopt-graph#decide-serialize-replay)**
+**Boundary:** the host runs checks, detects weakened tests and supplies trustworthy evidence.
+Replay establishes consistency with that input, not the truth of the input.
 
-</div>
+**Engineering:** [Zero runtime dependencies](https://github.com/ajaysurya1221/evalopt-graph/blob/main/pyproject.toml) · [State and replay tests](https://github.com/ajaysurya1221/evalopt-graph/blob/main/tests/test_kernel.py)
+[32 authored/generated conformance cases](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) · [Release checks](https://github.com/ajaysurya1221/evalopt-graph/blob/main/scripts/verify_installed_release.py)
 
-`evalopt-graph` evaluates gate results, declared claims and evidence records supplied by a host
-against an explicit acceptance policy. It returns a deterministic, replayable decision with stable
-reason codes. The host remains responsible for running checks, detecting weakened tests and
-collecting trustworthy evidence.
+Conformance evidence only; no external capability or comparative result is claimed.
+[Install](https://github.com/ajaysurya1221/evalopt-graph#install) · [Host responsibilities](https://github.com/ajaysurya1221/evalopt-graph#kernel-owns--host-owns)
 
-- **What it checks.** Gate results reported by your harness (tests, lint, typecheck, build); each
-  load-bearing claim against a hash-bound evidence attestation and an independent support
-  assessment; and policy precedence with fail-closed defaults, so a weakened test suite blocks, a
-  failed gate fails, a missing gate is unsupported, and an unbacked claim is unverified.
-- **What it produces.** One content-addressed `AcceptanceDecision` with stable reason codes and
-  hashes for the policy, input, evidence, and decision, which `validate()` and `replay()` can
-  re-check later without trusting the process that wrote it.
-- **Runtime and integration.** No LLM in the loop. The stable kernel has zero runtime dependencies. Hosts map
-  observations into `AcceptanceInput`; the compatibility surfaces and Harbor example are described
-  below. Python 3.10–3.14.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/ajaysurya1221/evalopt-graph/raw/main/docs/assets/hero-dark.svg">
+  <img src="https://github.com/ajaysurya1221/evalopt-graph/raw/main/docs/assets/hero-light.svg" alt="evalopt-graph, acceptance policy kernel. Do the gates, claims and evidence satisfy the acceptance policy? Evidence card from the README example with required gates tests and lint: tests PASS and lint PASS gives ACCEPTED ('policy_satisfied',); tests FAIL gives FAILED ('required_gate_failed:tests',); passing gates with a host-reported weakened test suite give BLOCKED ('tests_weakened',)." width="100%">
+</picture>
+
+[![Release](https://img.shields.io/github/v/release/ajaysurya1221/evalopt-graph?display_name=tag&sort=semver)](https://github.com/ajaysurya1221/evalopt-graph/releases/latest) [![CI](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml/badge.svg)](https://github.com/ajaysurya1221/evalopt-graph/actions/workflows/ci.yml) [![PyPI](https://img.shields.io/pypi/v/evalopt-graph?cacheSeconds=300)](https://pypi.org/project/evalopt-graph/) [![Python](https://img.shields.io/pypi/pyversions/evalopt-graph?cacheSeconds=300)](https://pypi.org/project/evalopt-graph/) [![License: MIT](https://img.shields.io/badge/license-MIT-49C6B8.svg)](https://github.com/ajaysurya1221/evalopt-graph/blob/main/LICENSE)
+
+> **Apply acceptance policy to your CI observations**
+>
+> Have the host report its test and lint results through `AcceptanceInput`. Evaluate them against `GovernancePolicy`, save the decision with its policy and input, then deserialize and replay it later. The example shows passing gates, a failed test gate, and a host-reported weakened test suite producing different outcomes.
+>
+> This workflow is exercised with authored inputs. Evalopt neither runs those checks nor discovers weakened tests itself.
 
 ## Install
 
-Install into an isolated environment, then run the example below:
+Install into an isolated environment (Python 3.10–3.14), then run the example below:
 
 ```bash
 python3 -m venv .venv
@@ -88,28 +91,17 @@ assert restored.validate()
 assert restored.replay(policy, observed)
 ```
 
-The evaluator is pure: the same policy and input produce the same decision. Terminal outcomes are
-`ACCEPTED`, `BLOCKED`, `UNVERIFIED`, `UNSUPPORTED`, and `FAILED`, each with stable reason codes and
-hashes for the policy, input, evidence records, and decision.
+The evaluator is pure, with no LLM in the loop: the same policy and input produce the same decision,
+with stable reason codes and hashes for the policy, input, evidence records, and decision. Its
+[precedence](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/architecture.md#acceptance-precedence) is fail-closed: malformed or tampered input
+`FAILED`, policy or contradiction block `BLOCKED`, observed gate failure `FAILED`, unavailable required
+mechanism `UNSUPPORTED`, incomplete required evidence `UNVERIFIED`, otherwise `ACCEPTED`.
 
 ## Stable kernel API
 
-The package root exports exactly ten stable symbols in `v0.1.x`:
-
-```python
-from evalopt_graph import (
-    GovernancePolicy,
-    ClaimRecord,
-    EvidenceRequest,
-    EvidenceMaterial,
-    EvidenceAttestation,
-    SupportAssessment,
-    EvidenceAuthority,
-    AcceptanceInput,
-    AcceptanceDecision,
-    evaluate_acceptance,
-)
-```
+The package root exports exactly ten stable symbols in `v0.1.x`: `GovernancePolicy`, `ClaimRecord`,
+`EvidenceRequest`, `EvidenceMaterial`, `EvidenceAttestation`, `SupportAssessment`, `EvidenceAuthority`,
+`AcceptanceInput`, `AcceptanceDecision` and `evaluate_acceptance`.
 
 - `GovernancePolicy` declares required gates, trust, freshness, evaluator, claim, verifier, and record
   authorization requirements.
@@ -120,12 +112,19 @@ from evalopt_graph import (
 - `evaluate_acceptance` evaluates a complete immutable observation once and returns a replayable
   `AcceptanceDecision`.
 
-See [`kernel.py`](https://github.com/ajaysurya1221/evalopt-graph/blob/main/src/evalopt_graph/kernel.py)
-for the compact public contract and
-[`test_kernel.py`](https://github.com/ajaysurya1221/evalopt-graph/blob/main/tests/test_kernel.py) for
-complete evidence-authority examples.
+See [`kernel.py`](https://github.com/ajaysurya1221/evalopt-graph/blob/main/src/evalopt_graph/kernel.py) for the compact public contract and
+[`test_kernel.py`](https://github.com/ajaysurya1221/evalopt-graph/blob/main/tests/test_kernel.py) for complete evidence-authority examples.
 
 ## Kernel owns / host owns
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/ajaysurya1221/evalopt-graph/raw/main/docs/assets/where-dark.svg">
+  <img src="https://github.com/ajaysurya1221/evalopt-graph/raw/main/docs/assets/where-light.svg" alt="Two lanes. Host lane: your host runs the checks, detects weakened tests, collects evidence, holds the GovernancePolicy and builds an AcceptanceInput. Kernel lane: evaluate_acceptance returns an AcceptanceDecision in one of five states: ACCEPTED, BLOCKED, FAILED, UNSUPPORTED or UNVERIFIED. The host stores policy, input and decision; replay later recomputes the decision and is true only for an identical record." width="100%">
+</picture>
+
+In words: your host runs the checks, detects weakened tests, collects evidence and builds an `AcceptanceInput`.
+`evaluate_acceptance(policy, input)` returns an `AcceptanceDecision`. The host stores policy, input and decision;
+`replay()` later recomputes the decision and compares the record.
 
 | The kernel owns | Your host owns |
 | --- | --- |
@@ -165,11 +164,9 @@ prove semantic truth, deployed behavior, source correctness, or model capability
   independent reproduction. The conformance cases show the mechanism behaves as specified; they say
   nothing about model capability.
 
-Read the
-[evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) and
-[prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md)
-for the claims, controls, and gaps. There is no live-model governance campaign or official Docker
-SWE-bench result in this release.
+Read the [evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) and
+[prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps.
+There is no live-model governance campaign or official Docker SWE-bench result in this release.
 
 ## Integrate it anywhere
 
@@ -203,9 +200,7 @@ follow the [Code of Conduct](https://github.com/ajaysurya1221/evalopt-graph/blob
 
 Please report vulnerabilities privately using
 [GitHub Security Advisories](https://github.com/ajaysurya1221/evalopt-graph/security/advisories/new), not a
-public issue. See the
-[security policy](https://github.com/ajaysurya1221/evalopt-graph/blob/main/SECURITY.md) for supported
-versions and response expectations.
+public issue. See the [security policy](https://github.com/ajaysurya1221/evalopt-graph/blob/main/SECURITY.md) for supported versions and response expectations.
 
 ## Development
 
@@ -223,6 +218,9 @@ python -m ruff format --check src tests scripts
 bash scripts/smoke_test.sh
 uv build
 ```
+
+Maintained by Ajay Surya Senthilrajan, with AI pair-programming recorded in commit trailers.
+See the tests, design records and release evidence linked here.
 
 ## License
 

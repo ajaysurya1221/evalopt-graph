@@ -14,12 +14,14 @@
 
 Deterministic acceptance policy for AI coding agents.
 
+**[Run the example](https://github.com/ajaysurya1221/evalopt-graph#decide-serialize-replay)**
+
 </div>
 
-Your coding agent says it is done. `evalopt-graph` returns `ACCEPTED` only when the gates your
-harness actually observed passed, no test was weakened, and every load-bearing claim is backed by a
-hash-bound quote from the evidence; otherwise it returns `BLOCKED`, `FAILED`, `UNSUPPORTED`, or
-`UNVERIFIED`, deterministically and replayably.
+`evalopt-graph` evaluates gate results, declared claims and evidence records supplied by a host
+against an explicit acceptance policy. It returns a deterministic, replayable decision with stable
+reason codes. The host remains responsible for running checks, detecting weakened tests and
+collecting trustworthy evidence.
 
 - **What it checks.** Gate results reported by your harness (tests, lint, typecheck, build); each
   load-bearing claim against a hash-bound evidence attestation and an independent support
@@ -28,14 +30,21 @@ hash-bound quote from the evidence; otherwise it returns `BLOCKED`, `FAILED`, `U
 - **What it produces.** One content-addressed `AcceptanceDecision` with stable reason codes and
   hashes for the policy, input, evidence, and decision, which `validate()` and `replay()` can
   re-check later without trusting the process that wrote it.
-- **What it is not.** No LLM in the loop; no runtime adapters shipped yet (you map your harness's
-  observations into `AcceptanceInput`); zero runtime dependencies; Python 3.10–3.14.
+- **Runtime and integration.** No LLM in the loop. The stable kernel has zero runtime dependencies. Hosts map
+  observations into `AcceptanceInput`; the compatibility surfaces and Harbor example are described
+  below. Python 3.10–3.14.
 
 ## Install
 
+Install into an isolated environment, then run the example below:
+
 ```bash
-pip install evalopt-graph
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install evalopt-graph==0.1.0
 ```
+
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`.
 
 ## Decide, serialize, replay
 
@@ -62,7 +71,7 @@ failed = evaluate_acceptance(
 )
 print(failed.status, failed.reasons)  # FAILED ('required_gate_failed:tests',)
 
-# Gates pass, but the agent weakened the tests to get there.
+# The host reports passing gates and a weakened test suite.
 blocked = evaluate_acceptance(
     policy,
     AcceptanceInput(

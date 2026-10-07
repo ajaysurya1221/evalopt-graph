@@ -7,6 +7,14 @@ All notable changes to evalopt are documented here. The project follows
 
 ### Changed
 
+- The README now opens with the example's expected output, the five decision states, the host
+  boundary and links to the evidence behind them. A generated evidence-card hero
+  (`docs/assets/hero-{light,dark}.svg`) replaces the two-outcome banner in the README, and a
+  host/kernel boundary figure (`docs/assets/where-{light,dark}.svg`) sits beside the "Kernel owns /
+  host owns" table. `docs/assets/src/make_figures.py` generates both figures with the standard
+  library; `tests/test_figures.py` fails if a committed figure is stale or if the evidence card no
+  longer matches the README example's printed output. The previous banner files stay in place for
+  pages that still link to them.
 - The README opening and the package summary now describe the kernel plainly as a deterministic
   acceptance policy for AI coding agents and show the `FAILED` and `BLOCKED` paths next to
   `ACCEPTED`. The PyPI summary changes with the next release.

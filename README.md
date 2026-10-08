@@ -168,6 +168,20 @@ Read the [evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/m
 [prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps.
 There is no live-model governance campaign or official Docker SWE-bench result in this release.
 
+### Workflow skill and prospective comparison
+
+The portable [eval-opt skill](skills/eval-opt/SKILL.md) and
+[workflow benchmark](bench/harbor/skill-workflows-v1/README.md) are separate
+development artifacts. The benchmark compares a baseline, Matt Pocock's pinned
+workflow bundle, and eval-opt under the same task and runtime conditions. Hidden
+outcome grading is separate from the kernel's stopped-output policy comparison.
+
+The development pilot is incomplete; no workflow advantage is established.
+See the [prospective protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
+[execution status](bench/harbor/skill-workflows-v1/STATUS.md). Positive, neutral and
+negative results follow the same publication rules. This work leaves the stable
+kernel API and wheel dependencies unchanged.
+
 ## Integrate it anywhere
 
 The kernel is host-independent: adapt observations from Codex, Claude Code, OpenHands, LangGraph, CI,

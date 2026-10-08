@@ -1,0 +1,71 @@
+[
+  {
+    "module": "slugs",
+    "function": "unique_slug",
+    "args": [
+      "Hello World",
+      []
+    ],
+    "preserve_args": true,
+    "result": "hello-world"
+  },
+  {
+    "module": "slugs",
+    "function": "unique_slug",
+    "args": [
+      " !!! ",
+      []
+    ],
+    "preserve_args": true,
+    "result": "item"
+  },
+  {
+    "module": "slugs",
+    "function": "unique_slug",
+    "args": [
+      "Caf\u00e9 --- Menu",
+      [
+        "caf-menu",
+        "caf-menu-2",
+        "caf-menu-4"
+      ]
+    ],
+    "preserve_args": true,
+    "result": "caf-menu-3"
+  },
+  {
+    "module": "slugs",
+    "function": "unique_slug",
+    "args": [
+      "X",
+      [
+        "X"
+      ]
+    ],
+    "preserve_args": true,
+    "result": "x"
+  },
+  {
+    "module": "slugs",
+    "function": "unique_slug",
+    "args": [
+      "item",
+      [
+        "item",
+        "item-2"
+      ]
+    ],
+    "preserve_args": true,
+    "result": "item-3"
+  },
+  {
+    "module": "slugs",
+    "function": "unique_slug",
+    "args": [
+      "\u212a \u0130",
+      []
+    ],
+    "preserve_args": true,
+    "result": "item"
+  }
+]

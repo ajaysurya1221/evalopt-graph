@@ -1,0 +1,41 @@
+{
+  "positive_response": {
+    "status": "blocked",
+    "summary": "Specified outcome verified by the development control.",
+    "findings": [],
+    "blockers": [
+      {
+        "resource": "inventory-database",
+        "reason": "Unavailable prerequisite or failed required check."
+      }
+    ],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "unavailable"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unsupported-application-claim",
+      "kind": "response",
+      "replace": {
+        "status": "completed",
+        "blockers": []
+      }
+    },
+    {
+      "name": "forged-passing-check",
+      "kind": "response",
+      "replace": {
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "module": "adapter",
+    "function": "reserve",
+    "args": [
+      10,
+      3
+    ],
+    "preserve_args": true,
+    "result": 7
+  },
+  {
+    "module": "adapter",
+    "function": "reserve",
+    "args": [
+      0,
+      0
+    ],
+    "preserve_args": true,
+    "result": 0
+  },
+  {
+    "module": "adapter",
+    "function": "reserve",
+    "args": [
+      10,
+      -1
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "reserve",
+    "args": [
+      -2,
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "reserve",
+    "args": [
+      2,
+      3
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

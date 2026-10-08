@@ -1,0 +1,4 @@
+interface:
+  display_name: "Eval-opt"
+  short_description: "Bounded work with explicit checks and evidence"
+  default_prompt: "Use $eval-opt to complete this task within its scope and verify the result against explicit acceptance criteria."

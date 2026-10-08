@@ -1,0 +1,47 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified outcome verified by the development control.",
+    "findings": [
+      {
+        "path": "limits.py",
+        "symbol": "parse_limit",
+        "kind": "incorrect-result"
+      },
+      {
+        "path": "tests/test_negative.py",
+        "symbol": "<module>",
+        "kind": "test-coverage-loss"
+      }
+    ],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "head-only-clean-report",
+      "kind": "response",
+      "replace": {
+        "findings": []
+      }
+    },
+    {
+      "name": "missed-deleted-test",
+      "kind": "response",
+      "replace": {
+        "findings": [
+          {
+            "path": "limits.py",
+            "symbol": "parse_limit",
+            "kind": "incorrect-result"
+          }
+        ]
+      }
+    }
+  ]
+}

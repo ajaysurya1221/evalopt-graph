@@ -50,7 +50,7 @@ PYTHONPATH=bench/harbor/skill-workflows-v1 .venv/bin/python -m runtime.offline_c
 .venv/bin/python bench/harbor/skill-workflows-v1/campaign.py report --directory .benchmark/pilot
 ```
 
-The retained nine-of-36 development pilot uses the approved
+The development pilot, paused originally at nine of 36 outcomes, uses the approved
 [partial-accounting amendment](ACCOUNTING_AMENDMENT.md). Its external controller
 calls the original frozen runtime in a separate isolated Python process. Registration
 binds the existing outcomes and pending schedule; it never rewrites an old finish
@@ -83,7 +83,7 @@ The development controller currently dispatches sequentially, within the registe
 maximum of two concurrent trials. A source change requires a new development campaign
 directory. An interrupted finalization is reconciled from its retained transaction;
 agent timeouts remain failed outcomes even when usage is incomplete. Infrastructure
-failure or incomplete accounting pauses dispatch for inspection. Every dispatch also
+failure or incomplete accounting under the original strict policy pauses dispatch for inspection. Every dispatch also
 requires fresh backend permission for ordinary included usage, read through the pinned
 Codex app-server without a model call. Unknown permission fails closed.
 
@@ -102,8 +102,12 @@ grader identities. The freeze excludes authoring/QA material and creates 432
 scheduled trials. `run-heldout` requires the resulting registration hash explicitly
 and checks source and sealed-task identities before every dispatch.
 
-The current pilot does **not** pass this gate because it is incomplete and one
-trial lacks exact native accounting. A review receipt cannot waive those checks.
+The current pilot does **not** pass this gate while it is incomplete. A legacy
+v1 review still requires complete accounting. An explicit v2 review binds the approved
+amendment, complete pilot outcome export, resource report and accounting rules;
+the held-out registration then freezes those rules and their source identities.
+Partial counters cannot satisfy a claim of exact accounting. Runtime identity,
+provenance and delegation checks remain mandatory.
 The 48-task candidate is private pending registration; its authoring and finite
 oracle controls are not live workflow evidence.
 
@@ -145,6 +149,19 @@ Offline verification requires the registered analysis library and kernel source,
 plus CPython 3.13.12. It reproduces report arithmetic and acceptance decisions from
 retained controller evidence. It does not rerun the agents, authenticate evidence
 independently of the controller, or turn missing resource telemetry into a total.
+
+An amended pilot uses a separate wrapper around that unchanged outcome bundle:
+
+```sh
+.venv-harbor/bin/python bench/harbor/skill-workflows-v1/amended_publish.py export --campaign /path/to/preserved-pilot --destination .benchmark/public-amended-pilot --amendment-sha256 RECORDED_AMENDMENT_SHA256
+.venv/bin/python bench/harbor/skill-workflows-v1/amended_publish.py verify .benchmark/public-amended-pilot --amendment-sha256 RECORDED_AMENDMENT_SHA256
+```
+
+Export only while the controller is stopped. The wrapper preserves original grades,
+binds the amendment and dispatch receipts, checks per-agent sums, and reports exact
+counters separately from partial lower bounds. It excludes raw native logs and
+private source paths. Public replay verifies arithmetic from sanitized controller
+counters; it does not re-derive them from raw logs or recover missing consumption.
 
 Held-out results use `heldout_publish.py`, which also releases the sealed tasks,
 reference assets, grader sources and grading inputs. It requires all scheduled

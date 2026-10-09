@@ -243,7 +243,14 @@ async def execute_trial(
     oracle_control=False,
     task_root=None,
     split="development",
+    accounting_policy=None,
 ):
+    if accounting_policy is not None:
+        from runtime.accounting_policy import validate_policy
+
+        validate_policy(accounting_policy)
+        if oracle_control:
+            raise ValueError("registered native accounting does not apply to oracle controls")
     from harbor.models.trial.config import TrialConfig
     from harbor.trial.hooks import TrialEvent
     from harbor.trial.trial import Trial
@@ -473,15 +480,20 @@ print(json.dumps({p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).
         }
     else:
         session_path = trial.paths.agent_dir / "sessions"
-        try:
-            events = parse_native_usage(session_path)
-            usage = summarize_usage(events)
-        except (ValueError, KeyError, OSError):
-            usage = {
-                "child_usage_complete": False,
-                "accounting_status": "unavailable",
-                "raw_logs_retained": True,
-            }
+        if accounting_policy is not None:
+            from runtime.accounting_policy import collect_usage
+
+            usage = collect_usage(session_path, accounting_policy)
+        else:
+            try:
+                events = parse_native_usage(session_path)
+                usage = summarize_usage(events)
+            except (ValueError, KeyError, OSError):
+                usage = {
+                    "child_usage_complete": False,
+                    "accounting_status": "unavailable",
+                    "raw_logs_retained": True,
+                }
         entry = None
         if row["arm"] == "C":
             entry = "eval-opt"

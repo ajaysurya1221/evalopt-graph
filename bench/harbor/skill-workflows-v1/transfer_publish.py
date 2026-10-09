@@ -28,21 +28,30 @@ ATTEMPT_FILES = {"start.json", "transfer-result.json", "finish.json", "finalize.
 SCOPE = "controller-retained original verifier rewards; raw archives and trajectories excluded; no independent verifier reproduction or U/M/G"
 
 
+def _root_files(manifest):
+    return ROOT_FILES | (
+        {"accounting-policy.json"}
+        if manifest.get("schema_version") == "evalopt.transfer-campaign.v2"
+        else set()
+    )
+
+
 def _registration(directory, *, private):
+    manifest = read_json(directory / "manifest.json")
+    registered_files = transfer_campaign.registered_files(manifest)
     registration = read_json(directory / "registration-lock.json")
-    if set(registration) != set(transfer_campaign.REGISTERED_FILES) or any(
+    if set(registration) != set(registered_files) or any(
         not is_digest(value) for value in registration.values()
     ):
         raise authored.PublicationError("unsupported transfer registration lock")
     names = (
-        transfer_campaign.REGISTERED_FILES
+        registered_files
         if private
-        else tuple((ROOT_FILES - {"registration-lock.json"}) | {"evidence/schedule.json"})
+        else tuple((_root_files(manifest) - {"registration-lock.json"}) | {"evidence/schedule.json"})
     )
     for name in names:
         if bytes_digest(authored._read_regular(directory / name)) != registration[name]:
             raise authored.PublicationError("transfer registration changed")
-    manifest = read_json(directory / "manifest.json")
     prepared = read_json(directory / "preparation.json")
     if bytes_digest(authored._read_regular(directory / "preparation.json")) != manifest["preparation_sha256"]:
         raise authored.PublicationError("transfer preparation identity changed")
@@ -68,6 +77,7 @@ def _registration(directory, *, private):
     store.root = authored._safe_root(directory / "evidence")
     store.schedule_sha256 = digest(schedule)
     store.trials = {row["trial_id"]: row for row in schedule}
+    store.accounting_policy = transfer_campaign.read_accounting_policy(directory, manifest)
     return schedule, store
 
 
@@ -134,6 +144,15 @@ def _report_checksums(payloads, schedule):
 def _claims(payloads):
     rows = payloads["outcomes.json"]
     available = sum(row["upstream_reward"] is not None for row in rows)
+    accounting_scope = ""
+    if payloads["analysis.json"]["schema_version"] == "evalopt.transfer-report.v2":
+        accounting_scope = (
+            "| Registered resource accounting | The primary study's identical accounting policy governs source-bound sanitized counters. "
+            "Complete observations and partial lower bounds are reported separately; partial usage cannot support efficiency comparisons. "
+            "Public reproduction checks retained counter arithmetic, not raw native logs or independent authentication. |\n"
+            "| Execution boundary | Partial usage approval does not establish process termination or verifier isolation. "
+            "Runtime admissibility requires native stop, execution boundary and workflow exposure; runtime evidence completeness remains false for partial usage. |\n"
+        )
     return (
         "# Transfer claim-to-evidence table\n\n"
         "No primary upgrade headline follows from this feasibility subset.\n\n"
@@ -143,14 +162,17 @@ def _claims(payloads):
         "| Reproduction | Checksums, attempt integrity, registered schedule and reward aggregation reproduce from this folder. Original verifiers and private stopped archives are not re-executed. |\n"
         "| Acceptance kernel | Not applicable. This stage has no U/M/G decisions and no authored-suite hidden grade. |\n"
         "| Independent replication | Not established. Controller records are a maintainer-run study; hashes establish content identity, not authorship or independent correctness. |\n"
-        "| Authored controls and live comparison | Not contained in this transfer evidence class. Refer to separately scoped authored-suite artifacts. |\n\n"
+        "| Authored controls and live comparison | Not contained in this transfer evidence class. Refer to separately scoped authored-suite artifacts. |\n"
+        + accounting_scope
+        + "\n"
         "All-attempt resources include original and infrastructure retry attempts once each. Missing rewards and incomplete runtime/capture evidence remain visible. No dollar costs are invented.\n"
     ).encode()
 
 
 def _metadata(payloads, schedule):
-    return {
-        "schema_version": "evalopt.transfer-public-evidence.v1",
+    version_two = payloads["analysis.json"]["schema_version"] == "evalopt.transfer-report.v2"
+    result = {
+        "schema_version": "evalopt.transfer-public-evidence." + ("v2" if version_two else "v1"),
         "report_export_id": digest(payloads),
         "schedule_sha256": digest(schedule),
         "scope": SCOPE,
@@ -158,6 +180,15 @@ def _metadata(payloads, schedule):
         "independent_replication": False,
         "network_publication_performed": False,
     }
+    if version_two:
+        result.update(
+            accounting_policy_sha256=payloads["analysis.json"]["accounting_policy_sha256"],
+            accounting_reproduction="retained source-bound counter arithmetic; no raw native log replay or independent authentication",
+            efficiency_comparison_eligible=payloads["analysis.json"]["all_attempt_resources"][
+                "registered_accounting"
+            ]["efficiency_comparison_eligible"],
+        )
+    return result
 
 
 def _readme():
@@ -193,7 +224,12 @@ def export_public_bundle(directory, destination):
                 raise authored.PublicationError("transfer report does not reproduce retained rewards")
             payloads["reports/" + name] = raw
         payloads["reports/checksums.json"] = authored._read_regular(export / "checksums.json")
-        payloads.update({name: authored._read_regular(directory / name) for name in ROOT_FILES})
+        payloads.update(
+            {
+                name: authored._read_regular(directory / name)
+                for name in _root_files(read_json(directory / "manifest.json"))
+            }
+        )
         payloads["CLAIMS.md"], payloads["README.md"] = _claims(reports), _readme()
         payloads["PUBLICATION.json"] = canonical_bytes(_metadata(reports, schedule)) + b"\n"
         for name, data in payloads.items():
@@ -242,9 +278,10 @@ def verify_public_bundle(directory):
             actual.add(item.relative_to(directory).as_posix())
     if actual != set(checksum["files"]):
         raise authored.PublicationError("unexpected or missing public transfer files")
+    root_files = _root_files(read_json(directory / "manifest.json"))
     for name, record in checksum["files"].items():
         parts = authored._safe_relative(name).parts
-        allowed = name in ROOT_FILES | {
+        allowed = name in root_files | {
             "CLAIMS.md",
             "README.md",
             "PUBLICATION.json",

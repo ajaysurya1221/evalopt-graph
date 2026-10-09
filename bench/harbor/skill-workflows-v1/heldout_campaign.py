@@ -21,6 +21,7 @@ import campaign
 from lib.common import bytes_digest, digest, exact, is_digest, read_json, safe_name, write_once
 from lib.manifest import CATEGORIES, build_schedule, validate_manifest
 from lib.store import CampaignStore
+from runtime.accounting_policy import RULES, build_policy, continuation_reason, read_accounting_policy
 from runtime.controller import require_controller
 from runtime.harbor_campaign import HERE, ROOT, execute_trial, image_identity, run, source_identity
 from runtime.readiness import verify_readiness
@@ -30,6 +31,13 @@ EXCLUDED = {"_qa", "author_tasks.py", "qa_controls.py", "README.md"}
 REVIEW_CHECKS = {
     "skill_and_dependency_loading",
     "complete_usage_accounting",
+    "grading_and_artifacts",
+    "quota_behavior",
+}
+REVIEW_CHECKS_V2 = {
+    "skill_and_dependency_loading",
+    "registered_usage_accounting",
+    "partial_usage_reporting",
     "grading_and_artifacts",
     "quota_behavior",
 }
@@ -134,17 +142,23 @@ def verify_pilot(pilot: Path, review_path: Path) -> dict:
     _regular_tree(pilot)
     _regular_tree(review_path.parent)
     review = read_json(review_path)
+    amended = review.get("schema_version") == "evalopt.pilot-review.v2"
     keys = {"schema_version", "verdict", "pilot_registration_sha256", "pilot_export_id", "checks"}
+    if amended:
+        keys.add("accounting")
     exact(
         review,
         keys | ({"grading_compatibility"} if "grading_compatibility" in review else set()),
         "pilot review",
     )
-    if review["schema_version"] != "evalopt.pilot-review.v1" or review["verdict"] != "ready_for_heldout":
+    if (
+        review["schema_version"] not in {"evalopt.pilot-review.v1", "evalopt.pilot-review.v2"}
+        or review["verdict"] != "ready_for_heldout"
+    ):
         raise ValueError("pilot review has not accepted progression to heldout")
     if (
         not isinstance(review["checks"], dict)
-        or set(review["checks"]) != REVIEW_CHECKS
+        or set(review["checks"]) != (REVIEW_CHECKS_V2 if amended else REVIEW_CHECKS)
         or any(value is not True for value in review["checks"].values())
     ):
         raise ValueError("pilot review checks are incomplete")
@@ -178,7 +192,9 @@ def verify_pilot(pilot: Path, review_path: Path) -> dict:
             store.verify_attempt(state["trial_id"], attempt)
         path = store.root / "trials" / state["trial_id"] / f"attempt-{state['attempts']}"
         usage = read_json(path / "finish.json").get("usage") or {}
-        if usage.get("child_usage_complete") is not True or usage.get("runtime_valid") is not True:
+        if usage.get("runtime_valid") is not True or (
+            not amended and usage.get("child_usage_complete") is not True
+        ):
             raise ValueError("pilot telemetry and runtime observations must be complete")
         if not all(
             (path / name).is_file()
@@ -205,8 +221,8 @@ def verify_pilot(pilot: Path, review_path: Path) -> dict:
     rows, _, attempts = campaign._report_rows(store, schedule)
     if payloads["outcomes.json"] != rows or payloads["attempts.json"] != attempts:
         raise ValueError("pilot outcomes changed after the reviewed export")
-    return {
-        "schema_version": "evalopt.pilot-evidence.v1",
+    result = {
+        "schema_version": "evalopt.pilot-evidence.v2" if amended else "evalopt.pilot-evidence.v1",
         "registration_sha256": digest(registration),
         "export_id": export_id,
         "review_sha256": bytes_digest(review_path.read_bytes()),
@@ -214,6 +230,69 @@ def verify_pilot(pilot: Path, review_path: Path) -> dict:
         "scheduled_trials": 36,
         "candidate_conditions": conditions,
         "review_scope": "maintainer-run study with separated review; not independent human validation",
+    }
+    if amended:
+        result["accounting"] = _verify_amended_pilot(pilot, review, schedule, store)
+    return result
+
+
+def _verify_amended_pilot(pilot, review, schedule, store):
+    """Review the preserved controller amendment without altering original attempts."""
+    import amended_pilot
+
+    accounting = exact(
+        review["accounting"],
+        {"amendment_sha256", "resource_report_sha256", "rules_sha256"},
+        "reviewed pilot accounting",
+    )
+    if any(not is_digest(value) for value in accounting.values()) or accounting["rules_sha256"] != digest(
+        RULES
+    ):
+        raise ValueError("pilot accounting review has changed or unresolved policy identities")
+    verified = amended_pilot.verify(pilot, accounting["amendment_sha256"])
+    if (
+        verified["amendment"]["pilot_registration_sha256"] != review["pilot_registration_sha256"]
+        or verified["info"]["schedule"] != schedule
+    ):
+        raise ValueError("accounting amendment belongs to another pilot registration")
+    if {key: verified["amendment"]["policy"][key] for key in RULES} != RULES:
+        raise ValueError("reviewed amendment accounting rules differ from the study policy")
+    root = pilot / amended_pilot.AMENDMENT
+    sidecars = []
+    final = []
+    for state in store.statuses():
+        for attempt in range(1, state["attempts"] + 1):
+            path = root / "usage" / state["trial_id"] / f"attempt-{attempt}.json"
+            sidecar = read_json(path)
+            if not sidecar["continuation_admissible"]:
+                raise ValueError("pilot attempt accounting remains blocked under approved policy")
+            sidecars.append(sidecar)
+            if attempt == state["attempts"]:
+                final.append(sidecar["derived_usage"]["accounting_status"])
+    if len(final) != 36 or any(value not in {"complete", "partial"} for value in final):
+        raise ValueError("all 36 pilot outcomes require reviewed complete or partial accounting")
+    expected = amended_pilot.summarize_resources(
+        accounting["amendment_sha256"],
+        review["pilot_registration_sha256"],
+        schedule,
+        verified["info"]["states"],
+        sidecars,
+        review["pilot_export_id"],
+    )
+    report_path = root / "reports" / accounting["resource_report_sha256"] / "resource-report.json"
+    actual = read_json(report_path)
+    if (
+        digest(actual) != accounting["resource_report_sha256"]
+        or actual != expected
+        or actual["pending_trials"] != 0
+    ):
+        raise ValueError("final pilot resource report differs from reviewed outcomes or accounting")
+    return {
+        **accounting,
+        "complete_final_attempts": final.count("complete"),
+        "partial_final_attempts": final.count("partial"),
+        "retained_attempts": len(sidecars),
+        "unavailable_attempts": 0,
     }
 
 
@@ -265,8 +344,17 @@ def _pilot_conditions(pilot, manifest, review):
     }
 
 
+def heldout_files(destination: Path):
+    frozen = read_json(destination / "freeze.json")
+    if frozen.get("schema_version") == "evalopt.heldout-freeze.v1":
+        return HELDOUT_FILES
+    if frozen.get("schema_version") == "evalopt.heldout-freeze.v2":
+        return (*HELDOUT_FILES, "accounting-policy.json")
+    raise ValueError("unsupported heldout freeze schema")
+
+
 def _heldout_identity(destination: Path) -> dict:
-    return {name: bytes_digest((destination / name).read_bytes()) for name in HELDOUT_FILES}
+    return {name: bytes_digest((destination / name).read_bytes()) for name in heldout_files(destination)}
 
 
 def freeze(
@@ -355,19 +443,31 @@ def freeze(
     # Retain the exact reviewed bytes, including the digest recorded in pilot-evidence.
     shutil.copyfile(pilot_review, destination / "pilot-review.json")
     write_once(destination / "pilot-evidence.json", pilot_evidence)
+    accounting_policy = None
+    if pilot_evidence["schema_version"] == "evalopt.pilot-evidence.v2":
+        accounting_policy = build_policy(pilot_evidence, bytes_digest(pilot_review.read_bytes()))
+        write_once(destination / "accounting-policy.json", accounting_policy)
     write_once(
         destination / "freeze.json",
         {
-            "schema_version": "evalopt.heldout-freeze.v1",
+            "schema_version": "evalopt.heldout-freeze.v2"
+            if accounting_policy is not None
+            else "evalopt.heldout-freeze.v1",
             "candidate_manifest_sha256": candidate_sha256,
             "scheduled_trials": 432,
             "seed": 20261008,
             "task_root": "sealed-tasks",
             "excluded_authoring_material": sorted(EXCLUDED),
             "frozen_at": campaign._now(),
+            **(
+                {"accounting_policy_sha256": digest(accounting_policy)}
+                if accounting_policy is not None
+                else {}
+            ),
         },
     )
     write_once(destination / "heldout-lock.json", _heldout_identity(destination))
+    read_accounting_policy(destination)
     return {
         "status": "frozen_not_executed",
         "scheduled_trials": 432,
@@ -406,6 +506,7 @@ def verify_registration(destination: Path, upstream: Path, registration_sha256: 
     ).stdout.strip():
         raise ValueError("stable kernel differs from frozen source commit")
     frozen = read_json(destination / "freeze.json")
+    read_accounting_policy(destination)
     sealed = destination / "sealed-tasks"
     candidate = verify_sealed_tasks(sealed, frozen["candidate_manifest_sha256"])
     if candidate != read_json(destination / "sealed-manifest.json") or file_manifest(sealed) != read_json(
@@ -431,13 +532,20 @@ def verify_registration(destination: Path, upstream: Path, registration_sha256: 
 
 
 async def run_heldout(destination, upstream, registration_sha256, **options):
+    policy = read_accounting_policy(destination)
+    executor = partial(execute_trial, task_root=destination / "sealed-tasks", split="heldout")
+    extra = {}
+    if policy is not None:
+        executor = partial(executor, accounting_policy=policy)
+        extra["usage_gate"] = partial(continuation_reason, policy=policy)
     return await campaign.run_pilot(
         destination,
         upstream,
         verifier=partial(verify_registration, registration_sha256=registration_sha256),
-        executor=partial(execute_trial, task_root=destination / "sealed-tasks", split="heldout"),
+        executor=executor,
         reporter=campaign.report,
         **options,
+        **extra,
     )
 
 

@@ -51,6 +51,22 @@ cannot satisfy an old assertion that accounting was complete. Separate skill
 exposure, execution-boundary, hidden-grading and native-stop requirements remain
 mandatory.
 
+The later-stage implementation uses a `evalopt.pilot-review.v2` receipt bound to
+all 36 terminal outcomes, their immutable export, the amendment and its final
+resource report. A held-out v2 freeze retains `accounting-policy.json`, including
+the approved rules, approval identities, and strict-parser, partial-parser and
+admission-helper source hashes. Transfer copies those policy bytes unchanged from
+the completed primary study. Legacy registrations retain their complete-accounting
+requirement.
+
+Each new attempt retains its accounting projection before finalization. A verified
+recovery or pre-agent infrastructure record may have unavailable telemetry; that
+consumption remains unknown. This does not prove zero use, establish a missing
+runtime identity, or authorize a retry. The existing explicit retry limit and
+infrastructure classification still apply. Known invalid provenance, unverifiable
+delegation or a missing transfer execution boundary cannot be waived by relabeling
+an attempt as infrastructure failure.
+
 Publication includes the amendment, coverage and lower-bound labels alongside
 the original outcome provenance. Sanitized reproduction checks arithmetic and
 retained controller evidence; it does not recover unreported usage, independently

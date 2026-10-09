@@ -10,6 +10,7 @@ import math
 
 from lib.common import exact, is_digest, read_json, write_once
 from lib.store import INFRA_FAILURES, TERMINAL, CampaignStore, _now
+from runtime import accounting_policy as accounting
 
 USAGE_FIELDS = {
     "schema_version",
@@ -35,11 +36,14 @@ USAGE_FIELDS = {
 }
 
 
-def safe_usage(usage):
-    return {key: value for key, value in (usage or {}).items() if key in USAGE_FIELDS}
+def safe_usage(usage, accounting_policy=None):
+    if accounting_policy is None and "accounting" in (usage or {}):
+        raise ValueError("policy-tagged transfer usage requires its registered accounting policy")
+    allowed = USAGE_FIELDS | ({"accounting", "agent_started"} if accounting_policy is not None else set())
+    return {key: value for key, value in (usage or {}).items() if key in allowed}
 
 
-def validate_result(value, scheduled):
+def validate_result(value, scheduled, accounting_policy=None):
     keys = set(scheduled) | {
         "schema_version",
         "status",
@@ -55,7 +59,8 @@ def validate_result(value, scheduled):
         "evidence_projection",
     }
     exact(value, keys, "transfer result")
-    if value["schema_version"] != "evalopt.transfer-retained-result.v1":
+    version = "v2" if accounting_policy is not None else "v1"
+    if value["schema_version"] != "evalopt.transfer-retained-result." + version:
         raise ValueError("unsupported transfer result schema")
     if any(value[key] != expected for key, expected in scheduled.items()):
         raise ValueError("transfer result changes registered trial identity")
@@ -80,8 +85,24 @@ def validate_result(value, scheduled):
         for key in ("artifact_capture_complete", "runtime_evidence_complete", "execution_boundary_complete")
     ):
         raise ValueError("transfer completeness flags must be booleans")
-    if not isinstance(value["usage"], dict) or set(value["usage"]) - USAGE_FIELDS:
+    allowed_usage = USAGE_FIELDS | (
+        {"accounting", "agent_started"} if accounting_policy is not None else set()
+    )
+    if not isinstance(value["usage"], dict) or set(value["usage"]) - allowed_usage:
         raise ValueError("private or unsupported transfer usage field")
+    if accounting_policy is not None:
+        accounting.validate_policy(accounting_policy)
+        accounting.validated_projection(value["usage"], accounting.digest(accounting_policy))
+        if type(value["usage"].get("agent_started")) is not bool:
+            raise ValueError("transfer v2 requires controller-observed agent start")
+        if value["usage"]["agent_started"] is False and (
+            reward is not None
+            or value["execution_boundary_complete"]
+            or value["usage"].get("native_agent_stopped") is True
+        ):
+            raise ValueError("pre-agent transfer cannot claim native stop, execution boundary or reward")
+        if value["usage"].get("execution_boundary_complete") is not value["execution_boundary_complete"]:
+            raise ValueError("transfer execution boundary disagrees with retained native evidence")
     complete = value["execution_boundary_complete"] and all(
         value["usage"].get(key) is True
         for key in (
@@ -107,6 +128,12 @@ def validate_result(value, scheduled):
 class TransferStore(CampaignStore):
     """One original plus one classified infrastructure retry; never fabricate policies."""
 
+    def __init__(self, root, schedule, *, accounting_policy=None):
+        super().__init__(root, schedule)
+        self.accounting_policy = (
+            accounting.validate_policy(accounting_policy) if accounting_policy is not None else None
+        )
+
     def record_visible(self, *args, **kwargs):
         raise ValueError("transfer does not use authored visible observations")
 
@@ -125,7 +152,8 @@ class TransferStore(CampaignStore):
             raise ValueError("runtime result changes registered trial identity")
         record = {
             **scheduled,
-            "schema_version": "evalopt.transfer-retained-result.v1",
+            "schema_version": "evalopt.transfer-retained-result."
+            + ("v2" if self.accounting_policy is not None else "v1"),
             **{
                 key: result[key]
                 for key in (
@@ -138,12 +166,12 @@ class TransferStore(CampaignStore):
                     "execution_boundary_complete",
                 )
             },
-            "usage": safe_usage(result.get("usage")),
+            "usage": safe_usage(result.get("usage"), self.accounting_policy),
             "original_result_sha256": original_result_sha256,
             "raw_artifact_manifest_sha256": raw_artifact_manifest_sha256,
             "evidence_projection": "allowlisted controller summary; original logs and archives retained privately",
         }
-        validate_result(record, scheduled)
+        validate_result(record, scheduled, self.accounting_policy)
         write_once(path / "transfer-result.json", record)
 
     def finish_attempt(self, trial_id, attempt, status, *, error_code=None, usage=None):
@@ -165,7 +193,8 @@ class TransferStore(CampaignStore):
             if (status, error_code, usage) != (result["status"], result["error_code"], result["usage"]):
                 raise ValueError("terminal transfer record differs from original result")
         finish = {
-            "schema_version": "evalopt.transfer-finish.v1",
+            "schema_version": "evalopt.transfer-finish."
+            + ("v2" if self.accounting_policy is not None else "v1"),
             "trial_id": trial_id,
             "attempt": attempt,
             "status": status,
@@ -200,15 +229,32 @@ class TransferStore(CampaignStore):
         result = super().verify_attempt(trial_id, attempt)
         outcome = None
         if (path / "transfer-result.json").exists():
-            outcome = validate_result(read_json(path / "transfer-result.json"), self.trials[trial_id])
+            outcome = validate_result(
+                read_json(path / "transfer-result.json"),
+                self.trials[trial_id],
+                getattr(self, "accounting_policy", None),
+            )
         if (path / "finish.json").exists():
             finish = read_json(path / "finish.json")
-            if finish["schema_version"] != "evalopt.transfer-finish.v1":
+            version = "v2" if getattr(self, "accounting_policy", None) is not None else "v1"
+            if finish["schema_version"] != "evalopt.transfer-finish." + version:
                 raise ValueError("unsupported transfer finish schema")
             if finish["status"] == "completed" and (outcome is None or outcome["upstream_reward"] is None):
                 raise ValueError("completed transfer has no original verifier reward")
             if outcome and any(finish[key] != outcome[key] for key in ("status", "error_code", "usage")):
                 raise ValueError("transfer finish differs from retained reward record")
+            if getattr(self, "accounting_policy", None) is not None:
+                accounting.validate_attempt(
+                    {
+                        **finish,
+                        "artifact_valid": True,
+                        "accounting_context": {
+                            "stopped_output_retained": outcome is not None,
+                            "grade_retained": False,
+                        },
+                    },
+                    self.accounting_policy,
+                )
         return {**result, "kernel_replay": None, "original_reward_retained": outcome is not None}
 
     def export_rows(self):

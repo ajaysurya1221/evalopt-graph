@@ -161,7 +161,27 @@ def _finish_record(store, state):
     return read_json(path) if path.is_file() else None
 
 
-def _dispatch_queue(store, schedule, *, retry_infrastructure, resume_quota, recover_interrupted):
+def _verified_usage_record(store, trial_id, attempt):
+    """Add controller-owned artifact context without modifying the immutable finish."""
+    store.verify_attempt(trial_id, attempt)
+    path = store.root / "trials" / trial_id / f"attempt-{attempt}"
+    finish = read_json(path / "finish.json")
+    return {
+        **finish,
+        "trial_id": trial_id,
+        "attempt": attempt,
+        "artifact_valid": True,
+        "accounting_context": {
+            "stopped_output_retained": (path / "stopped.json").is_file()
+            or (path / "transfer-result.json").is_file(),
+            "grade_retained": (path / "grade.json").is_file(),
+        },
+    }
+
+
+def _dispatch_queue(
+    store, schedule, *, retry_infrastructure, resume_quota, recover_interrupted, usage_gate=None
+):
     states = store.statuses()
     for state in states:
         path = store.root / "trials" / state["trial_id"] / f"attempt-{state['attempts']}"
@@ -174,12 +194,21 @@ def _dispatch_queue(store, schedule, *, retry_infrastructure, resume_quota, reco
             except ValueError:
                 return [], "interrupted_agent_requires_classification", state["trial_id"]
     states = store.statuses()
+    if usage_gate is not None:
+        # Prior attempts remain part of the campaign, even after a successful retry.
+        # Never dispatch first and discover mixed or malformed accounting in reporting.
+        for state in states:
+            for attempt in range(1, state["attempts"] + 1):
+                record = _verified_usage_record(store, state["trial_id"], attempt)
+                reason = usage_gate(record)
+                if reason:
+                    return [], reason, state["trial_id"]
     selected = set()
     for state in states:
         finish = _finish_record(store, state)
         if finish:
             usage = finish.get("usage") or {}
-            if usage.get("runtime_valid") is False:
+            if usage_gate is None and usage.get("runtime_valid") is False:
                 return [], "runtime_identity_requires_remediation", state["trial_id"]
             if finish.get("error_code") == "subscription_exhausted":
                 if not resume_quota:
@@ -193,8 +222,9 @@ def _dispatch_queue(store, schedule, *, retry_infrastructure, resume_quota, reco
                         return [], "infrastructure_retry_requires_explicit_resume", state["trial_id"]
                     selected.add(state["trial_id"])
                 continue
-            if usage.get("child_usage_complete") is not True:
-                return [], "usage_accounting_requires_remediation", state["trial_id"]
+            if usage_gate is None:
+                if usage.get("child_usage_complete") is not True:
+                    return [], "usage_accounting_requires_remediation", state["trial_id"]
         elif state["status"] == "pending":
             selected.add(state["trial_id"])
     return [row for row in schedule if row["trial_id"] in selected], None, None
@@ -287,6 +317,7 @@ async def run_pilot(
     verifier=None,
     executor=None,
     reporter=None,
+    usage_gate=None,
 ):
     verify = _verify_campaign if verifier is None else verifier
     execute = execute_trial if executor is None else executor
@@ -312,6 +343,7 @@ async def run_pilot(
                 retry_infrastructure=retry_infrastructure,
                 resume_quota=resume_quota,
                 recover_interrupted=recover_interrupted,
+                usage_gate=usage_gate,
             )
             if limit is not None:
                 queue = queue[:limit]
@@ -386,13 +418,20 @@ async def run_pilot(
                     flush=True,
                 )
                 usage = finish.get("usage") or {}
-                if usage.get("runtime_valid") is False:
+                reason = (
+                    usage_gate(_verified_usage_record(store, row["trial_id"], state["attempts"]))
+                    if usage_gate is not None
+                    else None
+                )
+                if reason:
+                    pass
+                elif usage_gate is None and usage.get("runtime_valid") is False:
                     reason = "runtime_identity_requires_remediation"
                 elif finish.get("error_code") == "subscription_exhausted":
                     reason = "subscription_exhausted"
                 elif finish["status"] == "infra_failure":
                     reason = "infrastructure_failure_requires_inspection"
-                elif usage.get("child_usage_complete") is not True:
+                elif usage_gate is None and usage.get("child_usage_complete") is not True:
                     reason = "usage_accounting_requires_remediation"
                 if reason:
                     blocked_trial = row["trial_id"]
@@ -428,7 +467,7 @@ async def run_pilot(
         return result
 
 
-def _report_rows(store, schedule):
+def _report_rows(store, schedule, *, accounting_policy=None):
     rows, kernel, attempts = [], [], []
     states = {state["trial_id"]: state for state in store.statuses()}
     usage_fields = {
@@ -443,6 +482,7 @@ def _report_rows(store, schedule):
         "child_usage_complete",
         "accounting_status",
         "runtime_valid",
+        "accounting",
     }
     for scheduled in schedule:
         trial_id = scheduled["trial_id"]
@@ -503,6 +543,11 @@ def _report_rows(store, schedule):
                             if key in usage_fields
                         },
                     )
+                    if accounting_policy is not None:
+                        record["accounting_context"] = {
+                            "stopped_output_retained": (finish_path.parent / "stopped.json").is_file(),
+                            "grade_retained": (finish_path.parent / "grade.json").is_file(),
+                        }
                 except (OSError, ValueError, KeyError, TypeError):
                     record["status"] = "artifact_failure"
                 attempts.append(record)
@@ -511,7 +556,7 @@ def _report_rows(store, schedule):
     return rows, kernel, attempts
 
 
-def _all_attempt_resources(attempts, schedule):
+def _all_attempt_resources(attempts, schedule, *, accounting_policy=None):
     """Total retained complete telemetry once per attempt, including failed infrastructure attempts."""
     arm_by_trial = {row["trial_id"]: row["arm"] for row in schedule}
     counters = ("input_tokens", "output_tokens", "model_calls", "tool_calls", "wall_seconds")
@@ -535,11 +580,19 @@ def _all_attempt_resources(attempts, schedule):
             "unavailable_attempts": len(selected) - len(complete),
             "totals": {key: sum(item[key] for item in complete) for key in counters},
         }
-    return {
+    result = {
         "scope": "All retained attempts, including final attempts and infrastructure retries; do not add to final-attempt totals.",
         "arms": result,
         "dollar_cost": None,
     }
+    if accounting_policy is not None:
+        from runtime.accounting_policy import summarize_resources, validate_policy
+
+        validate_policy(accounting_policy)
+        result["registered_accounting"] = summarize_resources(attempts, schedule, digest(accounting_policy))
+    elif any("accounting" in (item.get("usage") or {}) for item in attempts):
+        raise ValueError("policy-tagged usage requires its registered accounting policy")
+    return result
 
 
 def _immutable_export(path, value):
@@ -561,9 +614,20 @@ def report(destination):
     if registration["schedule_sha256"] != digest(registration["schedule"]):
         raise ValueError("registered schedule digest changed")
     store = CampaignStore(destination / "evidence", registration["schedule"])
-    rows, kernel_rows, attempts = _report_rows(store, registration["schedule"])
+    from runtime.accounting_policy import read_accounting_policy, validate_attempt
+
+    accounting_policy = read_accounting_policy(destination)
+    rows, kernel_rows, attempts = _report_rows(
+        store, registration["schedule"], accounting_policy=accounting_policy
+    )
+    if accounting_policy is not None:
+        for record in attempts:
+            if record["artifact_valid"]:
+                validate_attempt(record, accounting_policy)
     result = analyze_workflows(rows, schedule=registration["schedule"])
-    result["all_attempt_resources"] = _all_attempt_resources(attempts, registration["schedule"])
+    result["all_attempt_resources"] = _all_attempt_resources(
+        attempts, registration["schedule"], accounting_policy=accounting_policy
+    )
     stages = {row["stage"] for row in registration["schedule"]}
     kernel_stage = "heldout" if "heldout" in stages else "pilot"
     kernel_ids = {row["trial_id"] for row in registration["schedule"] if row["stage"] == kernel_stage}

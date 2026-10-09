@@ -37,6 +37,8 @@ RUNTIME_SOURCE_FILES = (
     "runtime/harbor_campaign.py",
     "runtime/observations.py",
     "runtime/readiness.py",
+    "runtime/accounting_policy.py",
+    "runtime/partial_accounting.py",
     "lib/__init__.py",
     "lib/accounting.py",
     "lib/common.py",
@@ -986,6 +988,7 @@ async def execute_transfer_trial(
     upstream: Path,
     evalopt_skill: Path,
     runtime_preflight: Path,
+    accounting_policy: dict | None = None,
     runner=_run,
 ) -> dict:
     """One fresh transfer attempt; scheduler owns admission/retry/quota pauses.
@@ -1000,6 +1003,11 @@ async def execute_transfer_trial(
     from lib.accounting import parse_native_usage, summarize_usage
     from runtime.harbor_campaign import subscription_environment
     from runtime.observations import runtime_observations
+
+    if accounting_policy is not None:
+        from runtime import accounting_policy as accounting
+
+        accounting.validate_policy(accounting_policy)
 
     prepared = validate_prepared(
         prepared_root, preparation_sha256, upstream=upstream, evalopt_skill=evalopt_skill, runner=runner
@@ -1024,9 +1032,11 @@ async def execute_transfer_trial(
     )
     trial = await Trial.create(TrialConfig.model_validate(config_dict))
     started, stopped, exposure, native_identity, native_stop, guard = False, None, None, None, None, None
+    agent_start_observed = False
 
     async def on_start(_event):
-        nonlocal started, exposure, native_identity, guard
+        nonlocal started, exposure, native_identity, guard, agent_start_observed
+        agent_start_observed = True
         exposure = await verify_workflow_exposure(
             trial.agent_environment,
             config_dict["agent"]["skills"],
@@ -1089,10 +1099,18 @@ async def execute_transfer_trial(
             except (OSError, ValueError, RuntimeError, TimeoutError):
                 pass  # The end hook retains the stop failure and blocks verification.
     sessions = trial.paths.agent_dir / "sessions"
-    try:
-        usage = summarize_usage(parse_native_usage(sessions))
-    except (ValueError, KeyError, OSError):
-        usage = {"child_usage_complete": False, "accounting_status": "unavailable", "raw_logs_retained": True}
+    if accounting_policy is not None:
+        usage = accounting.collect_usage(sessions, accounting_policy)
+        usage["agent_started"] = agent_start_observed
+    else:
+        try:
+            usage = summarize_usage(parse_native_usage(sessions))
+        except (ValueError, KeyError, OSError):
+            usage = {
+                "child_usage_complete": False,
+                "accounting_status": "unavailable",
+                "raw_logs_retained": True,
+            }
     entry = ENTRYPOINTS[row["task_id"]] if row["arm"] == "B" else "eval-opt"
     try:
         usage.update(runtime_observations(sessions, entry))

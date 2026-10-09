@@ -13,6 +13,7 @@ import heldout_campaign
 from lib.analysis import analyze_workflows, summarize_kernel
 from lib.common import bytes_digest, canonical_bytes, digest, exact, is_digest, read_json, write_once
 from lib.manifest import build_schedule
+from runtime import accounting_policy as accounting
 from runtime import transfer
 from runtime.controller import require_controller
 from runtime.harbor_campaign import source_identity
@@ -74,6 +75,7 @@ def task_records(prepared):
 
 
 def validate_manifest(manifest, preparation):
+    version_two = manifest.get("schema_version") == "evalopt.transfer-campaign.v2"
     exact(
         manifest,
         {
@@ -89,11 +91,12 @@ def validate_manifest(manifest, preparation):
             "acceptance_policies",
             "primary_registration_sha256",
             "primary_report_export_id",
-        },
+        }
+        | ({"accounting_policy_sha256"} if version_two else set()),
         "transfer manifest",
     )
     if (
-        manifest["schema_version"] != "evalopt.transfer-campaign.v1"
+        manifest["schema_version"] not in {"evalopt.transfer-campaign.v1", "evalopt.transfer-campaign.v2"}
         or manifest["study_id"] != "skill-workflows-v1-transfer"
         or manifest["seed"] != 20261008
         or manifest["evidence_class"] != transfer.EVIDENCE_CLASS
@@ -106,6 +109,8 @@ def validate_manifest(manifest, preparation):
         or not is_digest(manifest["primary_report_export_id"])
     ):
         raise ValueError("transfer registered conditions changed")
+    if version_two and not is_digest(manifest["accounting_policy_sha256"]):
+        raise ValueError("transfer accounting policy identity is unresolved")
     if (
         preparation.get("source_commit") != transfer.SOURCE_PIN
         or preparation.get("upstream_commit") != transfer.UPSTREAM_PIN
@@ -182,11 +187,18 @@ def verify_primary(heldout, registration_sha256, export_id, prepared, upstream):
                 "infra_failure",
             }:
                 raise ValueError("transfer cannot dispatch while a heldout outcome is pending or running")
-    rows, kernel_rows, attempts = campaign._report_rows(store, schedule)
+    policy = accounting.read_accounting_policy(heldout)
+    rows, kernel_rows, attempts = campaign._report_rows(
+        store, schedule, **({"accounting_policy": policy} if policy is not None else {})
+    )
     if any(not item["artifact_valid"] for item in attempts):
         raise ValueError("heldout attempt integrity failed before transfer")
     analysis = analyze_workflows(rows, schedule=schedule)
-    analysis["all_attempt_resources"] = campaign._all_attempt_resources(attempts, schedule)
+    analysis["all_attempt_resources"] = (
+        campaign._all_attempt_resources(attempts, schedule, accounting_policy=policy)
+        if policy is not None
+        else campaign._all_attempt_resources(attempts, schedule)
+    )
     kernel = summarize_kernel(kernel_rows)
     kernel["scope"] = "held-out stopped-output decisions"
     runs = [
@@ -219,21 +231,60 @@ def verify_primary(heldout, registration_sha256, export_id, prepared, upstream):
     ):
         raise ValueError("primary score report receipt changed")
     return {
-        "schema_version": "evalopt.transfer-primary-evidence.v1",
+        "schema_version": "evalopt.transfer-primary-evidence." + ("v2" if policy is not None else "v1"),
         "heldout_registration_sha256": registration_sha256,
         "heldout_report_export_id": export_id,
         "scheduled_trials": 432,
         "candidate_conditions": conditions,
         "terminal_statuses": dict(Counter(row["status"] for row in rows)),
         "scope": "same reviewed B/C candidate; completed primary schedule including explicit unresolved infrastructure outcomes",
+        **(
+            {
+                "accounting_policy_sha256": digest(policy),
+                "accounting_policy_file_sha256": bytes_digest(
+                    (heldout / "accounting-policy.json").read_bytes()
+                ),
+            }
+            if policy is not None
+            else {}
+        ),
     }
 
 
 def registration_identity(destination):
-    return {name: bytes_digest((destination / name).read_bytes()) for name in REGISTERED_FILES}
+    return {
+        name: bytes_digest((destination / name).read_bytes())
+        for name in registered_files(read_json(destination / "manifest.json"))
+    }
+
+
+def registered_files(manifest):
+    return REGISTERED_FILES + (
+        ("accounting-policy.json",)
+        if manifest.get("schema_version") == "evalopt.transfer-campaign.v2"
+        else ()
+    )
+
+
+def read_accounting_policy(destination, manifest=None):
+    """Transfer v2 copies the exact primary policy; v1 never infers permission."""
+    manifest = manifest or read_json(destination / "manifest.json")
+    path = _safe_tree(destination / "accounting-policy.json")
+    if manifest.get("schema_version") != "evalopt.transfer-campaign.v2":
+        if path.exists():
+            raise ValueError("unregistered accounting policy in strict transfer campaign")
+        return None
+    policy = accounting.validate_policy(read_json(path), manifest.get("accounting_policy_sha256"))
+    receipt = read_json(destination / "primary-evidence.json")
+    if receipt.get("accounting_policy_sha256") != digest(policy) or receipt.get(
+        "accounting_policy_file_sha256"
+    ) != bytes_digest(path.read_bytes()):
+        raise ValueError("transfer accounting policy differs from the exact primary policy bytes")
+    return policy
 
 
 def validate_primary_receipt(receipt, manifest, prepared):
+    version_two = manifest.get("schema_version") == "evalopt.transfer-campaign.v2"
     exact(
         receipt,
         {
@@ -244,12 +295,13 @@ def validate_primary_receipt(receipt, manifest, prepared):
             "candidate_conditions",
             "terminal_statuses",
             "scope",
-        },
+        }
+        | ({"accounting_policy_sha256", "accounting_policy_file_sha256"} if version_two else set()),
         "primary receipt",
     )
     conditions = receipt["candidate_conditions"]
     if (
-        receipt["schema_version"] != "evalopt.transfer-primary-evidence.v1"
+        receipt["schema_version"] != "evalopt.transfer-primary-evidence." + ("v2" if version_two else "v1")
         or receipt["heldout_registration_sha256"] != manifest["primary_registration_sha256"]
         or receipt["heldout_report_export_id"] != manifest["primary_report_export_id"]
         or receipt["scheduled_trials"] != 432
@@ -267,6 +319,11 @@ def validate_primary_receipt(receipt, manifest, prepared):
         )
     ):
         raise ValueError("transfer primary-study receipt differs from candidate or complete schedule")
+    if version_two and (
+        receipt["accounting_policy_sha256"] != manifest["accounting_policy_sha256"]
+        or not is_digest(receipt["accounting_policy_file_sha256"])
+    ):
+        raise ValueError("transfer primary accounting-policy receipt changed")
     return receipt
 
 
@@ -295,8 +352,18 @@ def freeze(
     )
     readiness = transfer.validate_runtime_preflight(preflight, prepared)
     primary = verify_primary(heldout, heldout_registration_sha256, heldout_export_id, prepared, upstream)
+    policy_raw = None
+    if primary["schema_version"] == "evalopt.transfer-primary-evidence.v2":
+        policy_raw = _safe_tree(Path(heldout) / "accounting-policy.json").read_bytes()
+        policy = accounting.validate_policy(
+            read_json(Path(heldout) / "accounting-policy.json"), primary["accounting_policy_sha256"]
+        )
+        if bytes_digest(policy_raw) != primary["accounting_policy_file_sha256"]:
+            raise ValueError("primary accounting policy changed during transfer freeze")
+    else:
+        policy = None
     manifest = {
-        "schema_version": "evalopt.transfer-campaign.v1",
+        "schema_version": "evalopt.transfer-campaign." + ("v2" if policy is not None else "v1"),
         "study_id": "skill-workflows-v1-transfer",
         "seed": 20261008,
         "evidence_class": transfer.EVIDENCE_CLASS,
@@ -308,6 +375,7 @@ def freeze(
         "acceptance_policies": "not applicable; no U/M/G",
         "primary_registration_sha256": heldout_registration_sha256,
         "primary_report_export_id": heldout_export_id,
+        **({"accounting_policy_sha256": digest(policy)} if policy is not None else {}),
     }
     schedule = validate_manifest(manifest, prepared)
     validate_primary_receipt(primary, manifest, prepared)
@@ -335,10 +403,13 @@ def freeze(
     # Preparation file identity is over the original serialized file, not our copy.
     with (destination / "preparation.json").open("xb") as stream:
         stream.write((prepared_root / "preparation.json").read_bytes())
-    TransferStore(destination / "evidence", schedule)
+    if policy_raw is not None:
+        with (destination / "accounting-policy.json").open("xb") as stream:
+            stream.write(policy_raw)
+    TransferStore(destination / "evidence", schedule, accounting_policy=policy)
     write_once(destination / "registration-lock.json", registration_identity(destination))
     return {
-        "schema_version": "evalopt.transfer-freeze.v1",
+        "schema_version": "evalopt.transfer-freeze." + ("v2" if policy is not None else "v1"),
         "scheduled_trials": len(schedule),
         "registration_sha256": digest(read_json(destination / "registration-lock.json")),
         "agent_trials": 0,
@@ -354,6 +425,7 @@ def read_registration(destination):
         raise ValueError("registered preparation identity differs")
     schedule = validate_manifest(manifest, prepared)
     validate_primary_receipt(read_json(destination / "primary-evidence.json"), manifest, prepared)
+    read_accounting_policy(destination, manifest)
     expected = {
         "schema_version": "evalopt.workflow-schedule.v1",
         "schedule": schedule,
@@ -400,7 +472,11 @@ def verify_campaign(destination, upstream, *, runner=transfer._run):
         manifest,
         {"agent_image": None, "verifier_image": None},
         schedule,
-        TransferStore(destination / "evidence", schedule),
+        TransferStore(
+            destination / "evidence",
+            schedule,
+            accounting_policy=read_accounting_policy(destination, manifest),
+        ),
     )
 
 
@@ -408,6 +484,7 @@ async def execute_registered(row, store, private_root, upstream, _agent_image, _
     destination = store.root.parent
     manifest = read_json(destination / "manifest.json")
     sources = read_json(destination / "private-sources.json")
+    policy = read_accounting_policy(destination, manifest)
     attempt = store.start_attempt(row["trial_id"])
     output = private_root / row["trial_id"] / f"attempt-{attempt}"
     result = await transfer.execute_transfer_trial(
@@ -418,6 +495,7 @@ async def execute_registered(row, store, private_root, upstream, _agent_image, _
         upstream=upstream,
         evalopt_skill=Path(sources["evalopt_skill"]),
         runtime_preflight=Path(sources["preflight"]),
+        **({"accounting_policy": policy} if policy is not None else {}),
     )
     # Do not let a substituted return value overrule the retained runtime summary.
     if result != read_json(output / "result.json"):
@@ -434,12 +512,15 @@ async def execute_registered(row, store, private_root, upstream, _agent_image, _
         attempt,
         result["status"],
         error_code=result["error_code"],
-        usage=safe_usage(result.get("usage")),
+        usage=safe_usage(result.get("usage"), policy),
     )
     return result
 
 
 async def run_campaign(destination, upstream, limit=None, **options):
+    policy = read_accounting_policy(destination)
+    if policy is not None:
+        options["usage_gate"] = lambda finish: transfer_usage_reason(finish, policy)
     return await campaign.run_pilot(
         destination,
         upstream,
@@ -451,7 +532,58 @@ async def run_campaign(destination, upstream, limit=None, **options):
     )
 
 
+def transfer_usage_reason(finish, policy):
+    """Partial usage approval never establishes a native execution boundary."""
+    accounting.validate_policy(policy)
+    usage = finish.get("usage") or {}
+    try:
+        derived = accounting.validate_attempt(finish, policy)
+    except (KeyError, TypeError, ValueError):
+        return "accounting_policy_evidence_requires_remediation"
+    if derived is None:
+        # Only the shared helper's verified recovery/pre-agent missing-evidence
+        # exception applies. This permits classified retry, not runtime proof.
+        reason = accounting.continuation_reason(finish, policy)
+        if reason:
+            return reason
+        if usage.get("agent_started") is True:
+            return "execution_boundary_requires_remediation"
+        return None
+    if (
+        finish.get("artifact_valid") is True
+        and finish.get("status") == "infra_failure"
+        and finish.get("error_code") == "container_start"
+        and usage.get("agent_started") is False
+        and usage.get("runtime_valid") is None
+        and usage.get("native_agent_stopped") is False
+        and usage.get("execution_boundary_complete") is False
+        and all(usage.get(key) == [] for key in ("returned_models", "returned_efforts", "cli_versions"))
+        and derived["accounting_status"] == "unavailable"
+        and derived["provenance_status"] == "unavailable"
+        and derived["source_log_sha256"] == []
+        and derived["completeness_reasons"]
+        in (
+            ["native_log_directory_missing"],
+            ["native_session_logs_missing"],
+        )
+    ):
+        return None
+    reason = accounting.continuation_reason(finish, policy)
+    if reason:
+        return reason
+    if usage.get("agent_started") is not True:
+        return "agent_start_requires_remediation"
+    if usage.get("native_agent_stopped") is not True or usage.get("execution_boundary_complete") is not True:
+        return "execution_boundary_requires_remediation"
+    if usage.get("workflow_exposure_verified") is not True:
+        return "workflow_exposure_requires_remediation"
+    if usage.get("entrypoint_load_observed") is not True:
+        return "entrypoint_load_requires_remediation"
+    return None
+
+
 def report_payloads(store, schedule, runs):
+    policy = getattr(store, "accounting_policy", None)
     rows, attempts = [], []
     states = {row["trial_id"]: row for row in store.statuses()}
     for scheduled in schedule:
@@ -466,6 +598,8 @@ def report_payloads(store, schedule, runs):
             "execution_boundary_complete": None,
             "usage": None,
         }
+        if policy is not None:
+            row["runtime_admissible"] = None
         for attempt in range(1, state["attempts"] + 1):
             record = {"trial_id": trial_id, "attempt": attempt, "artifact_valid": False}
             path = store.root / "trials" / trial_id / f"attempt-{attempt}"
@@ -476,10 +610,21 @@ def report_payloads(store, schedule, runs):
                     artifact_valid=True,
                     status=finish["status"],
                     error_code=finish["error_code"],
-                    usage=safe_usage(finish.get("usage")),
+                    usage=safe_usage(finish.get("usage"), policy),
                 )
+                if policy is not None:
+                    record["accounting_context"] = {
+                        "stopped_output_retained": (path / "transfer-result.json").is_file(),
+                        "grade_retained": False,
+                    }
+                    record["runtime_admissible"] = (
+                        record["usage"].get("agent_started") is True
+                        and transfer_usage_reason({**finish, **record}, policy) is None
+                    )
                 if attempt == state["attempts"]:
                     row.update(status=finish["status"], usage=record["usage"])
+                    if policy is not None:
+                        row["runtime_admissible"] = record["runtime_admissible"]
                     if (path / "transfer-result.json").is_file():
                         result = read_json(path / "transfer-result.json")
                         row.update(
@@ -526,8 +671,22 @@ def report_payloads(store, schedule, runs):
             ),
             "statuses": dict(Counter(row["status"] for row in selected)),
         }
+        if policy is not None:
+            arms[arm]["runtime_admissible"] = sum(row["runtime_admissible"] is True for row in selected)
+    resources = campaign._all_attempt_resources(
+        attempts, schedule, **({"accounting_policy": policy} if policy is not None else {})
+    )
+    if policy is not None:
+        registered = resources["registered_accounting"]
+        registered["efficiency_comparison_eligible"] &= all(
+            row.get("runtime_admissible") is True for row in attempts
+        )
+        registered["transfer_execution_scope"] = (
+            "efficiency additionally requires verified native stop, execution boundary and workflow exposure "
+            "for every retained attempt; runtime-blocked known counters remain included"
+        )
     summary = {
-        "schema_version": "evalopt.transfer-report.v1",
+        "schema_version": "evalopt.transfer-report." + ("v2" if policy is not None else "v1"),
         "evidence_class": transfer.EVIDENCE_CLASS,
         "arms": arms,
         "headline_permitted": False,
@@ -536,10 +695,12 @@ def report_payloads(store, schedule, runs):
             arms["C"]["missing_outcome_bounds"][0] - arms["B"]["missing_outcome_bounds"][1],
             arms["C"]["missing_outcome_bounds"][1] - arms["B"]["missing_outcome_bounds"][0],
         ],
-        "all_attempt_resources": campaign._all_attempt_resources(attempts, schedule),
+        "all_attempt_resources": resources,
         "scoring": "Original binary upstream verifier rewards are preserved, including rewards after timeouts. Repetitions are not additional independent tasks.",
         "reproduction_scope": "retained reward aggregation and artifact integrity; private archives and original verifiers are not re-executed",
     }
+    if policy is not None:
+        summary["accounting_policy_sha256"] = digest(policy)
     return {
         "outcomes.json": rows,
         "analysis.json": summary,
@@ -553,7 +714,9 @@ def report(destination):
     _, _, schedule = read_registration(destination)
     if read_json(destination / "source-lock.json")["campaign_sha256"] != source_identity(ROOT):
         raise ValueError("reproduce transfer report with registered campaign source")
-    store = TransferStore(destination / "evidence", schedule)
+    store = TransferStore(
+        destination / "evidence", schedule, accounting_policy=read_accounting_policy(destination)
+    )
     runs = [
         {
             "run": path.name,

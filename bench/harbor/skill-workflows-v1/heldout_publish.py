@@ -38,6 +38,14 @@ REPRO_KEYS = {
 SCOPE = "maintainer-run held-out outcomes; pure grading replay from controller-supplied case replies; no independent candidate execution"
 
 
+def _root_files(root):
+    """Keep the legacy release roster exact; v2 additionally retains its policy."""
+    frozen = read_json(root / "freeze.json")
+    return ROOT_FILES | (
+        {"accounting-policy.json"} if frozen.get("schema_version") == "evalopt.heldout-freeze.v2" else set()
+    )
+
+
 # Reviewed synthetic inputs, bound to the exact sealed fixture; never a general
 # credential-field exemption. Actual file bytes are not changed by inspection.
 SYNTHETIC_TASK = "redacted-structured-logging"
@@ -250,7 +258,7 @@ def _check_heldout(root, registration_sha256, source):
         raise authored.PublicationError("heldout lock differs from explicit registration identity")
     frozen = read_json(root / "freeze.json")
     if (
-        frozen.get("schema_version") != "evalopt.heldout-freeze.v1"
+        frozen.get("schema_version") not in {"evalopt.heldout-freeze.v1", "evalopt.heldout-freeze.v2"}
         or frozen.get("scheduled_trials") != 432
         or frozen.get("seed") != 20261008
         or frozen.get("task_root") != "sealed-tasks"
@@ -293,17 +301,37 @@ def _check_heldout(root, registration_sha256, source):
         if source_identity(source / relative) != source_identity(authored.HERE / relative):
             raise authored.PublicationError("use the registered trusted grader and analysis source")
     review, pilot = read_json(root / "pilot-review.json"), read_json(root / "pilot-evidence.json")
+    amended = frozen["schema_version"] == "evalopt.heldout-freeze.v2"
+    review_checks = heldout_campaign.REVIEW_CHECKS_V2 if amended else heldout_campaign.REVIEW_CHECKS
     if (
         pilot["review_sha256"] != bytes_digest(authored._read_regular(root / "pilot-review.json"))
         or pilot["registration_sha256"] != review["pilot_registration_sha256"]
         or pilot["export_id"] != review["pilot_export_id"]
         or pilot["scheduled_trials"] != 36
         or review["verdict"] != "ready_for_heldout"
-        or set(review["checks"]) != heldout_campaign.REVIEW_CHECKS
+        or set(review["checks"]) != review_checks
         or not all(value is True for value in review["checks"].values())
     ):
         raise authored.PublicationError("retained pilot progression receipts disagree")
-    return manifest, schedule, authored._read_only_store(root / "evidence", schedule)
+    store = authored._read_only_store(root / "evidence", schedule)
+    if amended:
+        from runtime.accounting_policy import validate_attempt
+
+        if (
+            review.get("schema_version") != "evalopt.pilot-review.v2"
+            or pilot.get("schema_version") != "evalopt.pilot-evidence.v2"
+        ):
+            raise authored.PublicationError("accounting policy requires the amended pilot review")
+        policy = heldout_campaign.read_accounting_policy(root)
+        if policy is None:
+            raise authored.PublicationError("amended heldout publication lacks its accounting policy")
+        _, _, attempts = campaign._report_rows(store, schedule, accounting_policy=policy)
+        for record in attempts:
+            if record["artifact_valid"]:
+                validate_attempt(record, policy)
+    elif (root / "accounting-policy.json").exists():
+        raise authored.PublicationError("legacy heldout registration cannot add an accounting policy")
+    return manifest, schedule, store
 
 
 def _unavailable(receipt, registration_sha256):
@@ -330,7 +358,8 @@ def _unavailable(receipt, registration_sha256):
 
 
 def _assessment(root, store, schedule, unavailable):
-    rows, kernel, attempts = campaign._report_rows(store, schedule)
+    accounting = heldout_campaign.read_accounting_policy(root)
+    rows, kernel, attempts = campaign._report_rows(store, schedule, accounting_policy=accounting)
     states = {state["trial_id"]: state for state in store.statuses()}
     deficient, replayed = set(), 0
     for row in schedule:
@@ -440,7 +469,10 @@ def _runs(root):
 def _reports(root, store, schedule, unavailable, runs):
     rows, kernel_rows, attempts, replayed = _assessment(root, store, schedule, unavailable)
     analysis = analyze_workflows(rows, schedule=schedule)
-    analysis["all_attempt_resources"] = campaign._all_attempt_resources(attempts, schedule)
+    accounting = heldout_campaign.read_accounting_policy(root)
+    analysis["all_attempt_resources"] = campaign._all_attempt_resources(
+        attempts, schedule, accounting_policy=accounting
+    )
     analysis["declared_unavailable_trials"] = sorted(unavailable)
     kernel = summarize_kernel(kernel_rows)
     kernel["scope"] = "held-out stopped-output decisions"
@@ -469,6 +501,15 @@ def _claims(reports, replayed):
         if reports["analysis.json"]["scoped_positive_headline_permitted"]
         else "No registered positive-result headline is supported."
     )
+    resource_accounting = reports["analysis.json"]["all_attempt_resources"].get("registered_accounting")
+    accounting_limit = (
+        "\nRegistered accounting reports exact complete counters separately from observed partial lower bounds. "
+        "Unavailable consumption is unknown, not zero; missing usage has no inferred upper bound. "
+        "Incomplete accounting cannot support a resource-efficiency advantage claim. "
+        "Public accounting replay uses supplied sanitized controller counters, not raw native logs.\n"
+        if resource_accounting is not None
+        else ""
+    )
     return (
         f"# Held-out claim-to-evidence table\n\n{headline}\n\n"
         "| Claim | Evidence and limit |\n| --- | --- |\n"
@@ -480,6 +521,7 @@ def _claims(reports, replayed):
         "| Authored controls and external transfer | Separate evidence classes, not established by this held-out package. |\n\n"
         "Sealed tasks, hidden cases, controls, reference assets and registered benchmark source are included for subsequent isolated verification. Their presence does not establish that a verifier was re-executed. "
         "Resources for final and all retained attempts are reported separately; do not add them together. No dollar costs are invented.\n"
+        + accounting_limit
     ).encode()
 
 
@@ -498,7 +540,7 @@ def _readme():
 
 
 def _metadata(reports, schedule, registration_sha256, replayed):
-    return {
+    result = {
         "schema_version": "evalopt.heldout-public-evidence.v1",
         "heldout_registration_sha256": registration_sha256,
         "report_export_id": digest(reports),
@@ -509,6 +551,14 @@ def _metadata(reports, schedule, registration_sha256, replayed):
         "independent_replication": False,
         "network_publication_performed": False,
     }
+    accounting = reports["analysis.json"]["all_attempt_resources"].get("registered_accounting")
+    if accounting is not None:
+        result["accounting"] = {
+            "policy_sha256": accounting["policy_sha256"],
+            "efficiency_comparison_eligible": accounting["efficiency_comparison_eligible"],
+            "raw_native_log_replay": False,
+        }
+    return result
 
 
 def export_public_bundle(
@@ -532,7 +582,7 @@ def export_public_bundle(
             files, nodes = _asset_tree(origin, prefix)
             payloads.update(files)
             assets.update(nodes)
-        payloads.update({name: authored._read_regular(root / name) for name in ROOT_FILES})
+        payloads.update({name: authored._read_regular(root / name) for name in _root_files(root)})
         payloads.update(
             {"reports/" + name: canonical_bytes(value) + b"\n" for name, value in reports.items()}
         )
@@ -615,7 +665,7 @@ def verify_public_bundle(directory):
     payloads = {}
     for name, record in checksums["files"].items():
         parts = authored._safe_relative(name).parts
-        allowed = name in ROOT_FILES | {
+        allowed = name in _root_files(root) | {
             "ASSETS.json",
             "SYNTHETIC_FIXTURE_ALLOWANCES.json",
             "UNAVAILABLE.json",

@@ -185,6 +185,9 @@ The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) records thes
 limits. The [held-out registration](results/skill-workflows-v1/heldout-registration-2026-10-09/README.md)
 pins the planned 432-trial comparison before execution.
 The pilot package also has a [fresh public-clone reproduction receipt](results/skill-workflows-v1/validation-f515456/README.md).
+The [12-image transfer setup receipt](results/skill-workflows-v1/transfer-readiness-2026-10-09/README.md)
+records CLI installation and configuration checks. It contains no transfer task,
+verifier, or model trials and supports no workflow-performance claim.
 See the [prospective protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
 [frozen implementation notes](bench/harbor/skill-workflows-v1/STATUS.md). The linked
 result package supersedes those notes' pending pilot-QA status. Positive, neutral and

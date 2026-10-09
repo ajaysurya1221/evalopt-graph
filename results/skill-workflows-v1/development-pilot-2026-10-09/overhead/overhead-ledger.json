@@ -1,0 +1,125 @@
+{
+  "counting_rules": [
+    "Each capability probe is counted once. Probe 04 repeated in readiness is the same event, not additional usage.",
+    "Input/output tokens and completed response/model-call and tool-call records sum agent-exclusive observations; copied parent history is not added again.",
+    "Time sums the parent wall interval of each complete probe; concurrent child durations are not added.",
+    "Unavailable accounting and unknown dispatch are not zero. Known probe totals do not establish total campaign overhead.",
+    "The original pilot-v1 attempt is retained development overhead, not a pilot-v2 outcome or a held-out infrastructure retry."
+  ],
+  "excluded_scope": [
+    "The separately reported registered pilot-v2 campaign and its immutable accounting amendment.",
+    "Engineering-assistant usage and any unmeasured setup, verification, idle time or other overhead outside retained campaign/probe telemetry."
+  ],
+  "provenance": {
+    "capability_source": {
+      "commit": "d7ff47a8bc6d52d413914a1632d0784a805832b9",
+      "draft_file": "capability-probes.json",
+      "repository_path": "bench/harbor/skill-workflows-v1/evidence/capability-probes.json",
+      "sha256": "e815ca973d9ad2696070fc52898d0baca3517a01117362fd722dad6ac5f0af41"
+    },
+    "original_attempt": {
+      "finish_file": "original-pilot-v1-finish.json",
+      "finish_sha256": "010f3fd051c0d5eb76e76a7aa1229d08c9076af5a2b63218ba8886c931c73a78",
+      "manifest_file": "original-pilot-v1-manifest.json",
+      "manifest_sha256": "79f3a6e4db6e096238bf8250aaa6cf61c671a71a436bcf7278e470c4590caaee",
+      "private_artifacts_hash_checked": 12,
+      "verification_scope": "All referenced private artifact bytes matched the retained manifest locally; the public draft includes the finish and manifest only."
+    },
+    "readiness_mirror": {
+      "additional_counted_events": 0,
+      "mirrors_record_id": "preflight-native-04",
+      "private_summary_sha256": "88818dee715419c99cabe8c1422567db6f5ed8d6f689c5683215e6d70d22e9f7",
+      "readiness_sha256": "d9e57edde0e4331cc1cf1d89efb0e9b254b92fcb7e3336bb34f5688a0c6fa68c",
+      "registered_preflight_tree_sha256": "c57ae229683c91a6927f0fe2ab57799ad89eb46a05dcb791565cd6de7bdebffe",
+      "registered_tree_matches_locally": true,
+      "usage_matches_committed_probe": true
+    }
+  },
+  "publication_status": "offline_draft_not_published",
+  "records": [
+    {
+      "accounting_status": "complete",
+      "dispatch_status": "confirmed_by_retained_complete_telemetry",
+      "exact_usage": {
+        "input_tokens": 75387,
+        "model_calls": 7,
+        "output_tokens": 235,
+        "parent_wall_seconds": "23.539",
+        "tool_calls": 4
+      },
+      "kind": "capability_probe",
+      "private_summary_sha256": "2668cf9c5c7898391a2ac0011f98fe8e8bb20397db2041a162428d01c3266491",
+      "record_id": "preflight-native-01",
+      "source_pointer": "/probes/0"
+    },
+    {
+      "accounting_status": "unavailable",
+      "dispatch_status": "unknown",
+      "exact_usage": null,
+      "kind": "capability_probe",
+      "reason": "No retained probe files or native telemetry establish dispatch or consumption.",
+      "record_id": "preflight-native-02",
+      "source_pointer": "/probes/1"
+    },
+    {
+      "accounting_status": "complete",
+      "dispatch_status": "confirmed_by_retained_complete_telemetry",
+      "exact_usage": {
+        "input_tokens": 22927,
+        "model_calls": 2,
+        "output_tokens": 360,
+        "parent_wall_seconds": "18.32",
+        "tool_calls": 1
+      },
+      "kind": "capability_probe",
+      "private_summary_sha256": "e245dbe8c9df6ce7a4521db59c74c3cf7690f98fd3fc490a44244c468c760e7a",
+      "record_id": "preflight-native-03",
+      "source_pointer": "/probes/2"
+    },
+    {
+      "accounting_status": "complete",
+      "dispatch_status": "confirmed_by_retained_complete_telemetry",
+      "exact_usage": {
+        "input_tokens": 125624,
+        "model_calls": 8,
+        "output_tokens": 422,
+        "parent_wall_seconds": "31.309",
+        "tool_calls": 5
+      },
+      "kind": "capability_probe",
+      "private_summary_sha256": "88818dee715419c99cabe8c1422567db6f5ed8d6f689c5683215e6d70d22e9f7",
+      "record_id": "preflight-native-04",
+      "source_pointer": "/probes/3"
+    },
+    {
+      "accounting_status": "unavailable",
+      "dispatch_status": "confirmed_by_retained_attempt",
+      "exact_usage": null,
+      "kind": "development_repair_attempt",
+      "reason": "Harbor scrubbing corrupted numeric native telemetry; exact consumption is unavailable. The retained original attempt is separate from the pilot-v2 campaign.",
+      "record_id": "original-pilot-v1-attempt-1",
+      "retained_status": "completed",
+      "source_finish_sha256": "010f3fd051c0d5eb76e76a7aa1229d08c9076af5a2b63218ba8886c931c73a78",
+      "source_manifest_sha256": "79f3a6e4db6e096238bf8250aaa6cf61c671a71a436bcf7278e470c4590caaee"
+    }
+  ],
+  "reproduction_scope": "Arithmetic over committed sanitized capability events and retained unavailable-usage finish metadata. No raw native-log replay, independent authentication, independent agent rerun or efficiency claim.",
+  "schema_version": "evalopt.development-overhead-ledger.v1",
+  "summary": {
+    "complete_capability_probes": 3,
+    "complete_total_for_all_listed_overhead": false,
+    "dollar_cost": null,
+    "efficiency_comparison_eligible": false,
+    "observed_complete_probe_totals": {
+      "input_tokens": 223938,
+      "model_calls": 17,
+      "output_tokens": 1017,
+      "parent_wall_seconds": "73.168",
+      "tool_calls": 10
+    },
+    "records": 5,
+    "retained_development_repair_attempts": 1,
+    "unavailable_accounting_records": 2,
+    "unknown_dispatch_records": 1
+  }
+}

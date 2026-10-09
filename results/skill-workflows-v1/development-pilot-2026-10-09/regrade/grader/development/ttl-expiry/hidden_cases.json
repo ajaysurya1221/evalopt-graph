@@ -1,0 +1,77 @@
+[
+  {
+    "module": "cache",
+    "function": "get_fresh",
+    "args": [
+      {
+        "a": [
+          "x",
+          10
+        ]
+      },
+      "a",
+      10
+    ],
+    "preserve_args": true,
+    "result": null
+  },
+  {
+    "module": "cache",
+    "function": "get_fresh",
+    "args": [
+      {
+        "a": [
+          0,
+          10
+        ]
+      },
+      "a",
+      9
+    ],
+    "preserve_args": true,
+    "result": 0
+  },
+  {
+    "module": "cache",
+    "function": "get_fresh",
+    "args": [
+      {
+        "a": [
+          false,
+          10
+        ]
+      },
+      "a",
+      8
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "cache",
+    "function": "get_fresh",
+    "args": [
+      {},
+      "z",
+      10
+    ],
+    "preserve_args": true,
+    "result": null
+  },
+  {
+    "module": "cache",
+    "function": "get_fresh",
+    "args": [
+      {
+        "a": [
+          "x",
+          10
+        ]
+      },
+      "a",
+      11
+    ],
+    "preserve_args": true,
+    "result": null
+  }
+]

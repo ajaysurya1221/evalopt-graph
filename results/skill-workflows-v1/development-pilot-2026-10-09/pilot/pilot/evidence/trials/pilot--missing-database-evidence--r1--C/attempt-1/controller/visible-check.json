@@ -1,0 +1,1 @@
+{"command": "python -B verify.py", "outcome": "unavailable", "returncode": 3, "stderr": "", "stdout": "inventory-database unavailable: no endpoint or credentials supplied\n"}

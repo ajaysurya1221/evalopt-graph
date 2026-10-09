@@ -176,10 +176,17 @@ development artifacts. The benchmark compares a baseline, Matt Pocock's pinned
 workflow bundle, and eval-opt under the same task and runtime conditions. Hidden
 outcome grading is separate from the kernel's stopped-output policy comparison.
 
-The 36-trial development pilot is complete; final grading QA is in progress.
-No workflow advantage is established.
+The [36-trial development pilot and offline reproduction package](results/skill-workflows-v1/development-pilot-2026-10-09/README.md)
+are complete. Every arm recorded 12/12 valid completions; a corrected-grader
+reexecution changed none of the 36 grades. This development result establishes
+no workflow advantage. Usage is complete for 34 attempts and partial for two;
+partial values are lower bounds and do not support efficiency claims.
+The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) records these
+limits. The [held-out registration](results/skill-workflows-v1/heldout-registration-2026-10-09/README.md)
+pins the planned 432-trial comparison before execution.
 See the [prospective protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
-[execution status](bench/harbor/skill-workflows-v1/STATUS.md). Positive, neutral and
+[frozen implementation notes](bench/harbor/skill-workflows-v1/STATUS.md). The linked
+result package supersedes those notes' pending pilot-QA status. Positive, neutral and
 negative results follow the same publication rules. This work leaves the stable
 kernel API and wheel dependencies unchanged.
 

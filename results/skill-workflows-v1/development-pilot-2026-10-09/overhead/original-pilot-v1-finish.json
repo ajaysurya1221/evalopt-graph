@@ -1,0 +1,1 @@
+{"attempt":1,"error_code":null,"finished_at":"2026-10-08T17:39:54.335682+00:00","schema_version":"evalopt.workflow-finish.v1","status":"completed","trial_id":"pilot--duration-parser--r1--C","usage":{"accounting_status":"unavailable","child_usage_complete":false,"raw_logs_retained":true,"runtime_valid":false}}

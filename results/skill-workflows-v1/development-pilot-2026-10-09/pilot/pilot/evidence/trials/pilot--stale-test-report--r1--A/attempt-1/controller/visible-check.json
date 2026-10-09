@@ -1,0 +1,1 @@
+{"command": "python -B verify.py", "outcome": "failed", "returncode": 1, "stderr": "Traceback (most recent call last):\n  File \"/workspace/verify.py\", line 2, in <module>\n    assert total([10, -4, 2]) == 8\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "stdout": ""}

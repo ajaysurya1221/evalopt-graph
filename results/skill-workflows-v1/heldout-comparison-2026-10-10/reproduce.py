@@ -8,6 +8,7 @@ import hashlib
 import json
 import math
 import platform
+import shutil
 import stat
 import sys
 import tempfile
@@ -90,6 +91,30 @@ def tree_identity(root):
     return sha(json.dumps(manifest, sort_keys=True).encode())
 
 
+def materialize_asset_modes(bundle, destination):
+    """Restore hash-bound POSIX asset metadata that a Git checkout cannot retain."""
+    shutil.copytree(bundle, destination)
+    verify_checksums(
+        destination,
+        "evalopt.heldout-public-checksums.v1",
+        expected="6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+    )
+    assets = parse(destination / "ASSETS.json")["nodes"]
+    for name, node in sorted(assets.items(), key=lambda item: len(Path(item[0]).parts)):
+        relative = Path(name)
+        require(not relative.is_absolute() and ".." not in relative.parts, "unsafe asset path")
+        require(type(node["mode"]) is int and 0 <= node["mode"] <= 0o777, "unsafe asset mode")
+        path = destination / relative
+        if node["type"] == "directory":
+            path.mkdir(parents=True, exist_ok=True)
+            require(path.is_dir() and not path.is_symlink(), "invalid asset directory")
+        else:
+            require(node["type"] == "file" and stat.S_ISREG(path.lstat().st_mode), "invalid asset file")
+    for name, node in sorted(assets.items(), key=lambda item: len(Path(item[0]).parts), reverse=True):
+        (destination / name).chmod(node["mode"])
+    return destination
+
+
 def reproduce(source):
     require(
         platform.python_implementation() == "CPython" and sys.version_info[:3] == (3, 13, 12),
@@ -113,13 +138,15 @@ def reproduce(source):
         tree_identity(source / "src/evalopt_graph") == lock["kernel_source_sha256"],
         "use the registered kernel source",
     )
-    with tempfile.TemporaryDirectory(prefix="evalopt-heldout-replay-") as cache:
-        sys.pycache_prefix = cache
+    with tempfile.TemporaryDirectory(prefix="evalopt-heldout-replay-") as temporary:
+        temporary = Path(temporary).resolve(strict=True)
+        bundle = materialize_asset_modes(root / "bundle", temporary / "bundle")
+        sys.pycache_prefix = str(temporary / "pycache")
         sys.dont_write_bytecode = True
         sys.path[:0] = [str(benchmark), str(source / "src")]
         import heldout_publish
 
-        result = heldout_publish.verify_public_bundle(root / "bundle")
+        result = heldout_publish.verify_public_bundle(bundle)
     require(
         result["bundle_id"] == "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
         "unexpected heldout bundle",
@@ -135,6 +162,7 @@ def reproduce(source):
         "release_bundle_id": outer_id,
         "heldout": result,
         "operational_note_scope": "File identities verified; private incident reconstruction is not independently reexecuted by public replay.",
+        "asset_mode_scope": "Declared POSIX asset modes restored in a temporary hash-verified copy because Git does not preserve non-executable permission bits; checkout and frozen evidence bytes unchanged.",
         "candidate_execution_performed": False,
         "independent_replication": False,
         "network_publication_performed": False,

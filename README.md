@@ -21,7 +21,7 @@ Replay establishes consistency with that input, not the truth of the input.
 **Engineering:** [Zero runtime dependencies](https://github.com/ajaysurya1221/evalopt-graph/blob/main/pyproject.toml) · [State and replay tests](https://github.com/ajaysurya1221/evalopt-graph/blob/main/tests/test_kernel.py)
 [32 authored/generated conformance cases](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) · [Release checks](https://github.com/ajaysurya1221/evalopt-graph/blob/main/scripts/verify_installed_release.py)
 
-Conformance evidence only; no external capability or comparative result is claimed.
+Kernel conformance evidence only; no external capability or comparative result is claimed.
 [Install](https://github.com/ajaysurya1221/evalopt-graph#install) · [Host responsibilities](https://github.com/ajaysurya1221/evalopt-graph#kernel-owns--host-owns)
 
 <picture>
@@ -166,7 +166,7 @@ prove semantic truth, deployed behavior, source correctness, or model capability
 
 Read the [evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) and
 [prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps.
-There is no live-model governance campaign or official Docker SWE-bench result in this release.
+The v0.1.0 kernel package release contains no live-model governance campaign or official Docker SWE-bench result.
 
 ### Workflow skill and prospective comparison
 
@@ -177,8 +177,10 @@ workflow bundle, and eval-opt under the same task and runtime conditions. Hidden
 outcome grading is separate from the kernel's stopped-output policy comparison.
 
 The [36-trial development pilot and offline reproduction package](results/skill-workflows-v1/development-pilot-2026-10-09/README.md)
-are complete. Every arm recorded 12/12 valid completions; a corrected-grader
-reexecution changed none of the 36 grades. This development result establishes
+are complete. Every arm recorded 12/12 valid completions; a maintainer-run,
+isolated corrected-grader reexecution changed none of the 36 grades. The offline
+package replays supplied verifier replies; it does not execute stopped candidate
+code. This development result establishes
 no workflow advantage. Usage is complete for 34 attempts and partial for two;
 partial values are lower bounds and do not support efficiency claims.
 The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) records these

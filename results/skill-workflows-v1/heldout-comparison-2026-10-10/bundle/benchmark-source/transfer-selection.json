@@ -1,0 +1,235 @@
+{
+  "eligible": [
+    {
+      "agent_seconds": 900.0,
+      "category": "debugging",
+      "image_source": "alexgshaw/build-cython-ext:20251031",
+      "task_id": "build-cython-ext",
+      "task_toml_sha256": "eb6bfabb7b75243c3f4d127a10c4c349d44e7e5b7bffb428edebd467adc43843",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/build-pmars:20251031",
+      "task_id": "build-pmars",
+      "task_toml_sha256": "02de864f98eaba9d3b9fe2b65e36ec32a824a1cd85b9b5246caf70de222d48ac",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/cancel-async-tasks:20251031",
+      "task_id": "cancel-async-tasks",
+      "task_toml_sha256": "4eb6fe419024e101c630f3ee7702df67049851ae13ebed00ea4138b62dec47b2",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/cobol-modernization:20251031",
+      "task_id": "cobol-modernization",
+      "task_toml_sha256": "a08e001d2547fe84f64452bb075d27603aed7abfc01799f80924f81e6f2af410",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 1800.0,
+      "category": "debugging",
+      "image_source": "alexgshaw/custom-memory-heap-crash:20251031",
+      "task_id": "custom-memory-heap-crash",
+      "task_toml_sha256": "7642b99bb9af870eeefa26e21681a7308b5b4fb9eb249a4255019a6da40cb6c1",
+      "verifier_seconds": 1800.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/fix-git:20251031",
+      "task_id": "fix-git",
+      "task_toml_sha256": "65ed15b71751a10df66cd1fba4658762156f34bacd9f7ba1688a13947d0999e6",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/git-leak-recovery:20251031",
+      "task_id": "git-leak-recovery",
+      "task_toml_sha256": "6c3d6204e561ae9d9757bbc6b7f5a4ed3f94db4a0ce82037d9084644e1cf0c7f",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/headless-terminal:20251031",
+      "task_id": "headless-terminal",
+      "task_toml_sha256": "4d1448e9d3d0ef2043b6b888361a55e609a9ab8b07f4aca44c0ee870b2049c7e",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/kv-store-grpc:20251031",
+      "task_id": "kv-store-grpc",
+      "task_toml_sha256": "b93d343ae7dd483b15d3b846fd6c13f136a279143e840d83beb521772f4c208d",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/make-doom-for-mips:20251031",
+      "task_id": "make-doom-for-mips",
+      "task_toml_sha256": "c9f3a979796e64c64f38606ac1168b2e31993e835c232c24840ad9b88bb24e16",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 1800.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/make-mips-interpreter:20251031",
+      "task_id": "make-mips-interpreter",
+      "task_toml_sha256": "4b3356a0e251ea92beb95710f5a972a3c1c1abc46d86eb7956d88b11076f9d33",
+      "verifier_seconds": 1800.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/polyglot-c-py:20251031",
+      "task_id": "polyglot-c-py",
+      "task_toml_sha256": "02c98637eba6754d556594f679404ba5ac282436d089f53d1c839b17eff9c710",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/prove-plus-comm:20251031",
+      "task_id": "prove-plus-comm",
+      "task_toml_sha256": "172e580e56eb604d970a3f763d7cac86ce42047d270db970f7274eb9f64334bb",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/pypi-server:20251031",
+      "task_id": "pypi-server",
+      "task_toml_sha256": "e82d539a1e56fa080f9a12bc723eef047220af4425c7f18d88e1ee9a3466c473",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "debugging",
+      "image_source": "alexgshaw/sqlite-db-truncate:20251031",
+      "task_id": "sqlite-db-truncate",
+      "task_toml_sha256": "8b4c4d2abfe7dc8b7a3bac4567f60c08f7a9219b2cc65df0de7c5ee3d37721d6",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/write-compressor:20251031",
+      "task_id": "write-compressor",
+      "task_toml_sha256": "2882cad36270e4291b672620469a7619a9c80a624f8f85703b9a43eeca9fccb2",
+      "verifier_seconds": 900.0
+    }
+  ],
+  "evidence_class": "score-blind feasibility subset; not leaderboard",
+  "images_resolved": false,
+  "schema_version": "evalopt.transfer-selection.v1",
+  "selected": [
+    {
+      "agent_seconds": 900.0,
+      "category": "debugging",
+      "image_source": "alexgshaw/build-cython-ext:20251031",
+      "task_id": "build-cython-ext",
+      "task_toml_sha256": "eb6bfabb7b75243c3f4d127a10c4c349d44e7e5b7bffb428edebd467adc43843",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/build-pmars:20251031",
+      "task_id": "build-pmars",
+      "task_toml_sha256": "02de864f98eaba9d3b9fe2b65e36ec32a824a1cd85b9b5246caf70de222d48ac",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/cancel-async-tasks:20251031",
+      "task_id": "cancel-async-tasks",
+      "task_toml_sha256": "4eb6fe419024e101c630f3ee7702df67049851ae13ebed00ea4138b62dec47b2",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/cobol-modernization:20251031",
+      "task_id": "cobol-modernization",
+      "task_toml_sha256": "a08e001d2547fe84f64452bb075d27603aed7abfc01799f80924f81e6f2af410",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 1800.0,
+      "category": "debugging",
+      "image_source": "alexgshaw/custom-memory-heap-crash:20251031",
+      "task_id": "custom-memory-heap-crash",
+      "task_toml_sha256": "7642b99bb9af870eeefa26e21681a7308b5b4fb9eb249a4255019a6da40cb6c1",
+      "verifier_seconds": 1800.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/fix-git:20251031",
+      "task_id": "fix-git",
+      "task_toml_sha256": "65ed15b71751a10df66cd1fba4658762156f34bacd9f7ba1688a13947d0999e6",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/git-leak-recovery:20251031",
+      "task_id": "git-leak-recovery",
+      "task_toml_sha256": "6c3d6204e561ae9d9757bbc6b7f5a4ed3f94db4a0ce82037d9084644e1cf0c7f",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/headless-terminal:20251031",
+      "task_id": "headless-terminal",
+      "task_toml_sha256": "4d1448e9d3d0ef2043b6b888361a55e609a9ab8b07f4aca44c0ee870b2049c7e",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/kv-store-grpc:20251031",
+      "task_id": "kv-store-grpc",
+      "task_toml_sha256": "b93d343ae7dd483b15d3b846fd6c13f136a279143e840d83beb521772f4c208d",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/make-doom-for-mips:20251031",
+      "task_id": "make-doom-for-mips",
+      "task_toml_sha256": "c9f3a979796e64c64f38606ac1168b2e31993e835c232c24840ad9b88bb24e16",
+      "verifier_seconds": 900.0
+    },
+    {
+      "agent_seconds": 1800.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/make-mips-interpreter:20251031",
+      "task_id": "make-mips-interpreter",
+      "task_toml_sha256": "4b3356a0e251ea92beb95710f5a972a3c1c1abc46d86eb7956d88b11076f9d33",
+      "verifier_seconds": 1800.0
+    },
+    {
+      "agent_seconds": 900.0,
+      "category": "software-engineering",
+      "image_source": "alexgshaw/polyglot-c-py:20251031",
+      "task_id": "polyglot-c-py",
+      "task_toml_sha256": "02c98637eba6754d556594f679404ba5ac282436d089f53d1c839b17eff9c710",
+      "verifier_seconds": 900.0
+    }
+  ],
+  "source_commit": "69671fbaac6d67a7ef0dfec016cc38a64ef7a77c",
+  "trials_run": 0
+}

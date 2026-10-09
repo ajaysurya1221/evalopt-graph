@@ -9,3 +9,10 @@ condition = "AND"
 paths = ['''^tests/(test_context_hygiene|test_unattended)\.py$''']
 regexTarget = "match"
 regexes = ['''sk-abcdefghij1234567890''']
+
+[[allowlists]]
+description = "Exact SHA-256 file checksums for API-named held-out fixtures; both values reproduce from the released file bytes"
+condition = "AND"
+paths = ['''^results/skill-workflows-v1/heldout-comparison-2026-10-10/bundle/(sealed-manifest\.json|sealed-tasks/candidate-manifest\.json)$''']
+regexTarget = "secret"
+regexes = ['''^(e814041bd09d1fb4f833aa2ca25ec1d2486633e1a2801310dfb4f14c18e0bd9d|100e5b33df33a7f63fe6697fa70525dedc3de5fb3131224b5633acca8279feac)$''']

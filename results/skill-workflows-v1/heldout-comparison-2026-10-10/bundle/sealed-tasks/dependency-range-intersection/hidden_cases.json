@@ -1,0 +1,184 @@
+[
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">=1.2.0 <2.0.0",
+      ">=1.10.0"
+    ],
+    "preserve_args": true,
+    "result": {
+      "lower": [
+        "1.10.0",
+        true
+      ],
+      "upper": [
+        "2.0.0",
+        false
+      ]
+    }
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      "<=1.0.0",
+      ">=1.0.0"
+    ],
+    "preserve_args": true,
+    "result": {
+      "lower": [
+        "1.0.0",
+        true
+      ],
+      "upper": [
+        "1.0.0",
+        true
+      ]
+    }
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      "<1.0.0",
+      ">=1.0.0"
+    ],
+    "preserve_args": true,
+    "result": null
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">9.0.0 <2.0.0",
+      ">=0.0.0"
+    ],
+    "preserve_args": true,
+    "result": null
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      "=1.2.3",
+      "<=9.9.9"
+    ],
+    "preserve_args": true,
+    "result": {
+      "lower": [
+        "1.2.3",
+        true
+      ],
+      "upper": [
+        "1.2.3",
+        true
+      ]
+    }
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">1.0.0",
+      ">1.0.0"
+    ],
+    "preserve_args": true,
+    "result": {
+      "lower": [
+        "1.0.0",
+        false
+      ],
+      "upper": null
+    }
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">=01.0.0",
+      ">=0.0.0"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">=1.0.0 >2.0.0",
+      ">=0.0.0"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      "=1.0.0 <2.0.0",
+      ">=0.0.0"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      " >=1.0.0",
+      ">=0.0.0"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">1.0.0",
+      "<1.0.1"
+    ],
+    "preserve_args": true,
+    "result": null
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">999.999.999",
+      ">=0.0.0"
+    ],
+    "preserve_args": true,
+    "result": null
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      "<0.0.0",
+      "<=999.999.999"
+    ],
+    "preserve_args": true,
+    "result": null
+  },
+  {
+    "module": "ranges",
+    "function": "intersect",
+    "args": [
+      ">1.0.0",
+      "<=1.0.1"
+    ],
+    "preserve_args": true,
+    "result": {
+      "lower": [
+        "1.0.0",
+        false
+      ],
+      "upper": [
+        "1.0.1",
+        true
+      ]
+    }
+  }
+]

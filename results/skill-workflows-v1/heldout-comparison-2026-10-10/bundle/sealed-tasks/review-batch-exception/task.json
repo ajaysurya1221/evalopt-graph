@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "review-batch-exception",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-batch-exception",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. batch.parse_batch(values) takes strings and returns one dictionary per string in original order: {\"value\": int(text)} when Python base-10 int conversion succeeds, otherwise {\"error\":\"invalid\"}. A bad input must not erase other valid results or terminate the batch. Empty input returns []. Preserve values. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "batch.py",
+        "symbol": "parse_batch",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "batch.py",
+      "source": "batch.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "batch.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

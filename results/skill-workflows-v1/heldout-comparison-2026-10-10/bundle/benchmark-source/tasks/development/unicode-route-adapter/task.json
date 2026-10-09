@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "unicode-route-adapter",
+  "split": "development",
+  "category": "constraint-preservation",
+  "source_family": "unicode-route-adapter",
+  "instruction": "Implement routes.user_route(name). Return \"/users/\" followed by percent-encoded UTF-8 bytes of name: ASCII letters, digits, hyphen, period, underscore, and tilde remain literal; every other byte is % followed by two uppercase hexadecimal digits. Do not encode the /users/ prefix. Empty name returns /users/. Do not normalize Unicode. api_contract.json and core.py are frozen and must remain byte-for-byte unchanged. Only routes.py may change. Standard library only.",
+  "allowed_changes": [
+    "routes.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

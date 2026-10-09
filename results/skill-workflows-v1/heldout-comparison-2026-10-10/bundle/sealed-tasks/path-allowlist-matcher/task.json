@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "path-allowlist-matcher",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "path-allowlist-matcher",
+  "instruction": "Implement allowlist.matches(path, patterns). Normalize a POSIX relative path: collapse repeated / and . components and resolve ..; reject paths that escape above root, begin /, or contain backslash with ValueError. Empty path denotes root. Patterns are valid nonempty relative slash-separated components without . or ..; * within a component matches any characters within that one component, and a whole component ** matches zero or more complete components. Patterns contain only ASCII letters, digits, period, underscore, hyphen, slash, and star; no ? or brackets. Matching is case sensitive. Return true iff any pattern matches the entire normalized path. Preserve patterns.",
+  "allowed_changes": [
+    "allowlist.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "8b437e8bc3fe43783c923178749b04a7d8c86e97fff7f69d2db9b860fe7757f2",
+      "size": 3312
+    },
+    "supplemental-review-receipt.json": {
+      "sha256": "7633ba9dd6915c135d32caf6caab6f783b99189fb345fd4aba9277760d8ba1e3",
+      "size": 7208
+    }
+  },
+  "schema_version": "evalopt.supplemental-engineering-review-checksums.v1"
+}

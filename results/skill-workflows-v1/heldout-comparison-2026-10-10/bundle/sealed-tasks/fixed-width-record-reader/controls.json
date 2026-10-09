@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    },
+    {
+      "name": "uses-character-width-instead-of-byte-width",
+      "kind": "edit",
+      "path": "records.py",
+      "append": "\ndef parse_records(hex_data):\n    text = bytes.fromhex(hex_data).decode(\"utf-8\")\n    return [{\"name\": text[i:i+4].rstrip(\" \"), \"count\": int(text[i+4:i+8])} for i in range(0, len(text), 8)]\n"
+    }
+  ]
+}

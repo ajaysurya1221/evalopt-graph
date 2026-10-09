@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "duration-parser",
+  "split": "development",
+  "category": "bounded-implementation",
+  "source_family": "duration-parser",
+  "instruction": "Implement duration.parse(text). Accept one to three nonnegative integer components with suffixes h, m, s in descending order, each at most once: examples 2h, 1h 30m, 0s, 3m 5s. Components must be separated by exactly one ASCII space; no leading/trailing whitespace. No signs, decimals, empty input, repeated or out-of-order units, or non-ASCII digits. Each integer has at most 18 ASCII digits (leading zeroes count); longer components are malformed. 90m is valid. Return total integer seconds. Raise ValueError for every malformed input. Standard library only.",
+  "allowed_changes": [
+    "duration.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "443"
+    ],
+    "preserve_args": true,
+    "result": 443
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "00080"
+    ],
+    "preserve_args": true,
+    "result": 80
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "65535"
+    ],
+    "preserve_args": true,
+    "result": 65535
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      ""
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "0"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "65536"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "123456"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      " 80"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "+80"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "adapter",
+    "function": "parse_port",
+    "args": [
+      "abc"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

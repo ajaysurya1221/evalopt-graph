@@ -1,0 +1,244 @@
+{
+  "schema_version": "evalopt.capability-evidence.v1",
+  "independent_reproduction": false,
+  "raw_native_traces_public": false,
+  "probes": [
+    {
+      "probe_id": "preflight-native-01",
+      "benchmark_trials": 0,
+      "kind": "native_capability_probe",
+      "checks": {
+        "image_present": true,
+        "codex_version": true,
+        "configuration_parses": true,
+        "native_multi_agent_enabled": true,
+        "subscription_auth": true,
+        "live_exit_zero": true,
+        "live_completion_marker": true,
+        "model_identity": true,
+        "reasoning_identity": true,
+        "two_native_children": true
+      },
+      "status": "PASS",
+      "image_id": "sha256:dacadb6614969d890258a1a68ad6af55fc568da0402d3275ecb346035fd09b02",
+      "config_sha256": "558dfb8ac663b2249d9e3176acb3f33cd8f8af8c838b682ee9b07f55bd1e4165",
+      "private_summary_sha256": "2668cf9c5c7898391a2ac0011f98fe8e8bb20397db2041a162428d01c3266491",
+      "usage_events": [
+        {
+          "agent_id": "agent-0",
+          "parent_id": null,
+          "scope": "agent_exclusive",
+          "input_tokens": 54573,
+          "output_tokens": 207,
+          "model_calls": 5,
+          "tool_calls": 4,
+          "wall_seconds": 23.539,
+          "roster": [
+            "agent-0",
+            "agent-1",
+            "agent-2"
+          ],
+          "complete": true
+        },
+        {
+          "agent_id": "agent-1",
+          "parent_id": "agent-0",
+          "scope": "agent_exclusive",
+          "input_tokens": 10407,
+          "output_tokens": 6,
+          "model_calls": 1,
+          "tool_calls": 0,
+          "wall_seconds": 4.775,
+          "roster": [
+            "agent-1"
+          ],
+          "complete": true
+        },
+        {
+          "agent_id": "agent-2",
+          "parent_id": "agent-0",
+          "scope": "agent_exclusive",
+          "input_tokens": 10407,
+          "output_tokens": 22,
+          "model_calls": 1,
+          "tool_calls": 0,
+          "wall_seconds": 5.349,
+          "roster": [
+            "agent-2"
+          ],
+          "complete": true
+        }
+      ],
+      "usage": {
+        "schema_version": "evalopt.workflow-usage.v1",
+        "input_tokens": 75387,
+        "output_tokens": 235,
+        "model_calls": 7,
+        "tool_calls": 4,
+        "wall_seconds": 23.539,
+        "agent_count": 3,
+        "aggregation": "agent_exclusive",
+        "child_usage_complete": true
+      }
+    },
+    {
+      "probe_id": "preflight-native-02",
+      "benchmark_trials": 0,
+      "kind": "native_capability_probe",
+      "usage": null,
+      "accounting_status": "no_complete_native_telemetry"
+    },
+    {
+      "probe_id": "preflight-native-03",
+      "benchmark_trials": 0,
+      "kind": "native_capability_probe",
+      "checks": {
+        "image_present": true,
+        "codex_version": true,
+        "configuration_parses": true,
+        "native_multi_agent_enabled": true,
+        "subscription_auth": true,
+        "live_exit_zero": true,
+        "live_completion_marker": false,
+        "model_identity": true,
+        "reasoning_identity": true,
+        "two_native_children": false,
+        "skill_and_dependency_loading": false,
+        "complete_usage_accounting": true
+      },
+      "status": "NOT_READY",
+      "image_id": "sha256:2088a1d3f04f5168c13174c30ebbf60453e2744a421f4d3337f55425f3075710",
+      "config_sha256": "558dfb8ac663b2249d9e3176acb3f33cd8f8af8c838b682ee9b07f55bd1e4165",
+      "skill_sources": {
+        "upstream": "78bbd32f88d49a616a04a4bd1c8521468a9c66517312f01ee025e2b19786def8",
+        "evalopt": "8fb79ed61b4bbbbc6ffcd910af5ca70fb2c30c0c63e3eefe23ee2bada9429460"
+      },
+      "skill_loads": {
+        "diagnosing-bugs": false,
+        "implement": false,
+        "tdd": false,
+        "code-review": false,
+        "eval-opt": false
+      },
+      "private_summary_sha256": "e245dbe8c9df6ce7a4521db59c74c3cf7690f98fd3fc490a44244c468c760e7a",
+      "usage_events": [
+        {
+          "agent_id": "agent-0",
+          "parent_id": null,
+          "scope": "agent_exclusive",
+          "input_tokens": 22927,
+          "output_tokens": 360,
+          "model_calls": 2,
+          "tool_calls": 1,
+          "wall_seconds": 18.32,
+          "roster": [
+            "agent-0"
+          ],
+          "complete": true
+        }
+      ],
+      "usage": {
+        "schema_version": "evalopt.workflow-usage.v1",
+        "input_tokens": 22927,
+        "output_tokens": 360,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "wall_seconds": 18.32,
+        "agent_count": 1,
+        "aggregation": "agent_exclusive",
+        "child_usage_complete": true
+      }
+    },
+    {
+      "probe_id": "preflight-native-04",
+      "benchmark_trials": 0,
+      "kind": "native_capability_probe",
+      "checks": {
+        "image_present": true,
+        "codex_version": true,
+        "configuration_parses": true,
+        "native_multi_agent_enabled": true,
+        "subscription_auth": true,
+        "live_exit_zero": true,
+        "live_completion_marker": true,
+        "model_identity": true,
+        "reasoning_identity": true,
+        "two_native_children": true,
+        "skill_and_dependency_loading": true,
+        "complete_usage_accounting": true
+      },
+      "status": "PASS",
+      "image_id": "sha256:2088a1d3f04f5168c13174c30ebbf60453e2744a421f4d3337f55425f3075710",
+      "config_sha256": "558dfb8ac663b2249d9e3176acb3f33cd8f8af8c838b682ee9b07f55bd1e4165",
+      "skill_sources": {
+        "upstream": "78bbd32f88d49a616a04a4bd1c8521468a9c66517312f01ee025e2b19786def8",
+        "evalopt": "8fb79ed61b4bbbbc6ffcd910af5ca70fb2c30c0c63e3eefe23ee2bada9429460"
+      },
+      "skill_loads": {
+        "diagnosing-bugs": true,
+        "implement": true,
+        "tdd": true,
+        "code-review": true,
+        "eval-opt": true
+      },
+      "private_summary_sha256": "88818dee715419c99cabe8c1422567db6f5ed8d6f689c5683215e6d70d22e9f7",
+      "usage_events": [
+        {
+          "agent_id": "agent-0",
+          "parent_id": null,
+          "scope": "agent_exclusive",
+          "input_tokens": 103008,
+          "output_tokens": 387,
+          "model_calls": 6,
+          "tool_calls": 5,
+          "wall_seconds": 31.309,
+          "roster": [
+            "agent-0",
+            "agent-1",
+            "agent-2"
+          ],
+          "complete": true
+        },
+        {
+          "agent_id": "agent-1",
+          "parent_id": "agent-0",
+          "scope": "agent_exclusive",
+          "input_tokens": 10918,
+          "output_tokens": 6,
+          "model_calls": 1,
+          "tool_calls": 0,
+          "wall_seconds": 6.351,
+          "roster": [
+            "agent-1"
+          ],
+          "complete": true
+        },
+        {
+          "agent_id": "agent-2",
+          "parent_id": "agent-0",
+          "scope": "agent_exclusive",
+          "input_tokens": 11698,
+          "output_tokens": 29,
+          "model_calls": 1,
+          "tool_calls": 0,
+          "wall_seconds": 7.619,
+          "roster": [
+            "agent-2"
+          ],
+          "complete": true
+        }
+      ],
+      "usage": {
+        "schema_version": "evalopt.workflow-usage.v1",
+        "input_tokens": 125624,
+        "output_tokens": 422,
+        "model_calls": 8,
+        "tool_calls": 5,
+        "wall_seconds": 31.309,
+        "agent_count": 3,
+        "aggregation": "agent_exclusive",
+        "child_usage_complete": true
+      }
+    }
+  ]
+}

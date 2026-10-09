@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "backward-compatible-state-reader",
+  "split": "heldout",
+  "category": "constraint-preservation",
+  "source_family": "backward-compatible-state-reader",
+  "instruction": "Extend state_reader.read(document) for version-1 dictionary records. Required v must be integer 1, count must be an integer 0..1000000000, and optional note is a string defaulting to empty. Booleans are not valid integer fields. Ignore unknown fields for forward compatibility. Return a new {\"count\":count,\"note\":note} dictionary, preserving input. Invalid/missing required fields or invalid note raise ValueError. Preserve state_writer.py and golden-state.json exactly; only state_reader.py may change. Writer serialization must remain version 1 without a new note field.",
+  "allowed_changes": [
+    "state_reader.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

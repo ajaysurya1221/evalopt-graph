@@ -1,0 +1,118 @@
+{
+  "accounting_limits": {
+    "dollar_cost_claimed": false,
+    "full_campaign_engineering_total": false,
+    "independent_benchmark_replication": false,
+    "independent_human_validation": false,
+    "model_call_count_established": false,
+    "scored_benchmark_trials": 0,
+    "statement": "These reported categories cover the retained supplemental review attempts only. Thinking tokens are already included in output tokens. Do not add mirrored usage counters or treat native num_turns as model calls. Engineering-assistant work, authentication diagnosis, staging, adjudication and other unmeasured work are outside this receipt; no total study-cost or efficiency claim follows."
+  },
+  "attempts": [
+    {
+      "actual_response_model_verified": false,
+      "attempt": 1,
+      "controller_elapsed_seconds": 0.261,
+      "effective_effort_verified": false,
+      "execution_finish_sha256": "9445817a9c992114bb3c85c1bda6cfb3fe77245264194e4d97182a61ba087dd2",
+      "execution_start_sha256": "df88e9088c3f99f0e95b3a6ee1b2878ed9374b33f833cd0be6c4a3a9a3d0c686",
+      "native_reported_duration_api_ms": 0,
+      "native_reported_token_categories": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "native_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native_stdout_sha256": "6670ff4834f04be4a56a955fc79651be7d004b014a8ce79dd104b97d2bc4d255",
+      "observed_response_model": null,
+      "requested_effort": "max",
+      "requested_max_turns": 20,
+      "requested_model": "claude-opus-5-5",
+      "requested_timeout_seconds": 600,
+      "retained_error_code": "authentication_failed",
+      "returncode": 1,
+      "review_completed": false,
+      "scored_benchmark_trials": 0,
+      "source_receipt_sha256": "5e97ec3d5d43d103ee48c001152432a4f52ddc46bca3355de9f35a23ab2fb3e8",
+      "status": "blocked_authentication",
+      "timed_out": false,
+      "usage_qualification": "Native failed-attempt counters report zero; no model response was verified. These are not independently audited billing totals."
+    },
+    {
+      "actual_response_model_verified": true,
+      "attempt": 2,
+      "controller_elapsed_seconds": 517.608,
+      "effective_effort_qualification": "Retained arguments and environment request max; native telemetry does not verify the effective named or numeric effort after possible caps.",
+      "effective_effort_verified": false,
+      "execution_finish_sha256": "37cf9d8518649781969a1ecb6ec93b0423d7549fdc0bafe2d36f0615a7e0de1a",
+      "execution_start_sha256": "2eac00989bc2c58ab07e4b25fb48962ea6281b20b28fa75047a781b97326d66b",
+      "findings_sha256": "65cd85ab2471654ff5893d794ba482aa43dc9e6554f87fe86afb758fe6712bd3",
+      "mirrored_result_usage_added_again": false,
+      "model_identity_scope": "Observed native response-model field, not independent provider authentication.",
+      "native_reported_duration_api_ms": 516326,
+      "native_reported_num_turns": 25,
+      "native_reported_token_categories": {
+        "cacheCreationInputTokens": 113598,
+        "cacheReadInputTokens": 356845,
+        "inputTokens": 18,
+        "outputTokens": 60076,
+        "thinkingTokens": 53336
+      },
+      "native_reported_web_search_requests": 0,
+      "native_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native_stdout_sha256": "dfd50eed326c7a1d202d3a733f80851e217e84337ebf0e6ed55ebfcc7e6a272f",
+      "observed_response_model": "claude-opus-5-5",
+      "per_turn_effort_active_reported": true,
+      "requested_effort": "max",
+      "requested_max_turns": 20,
+      "requested_model": "claude-opus-5-5",
+      "requested_timeout_seconds": 600,
+      "returncode": 0,
+      "review_completed": true,
+      "scored_benchmark_trials": 0,
+      "source_receipt_sha256": "be933aba37746bfad0d2d5165e386a2586f66595ef420837c96775ed3949af4d",
+      "status": "completed_with_reported_turn_limit_discrepancy",
+      "thinking_tokens_included_in_output_tokens": true,
+      "timed_out": false,
+      "turn_limit_conformance": "not_established_native_result_exceeds_requested_count",
+      "usage_source": "Final native modelUsage for the sole observed response model."
+    }
+  ],
+  "cli_version": "2.1.281",
+  "evidence_date": "2026-10-09",
+  "publication_limits": "Sanitized selected receipt fields and retained SHA-256 identities only. Raw provider metadata, logs, prompts, local paths, account identifiers and credentials are excluded. Hashes identify retained bytes; they do not authenticate a provider or independently replay the review.",
+  "recorded_controller_source_commit": "f5154567100a61ec9ab8769c01e27c3e7f0644a4",
+  "retry_provenance": {
+    "ambient_credentials_or_provider_routes_inherited": false,
+    "argv_identical": true,
+    "environment_variable_names_added": [
+      "USER"
+    ],
+    "environment_variable_names_removed": [],
+    "original_attempt_unchanged": true,
+    "prior_receipt_sha256": "5e97ec3d5d43d103ee48c001152432a4f52ddc46bca3355de9f35a23ab2fb3e8",
+    "qualification": "The recorded correction added USER to the existing sanitized environment-name allowlist. No credential or account value is included here; the receipts establish the allowlist difference, not independent authentication of the provider.",
+    "staging_unchanged": true,
+    "username_value_included": false
+  },
+  "review_findings": {
+    "adjudicated_summary": "Complete public evidence resolved staging-only concerns and confirmed canonical-object versus literal-file and nested-bundle identities. Maintainers accepted bounded outer-document wording clarifications. No scoring, statistical-rule, frozen-bundle or runtime-source change was justified by these adjudications.",
+    "hash_convention_questions_as_reported": 2,
+    "hash_semantics_adjudication_sha256": "28a8ff7b0ca598956223f59966e66b73fe327e1731b14bd6d5d57fa1575c3e06",
+    "numbered_items_as_reported": 10,
+    "public_wording_adjudication_sha256": "faccce8f779b87dbd45e0c993a8e4d98492df9d1375af91b42b65419c0fc2469",
+    "status": "Suggestions were adjudicated; a numbered review item is not automatically a confirmed defect."
+  },
+  "review_role": "User-authorized supplemental engineering/publication review using Claude Code",
+  "reviewed_pilot_bundle_id": "8a54972502ec164d4b43125fe70459277b5ed28d57d5f6e0781180080a456eef",
+  "schema_version": "evalopt.supplemental-engineering-review-public.v1",
+  "scope": "Selected public evidence and wording review, followed by maintainer adjudication against complete public artifacts and frozen code; not a scored study trial or benchmark replication",
+  "selected_file_bytes_identity": "The staging-manifest digest binds the reviewed file set; the recorded checkout commit alone does not assert byte equality for every staged file.",
+  "selected_public_file_count": 19,
+  "shared_input_identities": {
+    "argv_sha256": "c64d74863afa7abf11124839d1974d8429440d2aefcc4a5f79ceb46c2fe4e2e1",
+    "prompt_sha256": "bb92e975ddef6814ccee182a52ef647d34ab8860d07be76dd957ef44f0527d76",
+    "staging_manifest_sha256": "2617c60cd7e24b4f363da39900862a2331f1ed86ae05693d41100803d24bf341"
+  }
+}

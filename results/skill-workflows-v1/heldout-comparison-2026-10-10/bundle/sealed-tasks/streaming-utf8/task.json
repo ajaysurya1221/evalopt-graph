@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "streaming-utf8",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "streaming-utf8",
+  "instruction": "Repair decoder.decode_chunks(chunks). Each input string contains a valid even-length hexadecimal encoding of a byte chunk; chunks may be empty. Concatenate the bytes logically and decode UTF-8 strictly even when a code point spans chunk boundaries. Return the decoded string, preserving BOM as U+FEFF. Reject invalid, overlong, or incomplete-final UTF-8 with ValueError. Do not replace invalid bytes or mutate the chunk list. Hex syntax is valid and need not be validated.",
+  "allowed_changes": [
+    "decoder.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

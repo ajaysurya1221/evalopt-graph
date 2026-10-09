@@ -1,4 +1,19 @@
-# Development pilot: claim-to-evidence note
+# Workflow study: claim-to-evidence notes
+
+The completed [held-out comparison](heldout-comparison-2026-10-10/README.md) is separate from the development pilot described below.
+
+| Held-out claim | Evidence | Scope and limitation |
+| --- | --- | --- |
+| B and C each have 132/144 valid completions; C-minus-B is 0.00 points with paired 95% interval −2.08 to +2.08 points. | [Outcomes](heldout-comparison-2026-10-10/bundle/reports/outcomes.json); [registered analysis](heldout-comparison-2026-10-10/bundle/reports/analysis.json) | 48 authored tasks, three repetitions per arm, category-stratified task/cluster resampling. No registered gain, equivalence or overall-upgrade claim; the ordinary guardrail is degenerate. |
+| All 432 final outcomes and 433 attempts are retained, including one infrastructure retry. | [Attempt report](heldout-comparison-2026-10-10/bundle/reports/attempts.json); [operations note](heldout-comparison-2026-10-10/operations/README.md) | Run 2 has no native end; its 398-attempt mapping is external reconstruction. Original interrupted attempt has usage but no grade. |
+| M and G have the same aggregate acceptance/error counts: 378 accepted, 19/37 invalid accepted, 36/395 valid not accepted. | [Kernel report](heldout-comparison-2026-10-10/bundle/reports/kernel.json) | G has nine abstentions; non-acceptance includes abstention. All 1,296 decisions replay; no causal workflow or G-over-M gain claim. |
+| Accounting retains 417 complete and 16 partial attempts. | [Registered accounting view](heldout-comparison-2026-10-10/bundle/reports/analysis.json) | Lower bounds, no efficiency or dollar-cost claim; final-attempt and all-attempt totals overlap. |
+| Fresh local public-bundle replay checks 432 supplied-reply grades and all released assets. | [Validation](heldout-comparison-2026-10-10/validation.json); [offline entrypoint](heldout-comparison-2026-10-10/reproduce.py) | No candidate execution, native-log authentication, restored missing controller lifecycle or independent replication. |
+
+The [transfer registration](transfer-registration-2026-10-10/README.md) schedules 72 trials on a pinned Terminal-Bench feasibility subset. Registration and setup controls are not transfer outcomes or an official leaderboard score. Authored offline conformance controls, live workflow trials, supplied-evidence replay and independent replication are distinct evidence classes; independent replication is not established.
+
+## Development pilot
+
 
 This note describes the retained package `development-pilot-2026-10-09` with bundle identity `8a54972502ec164d4b43125fe70459277b5ed28d57d5f6e0781180080a456eef`. The [outer checksum manifest](https://github.com/ajaysurya1221/evalopt-graph/blob/feat/skill-workflows-v1-public/results/skill-workflows-v1/development-pilot-2026-10-09/CHECKSUMS.json) binds every included file. Content hashes are not producer authentication.
 
@@ -28,3 +43,5 @@ Receipt evidence and resource-report digests hash canonical JSON without its sav
 The study is maintainer-run, with separate authoring and review roles. It does not meet an independent-human-authorship requirement. Authored offline controls validate specific implementation behavior; they are not additional workflow trials or evidence of general capability.
 
 Frozen artifacts preserve creation-time labels and prospective populations, including the unpublished-draft label, preregrade pending text, and 27 pending attempts at the accounting amendment's registration. Finalized pilot reports record 36 retained and zero pending attempts. Exporter notes describe local export behavior, not the repository's current publication state. The earlier pilot archive retains its own outcome and policy records outside the reported 36-trial pilot cohort. The finalized evidence supersedes historical status without rewriting frozen identities.
+
+The [supplemental Claude review](supplemental-review-2026-10-10/README.md) is separately recorded engineering overhead with zero scored benchmark trials. It retains the authentication-blocked first attempt, reported effort/turn-limit uncertainty and supplied resource counters. It does not establish independent replication or a performance advantage.

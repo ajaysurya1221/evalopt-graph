@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "review-cursor-pagination",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-cursor-pagination",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. pagination.page(rows, cursor, limit) receives distinct [integer_score, string_id] rows, an optional [score,id] exclusive cursor, and nonnegative limit. Sort ascending by score then id; return up to limit rows strictly after the complete cursor tuple. Rows with equal score but a later id must remain eligible. Preserve input rows and support limit zero. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "pagination.py",
+        "symbol": "page",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "pagination.py",
+      "source": "pagination.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "pagination.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

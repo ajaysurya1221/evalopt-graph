@@ -1,0 +1,53 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [
+      {
+        "path": "jobs.py",
+        "symbol": "finish",
+        "kind": "incorrect-result"
+      },
+      {
+        "path": "tests/test_cancel.py",
+        "symbol": "<module>",
+        "kind": "test-coverage-loss"
+      }
+    ],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "misses-cancellation-cleanup",
+      "kind": "response",
+      "replace": {
+        "findings": [
+          {
+            "path": "tests/test_cancel.py",
+            "symbol": "<module>",
+            "kind": "test-coverage-loss"
+          }
+        ]
+      }
+    },
+    {
+      "name": "misses-deleted-regression",
+      "kind": "response",
+      "replace": {
+        "findings": [
+          {
+            "path": "jobs.py",
+            "symbol": "finish",
+            "kind": "incorrect-result"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "review-renamed-archive-filter",
+  "split": "heldout",
+  "category": "mixed-workspace-review",
+  "source_family": "review-renamed-archive-filter",
+  "instruction": "Review all changes from benchmark-base through the final on-disk worktree, including committed, staged, unstaged, untracked, and deleted files. Do not fix, stage, or commit anything. archive.allowed(member) decides whether a POSIX archive member stays within an extraction root. Reject absolute paths, any backslash, and any .. traversal that moves above root at any point; normalize . and repeated slashes. A valid internal a/../b is allowed. The renamed helper must enforce the same behavior. Attribute the defect to the new helper implementation. Attribute each defect to the responsible function or file rather than a forwarding caller. Report no findings when every change satisfies the stated contract.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "archive_filter.py",
+        "symbol": "allowed",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "archive.py",
+      "source": "archive.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "archive.py"
+      ]
+    },
+    {
+      "kind": "delete",
+      "path": "old_filter.py"
+    },
+    {
+      "kind": "copy",
+      "path": "archive_filter.py",
+      "source": "archive_filter.py"
+    }
+  ]
+}

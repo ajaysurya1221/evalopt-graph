@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "loose-octet-validation",
+      "kind": "initial"
+    },
+    {
+      "name": "adds-runtime-dependency",
+      "kind": "edit",
+      "path": "pyproject.toml",
+      "append": "\n# dependency adjustment\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "unique-slug",
+  "split": "development",
+  "category": "bounded-implementation",
+  "source_family": "unique-slug",
+  "instruction": "Implement slugs.unique_slug(label, taken). label is a string and taken is a list of existing exact-case slug strings. Lowercase ASCII A-Z, replace each maximal run outside a-z and 0-9 with one hyphen, and trim leading/trailing hyphens. Do not transliterate non-ASCII characters. If nothing remains use item. If the result is taken, try base-2, base-3, and so on until the first unused value; gaps must be reused. Preserve taken and its order. Standard library only.",
+  "allowed_changes": [
+    "slugs.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

@@ -1,0 +1,39 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "no-bounded-recovery",
+      "kind": "initial"
+    },
+    {
+      "name": "refuses-local-simulation",
+      "kind": "response",
+      "replace": {
+        "status": "blocked",
+        "blockers": [
+          {
+            "resource": "provider",
+            "reason": "Provider can fail."
+          }
+        ]
+      }
+    },
+    {
+      "name": "changes-provider-to-pass",
+      "kind": "edit",
+      "path": "provider.py",
+      "append": "\n# changed provider semantics\n"
+    }
+  ]
+}

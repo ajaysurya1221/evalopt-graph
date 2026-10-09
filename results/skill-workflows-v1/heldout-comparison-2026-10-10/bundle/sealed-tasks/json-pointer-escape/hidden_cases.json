@@ -1,0 +1,112 @@
+[
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      {
+        "~1": "literal",
+        "/": "slash"
+      },
+      "/~01"
+    ],
+    "preserve_args": true,
+    "result": "literal"
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      {
+        "a/b": {
+          "~x": [
+            1,
+            2
+          ]
+        }
+      },
+      "/a~1b/~0x/1"
+    ],
+    "preserve_args": true,
+    "result": 2
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      {
+        "": "empty"
+      },
+      "/"
+    ],
+    "preserve_args": true,
+    "result": "empty"
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      {
+        "01": "key"
+      },
+      "/01"
+    ],
+    "preserve_args": true,
+    "result": "key"
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      [
+        1
+      ],
+      "/01"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      [
+        1
+      ],
+      "/2"
+    ],
+    "preserve_args": true,
+    "raises": "IndexError"
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      {},
+      "/absent"
+    ],
+    "preserve_args": true,
+    "raises": "KeyError"
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      {},
+      "/x~2"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "pointer",
+    "function": "resolve",
+    "args": [
+      {
+        "a": 2
+      },
+      "/a/x"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

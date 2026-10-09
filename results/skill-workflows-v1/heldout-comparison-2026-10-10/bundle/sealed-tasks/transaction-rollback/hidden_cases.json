@@ -1,0 +1,145 @@
+[
+  {
+    "module": "transactions",
+    "function": "apply",
+    "args": [
+      {
+        "x": 1
+      },
+      [
+        [
+          "begin"
+        ],
+        [
+          "set",
+          "x",
+          2
+        ],
+        [
+          "rollback"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": {
+      "x": 1
+    }
+  },
+  {
+    "module": "transactions",
+    "function": "apply",
+    "args": [
+      {},
+      [
+        [
+          "set",
+          "a",
+          1
+        ],
+        [
+          "begin"
+        ],
+        [
+          "set",
+          "a",
+          2
+        ],
+        [
+          "begin"
+        ],
+        [
+          "set",
+          "b",
+          3
+        ],
+        [
+          "commit"
+        ],
+        [
+          "rollback"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": {
+      "a": 1
+    }
+  },
+  {
+    "module": "transactions",
+    "function": "apply",
+    "args": [
+      {},
+      [
+        [
+          "begin"
+        ],
+        [
+          "set",
+          "x",
+          4
+        ],
+        [
+          "begin"
+        ],
+        [
+          "set",
+          "x",
+          9
+        ],
+        [
+          "rollback"
+        ],
+        [
+          "commit"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": {
+      "x": 4
+    }
+  },
+  {
+    "module": "transactions",
+    "function": "apply",
+    "args": [
+      {},
+      [
+        [
+          "commit"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "transactions",
+    "function": "apply",
+    "args": [
+      {},
+      [
+        [
+          "begin"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "transactions",
+    "function": "apply",
+    "args": [
+      {},
+      [
+        [
+          "unknown"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

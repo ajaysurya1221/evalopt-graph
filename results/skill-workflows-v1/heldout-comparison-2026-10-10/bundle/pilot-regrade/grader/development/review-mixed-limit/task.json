@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "review-mixed-limit",
+  "split": "development",
+  "category": "mixed-workspace-review",
+  "source_family": "review-mixed-limit",
+  "instruction": "Review every change from benchmark-base through the current worktree: committed, staged, unstaged, untracked, and deleted files. Do not fix or stage anything. cli.read_limit must parse a base-10 integer string and reject zero or negative integers with ValueError; whitespace around an integer is allowed. Removing an existing regression test for this required rejection without replacing equivalent coverage is itself an actionable test-coverage-loss finding. Attribute runtime defects to the implementation function that causes them, not a forwarding caller.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "limits.py",
+        "symbol": "parse_limit",
+        "kind": "incorrect-result"
+      },
+      {
+        "path": "tests/test_negative.py",
+        "symbol": "<module>",
+        "kind": "test-coverage-loss"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "cli.py",
+      "source": "cli.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "cli.py"
+      ]
+    },
+    {
+      "kind": "copy",
+      "path": "limits.py",
+      "source": "limits.py"
+    },
+    {
+      "kind": "delete",
+      "path": "tests/test_negative.py"
+    }
+  ]
+}

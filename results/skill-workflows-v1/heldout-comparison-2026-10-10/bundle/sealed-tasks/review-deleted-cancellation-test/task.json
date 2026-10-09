@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "review-deleted-cancellation-test",
+  "split": "heldout",
+  "category": "mixed-workspace-review",
+  "source_family": "review-deleted-cancellation-test",
+  "instruction": "Review all changes from benchmark-base through the final on-disk worktree, including committed, staged, unstaged, untracked, and deleted files. Do not fix, stage, or commit anything. jobs.finish(log, cancelled) returns a new event list. Append completed only when not cancelled; always append closed exactly once, including cancellation. Preserve input log. Deleting an existing cancellation regression test without replacement is itself a test-coverage-loss defect. The candidate refactors cleanup to the untracked cleanup helper. Attribute each defect to the responsible function or file rather than a forwarding caller. Report no findings when every change satisfies the stated contract.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "jobs.py",
+        "symbol": "finish",
+        "kind": "incorrect-result"
+      },
+      {
+        "path": "tests/test_cancel.py",
+        "symbol": "<module>",
+        "kind": "test-coverage-loss"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "jobs.py",
+      "source": "jobs.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "jobs.py"
+      ]
+    },
+    {
+      "kind": "copy",
+      "path": "cleanup.py",
+      "source": "cleanup.py"
+    },
+    {
+      "kind": "delete",
+      "path": "tests/test_cancel.py"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"command": "python -B verify.py", "outcome": "failed", "returncode": 1, "stderr": "Traceback (most recent call last):\n  File \"/workspace/verify.py\", line 3, in <module>\n    assert not allowed(\"viewer\", \"write\")\nAssertionError\n", "stdout": ""}

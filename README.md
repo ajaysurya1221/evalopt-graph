@@ -168,7 +168,7 @@ Read the [evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/m
 [prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps.
 The v0.1.0 kernel package release contains no live-model governance campaign or official Docker SWE-bench result.
 
-### Workflow skill and prospective comparison
+### Workflow skill and measured comparison
 
 The portable [eval-opt skill](skills/eval-opt/SKILL.md) and
 [workflow benchmark](bench/harbor/skill-workflows-v1/README.md) are separate
@@ -176,25 +176,41 @@ development artifacts. The benchmark compares a baseline, Matt Pocock's pinned
 workflow bundle, and eval-opt under the same task and runtime conditions. Hidden
 outcome grading is separate from the kernel's stopped-output policy comparison.
 
-The [36-trial development pilot and offline reproduction package](results/skill-workflows-v1/development-pilot-2026-10-09/README.md)
-are complete. Every arm recorded 12/12 valid completions; a maintainer-run,
-isolated corrected-grader reexecution changed none of the 36 grades. The offline
-package replays supplied verifier replies; it does not execute stopped candidate
-code. This development result establishes
-no workflow advantage. Usage is complete for 34 attempts and partial for two;
-partial values are lower bounds and do not support efficiency claims.
-The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) records these
-limits. The [held-out registration](results/skill-workflows-v1/heldout-registration-2026-10-09/README.md)
-pins the planned 432-trial comparison before execution.
-The pilot package also has a [fresh public-clone reproduction receipt](results/skill-workflows-v1/validation-f515456/README.md).
-The [12-image transfer setup receipt](results/skill-workflows-v1/transfer-readiness-2026-10-09/README.md)
-records CLI installation and configuration checks. It contains no transfer task,
-verifier, or model trials and supports no workflow-performance claim.
-See the [prospective protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
-[frozen implementation notes](bench/harbor/skill-workflows-v1/STATUS.md). The linked
-result package supersedes those notes' pending pilot-QA status. Positive, neutral and
-negative results follow the same publication rules. This work leaves the stable
-kernel API and wheel dependencies unchanged.
+The [432-trial held-out comparison](results/skill-workflows-v1/heldout-comparison-2026-10-10/README.md)
+found **no demonstrated workflow upgrade**: upstream and eval-opt each achieved
+132/144 valid completions (91.67%). The registered paired C-minus-B difference
+is 0.00 percentage points, with a 95% interval of −2.08 to +2.08 points. This
+observed tie does not establish equivalence. All final outcomes are retained;
+one controller interruption and its permitted retry leave 433 attempts.
+The package releases all 48 authored task assets and replays 432 supplied-reply
+grades plus 1,296 policy decisions without executing candidate code.
+
+In the secondary policy comparison, M and G each accepted 378/432 outputs,
+including 19/37 graded-invalid outputs, while not accepting 36/395 valid outputs.
+G's nine abstentions overlap that non-acceptance count. These descriptive results
+do not establish a kernel advantage over M. All-attempt accounting contains
+417 complete and 16 partial records; partial counters are lower bounds, with no
+efficiency comparison or invented dollar costs.
+
+The [36-trial development pilot](results/skill-workflows-v1/development-pilot-2026-10-09/README.md)
+recorded 12/12 valid completions for each arm. Its separate isolated corrected-grader
+reexecution changed none of the 36 grades and added no agent trials. The pilot has
+[a fresh public-clone reproduction receipt](results/skill-workflows-v1/validation-f515456/README.md).
+The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) keeps pilot,
+held-out, policy, transfer and replication scope distinct.
+
+The [72-trial Terminal-Bench transfer registration](results/skill-workflows-v1/transfer-registration-2026-10-10/README.md)
+is frozen after primary completion and report replay. It is a feasibility subset,
+not an official leaderboard score; no transfer result is established by the
+held-out report. The prior [12-image setup checks](results/skill-workflows-v1/transfer-readiness-2026-10-09/README.md)
+were infrastructure controls, not task outcomes.
+
+The [protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
+[frozen implementation notes](bench/harbor/skill-workflows-v1/STATUS.md) retain their
+original prospective wording; completed result packages supersede historical
+pending statuses. This is a maintainer-run study, not independent human validation
+or independent agent replication. Hashes identify bytes, not authenticated
+producers. The stable kernel API and wheel dependencies remain unchanged.
 
 ## Integrate it anywhere
 

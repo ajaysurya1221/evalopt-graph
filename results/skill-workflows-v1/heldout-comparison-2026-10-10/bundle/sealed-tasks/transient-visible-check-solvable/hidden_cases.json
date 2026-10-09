@@ -1,0 +1,54 @@
+[
+  {
+    "module": "recovery",
+    "function": "request",
+    "args": [
+      "ready"
+    ],
+    "preserve_args": true,
+    "result": {
+      "status": "ready",
+      "payload": "OK",
+      "calls": 1
+    }
+  },
+  {
+    "module": "recovery",
+    "function": "request",
+    "args": [
+      "transient"
+    ],
+    "preserve_args": true,
+    "result": {
+      "status": "ready",
+      "payload": "OK",
+      "calls": 2
+    }
+  },
+  {
+    "module": "recovery",
+    "function": "request",
+    "args": [
+      "always"
+    ],
+    "preserve_args": true,
+    "result": {
+      "status": "blocked",
+      "reason": "retry-budget",
+      "calls": 2
+    }
+  },
+  {
+    "module": "recovery",
+    "function": "request",
+    "args": [
+      "fatal"
+    ],
+    "preserve_args": true,
+    "result": {
+      "status": "blocked",
+      "reason": "fatal",
+      "calls": 1
+    }
+  }
+]

@@ -1,0 +1,69 @@
+[
+  {
+    "module": "intervals",
+    "function": "merge",
+    "args": [
+      []
+    ],
+    "preserve_args": true,
+    "result": []
+  },
+  {
+    "module": "intervals",
+    "function": "merge",
+    "args": [
+      [
+        [
+          8,
+          10
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          8
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      [
+        1,
+        10
+      ]
+    ]
+  },
+  {
+    "module": "intervals",
+    "function": "merge",
+    "args": [
+      [
+        [
+          1,
+          9
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          12,
+          12
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      [
+        1,
+        9
+      ],
+      [
+        12,
+        12
+      ]
+    ]
+  }
+]

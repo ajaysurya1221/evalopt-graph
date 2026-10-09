@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "append-only-migration",
+  "split": "heldout",
+  "category": "constraint-preservation",
+  "source_family": "append-only-migration",
+  "instruction": "Implement migration003.plan(columns, indexes), a pure migration planner over supplied current schema names. Add deleted_at when absent using exactly \"ALTER TABLE items ADD COLUMN deleted_at TEXT NULL;\" and add items_deleted_at_idx when absent using exactly \"CREATE INDEX items_deleted_at_idx ON items(deleted_at);\". Return needed SQL strings in column-before-index order; repeated application to an updated schema yields []. Existing names are unique string lists, and the items table exists. Do not execute SQL. Preserve migration001.sql and migration002.sql byte-for-byte; only migration003.py may change. Preserve inputs.",
+  "allowed_changes": [
+    "migration003.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

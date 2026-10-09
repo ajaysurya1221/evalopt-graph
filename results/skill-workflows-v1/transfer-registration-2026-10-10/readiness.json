@@ -1,0 +1,1 @@
+{"probe_sha256":"88818dee715419c99cabe8c1422567db6f5ed8d6f689c5683215e6d70d22e9f7","usage":{"agent_count":3,"aggregation":"agent_exclusive","child_usage_complete":true,"input_tokens":125624,"model_calls":8,"output_tokens":422,"schema_version":"evalopt.workflow-usage.v1","tool_calls":5,"wall_seconds":31.309}}

@@ -1,0 +1,20 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    }
+  ]
+}

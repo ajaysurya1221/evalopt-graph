@@ -1,0 +1,122 @@
+[
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "src/a/b.py",
+      [
+        "src/**/*.py"
+      ]
+    ],
+    "preserve_args": true,
+    "result": true
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "src/b.py",
+      [
+        "src/**/*.py"
+      ]
+    ],
+    "preserve_args": true,
+    "result": true
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "src/a/b.py",
+      [
+        "src/*.py"
+      ]
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "x/../src//./a.py",
+      [
+        "src/*.py"
+      ]
+    ],
+    "preserve_args": true,
+    "result": true
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "",
+      [
+        "**"
+      ]
+    ],
+    "preserve_args": true,
+    "result": true
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "A.py",
+      [
+        "a.py"
+      ]
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "../x",
+      [
+        "**"
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "/x",
+      [
+        "**"
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "a/../../x",
+      [
+        "**"
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "allowlist",
+    "function": "matches",
+    "args": [
+      "a\\b",
+      [
+        "**"
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

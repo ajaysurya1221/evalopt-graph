@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "event-window-counter",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "event-window-counter",
+  "instruction": "Implement windows.count(events, now, window). events is a list of [id_string, integer_timestamp, label_string]; now and window are integers. Deduplicate by id using its final occurrence in input order before filtering. Count each surviving event by label iff now-window < timestamp <= now; exclude future events. Input timestamps need not be ordered. Return a dictionary with positive counts only. window <= 0 raises ValueError. Do not mutate events. All input shapes and types are valid.",
+  "allowed_changes": [
+    "windows.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

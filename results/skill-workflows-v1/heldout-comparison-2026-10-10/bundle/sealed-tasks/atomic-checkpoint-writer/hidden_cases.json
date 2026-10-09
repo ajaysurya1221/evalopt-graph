@@ -1,0 +1,116 @@
+[
+  {
+    "module": "checkpoint",
+    "function": "save",
+    "args": [
+      {
+        "state": "old",
+        "other": "keep"
+      },
+      "state",
+      "new",
+      false
+    ],
+    "preserve_args": true,
+    "result": {
+      "files": {
+        "state": "new",
+        "other": "keep"
+      },
+      "events": [
+        [
+          "write",
+          "state.tmp"
+        ],
+        [
+          "replace",
+          "state.tmp",
+          "state"
+        ]
+      ],
+      "saved": true
+    }
+  },
+  {
+    "module": "checkpoint",
+    "function": "save",
+    "args": [
+      {
+        "state": "old"
+      },
+      "state",
+      "new",
+      true
+    ],
+    "preserve_args": true,
+    "result": {
+      "files": {
+        "state": "old"
+      },
+      "events": [
+        [
+          "write",
+          "state.tmp"
+        ],
+        [
+          "remove",
+          "state.tmp"
+        ]
+      ],
+      "saved": false
+    }
+  },
+  {
+    "module": "checkpoint",
+    "function": "save",
+    "args": [
+      {},
+      "state",
+      "",
+      true
+    ],
+    "preserve_args": true,
+    "result": {
+      "files": {},
+      "events": [
+        [
+          "write",
+          "state.tmp"
+        ],
+        [
+          "remove",
+          "state.tmp"
+        ]
+      ],
+      "saved": false
+    }
+  },
+  {
+    "module": "checkpoint",
+    "function": "save",
+    "args": [
+      {},
+      "state",
+      "",
+      false
+    ],
+    "preserve_args": true,
+    "result": {
+      "files": {
+        "state": ""
+      },
+      "events": [
+        [
+          "write",
+          "state.tmp"
+        ],
+        [
+          "replace",
+          "state.tmp",
+          "state"
+        ]
+      ],
+      "saved": true
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 5740,
+      "sha256": "6c9116a2bf89fdc88a67b33de9249186d6ea18bd36ac7be1fdd353af01eb0581"
+    },
+    "receipt.json": {
+      "bytes": 10558,
+      "sha256": "df7afcc92b7f21cf2116783a6483e6438634e6f2e185da4cf79ca6807f29461b"
+    }
+  },
+  "schema_version": "evalopt.heldout-operations-checksums.v1"
+}

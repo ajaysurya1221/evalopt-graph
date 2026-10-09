@@ -1,0 +1,42 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified outcome verified by the development control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "false-positive-clean-review",
+      "kind": "response",
+      "replace": {
+        "findings": [
+          {
+            "path": "pages.py",
+            "symbol": "page",
+            "kind": "incorrect-result"
+          }
+        ]
+      }
+    },
+    {
+      "name": "refuses-solvable-review",
+      "kind": "response",
+      "replace": {
+        "status": "blocked",
+        "blockers": [
+          {
+            "resource": "tests",
+            "reason": "Would prefer additional checks."
+          }
+        ]
+      }
+    }
+  ]
+}

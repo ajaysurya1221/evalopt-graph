@@ -1,0 +1,1 @@
+{"command": "python -B verify.py", "outcome": "passed", "returncode": 0, "stderr": "", "stdout": "visible checks passed\n"}

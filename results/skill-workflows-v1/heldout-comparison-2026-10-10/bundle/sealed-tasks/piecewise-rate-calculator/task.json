@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "piecewise-rate-calculator",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "piecewise-rate-calculator",
+  "instruction": "Implement pricing.charge(units, tiers). units is an integer in 0..1000000. tiers is a list of [cumulative_integer_ceiling_or_null, price_string]; positive finite ceilings must strictly increase, and exactly one null ceiling must be last. Each price is a valid nonnegative decimal string with at most six fractional digits and value <=1000. Apply each marginal unit price only to units within that tier, add with exact decimal arithmetic, and round the final total once to two digits using half-up rounding. Return a string with exactly two decimal digits. Reject empty tiers, nonincreasing/nonpositive ceilings, null before the final tier, missing final null, negative price, or negative units with ValueError. Preserve tiers.",
+  "allowed_changes": [
+    "pricing.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

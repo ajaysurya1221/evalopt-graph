@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "json-pointer-escape",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "json-pointer-escape",
+  "instruction": "Repair pointer.resolve(document, pointer) for JSON values. Empty pointer returns the document; otherwise pointer starts / and slash-separated tokens unescape ~1 to / and ~0 to ~ in that order. Any other ~ escape raises ValueError. Dictionary keys are literal strings, including numeric and empty keys. Lists require a canonical nonnegative ASCII decimal index (0 or no leading zero), with invalid spelling raising ValueError and out-of-range raising IndexError. Missing dictionary keys raise KeyError; scalar traversal raises ValueError. Preserve document.",
+  "allowed_changes": [
+    "pointer.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

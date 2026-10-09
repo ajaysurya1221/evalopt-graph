@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "redacted-structured-logging",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "redacted-structured-logging",
+  "instruction": "Implement logging_filter.redact(value) for JSON values. Recursively replace the entire value at dictionary keys password, token, or api_key (ASCII case insensitive exact matching) with the literal string [REDACTED], regardless of its original type, including null. Recursively process other dictionaries and list elements while preserving keys, list order, scalar values, and shape. Key substrings and matching words inside values are not secrets. Return new containers without mutating any input. No network or external packages.",
+  "allowed_changes": [
+    "logging_filter.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

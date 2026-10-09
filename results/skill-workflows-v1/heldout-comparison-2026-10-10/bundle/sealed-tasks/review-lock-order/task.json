@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "review-lock-order",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-lock-order",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. locking.plan(resources) computes lock acquisition order for concurrent jobs. Resource identifiers are strings; remove duplicate identifiers and return them in one global ascending lexicographic order, regardless of the calling job's requested order, so two jobs cannot acquire the same pair in opposing orders. Do not mutate resources. The task evaluates this deterministic acquisition planner, not actual OS-thread scheduling. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "locking.py",
+        "symbol": "plan",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "locking.py",
+      "source": "locking.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "locking.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    },
+    {
+      "name": "counts-duplicates-before-final-id-deduplication",
+      "kind": "edit",
+      "path": "windows.py",
+      "append": "\ndef count(events, now, window):\n    if window <= 0:\n        raise ValueError(\"window\")\n    counts = {}\n    for identifier, timestamp, label in events:\n        if now-window < timestamp <= now:\n            counts[label] = counts.get(label, 0) + 1\n    return counts\n"
+    }
+  ]
+}

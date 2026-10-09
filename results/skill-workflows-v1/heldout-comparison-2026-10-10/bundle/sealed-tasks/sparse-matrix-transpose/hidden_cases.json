@@ -1,0 +1,117 @@
+[
+  {
+    "module": "sparse",
+    "function": "transpose",
+    "args": [
+      2,
+      3,
+      [
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          0,
+          -2
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      3,
+      2,
+      [
+        [
+          0,
+          1,
+          -2
+        ],
+        [
+          1,
+          0,
+          7
+        ]
+      ]
+    ]
+  },
+  {
+    "module": "sparse",
+    "function": "transpose",
+    "args": [
+      2,
+      2,
+      [
+        [
+          1,
+          1,
+          5
+        ],
+        [
+          1,
+          1,
+          -5
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      2,
+      2,
+      []
+    ]
+  },
+  {
+    "module": "sparse",
+    "function": "transpose",
+    "args": [
+      0,
+      4,
+      []
+    ],
+    "preserve_args": true,
+    "result": [
+      4,
+      0,
+      []
+    ]
+  },
+  {
+    "module": "sparse",
+    "function": "transpose",
+    "args": [
+      2,
+      3,
+      [
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          9
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      3,
+      2,
+      [
+        [
+          0,
+          0,
+          9
+        ]
+      ]
+    ]
+  }
+]

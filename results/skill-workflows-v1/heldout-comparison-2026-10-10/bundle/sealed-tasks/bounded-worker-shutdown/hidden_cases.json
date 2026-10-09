@@ -1,0 +1,87 @@
+[
+  {
+    "module": "workers",
+    "function": "run_jobs",
+    "args": [
+      [
+        3,
+        -2,
+        0,
+        7
+      ],
+      2
+    ],
+    "preserve_args": true,
+    "result": [
+      9,
+      4,
+      0,
+      49
+    ]
+  },
+  {
+    "module": "workers",
+    "function": "run_jobs",
+    "args": [
+      [],
+      1
+    ],
+    "preserve_args": true,
+    "result": []
+  },
+  {
+    "module": "workers",
+    "function": "run_jobs",
+    "args": [
+      [
+        1
+      ],
+      8
+    ],
+    "preserve_args": true,
+    "result": [
+      1
+    ]
+  },
+  {
+    "module": "workers",
+    "function": "run_jobs",
+    "args": [
+      [],
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "workers",
+    "function": "run_jobs",
+    "args": [
+      [
+        2
+      ],
+      9
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "thread_probe",
+    "function": "inspect_run",
+    "args": [
+      [
+        2,
+        3
+      ],
+      2
+    ],
+    "preserve_args": true,
+    "result": {
+      "result": [
+        4,
+        9
+      ],
+      "live_threads": 0
+    }
+  }
+]

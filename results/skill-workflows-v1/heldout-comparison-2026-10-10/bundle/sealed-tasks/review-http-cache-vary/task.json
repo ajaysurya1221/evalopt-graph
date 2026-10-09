@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "review-http-cache-vary",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-http-cache-vary",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. cache.cache_key(url, headers, vary) must return [url, pairs], where pairs contains every distinct Vary header name lowercased and sorted, with its matching case-insensitive request-header value (or empty string when absent). Input header names are unique ignoring case. Different selected header values must produce different keys; unselected headers must not affect keys. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "cache.py",
+        "symbol": "cache_key",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "cache.py",
+      "source": "cache.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "cache.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

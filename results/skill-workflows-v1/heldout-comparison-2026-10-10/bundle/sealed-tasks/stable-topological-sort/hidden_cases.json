@@ -1,0 +1,125 @@
+[
+  {
+    "module": "dependencies",
+    "function": "order",
+    "args": [
+      [
+        "b",
+        "a",
+        "c"
+      ],
+      [
+        [
+          "a",
+          "b"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "module": "dependencies",
+    "function": "order",
+    "args": [
+      [
+        "z",
+        "a",
+        "m"
+      ],
+      []
+    ],
+    "preserve_args": true,
+    "result": [
+      "a",
+      "m",
+      "z"
+    ]
+  },
+  {
+    "module": "dependencies",
+    "function": "order",
+    "args": [
+      [
+        "a",
+        "b"
+      ],
+      [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      "a",
+      "b"
+    ]
+  },
+  {
+    "module": "dependencies",
+    "function": "order",
+    "args": [
+      [],
+      []
+    ],
+    "preserve_args": true,
+    "result": []
+  },
+  {
+    "module": "dependencies",
+    "function": "order",
+    "args": [
+      [
+        "a"
+      ],
+      [
+        [
+          "a",
+          "a"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "dependencies",
+    "function": "order",
+    "args": [
+      [
+        "a"
+      ],
+      [
+        [
+          "a",
+          "x"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "dependencies",
+    "function": "order",
+    "args": [
+      [
+        "a",
+        "a"
+      ],
+      []
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

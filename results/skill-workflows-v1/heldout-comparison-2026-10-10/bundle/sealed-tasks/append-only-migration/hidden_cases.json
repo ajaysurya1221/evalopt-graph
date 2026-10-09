@@ -1,0 +1,63 @@
+[
+  {
+    "module": "migration003",
+    "function": "plan",
+    "args": [
+      [
+        "id"
+      ],
+      []
+    ],
+    "preserve_args": true,
+    "result": [
+      "ALTER TABLE items ADD COLUMN deleted_at TEXT NULL;",
+      "CREATE INDEX items_deleted_at_idx ON items(deleted_at);"
+    ]
+  },
+  {
+    "module": "migration003",
+    "function": "plan",
+    "args": [
+      [
+        "id",
+        "deleted_at"
+      ],
+      []
+    ],
+    "preserve_args": true,
+    "result": [
+      "CREATE INDEX items_deleted_at_idx ON items(deleted_at);"
+    ]
+  },
+  {
+    "module": "migration003",
+    "function": "plan",
+    "args": [
+      [
+        "id",
+        "deleted_at"
+      ],
+      [
+        "items_deleted_at_idx"
+      ]
+    ],
+    "preserve_args": true,
+    "result": []
+  },
+  {
+    "module": "migration003",
+    "function": "plan",
+    "args": [
+      [
+        "id"
+      ],
+      [
+        "items_deleted_at_idx"
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      "ALTER TABLE items ADD COLUMN deleted_at TEXT NULL;"
+    ]
+  }
+]

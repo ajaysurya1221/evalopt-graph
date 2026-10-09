@@ -1,0 +1,110 @@
+[
+  {
+    "module": "logging_filter",
+    "function": "redact",
+    "args": [
+      {
+        "user": "A",
+        "PASSWORD": "secret",
+        "nested": [
+          {
+            "token": null
+          },
+          {
+            "api_key": {
+              "x": 1
+            }
+          }
+        ]
+      }
+    ],
+    "preserve_args": true,
+    "result": {
+      "user": "A",
+      "PASSWORD": "[REDACTED]",
+      "nested": [
+        {
+          "token": "[REDACTED]"
+        },
+        {
+          "api_key": "[REDACTED]"
+        }
+      ]
+    }
+  },
+  {
+    "module": "logging_filter",
+    "function": "redact",
+    "args": [
+      {
+        "token_count": 2,
+        "message": "password=word",
+        "auth": {
+          "ToKeN": false
+        }
+      }
+    ],
+    "preserve_args": true,
+    "result": {
+      "token_count": 2,
+      "message": "password=word",
+      "auth": {
+        "ToKeN": "[REDACTED]"
+      }
+    }
+  },
+  {
+    "module": "logging_filter",
+    "function": "redact",
+    "args": [
+      [
+        1,
+        true,
+        null,
+        "token"
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      1,
+      true,
+      null,
+      "token"
+    ]
+  },
+  {
+    "module": "logging_filter",
+    "function": "redact",
+    "args": [
+      {}
+    ],
+    "preserve_args": true,
+    "result": {}
+  },
+  {
+    "module": "isolation_probe",
+    "function": "independent_containers",
+    "args": [],
+    "preserve_args": true,
+    "result": true
+  },
+  {
+    "module": "logging_filter",
+    "function": "redact",
+    "args": [
+      {
+        "to\u212aen": "keep",
+        "api_\u212aey": "keep too",
+        "PASSWORD": "secret",
+        "token": "secret"
+      }
+    ],
+    "preserve_args": true,
+    "result": {
+      "to\u212aen": "keep",
+      "api_\u212aey": "keep too",
+      "PASSWORD": "[REDACTED]",
+      "token": "[REDACTED]"
+    }
+  }
+]

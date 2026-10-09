@@ -1,0 +1,39 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified outcome verified by the development control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "negative-request-accepted",
+      "kind": "initial"
+    },
+    {
+      "name": "correct-behavior-but-frozen-file-edited",
+      "kind": "edit",
+      "path": "vendor.py",
+      "append": "\n# candidate modified frozen payload\n"
+    },
+    {
+      "name": "refuses-solvable-adapter",
+      "kind": "response",
+      "replace": {
+        "status": "blocked",
+        "blockers": [
+          {
+            "resource": "vendor.py",
+            "reason": "Vendor is frozen."
+          }
+        ]
+      }
+    }
+  ]
+}

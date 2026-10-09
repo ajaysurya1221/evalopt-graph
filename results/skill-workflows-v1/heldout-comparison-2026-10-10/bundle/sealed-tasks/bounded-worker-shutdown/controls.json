@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    },
+    {
+      "name": "returns-correct-values-with-live-worker",
+      "kind": "edit",
+      "path": "workers.py",
+      "append": "\ndef run_jobs(values, workers):\n    if not 1 <= workers <= 8:\n        raise ValueError(\"workers\")\n    from threading import Event, Thread\n    thread = Thread(target=Event().wait, daemon=True)\n    thread.start()\n    return [value * value for value in values]\n"
+    }
+  ]
+}

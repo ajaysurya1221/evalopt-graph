@@ -1,0 +1,92 @@
+[
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      0
+    ],
+    "preserve_args": true,
+    "result": "010000"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      "00256"
+    ],
+    "preserve_args": true,
+    "result": "010100"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      65535
+    ],
+    "preserve_args": true,
+    "result": "01ffff"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      true
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      -1
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      65536
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      "100000"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      " 1"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      "\u0661"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "wire_adapter",
+    "function": "serialize",
+    "args": [
+      null
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "preserve-cli-exit-contract",
+  "split": "heldout",
+  "category": "constraint-preservation",
+  "source_family": "preserve-cli-exit-contract",
+  "instruction": "Repair cli_format.diagnose(text), a pure formatter for the frozen CLI contract. A valid input has 1..18 ASCII digits with numeric value >0 (leading zeroes allowed). Return {\"exit\":0,\"stdout\":canonical_integer + newline,\"stderr\":\"\"}. Invalid strings return {\"exit\":2,\"stdout\":\"\",\"stderr\":\"invalid input: \" + Python repr(text) + newline}. Include the original spelling through repr in diagnostics; do not change exit codes or move output between streams. Preserve cli_contract.json exactly. Only cli_format.py may change.",
+  "allowed_changes": [
+    "cli_format.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

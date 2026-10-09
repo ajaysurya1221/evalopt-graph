@@ -1,0 +1,85 @@
+[
+  {
+    "module": "decoder",
+    "function": "decode_chunks",
+    "args": [
+      [
+        "63",
+        "61",
+        "66c3",
+        "a9"
+      ]
+    ],
+    "preserve_args": true,
+    "result": "caf\u00e9"
+  },
+  {
+    "module": "decoder",
+    "function": "decode_chunks",
+    "args": [
+      [
+        "f0",
+        "9f",
+        "98",
+        "80"
+      ]
+    ],
+    "preserve_args": true,
+    "result": "\ud83d\ude00"
+  },
+  {
+    "module": "decoder",
+    "function": "decode_chunks",
+    "args": [
+      []
+    ],
+    "preserve_args": true,
+    "result": ""
+  },
+  {
+    "module": "decoder",
+    "function": "decode_chunks",
+    "args": [
+      [
+        "efbb",
+        "bf41"
+      ]
+    ],
+    "preserve_args": true,
+    "result": "\ufeffA"
+  },
+  {
+    "module": "decoder",
+    "function": "decode_chunks",
+    "args": [
+      [
+        "e2",
+        "82"
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "decoder",
+    "function": "decode_chunks",
+    "args": [
+      [
+        "c080"
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "decoder",
+    "function": "decode_chunks",
+    "args": [
+      [
+        "ff"
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

@@ -1,0 +1,135 @@
+{
+  "agent_image": "sha256:2088a1d3f04f5168c13174c30ebbf60453e2744a421f4d3337f55425f3075710",
+  "agent_trials": 0,
+  "all_passed": true,
+  "controller_python": "CPython 3.13.12",
+  "controls": [
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "duration-parser"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "frozen-vendor-adapter"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "interval-union"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "missing-database-evidence"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "review-line-normalizer"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "review-mixed-limit"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "review-mixed-retention"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "review-pagination-clean"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "stale-test-report"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "ttl-expiry"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "unicode-route-adapter"
+    },
+    {
+      "exit_code": 0,
+      "oracle_passed": true,
+      "task_id": "unique-slug"
+    }
+  ],
+  "grade_records": {
+    "duration-parser": {
+      "hidden_case_records": 13,
+      "sha256": "f37fb4a17d69586185914a5b3fb7ab55171384b034bd91e5dea2bac480e9c808",
+      "valid_completion": true
+    },
+    "frozen-vendor-adapter": {
+      "hidden_case_records": 5,
+      "sha256": "45cae61448b55e7b72e73df469f7743724b4cee85f566ed28a76478a80e5b82e",
+      "valid_completion": true
+    },
+    "interval-union": {
+      "hidden_case_records": 3,
+      "sha256": "96b9e49f50b1d94c533429f72a29810487cce82d9c83bf5e16acf43e8958afd1",
+      "valid_completion": true
+    },
+    "missing-database-evidence": {
+      "hidden_case_records": 0,
+      "sha256": "0b7753e61d960c384307fa2f0f5c2850fe7aedfccaf41b61027551156af5f160",
+      "valid_completion": true
+    },
+    "review-line-normalizer": {
+      "hidden_case_records": 0,
+      "sha256": "196b9d5a7ea4d77d3fbcab4f4b3b032a9d4de0e73c8cbc6b314a42221a71a19e",
+      "valid_completion": true
+    },
+    "review-mixed-limit": {
+      "hidden_case_records": 0,
+      "sha256": "2b71e78edf29345f627092efe7153c0aeebf12d7dd8b4f5663d9c37f371d6a8a",
+      "valid_completion": true
+    },
+    "review-mixed-retention": {
+      "hidden_case_records": 0,
+      "sha256": "e61caadf130c503ef0bf88f24e55c9e6104bd00a5a3732566c892fc2b323e4a2",
+      "valid_completion": true
+    },
+    "review-pagination-clean": {
+      "hidden_case_records": 0,
+      "sha256": "e29b19f5c38c1486011acc3b24deb29b1186461c3d492e36f01d2bd3b8e92012",
+      "valid_completion": true
+    },
+    "stale-test-report": {
+      "hidden_case_records": 0,
+      "sha256": "0849da427fa2d2fc1ac107f75301514d8b2f31d982731f64f13623d0657b3d37",
+      "valid_completion": true
+    },
+    "ttl-expiry": {
+      "hidden_case_records": 5,
+      "sha256": "6576a40d38cafdad044723917299dbcfe0597d5e760327c2baec074c9e3d3454",
+      "valid_completion": true
+    },
+    "unicode-route-adapter": {
+      "hidden_case_records": 6,
+      "sha256": "4b0a6f96dd809c805b9df486cccddcf7065027e44d026d0d2a7afd43eabdb3be",
+      "valid_completion": true
+    },
+    "unique-slug": {
+      "hidden_case_records": 6,
+      "sha256": "8dcc331ff85173e5f4c0a83f4588a56bfbc3859744a6ecc76faf22b76ff5b2b5",
+      "valid_completion": true
+    }
+  },
+  "schema_version": "evalopt.runtime-controls.v1",
+  "scope": "Maintainer-run, model-free Docker/chroot development oracle controls; not workflow outcomes or independent replication.",
+  "tasks_sha256": "5e6321baf59c82ebe91508d8c52a8ebe72780ecb1201363e34cec5514dab546d",
+  "verifier_image": "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+  "verify_sha256": "856fd980d1a9d662c20e3567870d337ca775fc7c48e86f036d50b9735a35a712"
+}

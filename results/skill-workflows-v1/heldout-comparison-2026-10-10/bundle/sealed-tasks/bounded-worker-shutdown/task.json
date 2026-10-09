@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "bounded-worker-shutdown",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "bounded-worker-shutdown",
+  "instruction": "Repair workers.run_jobs(values, workers), which must terminate after squaring each integer input exactly once and return results in original order, without changing values. workers is an integer; values has at most 100 integers. Reject counts outside 1..8 with ValueError, including empty input. Empty input returns [] for a valid count. Clean up every worker and leave no live worker thread after return. The existing queue-based implementation is allowed to be simplified if all specified behavior is preserved; there is no minimum parallel speedup requirement.",
+  "allowed_changes": [
+    "workers.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

@@ -44,8 +44,9 @@ and [exec completion](https://github.com/openai/codex/blob/6b9826e3aa83b1a5947db
 
 No automatic child-join setting was found in the pinned configuration schema.
 This is not a basis for retrying an agent outcome. Continuing with explicitly
-partial accounting would change the registered accounting requirement and remains
-unapproved. No existing attempt or frozen source has been rewritten.
+partial accounting changes the original accounting requirement. The operator
+authorized that change on 2026-10-09; see the [explicit amendment](../ACCOUNTING_AMENDMENT.md).
+No existing attempt or frozen source has been rewritten.
 
 ## Offline reproduction
 

@@ -45,7 +45,11 @@ credit purchase, silent model substitution or hidden reduction of subagents.
 Fresh containers/configurations exclude personal memory, unrelated skills and
 earlier trajectories. One parent may use two simultaneous children at depth one.
 Measure parent and child usage without adding already aggregated parent totals.
-Unaccounted children or unverified dependency loading block campaign readiness.
+Unknown child identities or unverified dependency loading block campaign readiness.
+The original registration requires complete usage. The operator-approved
+[partial-accounting amendment](ACCOUNTING_AMENDMENT.md) permits explicitly labeled
+lower bounds through a separately frozen controller and derived receipts. It does
+not relax structural runtime checks or permit efficiency claims from incomplete totals.
 The host controller and offline report reproduction use CPython 3.13.12. The
 source-frozen controller rejects other interpreter versions before registration,
 dispatch and reporting; container task interpreters remain separately image-pinned.

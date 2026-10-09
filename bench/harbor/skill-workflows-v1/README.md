@@ -50,6 +50,26 @@ PYTHONPATH=bench/harbor/skill-workflows-v1 .venv/bin/python -m runtime.offline_c
 .venv/bin/python bench/harbor/skill-workflows-v1/campaign.py report --directory .benchmark/pilot
 ```
 
+The retained nine-of-36 development pilot uses the approved
+[partial-accounting amendment](ACCOUNTING_AMENDMENT.md). Its external controller
+calls the original frozen runtime in a separate isolated Python process. Registration
+binds the existing outcomes and pending schedule; it never rewrites an old finish
+record or marks partial telemetry complete. The following commands require the
+actual preserved campaign and frozen source paths:
+
+```sh
+.venv-harbor/bin/python bench/harbor/skill-workflows-v1/amended_pilot.py register --campaign /path/to/preserved-pilot --frozen-source /path/to/frozen/bench/harbor/skill-workflows-v1 --upstream /path/to/pinned-upstream --authorization 'partial accounting'
+.venv-harbor/bin/python bench/harbor/skill-workflows-v1/amended_pilot.py verify --campaign /path/to/preserved-pilot --amendment-sha256 RECORDED_AMENDMENT_SHA256
+.venv-harbor/bin/python bench/harbor/skill-workflows-v1/amended_pilot.py run --campaign /path/to/preserved-pilot --amendment-sha256 RECORDED_AMENDMENT_SHA256
+.venv-harbor/bin/python bench/harbor/skill-workflows-v1/amended_pilot.py report --campaign /path/to/preserved-pilot --amendment-sha256 RECORDED_AMENDMENT_SHA256
+```
+
+Use the returned amendment identity verbatim. This incident-specific controller
+accepts only pending first attempts. New infrastructure failures, unknown quota
+permission, invalid runtime identity or unverifiable delegation still pause it.
+It reports complete counters and partial observed lower bounds separately;
+incomplete resource evidence cannot support an efficiency advantage claim.
+
 `--live` is a bounded capability probe using subscription allowance; it is reported
 separately from the 540 study trials. Preparation verifies native model/effort,
 subagent accounting, skill loading and all twelve separate-verifier oracle controls.

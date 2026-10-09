@@ -3,7 +3,9 @@
 Protocol: `evalopt-skill-workflows-v1`. Status: implementation in progress.
 
 The current development pilot has nine of 36 terminal outcomes. It is paused
-because one interrupted child has incomplete native usage telemetry. No held-out
+because one interrupted child has incomplete native usage telemetry. The operator
+authorized [partial accounting](ACCOUNTING_AMENDMENT.md) on 2026-10-09; an explicit
+source-bound resumption controller is being implemented and verified. No held-out
 or transfer model trials have run, and no comparative claim is established.
 Held-out trials must wait for pilot QA, separate task review and immutable
 registration. See [the retained pilot incidents](evidence/PILOT_INCIDENTS.md).
@@ -30,7 +32,8 @@ and must accompany the eventual resource report.
 
 The runtime has a fresh included-usage permission check before each dispatch. Unknown
 permission or subscription exhaustion prevents dispatch; neither credits nor another
-billing route are selected. Missing native accounting pauses the campaign.
+billing route are selected. The original controller pauses on missing native
+accounting. The amendment admits verified partial telemetry through separate receipts.
 
 The partial public evidence candidate remains local. No benchmark result bundle
 has been uploaded or published. The original pilot's telemetry-corruption incident and all capability

@@ -116,7 +116,7 @@ def source_pins():
 
 def _native_baseline(request):
     with tempfile.TemporaryDirectory(prefix="evalopt-regrade-baseline-") as temporary:
-        root = Path(temporary)
+        root = Path(temporary).resolve(strict=True)
         data = {**request, "destination": str(root / "materialized"), "result": str(root / "result.json")}
         result = subprocess.run(
             [

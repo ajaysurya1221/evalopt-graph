@@ -23,6 +23,40 @@ from runtime.verify import collect_grade, strict_json  # noqa: E402
 from tasks import suite  # noqa: E402
 
 
+def test_native_baseline_canonicalizes_only_its_trusted_temporary_root(tmp_path, monkeypatch):
+    """A platform temporary-directory alias must not enter strict evidence reads."""
+    actual = tmp_path.resolve() / "actual-temporary-parent"
+    actual.mkdir()
+    alias = tmp_path.resolve() / "temporary-parent-alias"
+    alias.symlink_to(actual, target_is_directory=True)
+    temporary_directory = regrade.tempfile.TemporaryDirectory
+    roots = []
+
+    def temporary(**options):
+        context = temporary_directory(dir=alias, **options)
+        roots.append(Path(context.name))
+        return context
+
+    def bridge(argv, **options):
+        request = json.loads(options["input"])
+        destination, result = Path(request["destination"]), Path(request["result"])
+        assert destination == destination.resolve()
+        assert result == result.resolve()
+        assert result.parent.parent == actual
+        assert argv[1:5] == ["-I", "-B", "-X", "pycache_prefix=" + str(result.parent / "empty-cache")]
+        assert options["timeout"] == 120 and options["check"] is False
+        result.write_bytes(canonical_bytes({"initial_manifest": {"trusted.txt": "fixture-digest"}}))
+        # Canonicalizing this controller-owned temporary path must not relax _safe.
+        with pytest.raises(ValueError, match="symlink"):
+            regrade._safe(roots[-1] / "result.json")
+        return SimpleNamespace(returncode=0)
+
+    monkeypatch.setattr(regrade.tempfile, "TemporaryDirectory", temporary)
+    monkeypatch.setattr(regrade.subprocess, "run", bridge)
+    assert regrade._native_baseline({"fixture": True}) == {"trusted.txt": "fixture-digest"}
+    assert not roots[0].exists()
+
+
 def oracle_grade(root, row):
     context = read_json(root / "inputs" / row["trial_id"] / "context.json")
     task = suite.load_task(row["task_id"])

@@ -184,6 +184,7 @@ partial values are lower bounds and do not support efficiency claims.
 The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) records these
 limits. The [held-out registration](results/skill-workflows-v1/heldout-registration-2026-10-09/README.md)
 pins the planned 432-trial comparison before execution.
+The pilot package also has a [fresh public-clone reproduction receipt](results/skill-workflows-v1/validation-f515456/README.md).
 See the [prospective protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
 [frozen implementation notes](bench/harbor/skill-workflows-v1/STATUS.md). The linked
 result package supersedes those notes' pending pilot-QA status. Positive, neutral and

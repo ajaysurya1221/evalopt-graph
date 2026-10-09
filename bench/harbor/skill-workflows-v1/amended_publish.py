@@ -535,7 +535,7 @@ def _validate_runs(directory, record, sidecars, identity):
             permission = _read(path)
             exact(
                 permission,
-                {"schema_version", "trial_id", "ordinary_usage_allowed", "state"},
+                {"schema_version", "trial_id", "amendment_sha256", "ordinary_usage_allowed", "state"},
                 "amended subscription permission",
             )
             trial = permission["trial_id"]
@@ -545,6 +545,7 @@ def _validate_runs(directory, record, sidecars, identity):
             )
             _require(
                 permission["schema_version"] == "evalopt.amended-permission.v1"
+                and permission["amendment_sha256"] == identity
                 and type(permission["ordinary_usage_allowed"]) is bool
                 and permission["state"] in {"allowed", "exhausted", "unavailable"}
                 and permission["ordinary_usage_allowed"] == (permission["state"] == "allowed"),

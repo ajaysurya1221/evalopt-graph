@@ -191,6 +191,7 @@ def amended(tmp_path):
             {
                 "schema_version": "evalopt.amended-permission.v1",
                 "trial_id": pending[0],
+                "amendment_sha256": identity,
                 "ordinary_usage_allowed": True,
                 "state": "allowed",
             },
@@ -379,16 +380,23 @@ def test_changed_original_grade_is_not_rescored_by_amendment(amended, tmp_path):
         publication.verify_public_bundle(destination)
 
 
-@pytest.mark.parametrize("mutation", ["permission", "dispatched", "extra-run-field"])
+@pytest.mark.parametrize(
+    "mutation", ["permission", "permission-amendment", "missing-amendment", "dispatched", "extra-run-field"]
+)
 def test_rehashed_amendment_run_receipts_are_checked(amended, tmp_path, mutation):
     amended["later_blocked"]()
     destination = tmp_path / "public"
     export(amended, destination)
     run = destination / "runs/run-0001"
-    if mutation == "permission":
+    if mutation in {"permission", "permission-amendment", "missing-amendment"}:
         path = run / amended["schedule"][9]["trial_id"] / "permission.json"
         value = read_json(path)
-        value.update(ordinary_usage_allowed=False, state="exhausted")
+        if mutation == "permission":
+            value.update(ordinary_usage_allowed=False, state="exhausted")
+        elif mutation == "permission-amendment":
+            value["amendment_sha256"] = "0" * 64
+        else:
+            value.pop("amendment_sha256")
     else:
         path = run / "end.json"
         value = read_json(path)

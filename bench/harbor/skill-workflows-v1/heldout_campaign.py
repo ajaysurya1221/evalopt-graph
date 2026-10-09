@@ -13,6 +13,7 @@ import asyncio
 import importlib.metadata
 import json
 import shutil
+import stat
 from collections import Counter
 from functools import partial
 from pathlib import Path, PurePosixPath
@@ -49,6 +50,166 @@ HELDOUT_FILES = (
     "pilot-evidence.json",
     "freeze.json",
 )
+REGRADE_FILES = ("pilot-regrade-manifest.json", "pilot-regrade-receipt.json")
+REGRADE_PINS = ("regrade_registration_sha256", "regrade_evidence_sha256")
+
+
+def _grading_review(compatibility, previous, current):
+    regraded = isinstance(compatibility, dict) and compatibility.get("verdict") == "regraded_stopped_outputs"
+    exact(
+        compatibility,
+        {"pilot", "current", "verdict", "reason"} | (set(REGRADE_PINS) if regraded else set()),
+        "grading compatibility review",
+    )
+    if (
+        compatibility["pilot"] != previous
+        or compatibility["current"] != current
+        or compatibility["verdict"] not in {"unchanged_semantics", "regraded_stopped_outputs"}
+        or not isinstance(compatibility["reason"], str)
+        or not compatibility["reason"].strip()
+        or (regraded and any(not is_digest(compatibility[key]) for key in REGRADE_PINS))
+    ):
+        raise ValueError("changed grading requires an exact compatibility or stopped-output regrade review")
+    return regraded
+
+
+def regrade_nodes(root):
+    """An exact public evidence tree; no ignored files, symlinks or special nodes."""
+    _regular_tree(root)
+    nodes = {}
+    for path in sorted(root.rglob("*")):
+        name = path.relative_to(root).as_posix()
+        mode = stat.S_IMODE(path.lstat().st_mode)
+        if path.is_symlink() or mode & ~0o777:
+            raise ValueError("unsupported pilot regrade node or permissions")
+        if path.is_dir():
+            nodes[name] = {"type": "directory", "mode": mode}
+        elif stat.S_ISREG(path.lstat().st_mode):
+            raw = path.read_bytes()
+            nodes[name] = {"type": "file", "mode": mode, "size": len(raw), "sha256": bytes_digest(raw)}
+        else:
+            raise ValueError("special node in pilot regrade evidence")
+    if not nodes:
+        raise ValueError("pilot regrade evidence tree is empty")
+    return {"schema_version": "evalopt.pilot-regrade-assets.v1", "nodes": nodes}
+
+
+def _match_regrade_receipt(receipt, review, previous, current, schedule_sha256):
+    compatibility = review["grading_compatibility"]
+    accounting = review.get("accounting")
+    if (
+        review.get("schema_version") != "evalopt.pilot-review.v2"
+        or not isinstance(accounting, dict)
+        or not is_digest(accounting.get("amendment_sha256"))
+    ):
+        raise ValueError("pilot regrade requires its explicitly reviewed accounting amendment")
+    if (
+        receipt.get("registration_sha256") != compatibility["regrade_registration_sha256"]
+        or receipt.get("evidence_sha256") != compatibility["regrade_evidence_sha256"]
+        or receipt.get("pilot_registration_sha256") != review["pilot_registration_sha256"]
+        or receipt.get("pilot_export_id") != review["pilot_export_id"]
+        or receipt.get("accounting_amendment_sha256") != accounting["amendment_sha256"]
+        or receipt.get("schedule_sha256") != schedule_sha256
+        or receipt.get("grading") != {"pilot": previous, "current": current}
+        or type(receipt.get("scheduled_trials")) is not int
+        or receipt["scheduled_trials"] != 36
+        or type(receipt.get("regraded_attempts")) is not int
+        or receipt["regraded_attempts"] != 36
+        or receipt.get("original_policy_decisions_changed") is not False
+        or type(receipt.get("agent_trials")) is not int
+        or receipt["agent_trials"] != 0
+    ):
+        raise ValueError("pilot regrade differs from reviewed identities or complete stopped-output coverage")
+    return receipt
+
+
+def _check_public_regrade_tree(root):
+    import pilot_regrade
+    from publish_bundle import scan_public_file
+
+    manifest = regrade_nodes(root)
+    payloads = pilot_regrade.public_payloads(root / "registration.json")
+    files = {name for name, record in manifest["nodes"].items() if record["type"] == "file"}
+    directories = {name for name, record in manifest["nodes"].items() if record["type"] == "directory"}
+    expected_directories = {
+        parent.as_posix()
+        for name in payloads
+        for parent in PurePosixPath(name).parents
+        if parent.as_posix() != "."
+    }
+    if files != set(payloads) or directories != expected_directories:
+        raise ValueError("pilot regrade export includes non-whitelisted files or directories")
+    for name, raw in payloads.items():
+        scan_public_file("pilot-regrade/" + name, raw)
+    return manifest
+
+
+def _private_regrade(pilot, review, previous, current):
+    import pilot_regrade
+
+    compatibility = review["grading_compatibility"]
+    registration = pilot / "qa-regrades" / compatibility["regrade_registration_sha256"] / "registration.json"
+    receipt = pilot_regrade.verify_evidence(
+        registration,
+        registration_sha256=compatibility["regrade_registration_sha256"],
+        evidence_sha256=compatibility["regrade_evidence_sha256"],
+        current_grading=current,
+    )
+    schedule_sha256 = digest(build_schedule(read_json(pilot / "manifest.json")["tasks"], "pilot"))
+    return _match_regrade_receipt(receipt, review, previous, current, schedule_sha256)
+
+
+def verify_retained_regrade(destination, *, source=ROOT):
+    """Verify full retained public assets, not merely a regrade summary receipt."""
+    frozen = read_json(destination / "freeze.json")
+    review = read_json(destination / "pilot-review.json")
+    pilot = read_json(destination / "pilot-evidence.json")
+    conditions = pilot["candidate_conditions"]
+    compatibility = review.get("grading_compatibility")
+    regraded = isinstance(compatibility, dict) and compatibility.get("verdict") == "regraded_stopped_outputs"
+    if not regraded:
+        if (
+            set(REGRADE_PINS) & set(frozen)
+            or "grading_regrade" in conditions
+            or any((destination / name).exists() for name in (*REGRADE_FILES, "pilot-regrade"))
+        ):
+            raise ValueError("pilot regrade evidence lacks an explicit registered review")
+        return None
+    current = {
+        "suite": source_identity(source / "tasks"),
+        "verifier": bytes_digest((source / "runtime/verify.py").read_bytes()),
+    }
+    previous = conditions["pilot_grading"]
+    _grading_review(compatibility, previous, current)
+    if (
+        conditions["reviewed_current_grading"] != current
+        or any(frozen.get(key) != compatibility[key] for key in REGRADE_PINS)
+        or pilot["review_sha256"] != bytes_digest((destination / "pilot-review.json").read_bytes())
+        or pilot["registration_sha256"] != review["pilot_registration_sha256"]
+        or pilot["export_id"] != review["pilot_export_id"]
+    ):
+        raise ValueError("frozen pilot regrade differs from the reviewed grader or pilot registration")
+    root = destination / "pilot-regrade"
+    if read_json(destination / "pilot-regrade-manifest.json") != regrade_nodes(root):
+        raise ValueError("retained pilot regrade nodes or bytes changed")
+    import pilot_regrade
+
+    receipt = pilot_regrade.verify_evidence(
+        root / "registration.json",
+        registration_sha256=compatibility["regrade_registration_sha256"],
+        evidence_sha256=compatibility["regrade_evidence_sha256"],
+        current_grading=current,
+    )
+    _check_public_regrade_tree(root)
+    _match_regrade_receipt(
+        receipt, review, previous, current, digest(read_json(root / "registration.json")["schedule"])
+    )
+    if (
+        receipt != read_json(destination / "pilot-regrade-receipt.json")
+        or conditions.get("grading_regrade") != receipt
+    ):
+        raise ValueError("pilot regrade receipt differs from its full retained evidence")
+    return receipt
 
 
 def _regular_tree(root: Path) -> None:
@@ -323,16 +484,10 @@ def _pilot_conditions(pilot, manifest, review):
         "verifier": bytes_digest((HERE / "verify.py").read_bytes()),
     }
     compatibility = review.get("grading_compatibility")
+    regrade = None
     if previous_grading != current_grading or compatibility is not None:
-        exact(compatibility, {"pilot", "current", "verdict", "reason"}, "grading compatibility review")
-        if (
-            compatibility["pilot"] != previous_grading
-            or compatibility["current"] != current_grading
-            or compatibility["verdict"] != "unchanged_semantics"
-            or not isinstance(compatibility["reason"], str)
-            or not compatibility["reason"].strip()
-        ):
-            raise ValueError("changed grading requires an exact unchanged-semantics review")
+        if _grading_review(compatibility, previous_grading, current_grading):
+            regrade = _private_regrade(pilot, review, previous_grading, current_grading)
     return {
         "skill_sha256": source_lock["skill_sha256"],
         "upstream_sha256": source_lock["upstream_sha256"],
@@ -341,16 +496,23 @@ def _pilot_conditions(pilot, manifest, review):
         "runtime": runtime,
         "pilot_grading": previous_grading,
         "reviewed_current_grading": current_grading,
+        **({"grading_regrade": regrade} if regrade is not None else {}),
     }
 
 
 def heldout_files(destination: Path):
     frozen = read_json(destination / "freeze.json")
     if frozen.get("schema_version") == "evalopt.heldout-freeze.v1":
-        return HELDOUT_FILES
-    if frozen.get("schema_version") == "evalopt.heldout-freeze.v2":
-        return (*HELDOUT_FILES, "accounting-policy.json")
-    raise ValueError("unsupported heldout freeze schema")
+        names = HELDOUT_FILES
+    elif frozen.get("schema_version") == "evalopt.heldout-freeze.v2":
+        names = (*HELDOUT_FILES, "accounting-policy.json")
+    else:
+        raise ValueError("unsupported heldout freeze schema")
+    if set(REGRADE_PINS) & set(frozen):
+        if any(not is_digest(frozen.get(key)) for key in REGRADE_PINS):
+            raise ValueError("pilot regrade freeze requires both explicit content identities")
+        names = (*names, *REGRADE_FILES)
+    return names
 
 
 def _heldout_identity(destination: Path) -> dict:
@@ -447,6 +609,27 @@ def freeze(
     if pilot_evidence["schema_version"] == "evalopt.pilot-evidence.v2":
         accounting_policy = build_policy(pilot_evidence, bytes_digest(pilot_review.read_bytes()))
         write_once(destination / "accounting-policy.json", accounting_policy)
+    regrade_pins = {}
+    if "grading_regrade" in conditions:
+        import pilot_regrade
+
+        reviewed = read_json(pilot_review)
+        compatibility = reviewed["grading_compatibility"]
+        regrade_pins = {key: compatibility[key] for key in REGRADE_PINS}
+        receipt = pilot_regrade.export_evidence(
+            pilot / "qa-regrades" / compatibility["regrade_registration_sha256"] / "registration.json",
+            destination / "pilot-regrade",
+            registration_sha256=compatibility["regrade_registration_sha256"],
+            evidence_sha256=compatibility["regrade_evidence_sha256"],
+            current_grading=conditions["reviewed_current_grading"],
+        )
+        if receipt != conditions["grading_regrade"]:
+            raise ValueError("pilot regrade changed during heldout freeze")
+        write_once(
+            destination / "pilot-regrade-manifest.json",
+            _check_public_regrade_tree(destination / "pilot-regrade"),
+        )
+        write_once(destination / "pilot-regrade-receipt.json", receipt)
     write_once(
         destination / "freeze.json",
         {
@@ -459,6 +642,7 @@ def freeze(
             "task_root": "sealed-tasks",
             "excluded_authoring_material": sorted(EXCLUDED),
             "frozen_at": campaign._now(),
+            **regrade_pins,
             **(
                 {"accounting_policy_sha256": digest(accounting_policy)}
                 if accounting_policy is not None
@@ -468,6 +652,7 @@ def freeze(
     )
     write_once(destination / "heldout-lock.json", _heldout_identity(destination))
     read_accounting_policy(destination)
+    verify_retained_regrade(destination)
     return {
         "status": "frozen_not_executed",
         "scheduled_trials": 432,
@@ -507,6 +692,7 @@ def verify_registration(destination: Path, upstream: Path, registration_sha256: 
         raise ValueError("stable kernel differs from frozen source commit")
     frozen = read_json(destination / "freeze.json")
     read_accounting_policy(destination)
+    verify_retained_regrade(destination)
     sealed = destination / "sealed-tasks"
     candidate = verify_sealed_tasks(sealed, frozen["candidate_manifest_sha256"])
     if candidate != read_json(destination / "sealed-manifest.json") or file_manifest(sealed) != read_json(

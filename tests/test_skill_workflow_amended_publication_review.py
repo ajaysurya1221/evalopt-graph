@@ -214,6 +214,7 @@ def test_review_run_validator_rejects_dispatch_after_previously_bound_blocker(pu
         {
             "schema_version": "evalopt.amended-permission.v1",
             "trial_id": trial,
+            "amendment_sha256": record["identity"],
             "ordinary_usage_allowed": True,
             "state": "allowed",
         },

@@ -40,10 +40,14 @@ SCOPE = "maintainer-run held-out outcomes; pure grading replay from controller-s
 
 def _root_files(root):
     """Keep the legacy release roster exact; v2 additionally retains its policy."""
-    frozen = read_json(root / "freeze.json")
-    return ROOT_FILES | (
-        {"accounting-policy.json"} if frozen.get("schema_version") == "evalopt.heldout-freeze.v2" else set()
-    )
+    return ROOT_FILES | set(heldout_campaign.heldout_files(root))
+
+
+def _asset_roots(root, source):
+    roots = [(root / "sealed-tasks", "sealed-tasks"), (source, "benchmark-source")]
+    if "pilot-regrade-manifest.json" in _root_files(root):
+        roots.append((root / "pilot-regrade", "pilot-regrade"))
+    return roots
 
 
 # Reviewed synthetic inputs, bound to the exact sealed fixture; never a general
@@ -190,12 +194,14 @@ def replay_grade(path, scheduled, task_root):
     snapshot = read_json(path / "agent/snapshot.json")
     response = None
     node = snapshot["nodes"].get("response.json")
-    if node is not None and node.get("type") == "file":
+    if not inputs["unsafe_snapshot"] and node is not None and node.get("type") == "file":
         try:
-            response = strict_json(base64.b64decode(node["data"], validate=True))
+            # The executed verifier reads UTF-8 text. Passing bytes here would
+            # silently accept BOM/UTF-16 encodings that read_text() rejects.
+            response = strict_json(base64.b64decode(node["data"], validate=True).decode("utf-8"))
         except (ValueError, TypeError):
             response = None
-    if response != inputs["response"]:
+    if digest(response) != digest(inputs["response"]):
         raise ValueError("grade response differs from frozen agent output")
     visible = read_json(path / "visible.json")
     gates = [gate for gate in visible["gates"] if gate["name"] == "visible_check"]
@@ -216,7 +222,7 @@ def replay_grade(path, scheduled, task_root):
             raise GradeReplayError("recorded hidden case response missing")
         record = records[consumed]
         consumed += 1
-        if not isinstance(record, dict) or record.get("request") != request:
+        if not isinstance(record, dict) or digest(record.get("request")) != digest(request):
             raise GradeReplayError("hidden case request or order differs")
         if set(record) == {"request", "error"} and record["error"] == "candidate_invocation_failed":
             raise ValueError("recorded candidate invocation failed")
@@ -243,7 +249,9 @@ def replay_grade(path, scheduled, task_root):
     if finish["status"] == "timeout":
         reproduced["valid_completion"] = False
     reproduced["boundary_violation"] = not reproduced["boundaries_preserved"]
-    if {key: value for key, value in grade.items() if key != "reproduction_inputs"} != reproduced:
+    if digest({key: value for key, value in grade.items() if key != "reproduction_inputs"}) != digest(
+        reproduced
+    ):
         raise ValueError("retained grade does not reproduce from supplied case replies")
     return True
 
@@ -331,6 +339,7 @@ def _check_heldout(root, registration_sha256, source):
                 validate_attempt(record, policy)
     elif (root / "accounting-policy.json").exists():
         raise authored.PublicationError("legacy heldout registration cannot add an accounting policy")
+    heldout_campaign.verify_retained_regrade(root, source=source)
     return manifest, schedule, store
 
 
@@ -578,7 +587,7 @@ def export_public_bundle(
         reports, replayed = _reports(root, store, schedule, unavailable, _runs(root))
         payloads = _collect_evidence(root, store, unavailable)
         assets = {}
-        for origin, prefix in ((root / "sealed-tasks", "sealed-tasks"), (source, "benchmark-source")):
+        for origin, prefix in _asset_roots(root, source):
             files, nodes = _asset_tree(origin, prefix)
             payloads.update(files)
             assets.update(nodes)
@@ -657,8 +666,8 @@ def verify_public_bundle(directory):
     if asset_manifest["schema_version"] != "evalopt.heldout-assets.v1":
         raise authored.PublicationError("unsupported released asset manifest")
     actual_assets = {}
-    for prefix in ("sealed-tasks", "benchmark-source"):
-        _, nodes = _asset_tree(root / prefix, prefix)
+    for origin, prefix in _asset_roots(root, root / "benchmark-source"):
+        _, nodes = _asset_tree(origin, prefix)
         actual_assets.update(nodes)
     if actual_assets != asset_manifest["nodes"]:
         raise authored.PublicationError("released asset bytes, nodes or modes changed")

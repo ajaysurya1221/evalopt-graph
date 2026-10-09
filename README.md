@@ -176,7 +176,8 @@ development artifacts. The benchmark compares a baseline, Matt Pocock's pinned
 workflow bundle, and eval-opt under the same task and runtime conditions. Hidden
 outcome grading is separate from the kernel's stopped-output policy comparison.
 
-The development pilot is incomplete; no workflow advantage is established.
+The 36-trial development pilot is complete; final grading QA is in progress.
+No workflow advantage is established.
 See the [prospective protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
 [execution status](bench/harbor/skill-workflows-v1/STATUS.md). Positive, neutral and
 negative results follow the same publication rules. This work leaves the stable

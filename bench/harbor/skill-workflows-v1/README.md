@@ -102,7 +102,12 @@ grader identities. The freeze excludes authoring/QA material and creates 432
 scheduled trials. `run-heldout` requires the resulting registration hash explicitly
 and checks source and sealed-task identities before every dispatch.
 
-The current pilot does **not** pass this gate while it is incomplete. A legacy
+The current verifier has a confirmed scoring change in malformed JSON handling.
+The [grading repair](GRADING_AMENDMENT.md) requires a separate isolated regrade of
+all 36 stopped outputs, preserving the original grades and policy decisions.
+An unchanged-semantics receipt cannot satisfy this case.
+
+The completed pilot still requires final grading QA before this gate passes. A legacy
 v1 review still requires complete accounting. An explicit v2 review binds the approved
 amendment, complete pilot outcome export, resource report and accounting rules;
 the held-out registration then freezes those rules and their source identities.

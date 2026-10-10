@@ -185,10 +185,24 @@ one controller interruption and its permitted retry leave 433 attempts.
 The package releases all 48 authored task assets and replays 432 supplied-reply
 grades plus 1,296 policy decisions without executing candidate code.
 
+These are the preserved **original-grader results**. A separate
+[post-publication semantic audit](results/skill-workflows-v1/semantic-audit-2026-10-10/README.md)
+examines five task families, including originally passing outputs, and reports
+adjudicated counts alongside bounds that leave missing original case replies
+unresolved. It documents grader
+defects and supplemental diagnostics without rewriting v1. Neither the original
+study nor this post hoc audit demonstrates a workflow upgrade.
+The diagnostic-supported adjudication gives baseline 144/144, upstream 143/144,
+and eval-opt 144/144: a 0.69-point C-minus-B difference with a descriptive
+interval of 0.00 to 2.08 points. The audit's missing-original-case sensitivity
+still spans both directions; these are post hoc results, not a new held-out win.
+
 In the secondary policy comparison, M and G each accepted 378/432 outputs,
 including 19/37 graded-invalid outputs, while not accepting 36/395 valid outputs.
 G's nine abstentions overlap that non-acceptance count. These descriptive results
-do not establish a kernel advantage over M. All-attempt accounting contains
+use the original correctness labels; the semantic audit separately cross-tabulates
+the unchanged decisions against adjudicated labels. They do not establish a
+kernel advantage over M. All-attempt accounting contains
 417 complete and 16 partial records; partial counters are lower bounds, with no
 efficiency comparison or invented dollar costs.
 

@@ -97,6 +97,12 @@ jobs:
         run: |
           uv run --frozen --extra dev python -I -B results/skill-workflows-v1/heldout-comparison-2026-10-10/reproduce.py --source .
           uv run --frozen --extra dev python -I -B results/skill-workflows-v1/transfer-comparison-2026-10-10/reproduce.py --source .
+      - name: Reproduce separate post-publication semantic audit
+        run: |
+          uv run --frozen --extra dev python -I -B results/skill-workflows-v1/semantic-audit-2026-10-10/reproduce.py --source .
+          uv run --frozen --extra dev python -I -B -m unittest discover -s results/skill-workflows-v1/semantic-audit-2026-10-10 -p 'test_*.py'
+          uv run --frozen --extra dev python -I -B -m unittest discover -s results/skill-workflows-v1/semantic-audit-2026-10-10/adjudications/reporting -p 'test_*.py'
+          uv run --frozen --extra dev python -I -B -m unittest discover -s results/skill-workflows-v1/semantic-audit-2026-10-10/adjudications/runtime -p 'test_*.py'
 
   quality-build:
     name: Quality, demos, smoke, and artifacts

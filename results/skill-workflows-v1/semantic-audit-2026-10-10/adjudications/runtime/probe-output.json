@@ -1,0 +1,238 @@
+{
+  "byte_digit_primitives": [
+    {
+      "ascii_range_all": true,
+      "bytes_isdigit": true,
+      "hex": "30303031"
+    },
+    {
+      "ascii_range_all": false,
+      "bytes_isdigit": false,
+      "hex": "2d303031"
+    },
+    {
+      "ascii_range_all": false,
+      "bytes_isdigit": false,
+      "hex": "30302031"
+    },
+    {
+      "ascii_range_all": false,
+      "bytes_isdigit": false,
+      "hex": "ff303031"
+    }
+  ],
+  "candidate_code_executed": false,
+  "copy_nesting": [
+    {
+      "depth": 1,
+      "kind": "list",
+      "leaf": null,
+      "operations": {
+        "deepcopy": {
+          "depth": 1,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        },
+        "json_roundtrip": {
+          "depth": 1,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 500,
+      "kind": "list",
+      "leaf": 0,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 500,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 600,
+      "kind": "list",
+      "leaf": null,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 600,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 600,
+      "kind": "list",
+      "leaf": 0,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 600,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 600,
+      "kind": "list",
+      "leaf": 1,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 600,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 1,
+      "kind": "dict",
+      "leaf": null,
+      "operations": {
+        "deepcopy": {
+          "depth": 1,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        },
+        "json_roundtrip": {
+          "depth": 1,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 500,
+      "kind": "dict",
+      "leaf": 0,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 500,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 600,
+      "kind": "dict",
+      "leaf": null,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 600,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 600,
+      "kind": "dict",
+      "leaf": 0,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 600,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    },
+    {
+      "depth": 600,
+      "kind": "dict",
+      "leaf": 1,
+      "operations": {
+        "deepcopy": {
+          "error": "RecursionError",
+          "status": "raised"
+        },
+        "json_roundtrip": {
+          "depth": 600,
+          "leaf_equal": true,
+          "leaf_type_preserved": true,
+          "mutable_containers_independent": true,
+          "status": "returned"
+        }
+      }
+    }
+  ],
+  "invalid_utf8": {
+    "caught_by_ValueError": true,
+    "concrete_name": "UnicodeDecodeError",
+    "mro": [
+      "UnicodeDecodeError",
+      "UnicodeError",
+      "ValueError",
+      "Exception",
+      "BaseException",
+      "object"
+    ]
+  },
+  "model_trials": 0,
+  "original_grader_executed": false,
+  "runtime": {
+    "copy_module_sha256": "d6b858961b91b48a4bf5a115b0420c890d677bdf058ab2323a8a75298eed47db",
+    "implementation": "CPython",
+    "json_module_sha256": "3b5abc6441252283e4b83dd00317430c0c0145343a8f48274f2c4fac3d856631",
+    "machine": "arm64",
+    "python_version": "3.13.12",
+    "recursion_limit": 1000,
+    "system": "Darwin"
+  },
+  "schema_version": "evalopt.semantic-mechanism-probe.v1",
+  "scope": "New stdlib-only mechanism probes; neither original trials nor candidate execution."
+}

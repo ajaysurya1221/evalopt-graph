@@ -1,0 +1,169 @@
+{
+  "schema_version": "evalopt.semantic-analysis-review.v1",
+  "verdict": "ACCEPT",
+  "review_scope": "Separate maintainer-agent review of the post hoc arithmetic, source-bound replay, diagnostic evidence gating, narrative scope, privacy checks and additive CI commands. This is not independent human adjudication or replication of agent execution.",
+  "original_bundle_id": "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+  "audit_file_sha256": {
+    "PROTOCOL.md": "b276cda724c09fc8c99872df5bb9836a7cefb447d0c7a3b89da95ae276e6d150",
+    "README.md": "01380ee630c2915a3918f1cd998859e11a530fe0101b79a67b1dffb25e8d2244",
+    "V2_PLAN.md": "709a7a9425c93ff20b936967ad976cf5514b2ce188ee8cc167811a7d2aaab504",
+    "adjudications/reporting/review-binary-framing.json": "7ece4ee9aaa6b551ad682f9b834e86e52a8dea621d7ce9d872895ae738e8d511",
+    "adjudications/reporting/truncated-test-log.json": "c2c8a0c2473fa8e4edcd8a216ec38ed54295f586dcdf165a65b3059f87dcc9ff",
+    "adjudications/reporting/wrong-architecture-binary.json": "ed5a7dff11bca07020f43f681d793a0af3cd8a67c63721b457e45d06feb31c66",
+    "adjudications/runtime/fixed-width-record-reader.json": "bc9832bac718e1d4d509143d4a7c7e6aa78d4e11fc49e91fe0ef24d36b732290",
+    "adjudications/runtime/review-object-copy-clean.json": "16baf6a5cce75d26d6b0f0b6951f30febe0908596ced825f04ef4d72b824129e",
+    "reproduce.py": "cf0abe6cda3307f785e88945559c81af8ba4417923690e282457560878515993",
+    "reviews/independent-arithmetic.json": "492e97a9e7daf86f1f21c8ba71d77fad506e940798773ab39ade0ed07078d174",
+    "test_reproduce.py": "5723c29787edf25d1ce734217efc43ee1280afb0cb49ede41392a939c7f1dda6"
+  },
+  "repository_file_sha256": {
+    ".github/workflows/ci.yml": "85d5a3a9605aa0d3dc5dd51e5e9cd5cf5824c93654ce68e0d7aeac063cf95bf4",
+    "README.md": "e202996f8d9e764f9db511c59b9704e271e9585ce37b0185a7972a6997f780c9",
+    "results/skill-workflows-v1/CLAIMS.md": "5bb3f52b0d73b7cc44e2722120354de5f8c942aea6b9121568bd303a6d2764e5"
+  },
+  "generated_file_sha256": {
+    "audit-inputs.json": "b84e92c12ba39af715a0a4b8e013e9a0f3ab2cda79e5a69a5d2cf0259814eb62",
+    "report.json": "8f445f434f4ae7bdf2bc5c1d2b60af34b80a8f745a9223666632ca519700a743",
+    "row-ledger.json": "bc51ad1aaa2f65094ad950278f1b10db4447c9067b1b3548ea41d1b3683fdeed"
+  },
+  "findings": [],
+  "resolved_findings": [
+    {
+      "finding": "The early optional diagnostic scenario lacked exact executed helper/probe/command and closure bindings. Coherently changing the child program and matching start/end records passed the early support gate.",
+      "affected_source_sha256": "23073703ddbc49a4a84a872c27fba924b0ac5931cec272490eb3b59fd5936506",
+      "resolution": "Final code pins exact helper/probe source; parses CHILD as an inert AST literal; validates the full isolation command, source/arguments/case coverage, output, start/end and closure. Independently rehashed contradictory command records now reject."
+    },
+    {
+      "finding": "An early arm validator used substring membership, permitting coherently changed empty/multiple-character arms.",
+      "resolution": "Final validator uses exact A/B/C membership; author negative controls cover changed schedule and outcome identities."
+    }
+  ],
+  "verification": {
+    "author_named_tests_passed": 26,
+    "author_tests_command": "python3.13 -I -B -m pytest -q results/skill-workflows-v1/semantic-audit-2026-10-10/test_reproduce.py -p no:cacheprovider",
+    "independent_assertions_passed": 24,
+    "independent_result": {
+      "count": 24,
+      "independent_checks": [
+        "all432rows_and48tasks_retained",
+        "only45audited_rows_387unchanged",
+        "trace_counts_explicit9unknown",
+        "diagnosticcounts144_143_144",
+        "conservative_fullschedulebounds",
+        "completepairs47_unknownpair_notindependentattempts",
+        "diagnostic_contrast_and_interval",
+        "allfive_uniformexclusion",
+        "degenerate_notzero_uncertainty_claim",
+        "no_superiority_equivalence_efficiency_claim",
+        "unchanged_nonaudited_usage_status",
+        "policies_unchanged_posthoc_cross_tabs",
+        "all_null_identification_bounds",
+        "shared_source_cluster_not_two_independent_tasks",
+        "coherent_diagnostic_child_code_rejected",
+        "coherent_diagnostic_helper_hash_rejected",
+        "coherent_diagnostic_probe_hash_rejected",
+        "coherent_diagnostic_read_only_rejected",
+        "coherent_diagnostic_mount_added_rejected",
+        "coherent_diagnostic_closure_unknown_rejected",
+        "source_unchanged_duringreview",
+        "generated_registration_matches_independent_inputs",
+        "generated_report_matches_independent_calculation",
+        "generated_ledger_matches_independent_calculation"
+      ],
+      "process_execution_guarded": true,
+      "read_only_calculation": true,
+      "registered_evidence_files": 1367,
+      "scenarios": [
+        "exclude_all_five_families",
+        "original_frozen",
+        "supplemental_diagnostic",
+        "trace_only_adjudicated"
+      ],
+      "source_hashes": {
+        "reproduce.py": "cf0abe6cda3307f785e88945559c81af8ba4417923690e282457560878515993",
+        "test_reproduce.py": "5723c29787edf25d1ce734217efc43ee1280afb0cb49ede41392a939c7f1dda6"
+      }
+    },
+    "ruff_check_exit_code": 0,
+    "ruff_format_check_exit_code": 0,
+    "gitleaks_directory_scan_exit_code": 0,
+    "privacy_scope": "Local audit-directory scan and reviewed text only; not a new hosted CI result, full-history scan or guarantee against unknown sensitive strings.",
+    "generated_outputs": "The registered input map, report and full row ledger match an independent in-memory registration/calculation byte for byte. No output files were regenerated by this review."
+  },
+  "quantitative_checks": {
+    "original_valid_counts": {
+      "A": 131,
+      "B": 132,
+      "C": 132
+    },
+    "trace_only_valid_counts": {
+      "A": {
+        "true": 141,
+        "false": 0,
+        "unresolved": 3
+      },
+      "B": {
+        "true": 140,
+        "false": 1,
+        "unresolved": 3
+      },
+      "C": {
+        "true": 141,
+        "false": 0,
+        "unresolved": 3
+      }
+    },
+    "trace_only_full_schedule_C_minus_B_identification_bounds_fraction": [
+      "-2/144",
+      "4/144"
+    ],
+    "diagnostic_supported_valid_counts": {
+      "A": 144,
+      "B": 143,
+      "C": 144
+    },
+    "diagnostic_C_minus_B_fraction": "1/144",
+    "diagnostic_descriptive_CI95_fraction": [
+      "0",
+      "3/144"
+    ],
+    "original_failed_to_adjudicated_valid": 37,
+    "original_valid_to_adjudicated_invalid": 1,
+    "exclusion": {
+      "tasks": 43,
+      "scheduled_trials": 387,
+      "valid_per_arm": 129,
+      "degenerate": true
+    },
+    "kernel_diagnostic_counts": {
+      "U": {
+        "accepted": 432,
+        "invalid_accepted": 1,
+        "valid_not_accepted": 0
+      },
+      "M": {
+        "accepted": 378,
+        "invalid_accepted": 1,
+        "valid_not_accepted": 54
+      },
+      "G": {
+        "accepted": 378,
+        "invalid_accepted": 1,
+        "valid_not_accepted": 54,
+        "abstentions": 9
+      }
+    }
+  },
+  "limitations": [
+    "Five families were chosen after published outcomes were known. The other 387 outcomes are carried forward, not semantically revalidated.",
+    "Nine trace-only fixed-width outcomes remain unresolved. The 72 supplemental candidate-case calls and one mechanism probe are new diagnostic evidence; this review only checks their retained records.",
+    "The descriptive interval includes zero and the observed difference is below the original 10-point threshold. No superiority, equivalence, efficiency, causal workflow benefit or independent replication is established.",
+    "Original policy decisions, status, grades and resource records stay unchanged; revised policy cross-tabs are post hoc.",
+    "This review ran no models, Docker, candidates or original verifier; process launch was denied during the independent calculation.",
+    "Final outer-manifest sealing, fresh-public-checkout replay, exact-head hosted CI and publication are separate integration steps."
+  ],
+  "independent_controls": {
+    "python_source": "import importlib.util,pathlib,json,copy,hashlib,math\nfrom unittest.mock import patch\nfrom fractions import Fraction\nr=pathlib.Path('results/skill-workflows-v1/semantic-audit-2026-10-10').resolve(); s=importlib.util.spec_from_file_location('independent_review',r/'reproduce.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)\nbefore={n:m.byte_hash((r/n).read_bytes()) for n in ('reproduce.py','test_reproduce.py')}\nassert before['reproduce.py']=='cf0abe6cda3307f785e88945559c81af8ba4417923690e282457560878515993'\nchecks=[]\ndef check(name,condition):\n assert condition,name\n checks.append(name)\npaths=[f'adjudications/reporting/{task}.json' for task in ('review-binary-framing','truncated-test-log','wrong-architecture-binary')]+[f'adjudications/runtime/{task}.json' for task in ('fixed-width-record-reader','review-object-copy-clean')]\ninp=m.Inputs(r.parents[2],r); original_rows=inp.json('original/reports/outcomes.json'); original_digest=m.digest(original_rows)\nwith patch('subprocess.run',side_effect=AssertionError('process execution forbidden')),patch('subprocess.Popen',side_effect=AssertionError('process execution forbidden')):\n lock=m.register(inp,paths)\n report,ledger=m.calculate(m.Inputs(r.parents[2],r),lock)\ncheck('all432rows_and48tasks_retained',all(x['scheduled_trials']==432 and x['distinct_tasks']==48 for key,x in report['scenarios'].items() if key!='exclude_all_five_families'))\ncheck('only45audited_rows_387unchanged',len(ledger)==432 and sum(x['audited_family'] for x in ledger)==45 and all(x['original_metrics']==x['trace_only_metrics'] for x in ledger if not x['audited_family']))\ntrace=report['scenarios']['trace_only_adjudicated'];diag=report['scenarios']['supplemental_diagnostic'];ex=report['scenarios']['exclude_all_five_families']\ncheck('trace_counts_explicit9unknown',[(trace['arms'][a]['valid_completion']['true'],trace['arms'][a]['valid_completion']['false'],trace['arms'][a]['valid_completion']['unresolved']) for a in 'ABC']==[(141,0,3),(140,1,3),(141,0,3)])\ncheck('diagnosticcounts144_143_144',[diag['arms'][a]['valid_completion']['true'] for a in 'ABC']==[144,143,144])\nbounds=trace['C_minus_B']['full_schedule_category_macro_identification_bounds']\ncheck('conservative_fullschedulebounds',math.isclose(bounds[0],float(Fraction(-2,144)),abs_tol=1e-15) and math.isclose(bounds[1],float(Fraction(4,144)),abs_tol=1e-15))\ncheck('completepairs47_unknownpair_notindependentattempts',trace['C_minus_B']['complete_case_task_count']==47 and trace['C_minus_B']['full_scheduled_tasks']==48)\ncheck('diagnostic_contrast_and_interval',math.isclose(diag['C_minus_B']['complete_task_pairs']['difference'],float(Fraction(1,144)),abs_tol=1e-15) and diag['C_minus_B']['descriptive_ci95']==[0.0,float(Fraction(3,144))])\ncheck('allfive_uniformexclusion',ex['scheduled_trials']==387 and ex['distinct_tasks']==43 and [ex['arms'][a]['valid_completion']['true'] for a in 'ABC']==[129,129,129])\ncheck('degenerate_notzero_uncertainty_claim',ex['C_minus_B']['complete_task_pairs']['degenerate'] is True and ex['C_minus_B']['descriptive_ci95'] is None)\ncheck('no_superiority_equivalence_efficiency_claim',all(all(x[k] is False for k in ('superiority_claim_permitted','equivalence_claim_permitted','efficiency_claim_permitted')) for x in report['scenarios'].values()))\ncheck('unchanged_nonaudited_usage_status',m.digest(original_rows)==original_digest and report['resource_recount_performed'] is False and report['original_grades_changed'] is False)\ncheck('policies_unchanged_posthoc_cross_tabs',[(diag['unchanged_policy_cross_tabs'][p]['accepted'],diag['unchanged_policy_cross_tabs'][p]['invalid_accepted'],diag['unchanged_policy_cross_tabs'][p]['valid_not_accepted']) for p in 'UMG']==[(432,1,0),(378,1,54),(378,1,54)])\ncheck('all_null_identification_bounds',m.metric_counts([{'v':None}]*3,'v')=={'true':0,'false':0,'unresolved':3,'scheduled':3,'observed_rate':None,'full_schedule_bounds':[0.0,1.0]})\nfake=[{'category':'x','cluster_id':'shared','difference':0,'task_id':'1'},{'category':'x','cluster_id':'shared','difference':1,'task_id':'2'}]\nsmall=m.bootstrap(fake,resamples=100)\ncheck('shared_source_cluster_not_two_independent_tasks',small['tasks']==2 and small['clusters']==1 and small['sufficient'] is False and small['ci95'] is None)\nx=m.Inputs(r.parents[2],r);found={a['trial_id']:a for a in x.json('original/reports/outcomes.json')};p='adjudications/runtime/diagnostics-01/results.json';q='adjudications/runtime/diagnostics-01/closure.json';sens={'evidence':[{'path':p}]};oj=x.json;oread=x.read;rec=oj(p);clo=oj(q)\nfor label in ('child_code','helper_hash','probe_hash','read_only','mount_added','closure_unknown'):\n changed=copy.deepcopy(rec); cl=copy.deepcopy(clo); record=changed['records'][0]\n if label=='child_code':record['argv'][-1]='print(\"fabricated\")'\n if label=='helper_hash':changed['input_sha256']['helper']='0'*64\n if label=='probe_hash':changed['input_sha256']['probe']='0'*64\n if label=='read_only':record['argv'].remove('--read-only')\n if label=='mount_added':record['argv'][4:4]=['--volume','/synthetic:/synthetic']\n if label=='closure_unknown':cl['owned_label_container_absence_observed']=False\n end={k:v for k,v in record.items() if k!='output'};start={k:v for k,v in end.items() if k not in {'returncode','stdout_sha256','stderr_sha256'}};raw=json.dumps(changed).encode();cl['results_sha256']=hashlib.sha256(raw).hexdigest()\n with patch.object(x,'json',side_effect=lambda path:changed if path==p else cl if path==q else end if path.endswith('case-001.end.json') else start if path.endswith('case-001.start.json') else oj(path)),patch.object(x,'read',side_effect=lambda path:raw if path==p else oread(path)):\n  denied=False\n  try:m.supplemental_support(x,sens,found)\n  except ValueError:denied=True\n  check('coherent_diagnostic_'+label+'_rejected',denied)\ncheck('source_unchanged_duringreview',before=={n:m.byte_hash((r/n).read_bytes()) for n in before})\ncheck('generated_registration_matches_independent_inputs',m.canonical(m.strict_json((r/'audit-inputs.json').read_bytes()))==m.canonical(lock))\ncheck('generated_report_matches_independent_calculation',(r/'report.json').read_bytes()==m.pretty(report))\ncheck('generated_ledger_matches_independent_calculation',(r/'row-ledger.json').read_bytes()==m.pretty({'schema_version':'evalopt.semantic-audit-ledger.v1','rows':ledger}))\nprint(json.dumps({'independent_checks':checks,'count':len(checks),'source_hashes':before,'scenarios':sorted(report['scenarios']),'registered_evidence_files':len(lock['evidence']),'read_only_calculation':True,'process_execution_guarded':True},sort_keys=True))\n",
+    "execution": "Executed from repository root with exact CPython 3.13.12, -I -B; no writes."
+  }
+}

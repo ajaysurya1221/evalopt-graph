@@ -1,0 +1,57 @@
+{
+  "checks": {
+    "ci_additive_existing_v1_steps_unchanged": true,
+    "diagnostic_evidence_separate_from_original_hidden_replies": true,
+    "evidence_level_anchor_resolved": true,
+    "gfm_documents_rendered_without_warnings": 5,
+    "latest_repository_numeric_paragraph_and_claim_table_match_report": true,
+    "local_link_targets_resolve_except_pending_outer_manifest": true,
+    "markdown_link_counts": [
+      94,
+      53,
+      16,
+      0,
+      0
+    ],
+    "no_upgrade_equivalence_or_efficiency_claim": true,
+    "policy_resource_and_v1_scopes_preserved": true,
+    "posthoc_selection_and_387_carried_forward_rows_explicit": true,
+    "proposed_v2_not_claimed_implemented_or_evaluated": true,
+    "python_exception_documentation_link_checked": "https://docs.python.org/3.11/library/exceptions.html",
+    "reviewed_prose_private_identifier_or_credential_findings": 0,
+    "trace_only_unknowns_and_identification_bounds_preserved": true
+  },
+  "evidence_files": {
+    "audit-inputs.json": "b84e92c12ba39af715a0a4b8e013e9a0f3ab2cda79e5a69a5d2cf0259814eb62",
+    "report.json": "8f445f434f4ae7bdf2bc5c1d2b60af34b80a8f745a9223666632ca519700a743",
+    "reviews/analysis-review.json": "d54422847ae20178ba73a7733fc454d9ed41415dcd96b7343053ff379e3ba201",
+    "reviews/analysis-review.md": "5ec4195adceec3b34642784ad7ba06e774db6d84b5986b050cd2caa137bf060c",
+    "reviews/independent-arithmetic.json": "492e97a9e7daf86f1f21c8ba71d77fad506e940798773ab39ade0ed07078d174",
+    "row-ledger.json": "bc51ad1aaa2f65094ad950278f1b10db4447c9067b1b3548ea41d1b3683fdeed"
+  },
+  "findings": [],
+  "limits": [
+    "Separate maintainer-agent review, not independent human authorship or replication.",
+    "Runtime adjudication implementation was authored by this reviewer and is excluded from independent-review claims.",
+    "Analysis implementation review is recorded separately.",
+    "Markdown parsing and local link inspection do not establish browser layout or hosted rendering.",
+    "No model, Docker, candidate or original-verifier execution; no original evidence or source edits."
+  ],
+  "narrative_sha256": "c79d6efa6e1f803ffa96064033dc8b9593582b88023c62102fbe199a3d36bb23",
+  "pending_integration": [
+    "Seal outer CHECKSUMS.json after review files are added.",
+    "Replay the final package from a fresh public checkout.",
+    "Verify hosted CI on the exact published head."
+  ],
+  "reviewed_files": {
+    ".github/workflows/ci.yml": "85d5a3a9605aa0d3dc5dd51e5e9cd5cf5824c93654ce68e0d7aeac063cf95bf4",
+    "README.md": "e202996f8d9e764f9db511c59b9704e271e9585ce37b0185a7972a6997f780c9",
+    "results/skill-workflows-v1/CLAIMS.md": "5bb3f52b0d73b7cc44e2722120354de5f8c942aea6b9121568bd303a6d2764e5",
+    "results/skill-workflows-v1/semantic-audit-2026-10-10/PROTOCOL.md": "b276cda724c09fc8c99872df5bb9836a7cefb447d0c7a3b89da95ae276e6d150",
+    "results/skill-workflows-v1/semantic-audit-2026-10-10/README.md": "01380ee630c2915a3918f1cd998859e11a530fe0101b79a67b1dffb25e8d2244",
+    "results/skill-workflows-v1/semantic-audit-2026-10-10/V2_PLAN.md": "709a7a9425c93ff20b936967ad976cf5514b2ce188ee8cc167811a7d2aaab504"
+  },
+  "schema_version": "evalopt.semantic-audit-publication-review.v1",
+  "scope": "Independent review of root-owned publication wording, local Markdown links and additive CI configuration; not an independent review of the reviewer-authored runtime adjudication implementation.",
+  "verdict": "ACCEPT"
+}

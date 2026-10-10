@@ -1,0 +1,40 @@
+{
+  "C_minus_B_exact_fraction": "1/144",
+  "adjudication_files": {
+    "adjudications/reporting/review-binary-framing.json": "7ece4ee9aaa6b551ad682f9b834e86e52a8dea621d7ce9d872895ae738e8d511",
+    "adjudications/reporting/truncated-test-log.json": "c2c8a0c2473fa8e4edcd8a216ec38ed54295f586dcdf165a65b3059f87dcc9ff",
+    "adjudications/reporting/wrong-architecture-binary.json": "ed5a7dff11bca07020f43f681d793a0af3cd8a67c63721b457e45d06feb31c66",
+    "adjudications/runtime/fixed-width-record-reader.json": "bc9832bac718e1d4d509143d4a7c7e6aa78d4e11fc49e91fe0ef24d36b732290",
+    "adjudications/runtime/review-object-copy-clean.json": "16baf6a5cce75d26d6b0f0b6951f30febe0908596ced825f04ef4d72b824129e"
+  },
+  "amended_valid_counts": {
+    "A": 144,
+    "B": 143,
+    "C": 144
+  },
+  "audited_rows": 45,
+  "exact_bootstrap_distribution_quantiles": [
+    {
+      "K": 0,
+      "difference_fraction": "0",
+      "probability": "1/40"
+    },
+    {
+      "K": 3,
+      "difference_fraction": "1/48",
+      "probability": "39/40"
+    }
+  ],
+  "fail_to_pass": 37,
+  "limits": [
+    "Posthoc, outcome-informed audit; not confirmatory superiority.",
+    "New diagnostics are distinct from absent original replies.",
+    "Other43tasks are carried forward, not newly semantically validated."
+  ],
+  "metric_label_changes": 38,
+  "pass_to_fail": 1,
+  "scope": "Independent root arithmetic from five adjudication documents; no candidate or original grader execution in this check.",
+  "single_nonzero_task": "review-object-copy-clean",
+  "source_publication": "fdf81a55f58df6cbd2a99550dd1637f9f53142f7",
+  "unchanged_nonaudited_rows": 387
+}

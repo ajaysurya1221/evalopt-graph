@@ -2,6 +2,21 @@
 
 The completed [held-out comparison](heldout-comparison-2026-10-10/README.md) is separate from the development pilot described below.
 
+**Original labels versus subsequent adjudication:** The held-out table below
+retains the frozen v1 numbers. The separately versioned
+[semantic audit](semantic-audit-2026-10-10/README.md) inspects all 45 outputs from
+five task families, identifies grading defects, and reports post hoc corrections
+and evidence limits. Reproducing v1 proves replay consistency, not semantic
+correctness of its oracles. Original grades, task assets, policies, accounting
+and transfer artifacts remain unchanged. The audit is not a fresh held-out study
+or a demonstrated eval-opt upgrade.
+
+| Post hoc audit claim | Evidence | Scope and limitation |
+| --- | --- | --- |
+| Diagnostic-supported adjudication gives A 144/144, B 143/144 and C 144/144; C-minus-B is +0.69 points with descriptive interval 0.00 to +2.08. | [Audit report](semantic-audit-2026-10-10/report.json); [row ledger](semantic-audit-2026-10-10/row-ledger.json) | Five task families selected after inspecting failures; 387 other rows carried forward. One upstream review miss explains the difference; no upgrade or causal benefit established. |
+| Missing original fixed-width executions remain unresolved without new diagnostics, yielding full-schedule bounds −1.39 to +2.78 points. | [Audit evidence levels](semantic-audit-2026-10-10/README.md#missing-original-evidence-stays-missing) | Identification bounds, not a confidence interval. New diagnostics are not original hidden replies; the other task corrections remain post hoc. |
+| Removing all five audited tasks leaves all arms at 129/129. | [Exclusion sensitivity](semantic-audit-2026-10-10/report.json) | Selected 43-task sensitivity with degenerate resampling, not equivalence or independent validation. |
+
 | Held-out claim | Evidence | Scope and limitation |
 | --- | --- | --- |
 | B and C each have 132/144 valid completions; C-minus-B is 0.00 points with paired 95% interval −2.08 to +2.08 points. | [Outcomes](heldout-comparison-2026-10-10/bundle/reports/outcomes.json); [registered analysis](heldout-comparison-2026-10-10/bundle/reports/analysis.json) | 48 authored tasks, three repetitions per arm, category-stratified task/cluster resampling. No registered gain, equivalence or overall-upgrade claim; the ordinary guardrail is degenerate. |

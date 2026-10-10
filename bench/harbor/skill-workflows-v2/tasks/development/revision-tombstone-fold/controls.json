@@ -1,0 +1,42 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "verify.py"
+        ],
+        "execution_state": "ran",
+        "exit_code": 0,
+        "evidence_availability": "complete"
+      }
+    ]
+  },
+  "positive_snapshot": "oracle",
+  "negative_snapshots": [
+    "agent",
+    "mutant"
+  ],
+  "boundary_negative": {
+    "path": "forbidden.txt",
+    "content": "unexpected edit"
+  },
+  "observed_check": {
+    "command": [
+      "python3",
+      "-B",
+      "verify.py"
+    ],
+    "execution_state": "ran",
+    "exit_code": 0,
+    "evidence_availability": "complete"
+  },
+  "negative_responses": [
+    "wrong-check",
+    "incorrect-refusal"
+  ]
+}

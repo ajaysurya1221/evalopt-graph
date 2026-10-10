@@ -1,0 +1,448 @@
+{
+  "id": "review-bit-window",
+  "category": "committed-patch-review",
+  "split": "development",
+  "source_cluster": "review-bit-window",
+  "evidence_opportunity": false,
+  "schema_version": "evalopt-workflows-v2/1",
+  "task_id": "review-bit-window",
+  "attempt_id": "authored-control--review-bit-window",
+  "task_contract": "review",
+  "instruction": "Review the committed bits.py patch. solve(mask,low,width) returns width bits starting at low, shifted down to bit0. The supported domain is the Cartesian product mask in [0,1,10,21,31] and (low,width) in [(0,0),(0,5),(1,3),(4,1),(5,0)]. Width0 returns0. Determine whether the patch introduces a violation.\nReview only. Do not modify any workspace file, directory, mode or Git metadata. Review the complete candidate against baseline; the finite witness domain below is normative, not a list of expected answers.\n{\"masks\": [0, 1, 10, 21, 31], \"windows\": [[0, 0], [0, 5], [1, 3], [4, 1], [5, 0]]}\n\nRun the frozen visible command `python3 -B verify.py`; do not edit verify.py. Its result is an observation, not the complete task contract. Use the controller-provided record when available and preserve its exact command/execution_state/exit_code/evidence_availability values in response checks. Return a JSON object with status (completed or blocked), findings (array), blockers (array), checks (array of exactly that one four-field check record). For implementation, successful completion has empty findings and blockers. Review findings each have path (workspace-relative POSIX, no ./), symbol (unqualified function), kind (incorrect-result, unexpected-exception or data-loss), and witness {module,function,args} drawn from the declared finite domain. A witness is a data request, never executable code. A finding must be an introduced contract violation: the baseline meets the expectation, the candidate does not. One or more supported consequences can cover the same root cause; duplicate supported findings are neutral, extra unsupported findings fail. A blocker task requires status blocked, no findings, and one blocker {resource,reason}; do not claim a pass. No extra response fields are required. Python3/standard library only. Do not install packages, change permissions or access a network. Preserve arguments to every callable.\n",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ],
+  "allowed_changes": [],
+  "cases": [
+    {
+      "case_id": "case-01",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-02",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          0,
+          0,
+          5
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-03",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          0,
+          1,
+          3
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-04",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          0,
+          4,
+          1
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-05",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          0,
+          5,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-06",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          1,
+          0,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-07",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          1,
+          0,
+          5
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 1
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-08",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          1,
+          1,
+          3
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-09",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          1,
+          4,
+          1
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-10",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          1,
+          5,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-11",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          10,
+          0,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-12",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          10,
+          0,
+          5
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 10
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-13",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          10,
+          1,
+          3
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 5
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-14",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          10,
+          4,
+          1
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-15",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          10,
+          5,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-16",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          21,
+          0,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-17",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          21,
+          0,
+          5
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 21
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-18",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          21,
+          1,
+          3
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 2
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-19",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          21,
+          4,
+          1
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 1
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-20",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          21,
+          5,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-21",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          31,
+          0,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-22",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          31,
+          0,
+          5
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 31
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-23",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          31,
+          1,
+          3
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 7
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-24",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          31,
+          4,
+          1
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 1
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-25",
+      "request": {
+        "module": "bits",
+        "function": "solve",
+        "args": [
+          31,
+          5,
+          0
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": 0
+      },
+      "preserve_args": true
+    }
+  ],
+  "preserve_review_args": true,
+  "max_findings": 8,
+  "defect_obligations": []
+}

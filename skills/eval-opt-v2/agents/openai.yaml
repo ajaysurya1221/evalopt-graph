@@ -1,0 +1,4 @@
+interface:
+  display_name: "Eval-opt v2"
+  short_description: "Bounded work with candidate-specific verification"
+  default_prompt: "Use $eval-opt-v2 to complete this task within its scope and verify the result against its acceptance criteria."

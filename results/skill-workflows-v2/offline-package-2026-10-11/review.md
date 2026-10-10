@@ -1,0 +1,13 @@
+# Offline package review
+
+**Verdict: ACCEPT** for the reviewed v2 offline development package at the source hashes in [review.json](review.json). Live dispatch remains subject to the registered admission and runtime checks. No unresolved blocking finding remains in this review scope.
+
+The review covered the portable skill and mechanical C/D ablation; all twelve public development task instructions and authored QA controls; semantic grading, complete case capture, framing and accounting; external supervision and stopped snapshots; frozen source and kernel identities; durable campaign storage, replay and analysis. This was AI review separated from implementation in a maintainer-run study, not independent human review.
+
+Independent final controls exercised two complete retained rows with real Docker and Harbor: one normal completion and one missing native end. Both passed. The agent output, authentication and native event stream were synthetic; no model was called. The latter case retained functional success, unknown valid completion and partial accounting without inventing a native end. These controls use the working controller against frozen inputs. A separate CLI control covers a frozen-entrypoint zero-row replay; positive-row frozen-entrypoint dispatch is not established here.
+
+Targeted controls and adversarial probes are listed in the JSON receipt. Their counts overlap and must not be summed. The preservation check found all **8,852** baseline files unchanged from `2deb53feb2bf20061a754b80ff93fccafeac5af7`. The final full-suite case inventory is recorded separately in the accompanying controls receipt.
+
+The reviewed repairs include exact deadline enforcement, complete case records, immutable evidence binding, bytecode and kernel-origin checks, parent lifecycle uncertainty, witness location binding, task-wide dispute handling and bounded response transport that remains retainable through policy and storage envelopes. Unsupported or malformed evidence is retained explicitly rather than promoted to success.
+
+This acceptance establishes neither live agent performance nor sufficient task difficulty. Held-out task readiness is excluded. Container observation custody does not authenticate arbitrary introspective Python semantics in the same interpreter; the finite authored callable/structural scope and its limitations remain documented in [VERIFIER_BOUNDARIES.md](../../../bench/harbor/skill-workflows-v2/VERIFIER_BOUNDARIES.md). The public replayer checks retained receipt consistency and source identities; it does not rerun tests or establish independent replication.

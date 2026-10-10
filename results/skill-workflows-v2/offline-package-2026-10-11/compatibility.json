@@ -1,0 +1,117 @@
+{
+  "legacy_raw_junit_sha256": "6bbb5d999ed80cc89fa05a544bdab2c277b7dd7c526855d856ee2246dccad0fd",
+  "legacy_skips": [
+    {
+      "class": "tests.test_skill_workflow_pilot_regrade",
+      "name": "test_real_isolated_regrade_executor_with_cached_image[oracle-True]",
+      "outcome": "skipped"
+    },
+    {
+      "class": "tests.test_skill_workflow_pilot_regrade",
+      "name": "test_real_isolated_regrade_executor_with_cached_image[incorrect_candidate-False]",
+      "outcome": "skipped"
+    },
+    {
+      "class": "tests.test_skill_workflow_pilot_regrade",
+      "name": "test_real_isolated_regrade_executor_with_cached_image[duplicate_nonfinite_response-False]",
+      "outcome": "skipped"
+    },
+    {
+      "class": "tests.test_skill_workflow_pilot_regrade",
+      "name": "test_real_isolated_regrade_executor_with_cached_image[utf8_bom_response-False]",
+      "outcome": "skipped"
+    },
+    {
+      "class": "tests.test_skill_workflow_pilot_regrade",
+      "name": "test_real_isolated_regrade_executor_with_cached_image[utf16_response-False]",
+      "outcome": "skipped"
+    },
+    {
+      "class": "tests.test_skill_workflow_transfer",
+      "name": "test_pinned_harbor_skill_registration_lifecycle_without_models",
+      "outcome": "skipped"
+    },
+    {
+      "class": "tests.test_skill_workflow_transfer",
+      "name": "test_docker_cutoff_stops_writes_and_preserves_required_detached_service[False]",
+      "outcome": "skipped"
+    },
+    {
+      "class": "tests.test_skill_workflow_transfer",
+      "name": "test_docker_cutoff_stops_writes_and_preserves_required_detached_service[True]",
+      "outcome": "skipped"
+    }
+  ],
+  "legacy_test_summary": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 8,
+    "tests": 1157
+  },
+  "replays": {
+    "heldout": {
+      "asset_mode_scope": "Declared POSIX asset modes restored in a temporary hash-verified copy because Git does not preserve non-executable permission bits; checkout and frozen evidence bytes unchanged.",
+      "candidate_execution_performed": false,
+      "heldout": {
+        "bundle_id": "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+        "candidate_execution_performed": false,
+        "declared_unavailable_trials": 0,
+        "grade_records_replayed": 432,
+        "independent_replication": false,
+        "network_publication_performed": false,
+        "policy_analysis_reproduced": true,
+        "released_tasks": 48,
+        "scheduled_trials": 432,
+        "schema_version": "evalopt.heldout-public-verification.v1",
+        "sensitive_scan_passed": true
+      },
+      "independent_replication": false,
+      "network_publication_performed": false,
+      "operational_note_scope": "File identities verified; private incident reconstruction is not independently reexecuted by public replay.",
+      "release_bundle_id": "abacaacbe48ac0adaa8476778815915ff54671c7dbaacc8d23edbbe059568e4c",
+      "schema_version": "evalopt.heldout-release-replay.v1"
+    },
+    "semantic": {
+      "audited_rows": 45,
+      "original_trials": 432,
+      "outputs": {
+        "report.json": "8f445f434f4ae7bdf2bc5c1d2b60af34b80a8f745a9223666632ca519700a743",
+        "row-ledger.json": "bc51ad1aaa2f65094ad950278f1b10db4447c9067b1b3548ea41d1b3683fdeed"
+      },
+      "release_id": "812499ebaa027767f34aa4b1ac3967e24af475a9f3862123c1c1acf666f2fd3c",
+      "reproduction_executes_candidates": false,
+      "scenarios": [
+        "exclude_all_five_families",
+        "original_frozen",
+        "supplemental_diagnostic",
+        "trace_only_adjudicated"
+      ],
+      "schema_version": "evalopt.semantic-audit-reproduction.v1",
+      "unchanged_rows": 387
+    },
+    "transfer": {
+      "candidate_execution_performed": false,
+      "executed_attempts": 58,
+      "independent_replication": false,
+      "network_publication_performed": false,
+      "operational_note_scope": "File identities verified; private raw bytes, process observations and controller-journal reconstruction are not independently reexecuted by public replay.",
+      "release_bundle_id": "aa07c944c232bbb18f88c29484c54ee3e54804fc4801faf406b136bd906fe596",
+      "scheduled_trials": 72,
+      "schema_version": "evalopt.transfer-release-replay.v1",
+      "transfer": {
+        "attempts_verified": 58,
+        "bundle_id": "6ac536cef0fa72f52dfd066e3c45861a61c5044ca3c7d0e82166b6ab1837e62d",
+        "files": 306,
+        "network_publication_performed": false,
+        "original_verifier_reexecuted": false,
+        "policy_replay": "not applicable; no U/M/G",
+        "raw_archives_included": false,
+        "reward_analysis_reproduced": true,
+        "schema_version": "evalopt.transfer-public-verification.v1",
+        "sensitive_scan_passed": true
+      },
+      "unstarted_rows": 14
+    }
+  },
+  "scope": "Existing v1 replayers are unchanged and execute no candidate code. Optional legacy skips are listed separately from the zero-skip required v2 controls."
+}

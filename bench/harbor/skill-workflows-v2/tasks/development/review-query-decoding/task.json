@@ -1,0 +1,252 @@
+{
+  "id": "review-query-decoding",
+  "category": "committed-patch-review",
+  "split": "development",
+  "source_cluster": "review-query-decoding",
+  "evidence_opportunity": true,
+  "schema_version": "evalopt-workflows-v2/1",
+  "task_id": "review-query-decoding",
+  "attempt_id": "authored-control--review-query-decoding",
+  "task_contract": "review",
+  "instruction": "Review the committed query_pairs.py patch. solve(query) splits the RAW query at & and each field at the first = (absent = means empty value), then percent-decodes UTF-8 and maps + to space ONCE in each component. Preserve pair order and repeated keys. The supported domain is exactly the strings listed below.\nReview only. Do not modify any workspace file, directory, mode or Git metadata. Review the complete candidate against baseline; the finite witness domain below is normative, not a list of expected answers.\n[\"\", \"x=1\", \"x=1&x=2\", \"k=a%26b\", \"a%3Db=c\", \"x=%2526\", \"a+b=c+d\", \"x\", \"x=\", \"x==2\", \"x=%E2%98%83\"]\n\nRun the frozen visible command `python3 -B verify.py`; do not edit verify.py. Its result is an observation, not the complete task contract. Use the controller-provided record when available and preserve its exact command/execution_state/exit_code/evidence_availability values in response checks. Return a JSON object with status (completed or blocked), findings (array), blockers (array), checks (array of exactly that one four-field check record). For implementation, successful completion has empty findings and blockers. Review findings each have path (workspace-relative POSIX, no ./), symbol (unqualified function), kind (incorrect-result, unexpected-exception or data-loss), and witness {module,function,args} drawn from the declared finite domain. A witness is a data request, never executable code. A finding must be an introduced contract violation: the baseline meets the expectation, the candidate does not. One or more supported consequences can cover the same root cause; duplicate supported findings are neutral, extra unsupported findings fail. A blocker task requires status blocked, no findings, and one blocker {resource,reason}; do not claim a pass. No extra response fields are required. Python3/standard library only. Do not install packages, change permissions or access a network. Preserve arguments to every callable.\n",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ],
+  "allowed_changes": [],
+  "cases": [
+    {
+      "case_id": "case-01",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          ""
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": []
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-02",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "x=1"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "x",
+            "1"
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-03",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "x=1&x=2"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "x",
+            "1"
+          ],
+          [
+            "x",
+            "2"
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-04",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "k=a%26b"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "k",
+            "a&b"
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-05",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "a%3Db=c"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "a=b",
+            "c"
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-06",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "x=%2526"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "x",
+            "%26"
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-07",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "a+b=c+d"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "a b",
+            "c d"
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-08",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "x"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "x",
+            ""
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-09",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "x="
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "x",
+            ""
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-10",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "x==2"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "x",
+            "=2"
+          ]
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-11",
+      "request": {
+        "module": "query_pairs",
+        "function": "solve",
+        "args": [
+          "x=%E2%98%83"
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          [
+            "x",
+            "☃"
+          ]
+        ]
+      },
+      "preserve_args": true
+    }
+  ],
+  "preserve_review_args": true,
+  "max_findings": 8,
+  "defect_obligations": [
+    {
+      "id": "encoded-separator-split",
+      "path": "query_pairs.py",
+      "symbol": "solve",
+      "kinds": [
+        "incorrect-result",
+        "data-loss"
+      ]
+    }
+  ]
+}

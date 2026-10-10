@@ -1,0 +1,52 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "query_pairs.py",
+        "symbol": "solve",
+        "kind": "incorrect-result",
+        "witness": {
+          "module": "query_pairs",
+          "function": "solve",
+          "args": [
+            "k=a%26b"
+          ]
+        }
+      }
+    ],
+    "blockers": [],
+    "checks": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "verify.py"
+        ],
+        "execution_state": "ran",
+        "exit_code": 0,
+        "evidence_availability": "complete"
+      }
+    ]
+  },
+  "positive_snapshot": "agent",
+  "negative_snapshots": [],
+  "boundary_negative": {
+    "path": "forbidden.txt",
+    "content": "unexpected edit"
+  },
+  "observed_check": {
+    "command": [
+      "python3",
+      "-B",
+      "verify.py"
+    ],
+    "execution_state": "ran",
+    "exit_code": 0,
+    "evidence_availability": "complete"
+  },
+  "negative_responses": [
+    "wrong-check",
+    "unsupported-finding"
+  ]
+}

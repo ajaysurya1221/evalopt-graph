@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "interval-union",
+  "split": "development",
+  "category": "ordinary-bug-repair",
+  "source_family": "interval-union",
+  "instruction": "Repair intervals.merge(intervals). Each interval is a two-integer list [start, end] with start <= end. Return a sorted list of merged intervals: touching endpoints count as overlap. Accept empty and unsorted input, merge nested intervals, and leave the input list and its nested lists unchanged. Inputs already meet this contract; validation of malformed inputs is out of scope.",
+  "allowed_changes": [
+    "intervals.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

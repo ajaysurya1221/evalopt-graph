@@ -21,7 +21,7 @@ Replay establishes consistency with that input, not the truth of the input.
 **Engineering:** [Zero runtime dependencies](https://github.com/ajaysurya1221/evalopt-graph/blob/main/pyproject.toml) · [State and replay tests](https://github.com/ajaysurya1221/evalopt-graph/blob/main/tests/test_kernel.py)
 [32 authored/generated conformance cases](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) · [Release checks](https://github.com/ajaysurya1221/evalopt-graph/blob/main/scripts/verify_installed_release.py)
 
-Conformance evidence only; no external capability or comparative result is claimed.
+Kernel conformance evidence only; no external capability or comparative result is claimed.
 [Install](https://github.com/ajaysurya1221/evalopt-graph#install) · [Host responsibilities](https://github.com/ajaysurya1221/evalopt-graph#kernel-owns--host-owns)
 
 <picture>
@@ -166,7 +166,72 @@ prove semantic truth, deployed behavior, source correctness, or model capability
 
 Read the [evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) and
 [prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps.
-There is no live-model governance campaign or official Docker SWE-bench result in this release.
+The v0.1.0 kernel package release contains no live-model governance campaign or official Docker SWE-bench result.
+
+### Workflow skill and measured comparison
+
+The portable [eval-opt skill](skills/eval-opt/SKILL.md) and
+[workflow benchmark](bench/harbor/skill-workflows-v1/README.md) are separate
+development artifacts. The benchmark compares a baseline, Matt Pocock's pinned
+workflow bundle, and eval-opt under the same task and runtime conditions. Hidden
+outcome grading is separate from the kernel's stopped-output policy comparison.
+
+The [432-trial held-out comparison](results/skill-workflows-v1/heldout-comparison-2026-10-10/README.md)
+found **no demonstrated workflow upgrade**: upstream and eval-opt each achieved
+132/144 valid completions (91.67%). The registered paired C-minus-B difference
+is 0.00 percentage points, with a 95% interval of −2.08 to +2.08 points. This
+observed tie does not establish equivalence. All final outcomes are retained;
+one controller interruption and its permitted retry leave 433 attempts.
+The package releases all 48 authored task assets and replays 432 supplied-reply
+grades plus 1,296 policy decisions without executing candidate code.
+
+These are the preserved **original-grader results**. A separate
+[post-publication semantic audit](results/skill-workflows-v1/semantic-audit-2026-10-10/README.md)
+examines five task families, including originally passing outputs, and reports
+adjudicated counts alongside bounds that leave missing original case replies
+unresolved. It documents grader
+defects and supplemental diagnostics without rewriting v1. Neither the original
+study nor this post hoc audit demonstrates a workflow upgrade.
+The diagnostic-supported adjudication gives baseline 144/144, upstream 143/144,
+and eval-opt 144/144: a 0.69-point C-minus-B difference with a descriptive
+interval of 0.00 to 2.08 points. The audit's missing-original-case sensitivity
+still spans both directions; these are post hoc results, not a new held-out win.
+
+In the secondary policy comparison, M and G each accepted 378/432 outputs,
+including 19/37 graded-invalid outputs, while not accepting 36/395 valid outputs.
+G's nine abstentions overlap that non-acceptance count. These descriptive results
+use the original correctness labels; the semantic audit separately cross-tabulates
+the unchanged decisions against adjudicated labels. They do not establish a
+kernel advantage over M. All-attempt accounting contains
+417 complete and 16 partial records; partial counters are lower bounds, with no
+efficiency comparison or invented dollar costs.
+
+The [36-trial development pilot](results/skill-workflows-v1/development-pilot-2026-10-09/README.md)
+recorded 12/12 valid completions for each arm. Its separate isolated corrected-grader
+reexecution changed none of the 36 grades and added no agent trials. The pilot has
+[a fresh public-clone reproduction receipt](results/skill-workflows-v1/validation-f515456/README.md).
+The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) keeps pilot,
+held-out, policy, transfer and replication scope distinct.
+
+The [Terminal-Bench transfer report](results/skill-workflows-v1/transfer-comparison-2026-10-10/README.md)
+retains all 72 scheduled rows: **58 executed and 14 unstarted**. Available verifier
+rewards show upstream at 23/27 and eval-opt at 19/27. Full-schedule missing-outcome
+bounds for C-minus-B are −36.11 to +13.89 percentage points; these are identification
+bounds, not a confidence interval or superiority result. Two approved post-freeze
+admission amendments, four unscored timeouts and the final stop remain disclosed.
+This incomplete feasibility subset is not an official leaderboard score. Its
+[registration](results/skill-workflows-v1/transfer-registration-2026-10-10/README.md)
+predates admission; the prior
+[12-image setup checks](results/skill-workflows-v1/transfer-readiness-2026-10-09/README.md)
+were infrastructure controls, not task outcomes. Both result packages have offline
+reproduction commands, and CI replays their retained evidence.
+
+The [protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
+[frozen implementation notes](bench/harbor/skill-workflows-v1/STATUS.md) retain their
+original prospective wording; completed result packages supersede historical
+pending statuses. This is a maintainer-run study, not independent human validation
+or independent agent replication. Hashes identify bytes, not authenticated
+producers. The stable kernel API and wheel dependencies remain unchanged.
 
 ## Integrate it anywhere
 

@@ -1,0 +1,584 @@
+{
+  "evidence": [
+    {
+      "path": "original/sealed-tasks/review-object-copy-clean/task.json",
+      "sha256": "56df3b341e057a41499faca82f54e8479cdf2970d2e1f3be4746570bc65944eb"
+    },
+    {
+      "path": "original/sealed-tasks/review-object-copy-clean/hidden_cases.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "original/benchmark-source/tasks/suite.py",
+      "sha256": "553e20e20ec61eb1f00435d379928a3440701e3c54bf9d0ee6d7172c592b997b"
+    },
+    {
+      "path": "original/benchmark-source/runtime/verify.py",
+      "sha256": "856fd980d1a9d662c20e3567870d337ca775fc7c48e86f036d50b9735a35a712"
+    },
+    {
+      "path": "adjudications/runtime/probe.py",
+      "sha256": "2f98306e63b7587fb9dc87acf74f46769985742d2c5ff0bf5afe56cdd5537a67"
+    },
+    {
+      "path": "adjudications/runtime/probe-output.json",
+      "sha256": "a8e360c2b75168369bc681ed68957547ba11d871995d66319b065a48a666101f"
+    },
+    {
+      "path": "original/sealed-tasks/review-object-copy-clean/agent/objects.py",
+      "sha256": "994fc294e8c8a7c98e3cdf715c0ce662247b6da4a8f8a3754ac1b24d25eba732"
+    },
+    {
+      "path": "original/sealed-tasks/review-object-copy-clean/candidate/objects.py",
+      "sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5"
+    },
+    {
+      "path": "adjudications/runtime/diagnose.py",
+      "sha256": "057483c2ceb92bb033abeab88dc445087ce0056fa2d13151f2178029214d5a30"
+    },
+    {
+      "path": "adjudications/runtime/diagnostics-01/results.json",
+      "sha256": "fc750012b10367b1c0cfb0106c1bcb5c3803cae84c7064f35813775d47c5d3c5"
+    },
+    {
+      "path": "adjudications/runtime/diagnostics-01/closure.json",
+      "sha256": "c4983b6b3922ada857162424831716883f7efee33d6750951ed9f165355634d1"
+    },
+    {
+      "path": "adjudications/runtime/diagnostics-01/case-073.stdout",
+      "sha256": "9ac3153ca07f3da67c7a89e4a16944074ea3e9621a49b175df2773fb4d258605"
+    }
+  ],
+  "limitations": [
+    "This is a maintainer-run posthoc semantic audit, not an independent benchmark replication or preregistered correction.",
+    "Source inspection and trusted stdlib probes are labeled separately from retained trial observations.",
+    "The host probe uses the interpreter reported in probe-output.json; it is not the original container run."
+  ],
+  "metric_scope": "The five explicit metrics retain their v1 definitions. Claims-supported/unsupported-success follow v1's functional-completion conjunction; this is not a new audit of every prose assertion. U/M/G decisions and usage are unchanged.",
+  "original_artifacts_changed": false,
+  "original_bundle_id": "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+  "posthoc": true,
+  "row_amendments": [
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--A/attempt-1/grade.json",
+          "sha256": "5b4239a36932a189a4eb4f916e2c7a6bb503b14980132b1821de76efe83a12d8"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--A/attempt-1/finish.json",
+          "sha256": "ec0b75546c4e3d4572a3d4f91a6a146a6bfca3587013dd45272296784a35a660"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--A/attempt-1/agent/snapshot.json",
+          "sha256": "20ac0c71dbc3df54c8eaa46323b1062860aa99d721080af2ddfb7abc1bd95b0c"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--A/attempt-1/agent/node-manifest.json",
+          "sha256": "d9dde15bbe9c11b017f7e222e73a2e397be670a949a256dced87ef6e07411ab2"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 500,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Reviewed benchmark-base..HEAD and found one introduced defect: clone raises RecursionError for an acyclic JSON value nested inside 500 lists, while the baseline succeeds under the same default runtime settings. The visible check passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r1--A"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--B/attempt-1/grade.json",
+          "sha256": "4aad6632b23e0b567f2a981a2351b162439882e16831203395f12963373b7888"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--B/attempt-1/finish.json",
+          "sha256": "9ced5e9021240028dfe0240dbd2b8465040db80168cf7522ababd4d80cd68c03"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--B/attempt-1/agent/snapshot.json",
+          "sha256": "f40e24769f9c74b0f312a6b276c556d4facfbe653eeb335042f268e3a5d3cca2"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--B/attempt-1/agent/node-manifest.json",
+          "sha256": "3dafd7c724c605fd70e2c723bd6feb99585bc95884babf96c7db2fc55f3a32ce"
+        }
+      ],
+      "finding_assessment": "missed_legitimate_regression",
+      "finding_claimed_depth": null,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The empty finding list misses the same actionable introduced recursion regression required of every review arm and repetition.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [],
+        "status": "completed",
+        "summary": "Reviewed benchmark-base..HEAD against SPEC.md and repository standards. Neither review axis found actionable defects. The visible check and additional JSON-value and mutation-isolation probes passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r1--B"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--C/attempt-1/grade.json",
+          "sha256": "e8be2f04cc75b24aab1ead621d6d7d795b2eb58ee05cfa8fa47d66d4225ce542"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--C/attempt-1/finish.json",
+          "sha256": "ee66ce8b739c7c6322d8ec2fa4a71e86f8a8250d191f929f59e20f2ed0baa972"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--C/attempt-1/agent/snapshot.json",
+          "sha256": "4756f212b0c238253cd3156d443567ccd97a89aa86e2b3300437a9d0f53012a0"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r1--C/attempt-1/agent/node-manifest.json",
+          "sha256": "193c0289777bc39dc88b3523138d40f9bf696a39b3a97d1f6f5757f5eb9da35b"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 600,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Reviewed benchmark-base..HEAD (495bfc7). Found one introduced regression: valid lists and dictionaries nested 600 levels deep raise RecursionError in clone, while benchmark-base successfully clones them. Preserve support for these previously accepted nesting depths. The visible check and other JSON contract probes passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r1--C"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--A/attempt-1/grade.json",
+          "sha256": "0f564e7c408e88e66ece1c53b7034f909d3ae24d586a50b021750ef21505dcc8"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--A/attempt-1/finish.json",
+          "sha256": "8f472e76cf8422745f9c4ee75c5c81e11c3efe39a20764b89c632db096a883ed"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--A/attempt-1/agent/snapshot.json",
+          "sha256": "97dc7974a952edf0ecc9232acad0f310c3a88b06485eadaf2bc30cd02a4d9890"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--A/attempt-1/agent/node-manifest.json",
+          "sha256": "4be14e60247286d6523359da3983254b72dfa04e01aeb9dbf663a17c908a1573"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 600,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Reviewed benchmark-base..HEAD and found one introduced defect: clone raises RecursionError for a valid JSON value containing 600 nested lists, while the committed baseline successfully clones the same input under unchanged runtime settings. The visible check passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r2--A"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--B/attempt-1/grade.json",
+          "sha256": "b4f650b541b5495fefd5370d8e29c7ae7eeca885e5fa07f2fd9a73e299948ff6"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--B/attempt-1/finish.json",
+          "sha256": "302e010718f568aade383dc4534248af06bebb6c605d92d9d6832a5adb43cef0"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--B/attempt-1/agent/snapshot.json",
+          "sha256": "68937a2f135f22eb4480d41001c929b18e5c9076ca6234481fddb560d1dc15a6"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--B/attempt-1/agent/node-manifest.json",
+          "sha256": "0ae7b0c10c083761555938ac6ddc5ac466ea9769f3f6764849571cfa6b532369"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 600,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Reviewed benchmark-base..HEAD. Standards: no actionable defects. Spec: one introduced exception in objects.clone; valid lists and dictionaries nested 600 levels succeed in the baseline but raise RecursionError in the candidate. The visible check passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r2--B"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--C/attempt-1/grade.json",
+          "sha256": "7d9f2c36d5fc0204b9c97c5a24a989b3ea049731c09b8b959bba70ce7b44f266"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--C/attempt-1/finish.json",
+          "sha256": "649f3d9b3cffddba530bc12b1b89a817d43c28c31d9cdb2e187cb867bf6f7823"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--C/attempt-1/agent/snapshot.json",
+          "sha256": "871532350b3c7255838da153e5ceba9f9eab5e6f03971e50f44d15abc51f416f"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r2--C/attempt-1/agent/node-manifest.json",
+          "sha256": "3c09e3c97f043aebf4b03c42bf1090284c8a9fa67f0823911b04957f279cd9af"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 600,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Reviewed benchmark-base..HEAD (495bfc772c451fdd48347680f022eebedf8f2c64). Found one introduced defect in objects.py:4: with the unchanged recursion limit of 1000, clone raises RecursionError for valid 600-level nested lists or dictionaries that the baseline clones successfully. Preserve baseline-supported nesting, for example by using iterative container copying. No other actionable defects found. The visible check passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r2--C"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--A/attempt-1/grade.json",
+          "sha256": "342d9174a2cd46f61d204857ba46f863a9f2fc453e2a15e63bcea83ecd0a9f68"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--A/attempt-1/finish.json",
+          "sha256": "958c858c0d0dddd23f2631f917fb37b70a5de10f377f0a5819d3c08152c5994b"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--A/attempt-1/agent/snapshot.json",
+          "sha256": "4649244737d678d9841f9ff96c1bffef970f6a58485706e47423d69820a75dbf"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--A/attempt-1/agent/node-manifest.json",
+          "sha256": "bdb614b77eb85ea121579f6bf968cf52dc92408a2a4c54c531adcb14495be2b1"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 600,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Review found one introduced defect: clone raises RecursionError for a valid JSON value consisting of 600 nested lists around integer 0, while benchmark-base clones it successfully. The visible check passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r3--A"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--B/attempt-1/grade.json",
+          "sha256": "8e25b3011340dc3f4a3bd9cf093725b35a2f0f0721c38f008c6bbface2ef3a72"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--B/attempt-1/finish.json",
+          "sha256": "c6ef020158d5ec2df8e99c1d9292f286ce12dc8f01e6cc6fded8d12822eee1b6"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--B/attempt-1/agent/snapshot.json",
+          "sha256": "e5236162fe0243341d54d826f359b29d11a5d5bb4143cec153ae23a6124fb39c"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--B/attempt-1/agent/node-manifest.json",
+          "sha256": "7bc46727ed16fec9e3428353a1f04dbe55bda63e1d495f72931458d58ea5db30"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 600,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Review completed. Standards: no actionable defects. Spec: one introduced exception regression in objects.clone; a valid JSON value containing 600 nested lists clones successfully at benchmark-base but raises RecursionError with the candidate. The visible check passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r3--B"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "attempt": 1,
+      "decoded_source_sha256": "cc36727e5dd85802d62148b114db5a4432ff7f475159f2737dd8de97362629d5",
+      "evidence": [
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--C/attempt-1/grade.json",
+          "sha256": "aa0831d4d56333f97f22297766a98ae2098771870c7ca83df9957667131d5d2d"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--C/attempt-1/finish.json",
+          "sha256": "f6ddc61caf08a134d4f9b62f5901fb557f597defa0e1e72e44f836a92a287ab2"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--C/attempt-1/agent/snapshot.json",
+          "sha256": "332e970daf3b645363694f352bf08b95937bd95dabab6cdbedbf52395030e8ff"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-object-copy-clean--r3--C/attempt-1/agent/node-manifest.json",
+          "sha256": "50779d4b9ec24f68dba0579fbc2876c573d1a66c2bdaebb902392889f4b501e5"
+        }
+      ],
+      "finding_assessment": "legitimate_regression",
+      "finding_claimed_depth": 600,
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Correct actionable introduced exception at objects.py:clone; valid finite previously supported nesting regresses.",
+      "retained_response": {
+        "blockers": [],
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ],
+        "findings": [
+          {
+            "kind": "unexpected-exception",
+            "path": "objects.py",
+            "symbol": "clone"
+          }
+        ],
+        "status": "completed",
+        "summary": "Reviewed benchmark-base..HEAD (495bfc772c451fdd48347680f022eebedf8f2c64). Found one introduced defect: clone raises RecursionError for a valid JSON value consisting of 1 wrapped in 600 nested lists, while the baseline clones it successfully under the same runtime settings. Representative JSON value and container-independence probes passed, and python -B verify.py passed."
+      },
+      "trial_id": "heldout--review-object-copy-clean--r3--C"
+    }
+  ],
+  "rule": "Report every actionable introduced defect on the visible finite JSON domain; no unstated shallow-depth bound. A valid input raising where the baseline returns is unexpected-exception.",
+  "runtime_confirmation": "The same trusted stdlib probe also ran in original pinned verifier image: CPython 3.11.2/Linux aarch64/default recursion limit 1000. This is a NEW mechanism diagnostic, not candidate-workspace or original-trial replay.",
+  "schema_version": "evalopt.semantic-adjudication.v1",
+  "task_id": "review-object-copy-clean",
+  "verdict": "amend"
+}

@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "legacy-exception-and-range-leak",
+      "kind": "initial"
+    },
+    {
+      "name": "frozen-parser-edit",
+      "kind": "edit",
+      "path": "legacy_parser.py",
+      "append": "\n# modified vendor\n"
+    }
+  ]
+}

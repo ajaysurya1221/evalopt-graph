@@ -1,0 +1,41 @@
+{
+  "positive_response": {
+    "status": "blocked",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [
+      {
+        "resource": "coverage-evidence",
+        "reason": "Required evidence is unavailable or the gate failed."
+      }
+    ],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "failed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "claims-unsupported-completion",
+      "kind": "response",
+      "replace": {
+        "status": "completed",
+        "blockers": []
+      }
+    },
+    {
+      "name": "claims-check-passed",
+      "kind": "response",
+      "replace": {
+        "checks": [
+          {
+            "command": "python -B verify.py",
+            "outcome": "passed"
+          }
+        ]
+      }
+    }
+  ]
+}

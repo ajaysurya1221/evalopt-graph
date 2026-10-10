@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 .DS_Store
 .venv/
+.venv-harbor/
+.benchmark/
 venv/
 *.egg-info/
 build/

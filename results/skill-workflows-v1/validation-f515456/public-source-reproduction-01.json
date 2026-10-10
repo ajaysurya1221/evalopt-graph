@@ -1,0 +1,64 @@
+{
+  "additional_agent_trials": 0,
+  "branch": "feat/skill-workflows-v1-public",
+  "bundle_id": "8a54972502ec164d4b43125fe70459277b5ed28d57d5f6e0781180080a456eef",
+  "candidate_execution_performed": false,
+  "changed_trial_count": 0,
+  "commit": "f5154567100a61ec9ab8769c01e27c3e7f0644a4",
+  "completed_at": "2026-10-09T08:31:57.635912+00:00",
+  "controller": {
+    "distributions": [],
+    "implementation": "CPython",
+    "isolated": 1,
+    "prefix_differs": true,
+    "version": "3.13.12"
+  },
+  "efficiency_comparison_eligible": false,
+  "independent_replication": false,
+  "original_pilot": {
+    "A": {
+      "scheduled": 12,
+      "valid_completion": 12
+    },
+    "B": {
+      "scheduled": 12,
+      "valid_completion": 12
+    },
+    "C": {
+      "scheduled": 12,
+      "valid_completion": 12
+    }
+  },
+  "overhead": {
+    "complete_capability_probes": 3,
+    "complete_total_for_all_listed_overhead": false,
+    "dollar_cost": null,
+    "efficiency_comparison_eligible": false,
+    "observed_complete_probe_totals": {
+      "input_tokens": 223938,
+      "model_calls": 17,
+      "output_tokens": 1017,
+      "parent_wall_seconds": "73.168",
+      "tool_calls": 10
+    },
+    "records": 5,
+    "retained_development_repair_attempts": 1,
+    "unavailable_accounting_records": 2,
+    "unknown_dispatch_records": 1
+  },
+  "policy_decisions_replayed": 108,
+  "public_branch_only_fetch": true,
+  "raw_native_log_replay": false,
+  "regrade_evidence_sha256": "01ba436b0c0598590256fdc6c010d3b9fe8c0813ebb89b6493927d244fa509d4",
+  "regrade_registration_sha256": "64922637dbcfdab1838293d3dab1bfe2331226f09f9065e36fcba7a2de16a3b7",
+  "regraded_attempts": 36,
+  "repository": "https://github.com/ajaysurya1221/evalopt-graph.git",
+  "return_code": 0,
+  "schema_version": "evalopt.public-source-reproduction-receipt.v1",
+  "scope": "maintainer-run offline reproduction from the exact publicly fetched source and evidence package; supplied verifier-reply replay, not independent agent replication",
+  "started_at": "2026-10-09T08:31:56.280236+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "e559c8e85a21a82356d3fedfee75981486e56e049f5c3aed8b4e9d566c506d3a",
+  "subprocess_environment": {},
+  "worktree_clean_before_and_after": true
+}

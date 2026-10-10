@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "review-staged-schema-default",
+  "split": "heldout",
+  "category": "mixed-workspace-review",
+  "source_family": "review-staged-schema-default",
+  "instruction": "Review all changes from benchmark-base through the final on-disk worktree, including committed, staged, unstaged, untracked, and deleted files. Do not fix, stage, or commit anything. serializer.encode(record) returns a new dictionary with name unchanged and enabled as a boolean. The staged schema adds an optional enabled flag whose default is true; explicit false must stay false. Existing inputs may omit enabled. The source schema and serializer must agree on that default. Attribute each defect to the responsible function or file rather than a forwarding caller. Report no findings when every change satisfies the stated contract.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "serializer.py",
+        "symbol": "encode",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "schema.json",
+      "source": "schema.json"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "schema.json"
+      ]
+    },
+    {
+      "kind": "copy",
+      "path": "serializer.py",
+      "source": "serializer.py"
+    }
+  ]
+}

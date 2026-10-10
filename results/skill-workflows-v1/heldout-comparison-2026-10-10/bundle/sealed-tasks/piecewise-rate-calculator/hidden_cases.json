@@ -1,0 +1,171 @@
+[
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      12,
+      [
+        [
+          10,
+          "0.10"
+        ],
+        [
+          null,
+          "0.05"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": "1.10"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      3,
+      [
+        [
+          1,
+          "0.004"
+        ],
+        [
+          2,
+          "0.004"
+        ],
+        [
+          null,
+          "0.004"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": "0.01"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      1,
+      [
+        [
+          null,
+          "0.005"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": "0.01"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      0,
+      [
+        [
+          null,
+          "1.00"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": "0.00"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      1,
+      []
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      1,
+      [
+        [
+          2,
+          "1"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      1,
+      [
+        [
+          null,
+          "1"
+        ],
+        [
+          2,
+          "1"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      1,
+      [
+        [
+          2,
+          "1"
+        ],
+        [
+          2,
+          "1"
+        ],
+        [
+          null,
+          "1"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      1,
+      [
+        [
+          null,
+          "-1"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "pricing",
+    "function": "charge",
+    "args": [
+      -1,
+      [
+        [
+          null,
+          "1"
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

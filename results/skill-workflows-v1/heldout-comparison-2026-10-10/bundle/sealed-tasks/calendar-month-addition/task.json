@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "calendar-month-addition",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "calendar-month-addition",
+  "instruction": "Repair calendar_math.add_months(text, months). text is a valid YYYY-MM-DD date in years 1900..2100; months is an integer in -120..120. Add calendar months, preserving day-of-month when possible and otherwise clamping to the last day of the target month. Return YYYY-MM-DD. Correctly handle negative offsets, year rollover, century leap rules, and zero offset. Inputs are valid; do not use elapsed-day approximations.",
+  "allowed_changes": [
+    "calendar_math.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

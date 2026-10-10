@@ -1,0 +1,9 @@
+{
+  "directory_scan_exit_code": 0,
+  "gitleaks_version": "8.30.1",
+  "relative_readme_links": "all_resolve",
+  "schema_version": "evalopt.reporting-privacy-controls.v1",
+  "scope": "New reporting audit directory only; no assurance about unrelated files.",
+  "unittest_exit_code": 0,
+  "unittest_named_tests": 9
+}

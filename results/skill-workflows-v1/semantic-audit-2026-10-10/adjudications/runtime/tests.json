@@ -1,0 +1,28 @@
+{
+  "python_version": "3.13.12",
+  "runs": [
+    {
+      "bytecode_disabled": true,
+      "isolated": true,
+      "returncode": 0,
+      "script": "test_audit.py",
+      "script_sha256": "95e3475eb9cc2da4fda57487a0f9566c2952c75a7556ce4fb59db70ea0a8e036",
+      "stderr_sha256": "9a33153aeff98bce33a5c5b6d1734125389279fc86835f771d8b5e03248a5c91",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 23
+    },
+    {
+      "bytecode_disabled": true,
+      "isolated": true,
+      "returncode": 0,
+      "script": "test_diagnose.py",
+      "script_sha256": "6e9e6e4748434d290404dba57f4c28603ab96dab6702d91b9038d34ea339e49e",
+      "stderr_sha256": "7c758af7411e05fc2e6c4fb89045f7a03d9a5957d5305092903a23a66373d034",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 9
+    }
+  ],
+  "schema_version": "evalopt.semantic-audit-controls.v1",
+  "scope": "Offline controls; diagnostic subprocess transport mocked; existing bundle and diagnostic captures read only. No Docker, candidate, grader, or model execution.",
+  "total_tests": 32
+}

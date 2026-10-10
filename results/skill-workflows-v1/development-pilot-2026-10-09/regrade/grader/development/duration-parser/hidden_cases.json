@@ -1,0 +1,119 @@
+[
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "0s"
+    ],
+    "preserve_args": true,
+    "result": 0
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "2h 3m 4s"
+    ],
+    "preserve_args": true,
+    "result": 7384
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "90m"
+    ],
+    "preserve_args": true,
+    "result": 5400
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      ""
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "1m 1h"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "1s 2s"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "-1s"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      " 1s"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "1h  2m"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "1.5h"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "\u0661s"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "999999999999999999s"
+    ],
+    "preserve_args": true,
+    "result": 999999999999999999
+  },
+  {
+    "module": "duration",
+    "function": "parse",
+    "args": [
+      "9999999999999999999s"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

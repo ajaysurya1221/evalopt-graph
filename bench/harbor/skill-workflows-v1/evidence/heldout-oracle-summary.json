@@ -1,0 +1,16 @@
+{
+  "agent_image": "sha256:2088a1d3f04f5168c13174c30ebbf60453e2744a421f4d3337f55425f3075710",
+  "agent_trials": 0,
+  "candidate_manifest_sha256": "371af6ea881c84cd776e40fd060258ef49da5f7a05d06903ff8af834443ed985",
+  "controller_python": "CPython 3.13.12",
+  "detailed_evidence_status": "Retained privately with sealed task assets until registered evaluation and publication.",
+  "oracle_passes": 48,
+  "private_control_receipt_sha256": "4ad0e2086e1e442e7efbe13970d1a1004ebb8c7f4d1be48fb184bda4c635e325",
+  "schema_version": "evalopt.heldout-oracle-summary.v1",
+  "scope": "Maintainer-run, model-free Docker/chroot oracle controls; no held-out agent outcomes or independent replication.",
+  "task_count": 48,
+  "task_root_sha256": "0f5ec011df05bc38a0959c18c54bf0031cc8f7f855b4d3bfa15a7f76cee263e9",
+  "tasks_sha256": "5e6321baf59c82ebe91508d8c52a8ebe72780ecb1201363e34cec5514dab546d",
+  "verifier_image": "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+  "verify_sha256": "856fd980d1a9d662c20e3567870d337ca775fc7c48e86f036d50b9735a35a712"
+}

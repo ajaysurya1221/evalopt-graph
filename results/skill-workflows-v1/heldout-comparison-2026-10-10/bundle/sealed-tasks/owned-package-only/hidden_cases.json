@@ -1,0 +1,42 @@
+[
+  {
+    "module": "owned",
+    "function": "batch_ratio",
+    "args": [
+      [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          -6,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    ],
+    "preserve_args": true,
+    "result": [
+      0.5,
+      null,
+      -3.0,
+      null
+    ]
+  },
+  {
+    "module": "owned",
+    "function": "batch_ratio",
+    "args": [
+      []
+    ],
+    "preserve_args": true,
+    "result": []
+  }
+]

@@ -1,0 +1,194 @@
+{
+  "actual_grant_review": {
+    "active_attempts": 0,
+    "actual_grant_inspection_receipt_sha256_bytes": "69b0d8c7d6458335ba2112057a2c0fe26f44dd23b45de3fda97583286738c4ab",
+    "actual_grant_snapshot_sha256_bytes": "02ebdb2d2be4122dcf1e38812b9c71b27cc845ddfd78d22930361e4f8819772c",
+    "baseline_finalized_attempts": 56,
+    "checked_at": "2026-10-10T08:49:01.626905+00:00",
+    "composite_controls_sha256_bytes": "b84e33fbb1b5aa89e15b7cc0b70af13de5ca74b9df4260a88f29ca4cbbb8e2f0",
+    "harbor": "0.24.0",
+    "new_ledger_entries": 0,
+    "next_trial": "transfer--make-doom-for-mips--r2--C",
+    "pending_original_rows": 16,
+    "python": "3.13.12",
+    "verdict": "ACCEPT"
+  },
+  "approval": {
+    "answer": "Approve bounded continuation (Recommended)",
+    "limitation": "Retained approval evidence, not cryptographic human identity proof.",
+    "original_receipt_sha256_bytes": "2bb805e5f8003aaa6ae89b9547b927bea2f70a1f0a7de33f46c77f7f62d31bcd",
+    "recorded_at": "2026-10-10T08:14:04.255410+00:00",
+    "source": "explicit human approval retained by the operator"
+  },
+  "as_of": "2026-10-10T08:50:42.289495+00:00",
+  "claims": {
+    "efficiency": false,
+    "final72_executed": false,
+    "final_journal_qa_completed": false,
+    "final_raw_qa_completed": false,
+    "independent_human_replication": false,
+    "official_leaderboard_score": false,
+    "report_reproduced": false,
+    "rewards_repaired": false,
+    "upgrade_or_superiority": false
+  },
+  "controller_files_sha256_bytes": {
+    "amendment.py": "7474fffaee66ca45bb67117074d9a555c2792acc5f5a72c4f5006b71842b0b0e",
+    "bridge.py": "d9838cbef770fc2e5614428e79218b7517ecf635939e99c345565fef04638aa1",
+    "classifier.py": "593196a610d1947fc8f182eee23d3428d9964ebf32ec9653fd893b3f347ed1d8",
+    "observer.py": "6466d2520d8f470ef6cc28b480ad84c81ab5f8b7d31a554f9c4e074be1fd7965",
+    "operator.py": "460474be8ad0db023f78f66b49240a1fa6f1bac364b863308b1dd3e50cbc417a"
+  },
+  "grant_projection": {
+    "accounting_policy_sha256_canonical_json": "cde084b941e27504f7960fba48eb38b7a11213f949626b1383b422b335801b1c",
+    "excluded": "Private machine paths, executable argv, private receipt locations and internal conversation/process/account identifiers.",
+    "executable": false,
+    "freeze_recorded_at": "2026-10-10T08:46:02.912388+00:00",
+    "original_freeze_sha256_bytes": "ef7ac408a3b08646d6fd2124f858b4660c71e7ea0dfcbf8e7581c3d05d71945b",
+    "original_grant_sha256_bytes": "34f98a94d9e48325e53a8721e7e930b0220ecd5e51c4f80bef004af5ff08bc63",
+    "original_preflight_sha256_bytes": "74674f7431bbe81850a3822ca56fd47fa1a581a401a22248f2068d1ff1fba6b5",
+    "pending_rows_sha256_canonical_json": "84eaa47f64389a18eade5261b9f5463f15d6dd8a15262f92e7b538e7ffea9029",
+    "prefix_manifest_sha256_bytes": "68c3715d7d470032a3dde67d9ce0c83cb3df040de0cd5e3327a2f82fa031125e",
+    "registration_sha256_canonical_json": "1f3116fe8af392300a225ab79bfefb7278942dd48999f5875cfdc0bf757dc32f",
+    "root_controls_receipt_sha256_bytes": "b84e33fbb1b5aa89e15b7cc0b70af13de5ca74b9df4260a88f29ca4cbbb8e2f0",
+    "source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46"
+  },
+  "implementation_review": {
+    "actual_grant_review_in_this_original_receipt": false,
+    "author_controls": 21,
+    "checked_at": "2026-10-10T08:39:55.298955+00:00",
+    "combined_controls": 305,
+    "errors": 0,
+    "failures": 0,
+    "independent_controls": 284,
+    "note": "The separate later actual-grant review is recorded below. Test reruns are not additional independent experiments.",
+    "skips": 0,
+    "verdict": "ACCEPT"
+  },
+  "observed_launch": {
+    "attempt_start": {
+      "attempt": 1,
+      "schedule_sha256": "dc27e1e37303391284ea2619961c9e717827249b289de609f259c1c8d4a6625f",
+      "schema_version": "evalopt.workflow-attempt.v1",
+      "started_at": "2026-10-10T08:50:08.799901+00:00",
+      "trial_id": "transfer--make-doom-for-mips--r2--C"
+    },
+    "attempt_start_sha256_bytes": "b8dcbb83fb2e02647e025d5b7aad7ebb82c396389ecee2ba2d009b6c344f7de3",
+    "attempt_started": true,
+    "first_start_observed_at": "2026-10-10T08:50:42.289495+00:00",
+    "launched_at": "2026-10-10T08:49:43.904928+00:00",
+    "native_run_started": true,
+    "native_start_sha256_bytes": "75e6ff94eeaf0f699fb783b5f6d9dbbbbe4646e70bfe25bb75e74abb60775f28",
+    "original_launch_receipt_sha256_bytes": "9ce6884a3d88adc3f0f45f5e8419010ec392d858b8d58721243ab88e79317037",
+    "scope": "Only launch and first native/attempt start at the recorded times. No subsequent completion, quarantine, success or final endpoint is asserted."
+  },
+  "pending_scope": {
+    "agent_budget_seconds_sum": 19800,
+    "already_finalized_attempt1": 56,
+    "arms": {
+      "B": 36,
+      "C": 36
+    },
+    "attempt": 1,
+    "file": "pending-rows.json",
+    "order": "exact_original",
+    "ordinal_max": 71,
+    "ordinal_min": 56,
+    "original_denominator": 72,
+    "remaining": 16,
+    "retry_permitted": false,
+    "sha256_bytes": "de508791314a7c5b19d8fc7f966b8e7786286ed9f0e913b30fc0cfab30450a2b",
+    "sha256_canonical_json": "84eaa47f64389a18eade5261b9f5463f15d6dd8a15262f92e7b538e7ffea9029"
+  },
+  "phases": [
+    {
+      "description": "Original admission policy.",
+      "one_based": [
+        1,
+        55
+      ]
+    },
+    {
+      "description": "First exact historical-exception admission.",
+      "one_based": [
+        56,
+        56
+      ]
+    },
+    {
+      "description": "Approved prospective policy; only launch and trial57 start asserted here.",
+      "one_based": [
+        57,
+        72
+      ]
+    }
+  ],
+  "preserved_failures": [
+    {
+      "attempt": 1,
+      "external_acknowledgment": "absent_must_remain_absent",
+      "finish_and_evidence_sha256_bytes": {
+        "finish.json": "b6f344f92faa9cf72990f756b543187e1f8ab88fdc096fd4a4f5670037c88dcc",
+        "manifest.json": "7980f5e7e73dabd27ad86e6a585dd21dad01f9675f56bd99f2544335d9ca1eb0",
+        "raw/artifacts.json": "738258bc4a30486e52b4a81b25bff16cab9ac5faa6586d203462c4d78544446e",
+        "raw/result.json": "abf30c07c317ba87fa3b3187ef955c99f8b5f31ef91da6c4417dc984fbccf000",
+        "transfer-result.json": "f26cb2a5450274e191e1c82ecd91ac06b02e339113fcf111a7d91b7b876762cd"
+      },
+      "native_end": "present_paused_runtime_identity_requires_remediation",
+      "old_stop_sha256_bytes": "791a83b01b27f39f7c7c78664e6ebbfa79332ba833feec0abb0fa7d99b9e2d9c",
+      "resource_status": "frozen_unavailable_not_zero",
+      "reward": null,
+      "scope": "exact_hashes_only_no_future_generalization",
+      "trial_id": "transfer--make-doom-for-mips--r1--B"
+    },
+    {
+      "attempt": 1,
+      "external_acknowledgment": "absent_must_remain_absent",
+      "finish_and_evidence_sha256_bytes": {
+        "finalize.json": "1f66e512a0d9f8ac3474947bbb939fb596f1569dd03d70e9584e0ae15cddef82",
+        "finish.json": "0dc2df6430790d01b862199d752c4ed1a1c2cd0e2a4f1091a540e5049b1c4ee0",
+        "manifest.json": "3ef910d75848a8f024ef509112c41cfbfaafaf40aaaebea56af88d8bc095048e",
+        "raw/artifacts.json": "2675fd2f4f971d47644e954747f8a78f1ac59bb14a3ddc4257cfe20eb863f48d",
+        "raw/result.json": "42e561358ba2dd82741093c7ce64200976d34b120e437712ba598b619240af73",
+        "transfer-result.json": "336f827d914e78cf0621fcd63d6a04b03b2dfa5a7106b620a742472d44c941b4"
+      },
+      "native_end": "present_paused_execution_boundary_requires_remediation",
+      "native_end_sha256_bytes": "02be560b790337f07dace05373fce902d8fe379afc3c1d31c5f92b9f9ad3bb7f",
+      "new_stop_sha256_bytes": "c45f44b0fe7468251f25bfad8aea2ba693421e0b837c7a458f6f66459b6ca5c0",
+      "resource_status": "frozen_valid_partial_lower_bounds_count_once",
+      "reward": null,
+      "scope": "exact_hashes_only",
+      "trial_id": "transfer--make-doom-for-mips--r1--C"
+    }
+  ],
+  "preserved_source": {
+    "accounting_policy_sha256_canonical_json": "cde084b941e27504f7960fba48eb38b7a11213f949626b1383b422b335801b1c",
+    "source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46",
+    "transfer_registration_sha256_canonical_json": "1f3116fe8af392300a225ab79bfefb7278942dd48999f5875cfdc0bf757dc32f"
+  },
+  "projection_notice": "Allowlisted description of private retained records. Original byte hashes name original records, not this projection. This is not an executable grant, authorization credential, authentication proof or final result package.",
+  "requires_before_result_publication": [
+    "All72 scheduled rows reconciled, including any still pending after a stop.",
+    "Full raw-byte/accounting/reward QA and exact external/native/ledger journal mapping at the same quiescent endpoint.",
+    "Frozen report and fresh public reproduction; all unavailable rewards/consumption retained as unknown.",
+    "Separate public privacy, claims and methods review."
+  ],
+  "schema_version": "evalopt.public-transfer-policy-v2-engineering.v1",
+  "source_object_sha256_bytes": {
+    "approval": "2bb805e5f8003aaa6ae89b9547b927bea2f70a1f0a7de33f46c77f7f62d31bcd",
+    "approved_public_design": "89d1bbf6c077e15cc61e3dece9820281228f2fd39f891300eaa2753508c70737",
+    "controller_candidate": "8f0c2f0a254cdcc6b2593856bbf1ffb2de785b6c5944d58057a390b657ff2da4",
+    "controller_manifest": "d66d87ce294e00a7c75a2289ee4aa96708733570255af6a0f7d81e9d16e11711",
+    "freeze": "ef7ac408a3b08646d6fd2124f858b4660c71e7ea0dfcbf8e7581c3d05d71945b",
+    "grant": "34f98a94d9e48325e53a8721e7e930b0220ecd5e51c4f80bef004af5ff08bc63",
+    "grant_review": "b8222f380f82438a880556e0eea395af762500e6ae72faf63ca99ac6bf428fc8",
+    "implementation_controls": "589124b654a80783fcf9c0559278e075b5e4c46657c68450edb532e2bdd78623",
+    "implementation_review": "b5527d27e1edb0654b382e60e671270d38a20b84616c6fdc93d1ddba1c19052d",
+    "launch": "9ce6884a3d88adc3f0f45f5e8419010ec392d858b8d58721243ab88e79317037",
+    "launch_intent": "0aca2871e0c07cbe8581a265c6b1c6f41a4147af7e50f9e89408143b6b5eacb5",
+    "proposal_policy": "5548f7170ee8ecb737e0047faceadb324d7589253258ba17be21cb76f303882c",
+    "proposal_readme": "d8efb6f3543ef9372eb1d29323671c171d06ba1064ef888dd474eadd6f738864",
+    "start_observation": "1437c7d1211ed9093af0c56c3ce643b64007328b8a1012a15b80560e091ed5f7"
+  },
+  "status": "implementation_accepted_launch_and_first_start_observed_not_final_results"
+}

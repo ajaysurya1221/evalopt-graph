@@ -1,0 +1,42 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified outcome verified by the development control.",
+    "findings": [
+      {
+        "path": "normalizer.py",
+        "symbol": "normalize",
+        "kind": "data-loss"
+      }
+    ],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "missed-data-loss",
+      "kind": "response",
+      "replace": {
+        "findings": []
+      }
+    },
+    {
+      "name": "incorrect-defect-type",
+      "kind": "response",
+      "replace": {
+        "findings": [
+          {
+            "path": "normalizer.py",
+            "symbol": "normalize",
+            "kind": "unexpected-exception"
+          }
+        ]
+      }
+    }
+  ]
+}

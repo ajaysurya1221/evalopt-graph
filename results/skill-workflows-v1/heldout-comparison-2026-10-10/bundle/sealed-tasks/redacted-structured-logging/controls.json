@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    },
+    {
+      "name": "redacts-only-top-level-keys",
+      "kind": "edit",
+      "path": "logging_filter.py",
+      "append": "\ndef redact(value):\n    if isinstance(value, dict):\n        return {key: \"[REDACTED]\" if key.translate(str.maketrans(\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\")) in {\"password\", \"token\", \"api_key\"} else item for key,item in value.items()}\n    return value\n"
+    }
+  ]
+}

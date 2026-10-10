@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "review-ledger-rounding",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-ledger-rounding",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. ledger.allocate(amount, count) splits a nonnegative decimal currency string with exactly two fractional digits into count positive-numbered slots (count 1..10). Return count two-decimal strings summing exactly to amount. Shares differ by at most one cent; when cents cannot divide evenly, earlier slots get the extra cents. Inputs are valid and amounts are <=999.99. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "ledger.py",
+        "symbol": "allocate",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "ledger.py",
+      "source": "ledger.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "ledger.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"command": "python -B verify.py", "outcome": "failed", "returncode": 1, "stderr": "Traceback (most recent call last):\n  File \"/workspace/verify.py\", line 5, in <module>\n    assert a[\"source_sha256\"] == b[\"source_sha256\"]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n", "stdout": ""}

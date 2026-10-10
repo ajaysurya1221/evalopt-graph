@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "review-generated-index-staleness",
+  "split": "heldout",
+  "category": "mixed-workspace-review",
+  "source_family": "review-generated-index-staleness",
+  "instruction": "Review all changes from benchmark-base through the final on-disk worktree, including committed, staged, unstaged, untracked, and deleted files. Do not fix, stage, or commit anything. lookup.resolve(name) must return the integer value from the current final definitions.json, raising KeyError for unknown names. generated.py is a checked-in lookup table and must reflect every current definition. Review generated.py.DATA as the symbol for a stale table defect. The final definitions include the newly introduced name even if that file is untracked. Attribute each defect to the responsible function or file rather than a forwarding caller. Report no findings when every change satisfies the stated contract.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "generated.py",
+        "symbol": "DATA",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "generated.py",
+      "source": "generated.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "generated.py"
+      ]
+    },
+    {
+      "kind": "copy",
+      "path": "definitions.json",
+      "source": "definitions.json"
+    }
+  ]
+}

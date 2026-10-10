@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "review-deleted-public-entrypoint",
+  "split": "heldout",
+  "category": "mixed-workspace-review",
+  "source_family": "review-deleted-public-entrypoint",
+  "instruction": "Review all changes from benchmark-base through the final on-disk worktree, including committed, staged, unstaged, untracked, and deleted files. Do not fix, stage, or commit anything. The supported installed entrypoint in package.json remains cli:main. cli.py must therefore remain importable with main(args) returning the count of arguments. An internal implementation can move, but the declared public entrypoint must keep working. For module-level entrypoint findings, use symbol <module>. Documentation wording is not a defect. Attribute each defect to the responsible function or file rather than a forwarding caller. Report no findings when every change satisfies the stated contract.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "cli.py",
+        "symbol": "<module>",
+        "kind": "unexpected-exception"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "README.md",
+      "source": "README.md"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "README.md"
+      ]
+    },
+    {
+      "kind": "copy",
+      "path": "runner.py",
+      "source": "runner.py"
+    },
+    {
+      "kind": "delete",
+      "path": "cli.py"
+    }
+  ]
+}

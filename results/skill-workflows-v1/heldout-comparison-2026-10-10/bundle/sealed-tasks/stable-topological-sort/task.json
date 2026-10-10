@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "stable-topological-sort",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "stable-topological-sort",
+  "instruction": "Repair dependencies.order(nodes, edges). nodes are distinct string identifiers; each edge [before, after] means before must precede after. Return the lexicographically smallest topological ordering by choosing the smallest currently available identifier at each step. Include disconnected nodes. Duplicate edges are harmless. Duplicate nodes, edges naming unknown nodes, and cycles (including self-edges) raise ValueError. Empty inputs return []. Preserve both input lists.",
+  "allowed_changes": [
+    "dependencies.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

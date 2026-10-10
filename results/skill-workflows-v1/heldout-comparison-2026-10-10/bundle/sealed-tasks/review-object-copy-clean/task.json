@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "review-object-copy-clean",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-object-copy-clean",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. objects.clone(value) accepts only JSON values (null, booleans, finite numbers, strings, lists, and string-keyed dictionaries). Return an equal value with recursively independent mutable containers. Later mutation of an output list/dictionary must not change input; keys and scalar types are preserved. There are no custom objects or reference cycles. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "objects.py",
+      "source": "objects.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "objects.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

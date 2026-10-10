@@ -1,0 +1,17 @@
+{
+  "files": {
+    "README.md": "115bb91e6b7e4059ba02b063299c7852a8f42cdc28b5102c17199265a9d27625",
+    "audit.py": "e2b2205224decf50c1daaa7eab81f96be0e65179b3c3abcd514a7245afe67e36",
+    "controls.json": "319926a19219b2fdec030ae74e80f9caadac9861af2bf912ae5de4a36797196a",
+    "controls.xml": "387c01475b3ef89b3c9f721eac2954e39f65cb6887d246b5a3ee552de9f3af6c",
+    "manual-observations.json": "9864f080eca9128f3b19174eb64c5277be41676fef8c405a113d35229fd19ab0",
+    "privacy-controls.json": "5ee0015df4c10de1bdc566ef88d136ef662939cf13a3bac1c9a57382a19ecc29",
+    "review-binary-framing.json": "7ece4ee9aaa6b551ad682f9b834e86e52a8dea621d7ce9d872895ae738e8d511",
+    "rules.json": "6ed5860df98cc330c68e65f68e3cbaabef9ba09fbdee69dac0493f29e23d9a7f",
+    "source-pins.json": "e63e075848dd431f56e0c822e6cc833fe50e642ff609e3b2ff968bb007fdccee",
+    "test_audit.py": "5c113ebd511e8d316dfe3e948ec7ef33de6d5d45d06d0b8132110ce8302fc237",
+    "truncated-test-log.json": "c2c8a0c2473fa8e4edcd8a216ec38ed54295f586dcdf165a65b3059f87dcc9ff",
+    "wrong-architecture-binary.json": "ed5a7dff11bca07020f43f681d793a0af3cd8a67c63721b457e45d06feb31c66"
+  },
+  "schema_version": "evalopt.semantic-reporting-checksums.v1"
+}

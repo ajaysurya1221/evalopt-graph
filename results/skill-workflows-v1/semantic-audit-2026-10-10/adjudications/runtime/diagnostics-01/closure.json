@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-10T18:26:11.427517+00:00",
+  "command": [
+    "docker",
+    "container",
+    "ls",
+    "-aq",
+    "--filter",
+    "label=evalopt.semantic-audit=runtime-v1"
+  ],
+  "helper_before_after_identical": true,
+  "helper_sha256": "057483c2ceb92bb033abeab88dc445087ce0056fa2d13151f2178029214d5a30",
+  "owned_label_container_absence_observed": true,
+  "probe_before_after_identical": true,
+  "probe_sha256": "2f98306e63b7587fb9dc87acf74f46769985742d2c5ff0bf5afe56cdd5537a67",
+  "results_sha256": "fc750012b10367b1c0cfb0106c1bcb5c3803cae84c7064f35813775d47c5d3c5",
+  "returncode": 0,
+  "schema_version": "evalopt.semantic-diagnostic-closure.v1",
+  "scope": "Read-only end observation; fresh diagnostic containers used --rm. Not proof about original trials.",
+  "stderr": "",
+  "stdout": ""
+}

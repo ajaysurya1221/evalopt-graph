@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    },
+    {
+      "name": "rounds-each-tier-before-total",
+      "kind": "edit",
+      "path": "pricing.py",
+      "append": "\nfrom decimal import Decimal, ROUND_HALF_UP\n\ndef charge(units, tiers):\n    if units < 0 or not tiers or tiers[-1][0] is not None:\n        raise ValueError(\"invalid tiers\")\n    previous = 0\n    total = Decimal(0)\n    remaining = units\n    for index, (ceiling, price) in enumerate(tiers):\n        if ceiling is None:\n            if index != len(tiers) - 1:\n                raise ValueError(\"open tier must be last\")\n            count = remaining\n        else:\n            if ceiling <= previous:\n                raise ValueError(\"nonincreasing tiers\")\n            count = min(remaining, ceiling - previous)\n        amount = Decimal(price)\n        if amount < 0:\n            raise ValueError(\"negative rate\")\n        total += (count * amount).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)\n        remaining -= count\n        if ceiling is not None:\n            previous = ceiling\n    return str(total.quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP))\n"
+    }
+  ]
+}

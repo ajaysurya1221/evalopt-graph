@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified outcome verified by the development control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unescaped-unicode-and-reserved-bytes",
+      "kind": "initial"
+    },
+    {
+      "name": "frozen-contract-change",
+      "kind": "edit",
+      "path": "api_contract.json",
+      "append": " "
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "ordered-env-overlay",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "ordered-env-overlay",
+  "instruction": "Implement environment.expand(pairs, base). base maps valid uppercase environment names to strings; pairs is an ordered list of [name, template] assignments. Process each assignment against base plus earlier assignments; later assignments overwrite values. ${NAME} inserts the current value without recursively expanding inserted text; $$ inserts one literal dollar. A lone dollar, unclosed placeholder, or name outside [A-Z_][A-Z0-9_]* raises ValueError; missing references raise KeyError. Assignment names are valid. A self-reference can use the previous value. Return the full effective dictionary, preserving both inputs. Standard library only.",
+  "allowed_changes": [
+    "environment.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

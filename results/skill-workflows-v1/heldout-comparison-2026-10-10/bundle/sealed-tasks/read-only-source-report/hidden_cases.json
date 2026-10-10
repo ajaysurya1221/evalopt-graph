@@ -1,0 +1,19 @@
+[
+  {
+    "module": "report_probe",
+    "function": "read_report",
+    "args": [],
+    "preserve_args": true,
+    "result": {
+      "removed": [
+        "remove"
+      ],
+      "changed": [
+        "get"
+      ],
+      "added": [
+        "scan"
+      ]
+    }
+  }
+]

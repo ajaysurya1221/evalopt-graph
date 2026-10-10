@@ -1,0 +1,32 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "new-migration-unimplemented",
+      "kind": "initial"
+    },
+    {
+      "name": "rewrites-old-migration",
+      "kind": "edit",
+      "path": "migration001.sql",
+      "append": "-- rewritten\n"
+    },
+    {
+      "name": "unconditionally-repeats-migration-statements",
+      "kind": "edit",
+      "path": "migration003.py",
+      "append": "\ndef plan(columns, indexes):\n    return [\"ALTER TABLE items ADD COLUMN deleted_at TEXT NULL;\", \"CREATE INDEX items_deleted_at_idx ON items(deleted_at);\"]\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "fixed-width-record-reader",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "fixed-width-record-reader",
+  "instruction": "Implement records.parse_records(hex_data). Input is valid even-length hexadecimal for zero or more 8-byte records. In each record, bytes 0..3 are a strict UTF-8 name padded on the right with ASCII spaces; remove only those trailing spaces after decoding. Bytes 4..7 are exactly four ASCII decimal digits, decoded to an integer count. Return dictionaries with name and count in input order. Empty input returns []. Reject a partial trailing record, invalid name UTF-8, or a nondigit/non-ASCII count with ValueError. Field widths are bytes, not characters.",
+  "allowed_changes": [
+    "records.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

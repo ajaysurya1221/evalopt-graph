@@ -1,0 +1,32 @@
+{
+  "accounting": {
+    "amendment_sha256": "29c2c08cdd2599546d104ec0fb2c02211323c29d11f5f0f8a6d5240c0906e5cd",
+    "resource_report_sha256": "22ba1d031d7b308f1b754fbc3f1d99119b953bf14cf3aa57f5246f886263f740",
+    "rules_sha256": "a1464cd651040b2e0c40ec1386c768a6700322cd91340820bee62df7b521d167"
+  },
+  "checks": {
+    "grading_and_artifacts": true,
+    "partial_usage_reporting": true,
+    "quota_behavior": true,
+    "registered_usage_accounting": true,
+    "skill_and_dependency_loading": true
+  },
+  "grading_compatibility": {
+    "current": {
+      "suite": "5e6321baf59c82ebe91508d8c52a8ebe72780ecb1201363e34cec5514dab546d",
+      "verifier": "856fd980d1a9d662c20e3567870d337ca775fc7c48e86f036d50b9735a35a712"
+    },
+    "pilot": {
+      "suite": "a9c77b49e7fb0e425b644b9dbf8e19dc70ecaf37e91895765a1b3d248d24b94f",
+      "verifier": "e9977f6b7073d818501427a8997aa0a6933d473c3f364bc65546f8b490e9c379"
+    },
+    "reason": "The current verifier rejects nonfinite JSON previously accepted when duplicate keys replaced it. Reviewed isolated reexecution of all 36 original stopped outputs under the frozen current grader changed zero grades or metrics. Original grades, visible observations, policies and accounting remain unchanged; no new agent trials. Separate maintainer-controlled agent review and fresh offline publication replay passed.",
+    "regrade_evidence_sha256": "01ba436b0c0598590256fdc6c010d3b9fe8c0813ebb89b6493927d244fa509d4",
+    "regrade_registration_sha256": "64922637dbcfdab1838293d3dab1bfe2331226f09f9065e36fcba7a2de16a3b7",
+    "verdict": "regraded_stopped_outputs"
+  },
+  "pilot_export_id": "7c4bc4b91d4535491d9197711a2c3fc83e35f0931542a395a24ac61dfcdb340b",
+  "pilot_registration_sha256": "7685aa0e163d93b4e619852233511b34c69c17e682748223ce46b1201cc6ca04",
+  "schema_version": "evalopt.pilot-review.v2",
+  "verdict": "ready_for_heldout"
+}

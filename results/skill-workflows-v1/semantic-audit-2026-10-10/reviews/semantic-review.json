@@ -1,0 +1,66 @@
+{
+  "bound_files": {
+    "adjudications/reporting/CHECKSUMS.json": "ec49fcf7de316d478a35f9d005461e604dafef323cd50773d6ae8571bcf67975",
+    "adjudications/runtime/CHECKSUMS.json": "f067178a3b41e4ecd45d2769fe4a4fd600e1b4b5842a778c48ff8216aba715ce",
+    "adjudications/runtime/diagnose.py": "057483c2ceb92bb033abeab88dc445087ce0056fa2d13151f2178029214d5a30",
+    "adjudications/runtime/diagnostics-01/closure.json": "c4983b6b3922ada857162424831716883f7efee33d6750951ed9f165355634d1",
+    "adjudications/runtime/diagnostics-01/results.json": "fc750012b10367b1c0cfb0106c1bcb5c3803cae84c7064f35813775d47c5d3c5",
+    "adjudications/runtime/probe.py": "2f98306e63b7587fb9dc87acf74f46769985742d2c5ff0bf5afe56cdd5537a67",
+    "reproduce.py": "cf0abe6cda3307f785e88945559c81af8ba4417923690e282457560878515993",
+    "test_reproduce.py": "5723c29787edf25d1ce734217efc43ee1280afb0cb49ede41392a939c7f1dda6"
+  },
+  "checks": [
+    {
+      "exit_code": 0,
+      "name": "reporting_adjudication_replay",
+      "rows": 27
+    },
+    {
+      "exit_code": 0,
+      "name": "runtime_adjudication_replay",
+      "rows": 18
+    },
+    {
+      "exit_code": 0,
+      "name": "reporting_unittest",
+      "named_tests": 9
+    },
+    {
+      "exit_code": 0,
+      "name": "runtime_unittest",
+      "named_tests": 32
+    },
+    {
+      "exit_code": 0,
+      "name": "aggregate_unittest",
+      "named_tests": 26
+    },
+    {
+      "exit_code": 0,
+      "name": "audit_ruff_check_and_format"
+    },
+    {
+      "exit_code": 0,
+      "name": "additive_CI_actionlint"
+    }
+  ],
+  "limits": [
+    "The original six fixed-width replies do not include cases 7 and 8; new diagnostics remain separate.",
+    "Review claims about auxiliary agent probes are not independently authenticated.",
+    "Only these five task families were semantically audited; other 387 labels are carried forward.",
+    "Hashes identify retained bytes, not authenticated producers."
+  ],
+  "observations": {
+    "candidate_code_executed_by_review": false,
+    "copy_responses_inspected": 9,
+    "fixed_width_new_case_outputs_compared": 72,
+    "original_artifacts_changed": false,
+    "original_grader_executed_by_review": false,
+    "reporting_responses_inspected": 27,
+    "reviewed_diagnostic_helper_before_execution": true,
+    "same_image_mechanism_runtime": "CPython 3.11.2 Linux aarch64; recursion limit 1000"
+  },
+  "schema_version": "evalopt.semantic-audit-root-review.v1",
+  "scope": "Independent integrator review of five semantic adjudications and new diagnostic evidence; separate authoring roles, not independent human validation.",
+  "verdict": "ACCEPT"
+}

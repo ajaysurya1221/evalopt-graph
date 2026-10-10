@@ -1,0 +1,93 @@
+[
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      "4120202030303032"
+    ],
+    "preserve_args": true,
+    "result": [
+      {
+        "name": "A",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      "c3a9202030303132"
+    ],
+    "preserve_args": true,
+    "result": [
+      {
+        "name": "\u00e9",
+        "count": 12
+      }
+    ]
+  },
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      "20202020303030305a20202039393939"
+    ],
+    "preserve_args": true,
+    "result": [
+      {
+        "name": "",
+        "count": 0
+      },
+      {
+        "name": "Z",
+        "count": 9999
+      }
+    ]
+  },
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      ""
+    ],
+    "preserve_args": true,
+    "result": []
+  },
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      "616263"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      "ff20202030303031"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      "412020202d303031"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "records",
+    "function": "parse_records",
+    "args": [
+      "4120202030302031"
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

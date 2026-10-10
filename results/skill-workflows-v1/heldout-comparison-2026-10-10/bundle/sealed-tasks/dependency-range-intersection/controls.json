@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    },
+    {
+      "name": "compares-version-components-lexically",
+      "kind": "edit",
+      "path": "ranges.py",
+      "append": "\nimport re\n\ndef _parse(text):\n    lower = upper = None\n    if not text or \"  \" in text or text.startswith(\" \") or text.endswith(\" \"):\n        raise ValueError(\"invalid range\")\n    for token in text.split(\" \"):\n        match = re.fullmatch(r\"(>=|>|<=|<|=)(0|[1-9][0-9]{0,2})\\.(0|[1-9][0-9]{0,2})\\.(0|[1-9][0-9]{0,2})\", token)\n        if not match:\n            raise ValueError(\"invalid token\")\n        op = match[1]\n        version = tuple(match.groups()[1:])\n        if op == \"=\":\n            if lower is not None or upper is not None or len(text.split(\" \")) != 1:\n                raise ValueError(\"equality alone\")\n            lower = (version, True)\n            upper = (version, True)\n        elif op.startswith(\">\"):\n            if lower is not None:\n                raise ValueError(\"duplicate lower\")\n            lower = (version, op == \">=\")\n        else:\n            if upper is not None:\n                raise ValueError(\"duplicate upper\")\n            upper = (version, op == \"<=\")\n    return lower, upper\n\ndef intersect(left, right):\n    bounds = [_parse(left), _parse(right)]\n    lowers = [b[0] for b in bounds if b[0] is not None]\n    uppers = [b[1] for b in bounds if b[1] is not None]\n    lower = max(lowers, key=lambda x: (x[0], not x[1])) if lowers else None\n    upper = min(uppers, key=lambda x: (x[0], x[1])) if uppers else None\n    def rank(version):\n        major, minor, patch = map(int, version)\n        return major * 1000000 + minor * 1000 + patch\n    first = rank(lower[0]) + (not lower[1]) if lower else 0\n    last = rank(upper[0]) - (not upper[1]) if upper else 999999999\n    if first > last:\n        return None\n    def show(bound):\n        return [\".\".join(map(str, bound[0])), bound[1]] if bound else None\n    return {\"lower\": show(lower), \"upper\": show(upper)}\n"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "review-untracked-plugin-clean",
+  "split": "heldout",
+  "category": "mixed-workspace-review",
+  "source_family": "review-untracked-plugin-clean",
+  "instruction": "Review all changes from benchmark-base through the final on-disk worktree, including committed, staged, unstaged, untracked, and deleted files. Do not fix, stage, or commit anything. registry.transform(values) must return a new list with every integer increased by one, preserving order and input. The candidate may delegate to an untracked module as long as that final on-disk module exists and the contract is met. Packaging/distribution is outside this local review task. Attribute each defect to the responsible function or file rather than a forwarding caller. Report no findings when every change satisfies the stated contract.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "registry.py",
+      "source": "registry.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "registry.py"
+      ]
+    },
+    {
+      "kind": "copy",
+      "path": "plugin.py",
+      "source": "plugin.py"
+    }
+  ]
+}

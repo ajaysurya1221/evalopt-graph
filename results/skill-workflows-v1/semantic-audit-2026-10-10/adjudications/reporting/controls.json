@@ -1,0 +1,26 @@
+{
+  "errors": 0,
+  "failures": 0,
+  "junit_reports_including_subtests": 48,
+  "junit_sanitization": {
+    "original_generated_xml_sha256": "a9308ab341dd858c52cd65cff922be665afd87d7745c7d2535b8714ed282cc0d",
+    "removed_attributes": [
+      "hostname"
+    ],
+    "sanitized_xml_sha256": "387c01475b3ef89b3c9f721eac2954e39f65cb6887d246b5a3ee552de9f3af6c"
+  },
+  "named_tests": 9,
+  "post_format_test_returncode": 0,
+  "post_format_test_stdout": ".........                         [100%]\n",
+  "reproduction": {
+    "adjudications": 3,
+    "candidate_execution": false,
+    "original_grader_execution": false,
+    "rows": 27
+  },
+  "schema_version": "evalopt.reporting-controls.v1",
+  "scope": "Offline rule controls and exact retained-evidence reproduction only; no original grader, candidate, model or verifier execution.",
+  "skips": 0,
+  "source_sha256": "e2b2205224decf50c1daaa7eab81f96be0e65179b3c3abcd514a7245afe67e36",
+  "tests_sha256": "5c113ebd511e8d316dfe3e948ec7ef33de6d5d45d06d0b8132110ce8302fc237"
+}

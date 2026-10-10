@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "zero-denominator-breaks-batch",
+      "kind": "initial"
+    },
+    {
+      "name": "edits-other-package",
+      "kind": "edit",
+      "path": "shared.py",
+      "append": "\n# shared behavior changed\n"
+    }
+  ]
+}

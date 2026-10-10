@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "atomic-checkpoint-writer",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "atomic-checkpoint-writer",
+  "instruction": "Implement checkpoint.save(initial, name, text, crash) using the provided in-memory FileSystem adapter. This task models atomic checkpoint ordering; it does not claim real filesystem crash durability. initial maps names to strings, and name + \".tmp\" is guaranteed absent. Always write text to name + \".tmp\" first. If crash is false, atomically replace name using the temporary file. If crash is true, model a failure immediately before replacement: remove the temporary file and preserve the original destination (or its absence). Return {\"files\": final_files, \"events\": adapter_events, \"saved\": not crash}. Preserve all unrelated files and initial. Required event order is write then replace on success, write then remove on failure. Do not change memfs.py or write host files.",
+  "allowed_changes": [
+    "checkpoint.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

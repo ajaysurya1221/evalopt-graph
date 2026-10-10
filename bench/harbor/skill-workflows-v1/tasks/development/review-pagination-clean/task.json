@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "review-pagination-clean",
+  "split": "development",
+  "category": "committed-patch-review",
+  "source_family": "review-pagination-clean",
+  "instruction": "Review the committed change benchmark-base..HEAD. Do not fix it. pages.page(items, offset, limit) accepts a list and nonnegative integer offset and limit, returns a new list slice of at most limit items beginning at offset, returns [] outside the list or when limit is zero, and preserves items. Report no findings if behavior meets this contract; style preferences are not defects.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "pages.py",
+      "source": "pages.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "pages.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

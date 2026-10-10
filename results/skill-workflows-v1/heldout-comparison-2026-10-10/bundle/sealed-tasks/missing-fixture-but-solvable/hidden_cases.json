@@ -1,0 +1,12 @@
+[
+  {
+    "module": "summary_probe",
+    "function": "read_report",
+    "args": [],
+    "preserve_args": true,
+    "result": {
+      "active_count": 3,
+      "active_total": 18
+    }
+  }
+]

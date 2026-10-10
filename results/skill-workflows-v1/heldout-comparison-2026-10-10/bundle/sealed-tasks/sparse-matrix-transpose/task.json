@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "sparse-matrix-transpose",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "sparse-matrix-transpose",
+  "instruction": "Repair sparse.transpose(rows, cols, entries). rows and cols are integers 0..20; entries are valid [row, col, integer_value] triples within those dimensions. Return [new_rows, new_cols, triples] with transposed coordinates, summing duplicate coordinates, omitting totals equal to zero, and sorting triples by new row then new column. Preserve dimensions even when entries is empty and preserve every input list. Malformed coordinates are outside the task contract.",
+  "allowed_changes": [
+    "sparse.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

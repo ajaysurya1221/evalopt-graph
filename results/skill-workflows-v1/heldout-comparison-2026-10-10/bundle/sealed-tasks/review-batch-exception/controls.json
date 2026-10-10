@@ -1,0 +1,29 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [
+      {
+        "path": "batch.py",
+        "symbol": "parse_batch",
+        "kind": "incorrect-result"
+      }
+    ],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "misses-introduced-defect",
+      "kind": "response",
+      "replace": {
+        "findings": []
+      }
+    }
+  ]
+}

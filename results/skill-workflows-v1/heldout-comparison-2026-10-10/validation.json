@@ -1,0 +1,56 @@
+{
+  "fresh_empty_environment_replay": {
+    "bundle_id": "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+    "candidate_execution_performed": false,
+    "declared_unavailable_trials": 0,
+    "grade_records_replayed": 432,
+    "independent_replication": false,
+    "network_publication_performed": false,
+    "policy_analysis_reproduced": true,
+    "released_tasks": 48,
+    "scheduled_trials": 432,
+    "schema_version": "evalopt.heldout-public-verification.v1",
+    "sensitive_scan_passed": true
+  },
+  "frozen_source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46",
+  "local_export_verification": {
+    "bundle_id": "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+    "candidate_execution_performed": false,
+    "declared_unavailable_trials": 0,
+    "grade_records_replayed": 432,
+    "independent_replication": false,
+    "network_publication_performed": false,
+    "policy_analysis_reproduced": true,
+    "released_tasks": 48,
+    "scheduled_trials": 432,
+    "schema_version": "evalopt.heldout-public-verification.v1",
+    "sensitive_scan_passed": true
+  },
+  "network_publication_performed": false,
+  "private_reconciliation": {
+    "accepted_helper_sha256_bytes": "40d482431f264f68bdc858694363573dd713a085b3040445ac7b841664e501f9",
+    "candidate_execution_performed": false,
+    "checksums_sha256_bytes": "4a2ae57414033cf23713ec65b523e88c9191f632ee9d0dd76abe9fee88d8e547",
+    "completion_gate_sha256_bytes": "ebf785be4ff58e88ab61dc1845b1ed46cca97e7646f1b422f9847a5f7ddf6999",
+    "grade_records_replayed": 432,
+    "infrastructure_retries": 1,
+    "missing_native_run_ends": [
+      "run-0002"
+    ],
+    "policy_decisions_replayed": 1296,
+    "retained_attempts": 433,
+    "run2_externally_reconstructed_attempt_correspondences": 398,
+    "scope": "Maintainer-run operational reconciliation and separate maintainer-agent review, not restored native controller lifecycle or independent human replication. Private originals are not bundled.",
+    "unique_terminal_trials": 432
+  },
+  "private_report_export_id": "75049e332567275d12287036a9f9bd2a2eff1921852c06f5cd5d697b8a94c7fc",
+  "public_source_clone_replay": "pending subsequent publication; local replay only in this receipt",
+  "recorded_at": "2026-10-09T20:40:57.758794+00:00",
+  "report_binding_sha256_bytes": "e56b333347a6d06db166e57b4d821af98346f895eee85aef44a7bd051e120ca2",
+  "runtime": {
+    "implementation": "CPython",
+    "third_party_distributions": 0,
+    "version": "3.13.12"
+  },
+  "schema_version": "evalopt.heldout-release-validation.v1"
+}

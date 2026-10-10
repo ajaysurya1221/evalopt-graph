@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "review-line-normalizer",
+  "split": "development",
+  "category": "committed-patch-review",
+  "source_family": "review-line-normalizer",
+  "instruction": "Review the committed change benchmark-base..HEAD. Do not fix it. normalizer.normalize(text) must convert CRLF and lone CR to LF, preserving every other character including spaces, tabs, and final-newline presence. Report only defects introduced by the candidate. The repository is otherwise unchanged. Identify findings by path, function symbol, and generic kind in response.json.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "normalizer.py",
+        "symbol": "normalize",
+        "kind": "data-loss"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "normalizer.py",
+      "source": "normalizer.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "normalizer.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

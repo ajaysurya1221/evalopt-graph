@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "review-url-join-clean",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-url-join-clean",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. urls.join(base, segment) concatenates nonempty base (an absolute HTTP(S) URL without query/fragment) and a path segment by removing all trailing slashes from base and all leading slashes from segment and inserting exactly one slash. Preserve every other character, including internal repeated slashes. Empty segment is allowed and produces a final slash. No normalization or percent encoding is requested. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "urls.py",
+      "source": "urls.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "urls.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "15",
+      0
+    ],
+    "preserve_args": true,
+    "result": 15
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "Wed, 21 Oct 2015 07:28:00 GMT",
+      1445412470
+    ],
+    "preserve_args": true,
+    "result": 10
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "Wed, 21 Oct 2015 07:28:00 GMT",
+      1445412490
+    ],
+    "preserve_args": true,
+    "result": 0
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      " 5",
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "-1",
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "\u0661",
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "9999999999999",
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "Thu, 21 Oct 2015 07:28:00 GMT",
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "Wed, 21 Oct 2015 07:28:00 UTC",
+      0
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "retry_after",
+    "function": "delay",
+    "args": [
+      "Mon, 01 Jan 0001 00:00:00 GMT",
+      -62135596810
+    ],
+    "preserve_args": true,
+    "result": 10
+  }
+]

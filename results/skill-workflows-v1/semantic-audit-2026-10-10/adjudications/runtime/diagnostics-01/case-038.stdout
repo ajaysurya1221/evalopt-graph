@@ -1,0 +1,1 @@
+{"args": ["ff20202030303031"], "error": "UnicodeDecodeError", "error_module": "builtins", "error_mro": ["builtins.UnicodeDecodeError", "builtins.UnicodeError", "builtins.ValueError", "builtins.Exception", "builtins.BaseException", "builtins.object"]}

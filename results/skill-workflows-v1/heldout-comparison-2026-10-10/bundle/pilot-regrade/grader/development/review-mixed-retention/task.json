@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "review-mixed-retention",
+  "split": "development",
+  "category": "mixed-workspace-review",
+  "source_family": "review-mixed-retention",
+  "instruction": "Review every change from benchmark-base through the current worktree, including staged, unstaged, untracked, and deleted files. Do not fix or stage anything. retention.eligible(records, cutoff) returns ids in original order only for records with created < cutoff and pinned false. Records at cutoff must be retained. audit.count_by_owner(records) returns a dictionary counting each owner string. Every input record has id, created, pinned, and owner. Empty records must return [] and {} respectively. Report defects in the final on-disk candidate, attributing each to the responsible function.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "retention.py",
+        "symbol": "eligible",
+        "kind": "incorrect-result"
+      },
+      {
+        "path": "audit.py",
+        "symbol": "count_by_owner",
+        "kind": "unexpected-exception"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "retention.py",
+      "source": "retention-staged.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "retention.py"
+      ]
+    },
+    {
+      "kind": "copy",
+      "path": "retention.py",
+      "source": "retention-final.py"
+    },
+    {
+      "kind": "copy",
+      "path": "audit.py",
+      "source": "audit.py"
+    }
+  ]
+}

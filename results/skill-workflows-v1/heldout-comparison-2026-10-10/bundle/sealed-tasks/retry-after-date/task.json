@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "retry-after-date",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "retry-after-date",
+  "instruction": "Repair retry_after.delay(header, now). now is an integer Unix UTC timestamp. A header is either one or more ASCII digits denoting seconds, or an IMF-fixdate HTTP date of the exact form \"Wed, 21 Oct 2015 07:28:00 GMT\". Return nonnegative integer delay: numeric values unchanged; date values minus now clamped at zero. Leading/trailing whitespace, signs, non-ASCII digits, invalid dates, other timezones, and other formats raise ValueError. Do not inspect the real clock or local timezone. Date weekday must agree with the date. Numeric headers have at most 12 digits; longer values raise ValueError.",
+  "allowed_changes": [
+    "retry_after.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

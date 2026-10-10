@@ -1,0 +1,56 @@
+[
+  {
+    "module": "routes",
+    "function": "user_route",
+    "args": [
+      ""
+    ],
+    "preserve_args": true,
+    "result": "/users/"
+  },
+  {
+    "module": "routes",
+    "function": "user_route",
+    "args": [
+      "a/b?x"
+    ],
+    "preserve_args": true,
+    "result": "/users/a%2Fb%3Fx"
+  },
+  {
+    "module": "routes",
+    "function": "user_route",
+    "args": [
+      "caf\u00e9"
+    ],
+    "preserve_args": true,
+    "result": "/users/caf%C3%A9"
+  },
+  {
+    "module": "routes",
+    "function": "user_route",
+    "args": [
+      "a-._~9"
+    ],
+    "preserve_args": true,
+    "result": "/users/a-._~9"
+  },
+  {
+    "module": "routes",
+    "function": "user_route",
+    "args": [
+      "e\u0301"
+    ],
+    "preserve_args": true,
+    "result": "/users/e%CC%81"
+  },
+  {
+    "module": "routes",
+    "function": "user_route",
+    "args": [
+      "%20"
+    ],
+    "preserve_args": true,
+    "result": "/users/%2520"
+  }
+]

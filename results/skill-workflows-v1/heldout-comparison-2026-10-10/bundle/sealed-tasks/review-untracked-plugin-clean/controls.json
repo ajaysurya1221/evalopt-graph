@@ -1,0 +1,29 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "invents-clean-worktree-defect",
+      "kind": "response",
+      "replace": {
+        "findings": [
+          {
+            "path": "plugin.py",
+            "symbol": "apply",
+            "kind": "incorrect-result"
+          }
+        ]
+      }
+    }
+  ]
+}

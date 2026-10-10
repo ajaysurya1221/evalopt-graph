@@ -1,0 +1,26 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unchanged-incorrect-implementation",
+      "kind": "initial"
+    },
+    {
+      "name": "forgets-dollar-escaping-and-missing-reference-errors",
+      "kind": "edit",
+      "path": "environment.py",
+      "append": "\ndef expand(pairs, base):\n    values = dict(base)\n    for key, text in pairs:\n        for name, value in values.items():\n            text = text.replace(\"${\" + name + \"}\", value)\n        values[key] = text\n    return values\n"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "control_conditions": {
+    "authentication_supplied": false,
+    "checks": [
+      "codex --version",
+      "node --version",
+      "npm --version",
+      "codex features list with frozen configuration and detached networking"
+    ],
+    "cleanup_and_read_only_verification_overhead": "Separately bounded after installation/check budget",
+    "concurrent_setup_controls": 1,
+    "cpus_per_container": 1,
+    "docker_socket_supplied": false,
+    "host_mounts_supplied": false,
+    "installation_and_check_timeout_seconds": 600,
+    "installation_overlays_committed_as_images": false,
+    "installer": "Unmodified pinned Harbor Codex.install recipe",
+    "memory_bytes_per_container": 2147483648,
+    "platform": "linux/amd64",
+    "task_startup_executed": false
+  },
+  "evidence_class": "Maintainer-run setup/configuration controls; no transfer benchmark trials",
+  "evidence_date": "2026-10-09",
+  "images": [
+    {
+      "image_id": "sha256:3612a38fadb89a96f74a1a951fb0b0af734198fd160571eeaba6401593234594",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "3b95b8fe7754cffa81450dffc93a27c7a42b2016f3ca0b359fe243fdf10c2b57",
+      "setup_status": "passed",
+      "task": "build-cython-ext"
+    },
+    {
+      "image_id": "sha256:57a82706f7491e0b2d1ff7e927e97ae5339892dd09c47ac43290b4ba1f5abc6f",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "c2d3c270f78ca8a2e45df26548fb7344063ee5d0f103f733c7db5626ecf1636a",
+      "setup_status": "passed",
+      "task": "build-pmars"
+    },
+    {
+      "image_id": "sha256:84c7fae6b256dcc56a350790e2a9715eefc7dad662a9d8e8a472363aa71ef18d",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "076ba0293cf62a9a77ff6cca717aa98c51eb92101124358650d78e27f0bd2749",
+      "setup_status": "passed",
+      "task": "cancel-async-tasks"
+    },
+    {
+      "image_id": "sha256:593ab9df3d83f771e927888b2d9436b380cdf7ec4d0af2a9f0802d541edebba0",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "8b1f8f73552a13783a314ba29a8f3a90f711089f0ba356445793fce9bb592473",
+      "setup_status": "passed",
+      "task": "cobol-modernization"
+    },
+    {
+      "image_id": "sha256:1895d7d6240d5fb2ec774d6bfdd1057d170f8d199c15c582e4585d3c63802557",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "50d8c99c6c95ccf3d50c9c75e9744bd1e065f947ce14b6e7409ae16f8ca2b6c4",
+      "setup_status": "passed",
+      "task": "custom-memory-heap-crash"
+    },
+    {
+      "image_id": "sha256:61e431c00c58df652287aadce5457634d9f9330cfdd153ebdf2802df0d540119",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "a2ad61914da62009a9f13748fe39f1d9fcbece08ebc6132c11eb4cbe57d860c3",
+      "setup_status": "passed",
+      "task": "fix-git"
+    },
+    {
+      "image_id": "sha256:62160e522a4238b8bcd522411ea97b5b200f811e5899d34947e66809bef7e586",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "f1f08f3cbd583282545c9d9174be5d7c4cde7bbc837633543ff3b66ad6413590",
+      "setup_status": "passed",
+      "task": "git-leak-recovery"
+    },
+    {
+      "image_id": "sha256:eb7e209672bf6cef2785fafd9e13509b10626c327bcc2b37f5bf40ca83eaf3aa",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "3e6e881f9a40881e15990ff4ebd3769cee5ec0aa98305c91fa64204e82eb307d",
+      "setup_status": "passed",
+      "task": "headless-terminal"
+    },
+    {
+      "image_id": "sha256:3399400800dcb207634daa42bc1b052e831e285cc9d221eea66c47bc0fc79791",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "8f7d92f2542e5a3cd07fccd5471a2a0b4db37bfe8f3cb0480e7d9caa156be72f",
+      "setup_status": "passed",
+      "task": "kv-store-grpc"
+    },
+    {
+      "image_id": "sha256:80a9459f1b94b692ea8346f68e6b864f6c4d984fbdf6ffd68ad332308300c2ec",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "6d9ff6f12f1f66abc507018973b159889ececef6a3ecf4737a4081564910cf92",
+      "setup_status": "passed",
+      "task": "make-doom-for-mips"
+    },
+    {
+      "image_id": "sha256:082fc8821b317f30fdfbf8d08d528874ce331c03e8083aef0406d48cdd7132a2",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "746ccefa026c42e2b7731d6ea67b1b9d9869b51e1793a27459249d53605ef943",
+      "setup_status": "passed",
+      "task": "make-mips-interpreter"
+    },
+    {
+      "image_id": "sha256:0f1c3b7816d70cf5551573fd6aeef76893f2ae3000be2419997b6871b5d987ed",
+      "platform": "linux/amd64",
+      "retained_result_sha256": "4b4b87e24197acf2406fda1b49a315b26e0127424c3279c7a46f7809f46984c4",
+      "setup_status": "passed",
+      "task": "polyglot-c-py"
+    }
+  ],
+  "limitations": [
+    "No returned model identity or actual delegation/accounting behavior was tested.",
+    "No task, solution, verifier or required task service was executed.",
+    "No task success, agent efficiency, original-deadline feasibility or workflow-superiority claim follows from these setup checks."
+  ],
+  "maintainer_agent_review": {
+    "external_authentication_claimed": false,
+    "independent_human_replication": false,
+    "scope": "A separate maintainer agent independently inspected the setup helper and retained artifact hashes, command outputs, configuration observations and cleanup records. The reviewer did not rerun containers or invoke models.",
+    "verdict": "accepted"
+  },
+  "observations": {
+    "agent_trials": 0,
+    "model_calls": 0,
+    "multi_agent_enabled_all_images": true,
+    "network_detached_before_features_all_images": true,
+    "original_images_unchanged": true,
+    "prepared_task_copies_unchanged": true,
+    "probe_containers_remaining_at_postcheck": 0,
+    "selected_images": 12,
+    "setup_failures": 0,
+    "setup_passes": 12,
+    "task_trials": 0,
+    "verifier_trials": 0
+  },
+  "public_reproduction_scope": "Receipt-file integrity, per-image count and public image/result identities. Private helper, raw logs and prepared assets are not included, so this receipt alone cannot independently reproduce or authenticate the container observations.",
+  "retained_evidence_identities": {
+    "image_lock_sha256": "fcb2e2b709674342e3749dba80409b50573ddc6a1a4cb49e1edb6e219e509bc1",
+    "postrun_verification_receipt_sha256": "e46637222cc6705d27a713ef5db85b23e035a53ab3eb351b5a1c888ad4bb8b39",
+    "preparation_sha256": "954527fa61a6d6e37c9f8a0b8219774d07895220cf1ab627a99ab32166bd86db",
+    "prerequisites_after_sha256": "353b589c196e46a2e89b3869b39d30e881ef67168235f74c6683f90b93874306",
+    "prerequisites_before_sha256": "353b589c196e46a2e89b3869b39d30e881ef67168235f74c6683f90b93874306",
+    "setup_artifact_checksums_sha256": "2a04dc4b4f5a2551de139e38f68dbe197b38fedbf816690b27c95df0d83887a5",
+    "setup_helper_sha256": "1bdcc8fa4313743caeb353d79159611d80e273aeba765bff7c300aab9ef62fd8",
+    "setup_result_summary_sha256": "2efd1f48a877346898c775fbc9c8544cbf657b24e2227546d9f34e02335277d8"
+  },
+  "schema_version": "evalopt.transfer-setup-public-receipt.v1",
+  "source_identities": {
+    "frozen_config_sha256": "558dfb8ac663b2249d9e3176acb3f33cd8f8af8c838b682ee9b07f55bd1e4165",
+    "native_harbor_base_module_sha256": "31a7721e0cfa5522f85056439495b9741e2232869537f9ec21fb9ac95b611647",
+    "native_harbor_codex_module_sha256": "1fbd52746468b9734cc3af963c9398a21f6fda6f7173b84fa0ac3ae0fe623c66",
+    "runtime_sources_sha256": {
+      "lib/__init__.py": "c8c4c4b8669365040e469225ab8fba0173daa027b7510ee55a76595cf7461acb",
+      "lib/accounting.py": "07f39bfe342ecab9f41d76511d60edfd89a3d4c142e106de93a146faae280efd",
+      "lib/common.py": "a90d8f8d25a3c4681546ed8fbbd835b69f55c1b6c51024124464774d467abef2",
+      "runtime/accounting_policy.py": "65b60d3f65d7484613d0e15b001d4bb0f144ff26991e572352eea676ae2253f2",
+      "runtime/harbor_campaign.py": "98942fff37598cfbeb2d82b8465d5e8d3fd564d3844e465ef4d39568966aaf3b",
+      "runtime/observations.py": "c283c5e7e8d6b947c35b1133cf7737ddc84f0339f116ffa3d60688b55529125d",
+      "runtime/partial_accounting.py": "d2934300aef820dc2b23c24901c625a3be45d6873fddd81fa4a07978ce96b9ae",
+      "runtime/readiness.py": "3289dbacc89986990036990a6487e505cbc298216c37f3f0ff19c25791b318f0",
+      "runtime/transfer.py": "5b5d3c0f4c73567a9b2bdabf9a27245752c8d19e6c3ba34c54f2f25cd1f143ea"
+    },
+    "study_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46",
+    "terminal_bench_commit": "69671fbaac6d67a7ef0dfec016cc38a64ef7a77c",
+    "upstream_skills_commit": "b0618bc436ad893b3c5e84e55fba86586d34a404"
+  },
+  "transfer_execution_gate": {
+    "primary_scheduled_trials": 432,
+    "requirement": "All scheduled primary trials must be terminal and accounted for, with verified retained artifacts and a reproduced primary report; successful outcomes are not required. Frozen workflow identities and the registered accounting policy must match.",
+    "transfer_trials_run_by_these_controls": 0
+  },
+  "versions": {
+    "codex_cli": "0.154.0",
+    "harbor": "0.24.0",
+    "node": "22.23.3",
+    "npm": "10.9.9"
+  }
+}

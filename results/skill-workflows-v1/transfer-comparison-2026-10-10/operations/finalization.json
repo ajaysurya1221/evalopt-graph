@@ -1,0 +1,75 @@
+{
+  "accounting_policy_sha256": "cde084b941e27504f7960fba48eb38b7a11213f949626b1383b422b335801b1c",
+  "actual_receipt_independent_review_sha256": "13ec214fa19fe5ee19ffb193607973a3df075b6928a2099bbb8d8f25290e34d3",
+  "approval_receipt_sha256": "f0d8b3cf811bd9b19cf23ad614253094a9eaac98ed6d4df3934bea3259c86afe",
+  "approval_recorded_at": "2026-10-10T09:34:23.102943+00:00",
+  "current_absence_restores_historical_boundary": false,
+  "delivery_scope": "human-approved incomplete transfer finalization",
+  "executed_attempts": 58,
+  "fresh_quiescence_receipt_sha256": [
+    "bbc2eb9d286de2fc3a3158d60e4176be6699c1d9e327fe1665b8bc961a1346f7",
+    "4346bb00e19ab90e95b3e9d7b1ca1c073b6138880009496511260999af3598e2"
+  ],
+  "frozen_report_export_changed_campaign_bytes": false,
+  "historical_failures_repaired": false,
+  "interpretation": [
+    "Both admission amendments were explicit, failure-informed post-freeze changes; final scope was explicitly narrowed after the third stop.",
+    "The preserved trial58 delegation evidence is unverified, not proof of a concurrency limit violation.",
+    "Full-byte verification does not make missing capture complete. Four executed null outcomes and14 unstarted outcomes remain unknown.",
+    "Maintainer-agent engineering review and supplied artifact replay are not independent human authorship or independent agent replication."
+  ],
+  "journal_qa": {
+    "checked_at": "2026-10-10T09:54:07.301095+00:00",
+    "combined_controls": 156,
+    "engineering_review_sha256": "b9e3884b52891e5f4a6a6bfec5c460d53a0b38c011d4b2ce7e679951aea788f0",
+    "external_acknowledgments": 55,
+    "helper_sha256": "f3a6ac503ce12e4805929ffa12fc74f6d65bffa1808d873089fe409ab13bca0e",
+    "missing_acknowledgments": [
+      "transfer--make-doom-for-mips--r1--B/1",
+      "transfer--make-doom-for-mips--r1--C/1",
+      "transfer--make-doom-for-mips--r2--B/1"
+    ],
+    "native_runs": 58,
+    "receipt_sha256": "f5c65ce9b3c9d1e3f7c5f987c650c4641dadf7503d2278862e635ad6322ee60f",
+    "v2_acknowledgments": 1,
+    "v2_native_executions": 2,
+    "v2_quarantines": 1,
+    "verdict": "ACCEPT"
+  },
+  "network_publication_performed_by_export": false,
+  "original_preserved_nodes": 6415,
+  "original_verifiers_reexecuted": false,
+  "preserved_stopped_prefix": {
+    "logical_file_bytes": 833202377,
+    "nodes": 6805,
+    "sha256": "8321dca1463d545c335bbf357930165ace2d84da6daf770763440c6f046c8bc7"
+  },
+  "private_report_export_id": "4327db0ccd2ccee61dcc1c31db92b8075be49a60c1f1c08aa186ed06d2998232",
+  "public_inner_bundle_id": "6ac536cef0fa72f52dfd066e3c45861a61c5044ca3c7d0e82166b6ab1837e62d",
+  "raw_qa": {
+    "all_captures_complete": false,
+    "all_retained_file_bytes_hashed": true,
+    "campaign_bytes_modes_links_unchanged": true,
+    "checked_at": "2026-10-10T09:53:25.800296+00:00",
+    "engineering_review_sha256": "63205bcafdf576e9c681e2e37200487129196017793ce11c1dfebb8bfa1f16c0",
+    "helper_sha256": "9b85145e6ebecb05123e2fe805df7bcdd39030da864252e37e48cdc90863c82f",
+    "junit_reports_including_subtests": 330,
+    "named_controls": 302,
+    "receipt_sha256": "523c1fb4566ab26c047cca57e4be1c98f18f82dedcff847c410d2da5c2e3513e",
+    "verdict": "PASS"
+  },
+  "registration_sha256": "1f3116fe8af392300a225ab79bfefb7278942dd48999f5875cfdc0bf757dc32f",
+  "report_export_receipt_sha256": "e997c662d1338f757f3237ead81cf6837624cd8f2515bb4519820d8c70239b87",
+  "retries": 0,
+  "scheduled_rows_omitted": 0,
+  "scheduled_trials": 72,
+  "schema_version": "evalopt.stopped-transfer-public-finalization.v1",
+  "scope": "Allowlisted summary of retained private operational evidence; hashes identify content, not authenticated authorship. Public replay does not reconstruct private process/raw/journal evidence.",
+  "source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46",
+  "stop_receipt_sha256": [
+    "eeaa6544f735b3db0eedde68565292a032f31bee519188571963a38d8f3befa3",
+    "c45f44b0fe7468251f25bfad8aea2ba693421e0b837c7a458f6f66459b6ca5c0",
+    "791a83b01b27f39f7c7c78664e6ebbfa79332ba833feec0abb0fa7d99b9e2d9c"
+  ],
+  "unstarted_rows": 14
+}

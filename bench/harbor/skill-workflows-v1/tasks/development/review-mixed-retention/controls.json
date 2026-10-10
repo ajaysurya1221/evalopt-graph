@@ -1,0 +1,47 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified outcome verified by the development control.",
+    "findings": [
+      {
+        "path": "retention.py",
+        "symbol": "eligible",
+        "kind": "incorrect-result"
+      },
+      {
+        "path": "audit.py",
+        "symbol": "count_by_owner",
+        "kind": "unexpected-exception"
+      }
+    ],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "staged-only-review",
+      "kind": "response",
+      "replace": {
+        "findings": []
+      }
+    },
+    {
+      "name": "missed-untracked-file",
+      "kind": "response",
+      "replace": {
+        "findings": [
+          {
+            "path": "retention.py",
+            "symbol": "eligible",
+            "kind": "incorrect-result"
+          }
+        ]
+      }
+    }
+  ]
+}

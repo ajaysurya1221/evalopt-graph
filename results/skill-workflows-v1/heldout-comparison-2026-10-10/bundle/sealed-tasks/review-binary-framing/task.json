@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "review-binary-framing",
+  "split": "heldout",
+  "category": "committed-patch-review",
+  "source_family": "review-binary-framing",
+  "instruction": "Review the committed change benchmark-base..HEAD without modifying or staging files. framing.decode(hex_data) receives hexadecimal encoded frames with a four-byte unsigned big-endian payload byte length followed by exactly that many UTF-8 bytes. Return the decoded string. Reject a missing header, truncated payload, or trailing bytes with ValueError. Hex encoding and payload UTF-8 are valid; length is always network/big-endian order. Report only actionable defects introduced by the candidate; do not report style preferences.",
+  "allowed_changes": [],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [
+      {
+        "path": "framing.py",
+        "symbol": "decode",
+        "kind": "unexpected-exception"
+      }
+    ],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": [
+    {
+      "kind": "copy",
+      "path": "framing.py",
+      "source": "framing.py"
+    },
+    {
+      "kind": "stage",
+      "paths": [
+        "framing.py"
+      ]
+    },
+    {
+      "kind": "commit"
+    }
+  ]
+}

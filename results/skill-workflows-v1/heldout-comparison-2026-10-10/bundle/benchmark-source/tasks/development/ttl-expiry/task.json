@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "ttl-expiry",
+  "split": "development",
+  "category": "ordinary-bug-repair",
+  "source_family": "ttl-expiry",
+  "instruction": "Repair cache.get_fresh(records, key, now). records maps keys to [value, expires_at] where expires_at and now are integer seconds. Return the stored value only while now < expires_at; at equality or later return None. Missing keys return None. Values may be false, zero, empty strings, or None. Do not mutate records. This function performs no clock reads; use only the supplied now.",
+  "allowed_changes": [
+    "cache.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

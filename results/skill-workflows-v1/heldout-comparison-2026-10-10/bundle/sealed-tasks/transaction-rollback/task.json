@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "transaction-rollback",
+  "split": "heldout",
+  "category": "ordinary-bug-repair",
+  "source_family": "transaction-rollback",
+  "instruction": "Repair transactions.apply(initial, operations), a deterministic in-memory nested-transaction interpreter. initial maps string keys to integers. Operations are [\"begin\"], [\"set\", key, integer], [\"commit\"], or [\"rollback\"]. begin snapshots current state; rollback restores its matching begin; commit retains current state but leaves the outer rollback snapshot unchanged. set outside a transaction is allowed. A commit/rollback without an open transaction, unknown operation, or an open transaction at end raises ValueError. Other operation shapes are valid. Return a new final dictionary without mutating either input.",
+  "allowed_changes": [
+    "transactions.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

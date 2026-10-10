@@ -1,0 +1,4412 @@
+{
+  "case_seconds": 5,
+  "each_capture_byte_limit": 1048576,
+  "host_call_seconds": 15,
+  "image": "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+  "input_sha256": {
+    "helper": "057483c2ceb92bb033abeab88dc445087ce0056fa2d13151f2178029214d5a30",
+    "hidden_cases": "11434360319bd4e77183505a8cc56c73a82d5a61567eebce6b012c2610ddb5f3",
+    "probe": "2f98306e63b7587fb9dc87acf74f46769985742d2c5ff0bf5afe56cdd5537a67",
+    "runtime": "d1eba05a66b45a3a91e69cc41f91e573d6ddcf7c276b001cf2a22b6765f9c513"
+  },
+  "model_trials": 0,
+  "original_trials_modified": false,
+  "overall_seconds_limit": 300,
+  "records": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-9114838faae5499388ca2b65e08ed4a7",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 1,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "c18b8128b17ca0cabfd33ffbb79b69f485999153785b358bb83300e29774dc1f",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-537b8f5b2a654b438b5b785496f8a43c",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 2,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "585585e47461e24d321e858ec7c7147a7445b9e8b3efbc0009f12368e7936bf6",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-81d6ed7183d846ecb27cf2f045a912f3",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 3,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "4e69aa674a5c3de1656a4710ddc0c5c084f0b6387fca80a50396c6ec6b0f8a68",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-069de700b1ca49f3a1585794830e2667",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 4,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "1383fb225f35834aa6f6065ef650580c540f449b4f20db2d490ab8f9a7365b03",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-028032f39eb94440a5b65dc48e14bb08",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 5,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "cada2394ad745a44d73db09ff45e38173b579791e0901f8ee3a1f2a315e59560",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-080e39c7856f4d7e8541f2fddd1e4e92",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 6,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "560368499f474a4ccc8d7fbb578e9efa7f2aa7201ad24eb128c0de9f87fce411",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-d575c7ac22684cafa346bf61e7acbd02",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 7,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "bee0b9fcdd3a8a5416e839c05e49d81ead7ea96927f89a91ef573bfa00902c31",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-55a98fd0440840fbb162b5f66d802fa4",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 8,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b47575a67e0e9360cbf876b98aac4c266b4de66f726747aab680bc93c84dafc5",
+      "source_sha256": "2f070f40d37c70272c1b96c6fa6b697e5bd41284d74c2f933e1ace8c4526ce86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "2c5c61b12a3747386c5eead55cd2321ef9bce1e104f1842afd287d4256523f3b",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r1--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-88a66d34519b4176bc0d4a0f959d4a8f",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 9,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "2d96b73572a0d3fe3e037d1a7e1cb9dffed95238183a60cda884d92282ef40d4",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-eff00f0af3834b38a26096290a945667",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 10,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "e88dbc45c1338fc3c54595fb973e9d31e5017dca29aefacc43257641cd087f4d",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-1a00182cae104c00835ced8c05e712f0",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 11,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "5532f27660368cfa9d255b1e882e9ce63fea916a98ff8ecc13ae26599dd108e2",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-170105ff4b004ba1aaa4c2e9ec35ab70",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 12,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "5f4c9abee67b75d3f0939c392fedaeef798e288049e941468a2ef4eeba144e2f",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-e4ad9f0bccfc44779c293ca3d12d9314",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 13,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "3bbb37d2a5b676a753112d640479c874db5c6da22fe640b740b3d0fb2f2ff1ea",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-f5f06730ef574323899824cebaf08a01",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 14,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "cbff90e8cc8117597926fc9c6cb8ff208c6e449ff38ec189cf4f24404244212e",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-1e79a228951e42a497438a595f77d225",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 15,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "10bb9d87931a7e203314f4dc726b2284d477f629b21debbe69f5f19fabbeb6bb",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-f6251b2e329c47fdabe0e6602fe6d415",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 16,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "b2caa516883ec4669811e3f5f0f103239301bec4fb14805dd7cb31e341513d2a",
+      "source_sha256": "28a60243cad618d8ef5baf2de6bb1c5153a75bbaade3fac833130a30a1173316",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "104ac3a8459c22299aa88aff2dadbb49d960ed36e3bf64e02b2f054be5d5cf76",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r1--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-dc667c537ac84c949dc8cc12593be6bd",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 17,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "d85da9e63a18720b12c51c3b3f66b2eaea40adf43c7a5b26438c23a290f2d9f6",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-e059944567a541028a2280ae93ec482b",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 18,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "e3034b6a26da7dbb1d4e228b6d66893e2836be21ea380043cf9d95eeef9fc980",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-90afd7f816bb42c4be60aa0457a514ef",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 19,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "917a650558404890b578b97a2cae57284c5109ef24c8a25046ab8d3b54db89fc",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-44745bc58d654010a2d82fc649c1a9f9",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 20,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "4e353b4747ac9763d4993b5c62827acdbd324aa0f9feec4fb9c796bdd51d2464",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-56c36dfe58414c5baac6bba0bf8e089f",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 21,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "1e1d12188fc9688b1561a46fab41e31d597c6edc2e656d9b6d65888165255c8f",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-5757a6ce985a4ac3a82d4b1117df7b27",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 22,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "4e18f09669b759a104946ec1d9f90d717a853a78594bb24f11ac093c50980326",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-ff7cf00957e6424197cdb1fbd7cbf17d",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 23,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "b5db5fc56a697048c816858603a893c35526e625131c03cf5918710591a8afba",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-c8ce003fa7534fb5b7f590553f703a1f",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 24,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "22e0dd6063e8eb24027a06f79fa1f921e8d996a1afb4539d2ec7c0a4ef20e438",
+      "source_sha256": "d25d9616af42bae202f060a6433d9782f3803cc72844d24ab175df8e06e7a8fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "a53f3f39bab2cdcf20b365f27dfb8333aecf0606c341b8354b100ac9bf610274",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r1--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-315ea57dc12e4ebeba5194bbdaf46134",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 25,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "97016b967c1645e6660bc43db229fcb04312268827216bd2050ee0efe57c6082",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-05cd7d045d34431086baeb98b60bbd54",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 26,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "e0d067b738dfe647fc5a91048edb42128375549d425dfb212c4b597a25a9e3d4",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-19d92b56469e4472acb5775b844b9546",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 27,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "593ea63d339a6810c893811279882e022b06ac594e648e8194daaa11c92c8c4d",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-48063aa9f29543cca9240bdcf7079977",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 28,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "75a6163f7edec78ddcef9410a91da6c342b26e169795c7b974765e4b1edb796a",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-4916477cc65a47c79e450b3d3a9e9b8e",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 29,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "11f55eaae7a713ef2905f3db552ae954f1bd550b32f56cf0c3702f43599a1ddf",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-22d78ffc8197417b82bec4304f1db7f0",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 30,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "dc289518e1681f7b1eab7677d20631de54807cdd0a07ee63ad3076b109c6603d",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-be0bea4f3a474265892235746bb6b54d",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 31,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "648d4fb5807d04723908ad5390b79e5bcfcac383a13c0a7b32dbc37e996ca063",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-b9015fd609cd4f609402888aeb144f8a",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 32,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "56af39cc3667b690ceb286cc1e57a455d6b0a149da66fcd0765a9ac625c4d07f",
+      "source_sha256": "761d2a0e5c9496f7a4213c5cd8633fd21250a7309ed2eb6f46cae49916a549aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "8c64d68f72774f62c309661ea1365a6108c461562ae319c492fe0cc15eec32b9",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r2--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-09d73d7c76e24cfa91b62a9869792fd6",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 33,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "78d7d83707a01536e88108bf79de43b5addbf4f98f975fe63fd99619df7448e7",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-7504b80879a34cbb8a7674a4c0f5822b",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 34,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "b3e6bd4e477f1a6a07e8a2467ed02c80a6daa5d4923969809e76a9258cd7a34e",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-3d396b73793b47de93e513e777243255",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 35,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "4c689947754f8f241cfaa7b58237445e2dfc5d059b64a668b26db2b4badfddc9",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-41e368cb4244461f9cd513d75169335e",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 36,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "8476927c76e9512b8cdd63e8d0dfaff452c1af3913f991898ea2a6ce25d1ea1f",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-71394c4026e24d50b2912f32cda5e536",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 37,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "d02b5b01a9e0b706372f5aa1738aa6bdc0fd93ff6c0191d289ed49baf9a3c3d2",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-8e38799a5d0b44e5bfc7af12f2701fa6",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 38,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "8e072cb932e1c05e4a49b11117dbe12e9ad0c2267d67212cac323adcc8bcf508",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-4a28821b452a40f89f2990a41efe4026",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 39,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "edbd6c896d7d549cfa51d9cf3378a018cc0e609af382e71599e937db79ad98eb",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-0e34c08ad98c4d6f8340ff8b9fe7e096",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 40,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "f47be2f4aaff829a80393446dca421313415d8795f0b07d78e11b4ee5db6365f",
+      "source_sha256": "dfbd58a36be163b1466e2b448eb87e28ba8dc61cdce00c3c04aa072e80d9a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "a9de6c08055893a3eaead52c6adc4ba7d6e9409b9b263978b07d7efdb6843958",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r2--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-7ffc63cc18004ef88b2b125815eba0bd",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 41,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "745400c675fb168ea4e2faa9043d090babeda2a50f20edce72e7ab30874d8ac6",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-1a324256395b47aabeb520895acc0dea",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 42,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "1616a50e61710ec94bdc26fa3d9221cd8ca3acc47cfa606e527f8f0db0233e73",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-37781cef0d0944918a923af8d8c544c0",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 43,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "afe44d207d235f10a5006ee74b756d6bc4b4cf856cbea1bf4f1f8d82302719ee",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-3fee48f60fb54aacaf7f65104e92a5d6",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 44,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "5f2c07920dd77ac2a33e9b695259032e5875dc164210f51ea73e7f7b1dfd5b01",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-fc11d38c4aa54f9dbb2fb859782ffe03",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 45,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "b1a7d60bff3424837445d95ec59cb27925388e0e175e2227b811a27c9f57d898",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-1f1b1f60c0ec4e5e90981771341de2e7",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 46,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "a46976a604d1d76ad71d46d419572b3858558b66ada9c132ed36da8a605c0574",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-7760e09162cb432486a05bc32da1027c",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 47,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "bc7206b05e45b39d1dd581d46f174c7693e4ac6e32d3407c75ee534977d5d4d3",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-984c3ef439b0409594addc171d3621aa",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 48,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "ac484b397159f4fcd940484293ac2e2ccd09feb2a1ccaae567d8fb045f8167eb",
+      "source_sha256": "f10d10314edc53256aa4339a9eba8cd7029544fc2087bc796e8b5542af826927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "8b82890206d293bcf716b22a5ea11d0ae7de1eb9cc8bb0497f30fa83217d2102",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r2--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-0f8410a5852e4c29bdd3e1bd593a51ab",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 49,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "2699cbf7ca8d4c2d54140928fb04163daa6033e854a8776feaa4775316535280",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-b0ffbf3a5f244b2fa80bc75910d548e0",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 50,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "bc83728083a4895e2dfd75cbf731d23548705a74525b7ada1aa3e0c34fce0656",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-19a3552f1519481db144a4a0ad520434",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 51,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "270cb2f4545332c5d3f815e9557210011c06a197ed4684a64e54e24caf5a3bda",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-55b9c7acf5ae49089224d51047d140f4",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 52,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "bf0227a29e78e29f8d25ea40794b0dc3874d1894cbd3a6f369abbb2367b5cd42",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-e18ecccd91884288b8623a37fc88eeb4",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 53,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "82791c74ad569c6738669ba4602c9af16db5d510c8af758920e73d7e592cb7a0",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-ffdffac4645948de93aa07cf63fe3731",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 54,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "7dce5c3e0c5531346b18d67d67de5a693a97c8787985312be2ab6d36b4f3a61b",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-9edd34b1a37b4515b862821e639a9877",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 55,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "c8927b50b6f903601a3d81cd8fc1dc353729db90de868a68dddcc02ce8adf555",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-72416caea23448bdb28b02db369e74ee",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 56,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "d4ba7d5316e65e4b0a7fccfd9e7e858914a90037632863b35b0873f7730c8262",
+      "source_sha256": "74673ec57681bf23e3b9be842da60feb350de67e3b3e3fbd34f052eaee2caf0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "0117929dfd8c5671f61ab530c2bdf69cec9f94a19d1d5150826bb6abeb24cd48",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r3--A"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-f93ddc6722824f2380077489b8dc7a3e",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 57,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "99e6719d99e0929ac5fa8e670967a29e2e2f88ec1d5a3bab92996e0bd9f6dfdb",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-a675af17409048b0b39690b9fc7c3027",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 58,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "588219fcfcd4a5272d3a9aaa2f73f10e00182cfb50332f605f8ff1a879e1282f",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-8414771d558341e19371fbeab1f7be2c",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 59,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "45ba524ee69643e77f77de45da6e0646d420dd15e0f4941786f46b8246128d10",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-ba73bc8aba0c413c91831be25b2771ee",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 60,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "dc68582454375ac95721176de0138ce6df9106bda10b616129f500c7abe6c6b9",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-b09a4993967247ef8c35bb4008158237",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 61,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "1ab4b7e37ea079bd9b31398e07bb52923cdc84f24a345c6a169fd231b2458365",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-58df81449e844f26afb161b7a8d1f7dd",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 62,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "ea8d9117271ab483a8744a3264c0b0cf1f1a7c5cf47bbf0f2ff436ea37d17e67",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-e9fada263dc049deb4e98f11318a48ee",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 63,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "5fa9dc429181ad4dfa28f33d3ee0b5022d2f7a59c0619f9ff02c82592c9a4bb1",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-aabea2e387cd4f5a934aa39c49a15719",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 64,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "5de5986f22a6fa40a45af737da099579ef4efc1b78260750e29e721dcfb59638",
+      "source_sha256": "d8d309b77232c7ff3815c8b267256ea7cd906b55a97326187b765fecf9c2100f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "b4253783eec2684099cdeea5a2fe8af20b71d808c20d40dc030762c248997ac0",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r3--B"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-7d57d555765d4bf4aced7121176c59ae",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 1,
+      "index": 65,
+      "output": {
+        "args": [
+          "4120202030303032"
+        ],
+        "result": [
+          {
+            "count": 2,
+            "name": "A"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "f2dd78b550acad168af9997745a4fd041b852bed65db4bf928542f3e909cc0e8",
+      "stdout_sha256": "63f7a0a9a57465e577346d845948b7e7fa0920a022dcccf19e4ad4e879cb8c04",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-34ebcc51e7904cdfabfbb0b75c06a526",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 2,
+      "index": 66,
+      "output": {
+        "args": [
+          "c3a9202030303132"
+        ],
+        "result": [
+          {
+            "count": 12,
+            "name": "\u00e9"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "3fa0f80f9535df961fff26912e639ed5d73c894e7edbb1065b6fbe595e99452a",
+      "stdout_sha256": "52ef56419416494101aaef1cee8618a8d4c05eb79289d31443a04a3c90040556",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-0bf48e113aa9440a82d59e0ed0b12553",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 3,
+      "index": 67,
+      "output": {
+        "args": [
+          "20202020303030305a20202039393939"
+        ],
+        "result": [
+          {
+            "count": 0,
+            "name": ""
+          },
+          {
+            "count": 9999,
+            "name": "Z"
+          }
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "8fcfce89db2dfc5b9517e9ad5b8d9934090d3bf104518673d6b4d02f532f8339",
+      "stdout_sha256": "1db2c3c9609801bfd2e87e6f2ba1dc28031f58acb429c41c172b5d4733a4c3d7",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-48658888235343828e729f61bc46ef25",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 4,
+      "index": 68,
+      "output": {
+        "args": [
+          ""
+        ],
+        "result": []
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "a08a1970bd6b5b709a1d49faad7c7f10d28b61d35bec6e3eebc3f1a0f6e1ad63",
+      "stdout_sha256": "45139510ac3eb9584704d6f34d4735d1a6cb95882b1627b6cf10f5383e8b6956",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-80813f660b5f4347b1cd35f5cf358a7b",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 5,
+      "index": 69,
+      "output": {
+        "args": [
+          "616263"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "3d70f068d9c4d2be5f93d7889e9ddb3473faba04ab5eb5074535c2f127c3c524",
+      "stdout_sha256": "2903aa640b7d50d22d700578fb8be4d721afd134f9333bb71d3462da1e33ef7b",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-706c205ab3a34fa1a978bcce191a1e46",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 6,
+      "index": 70,
+      "output": {
+        "args": [
+          "ff20202030303031"
+        ],
+        "error": "UnicodeDecodeError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.UnicodeDecodeError",
+          "builtins.UnicodeError",
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "1e02582fde9af3184c948c446b7e7d49e9b195df25a91bb565b6a7521dbe0f0a",
+      "stdout_sha256": "853e5fccdc1a1220c20220795bf5caeec1e6bd8a7ac46e23d34669e7cebb5fd5",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-111cf8debf7f4aee933457e725404d26",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 7,
+      "index": 71,
+      "output": {
+        "args": [
+          "412020202d303031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "57838405fc7d8f81e71b5ca552bd3f80eada665dc28ab1026a8a5d16a61cf065",
+      "stdout_sha256": "8b3c9365e16f890305b423a584f112c633678c3eb5156711c86902a2c0d78f0f",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-452820894c64431c94a734805d63d73e",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-c",
+        "import json,signal,sys\npayload=json.loads(sys.stdin.read())\ndef expired(signum,frame):\n    raise TimeoutError(\"diagnostic case deadline\")\nsignal.signal(signal.SIGALRM,expired)\nsignal.alarm(5)\ntry:\n    namespace={\"__name__\":\"diagnostic_candidate\"}\n    exec(compile(payload[\"source\"],\"records.py\",\"exec\"),namespace)\n    args=payload[\"request\"][\"args\"]\n    result=namespace[payload[\"request\"][\"function\"]](*args)\n    out={\"result\":result,\"args\":args}\nexcept Exception as error:\n    cls=type(error)\n    out={\"error\":cls.__name__,\"error_module\":cls.__module__,\n         \"error_mro\":[c.__module__+\".\"+c.__name__ for c in cls.__mro__],\n         \"args\":payload[\"request\"][\"args\"]}\nfinally:\n    signal.alarm(0)\nprint(json.dumps(out,sort_keys=True,allow_nan=False))\n"
+      ],
+      "case_number": 8,
+      "index": 72,
+      "output": {
+        "args": [
+          "4120202030302031"
+        ],
+        "error": "ValueError",
+        "error_module": "builtins",
+        "error_mro": [
+          "builtins.ValueError",
+          "builtins.Exception",
+          "builtins.BaseException",
+          "builtins.object"
+        ]
+      },
+      "returncode": 0,
+      "snapshot_sha256": "2dfd7fe8f4475b8e18e69c8a0c6560efdfbfdc7f632fe6b2dd2404e48f345324",
+      "source_sha256": "49b4ddec5de6ed21097fcd697cf9af53b95dd23105e397b4c86d2a2d10cbd73f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "e4509fe01666ec388f29ab9a6cc36eb5ad51def6c7867b30ce0a2fe9dd9e124c",
+      "stdout_sha256": "2722a06abb75148f9c1bec08bbd133516db85f3ec83122cc96d10c22e68eacf5",
+      "trial_id": "heldout--fixed-width-record-reader--r3--C"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "256m",
+        "--cpus",
+        "1",
+        "--name",
+        "evalopt-semantic-runtime-7859fdd67fd64567a373e04a06f82eab",
+        "--label",
+        "evalopt.semantic-audit=runtime-v1",
+        "--entrypoint",
+        "/usr/bin/python3",
+        "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+        "-I",
+        "-B",
+        "-"
+      ],
+      "index": 73,
+      "kind": "stdlib_mechanism",
+      "output": {
+        "byte_digit_primitives": [
+          {
+            "ascii_range_all": true,
+            "bytes_isdigit": true,
+            "hex": "30303031"
+          },
+          {
+            "ascii_range_all": false,
+            "bytes_isdigit": false,
+            "hex": "2d303031"
+          },
+          {
+            "ascii_range_all": false,
+            "bytes_isdigit": false,
+            "hex": "30302031"
+          },
+          {
+            "ascii_range_all": false,
+            "bytes_isdigit": false,
+            "hex": "ff303031"
+          }
+        ],
+        "candidate_code_executed": false,
+        "copy_nesting": [
+          {
+            "depth": 1,
+            "kind": "list",
+            "leaf": null,
+            "operations": {
+              "deepcopy": {
+                "depth": 1,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              },
+              "json_roundtrip": {
+                "depth": 1,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 500,
+            "kind": "list",
+            "leaf": 0,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 500,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 600,
+            "kind": "list",
+            "leaf": null,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 600,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 600,
+            "kind": "list",
+            "leaf": 0,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 600,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 600,
+            "kind": "list",
+            "leaf": 1,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 600,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 1,
+            "kind": "dict",
+            "leaf": null,
+            "operations": {
+              "deepcopy": {
+                "depth": 1,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              },
+              "json_roundtrip": {
+                "depth": 1,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 500,
+            "kind": "dict",
+            "leaf": 0,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 500,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 600,
+            "kind": "dict",
+            "leaf": null,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 600,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 600,
+            "kind": "dict",
+            "leaf": 0,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 600,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          },
+          {
+            "depth": 600,
+            "kind": "dict",
+            "leaf": 1,
+            "operations": {
+              "deepcopy": {
+                "error": "RecursionError",
+                "status": "raised"
+              },
+              "json_roundtrip": {
+                "depth": 600,
+                "leaf_equal": true,
+                "leaf_type_preserved": true,
+                "mutable_containers_independent": true,
+                "status": "returned"
+              }
+            }
+          }
+        ],
+        "invalid_utf8": {
+          "caught_by_ValueError": true,
+          "concrete_name": "UnicodeDecodeError",
+          "mro": [
+            "UnicodeDecodeError",
+            "UnicodeError",
+            "ValueError",
+            "Exception",
+            "BaseException",
+            "object"
+          ]
+        },
+        "model_trials": 0,
+        "original_grader_executed": false,
+        "runtime": {
+          "copy_module_sha256": "27dcfc53a4b9d4fbc3d90c74e549eb6eca9301524d6d2fbff9a6589cf51b6fd5",
+          "implementation": "CPython",
+          "json_module_sha256": "d5d41e2c29049515d295d81a6d40b4890fbec8d8482cfb401630f8ef2f77e4d5",
+          "machine": "aarch64",
+          "python_version": "3.11.2",
+          "recursion_limit": 1000,
+          "system": "Linux"
+        },
+        "schema_version": "evalopt.semantic-mechanism-probe.v1",
+        "scope": "New stdlib-only mechanism probes; neither original trials nor candidate execution."
+      },
+      "returncode": 0,
+      "source_sha256": "2f98306e63b7587fb9dc87acf74f46769985742d2c5ff0bf5afe56cdd5537a67",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin_sha256": "2f98306e63b7587fb9dc87acf74f46769985742d2c5ff0bf5afe56cdd5537a67",
+      "stdout_sha256": "9ac3153ca07f3da67c7a89e4a16944074ea3e9621a49b175df2773fb4d258605"
+    }
+  ],
+  "schema_version": "evalopt.new-semantic-diagnostics.v1",
+  "scope": "Posthoc diagnostic executions, not original hidden replies, graders, or model trials."
+}

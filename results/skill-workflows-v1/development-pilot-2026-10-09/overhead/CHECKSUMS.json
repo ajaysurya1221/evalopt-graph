@@ -1,0 +1,26 @@
+{
+  "bundle_id": "99da26670bf4d5676fa5af0fe37d33f4a26137577e80c2896c7fded5fb516d4a",
+  "files": {
+    "README.md": {
+      "sha256": "e5d82295a65e3964849edac40387ca2479f681b4ec40d43852e145113359b0b9",
+      "size": 4347
+    },
+    "capability-probes.json": {
+      "sha256": "e815ca973d9ad2696070fc52898d0baca3517a01117362fd722dad6ac5f0af41",
+      "size": 7433
+    },
+    "original-pilot-v1-finish.json": {
+      "sha256": "010f3fd051c0d5eb76e76a7aa1229d08c9076af5a2b63218ba8886c931c73a78",
+      "size": 311
+    },
+    "original-pilot-v1-manifest.json": {
+      "sha256": "79f3a6e4db6e096238bf8250aaa6cf61c671a71a436bcf7278e470c4590caaee",
+      "size": 1463
+    },
+    "overhead-ledger.json": {
+      "sha256": "aa77eb5f52e8eeec9d17ff0e04719f2b44b4eb168bd6cd80c55a167592234b97",
+      "size": 5732
+    }
+  },
+  "schema_version": "evalopt.overhead-draft-checksums.v1"
+}

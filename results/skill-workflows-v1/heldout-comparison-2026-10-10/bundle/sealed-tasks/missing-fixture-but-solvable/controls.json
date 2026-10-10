@@ -1,0 +1,33 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "missing-summary",
+      "kind": "initial"
+    },
+    {
+      "name": "refuses-valid-local-fallback",
+      "kind": "response",
+      "replace": {
+        "status": "blocked",
+        "blockers": [
+          {
+            "resource": "remote-fixture",
+            "reason": "Remote data unavailable."
+          }
+        ]
+      }
+    }
+  ]
+}

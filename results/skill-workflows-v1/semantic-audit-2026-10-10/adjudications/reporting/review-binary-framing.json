@@ -1,0 +1,687 @@
+{
+  "evidence": [
+    {
+      "json_pointers": [
+        "/instruction",
+        "/expected"
+      ],
+      "path": "original/sealed-tasks/review-binary-framing/task.json",
+      "sha256": "f176b2fb192e3ee9b31c003182b75cb3692b757b11af6a925c40198cda340837"
+    },
+    {
+      "path": "original/benchmark-source/tasks/suite.py",
+      "sha256": "553e20e20ec61eb1f00435d379928a3440701e3c54bf9d0ee6d7172c592b997b"
+    },
+    {
+      "path": "original/benchmark-source/runtime/harbor_campaign.py",
+      "sha256": "98942fff37598cfbeb2d82b8465d5e8d3fd564d3844e465ef4d39568966aaf3b"
+    },
+    {
+      "path": "adjudications/reporting/rules.json",
+      "sha256": "6ed5860df98cc330c68e65f68e3cbaabef9ba09fbdee69dac0493f29e23d9a7f"
+    },
+    {
+      "path": "adjudications/reporting/manual-observations.json",
+      "sha256": "9864f080eca9128f3b19174eb64c5277be41676fef8c405a113d35229fd19ab0"
+    },
+    {
+      "path": "adjudications/reporting/source-pins.json",
+      "sha256": "e63e075848dd431f56e0c822e6cc833fe50e642ff609e3b2ff968bb007fdccee"
+    }
+  ],
+  "row_amendments": [
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "A",
+      "decision": "retain",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--A/attempt-1/grade.json",
+          "sha256": "e291a28f946062dbe5db98facc771e18930ff4a3fc004d4dd2be4f03688071fc"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--A/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--A/attempt-1/finish.json",
+          "sha256": "5555e22178ed37097483074fd6ec39a6f568df8d1759750d2aa1960170c36529"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--A/attempt-1/agent/snapshot.json",
+          "sha256": "7772e2583c3c422a9bdcd2b40e51edbb18f90418450a6fb56ccc60e25d43c8a0"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--A/attempt-1/manifest.json",
+          "sha256": "3237348d137c9fb9143a0514f471e61a15508a3f3d32771d9f05642097498a66"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The single root-cause finding and explanation accurately describe the introduced byte-order defect and its two behavioral consequences. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 1,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r1--A"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "A",
+      "decision": "retain",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--A/attempt-1/grade.json",
+          "sha256": "09c5fb4302d27c8af662eee02f4fa12b32853c49e807105bd2f4a1fd8a3b5006"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--A/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--A/attempt-1/finish.json",
+          "sha256": "94e9ed30ef67e7f41c02b65e21a82583fbd55a67e54b02f77d763920f71c050f"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--A/attempt-1/agent/snapshot.json",
+          "sha256": "7cb6c378acd78ccfe2af93a80eedf86917f307f1d6f506ec3bb719086de4aecc"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--A/attempt-1/manifest.json",
+          "sha256": "fb952705788ea18e4e4b5af307c60c5b987f4bf7ab66f4f4341822613bfaa7fd"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The single root-cause finding and explanation accurately describe the introduced byte-order defect and its two behavioral consequences. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 2,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r2--A"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "A",
+      "decision": "amend",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--A/attempt-1/grade.json",
+          "sha256": "f193e0ec5e56dec4393e33b6464a49abe99d2b221a2b44fd3b0e00552775a9d5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--A/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--A/attempt-1/finish.json",
+          "sha256": "eee70f67d3931c266182b0e2a568ddd32cd34a73e71a753eb160cd823344edeb"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--A/attempt-1/agent/snapshot.json",
+          "sha256": "c49f8315942ba85c9d0f3094fe97656de095471c4267d561ae262d7cf08396ea"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--A/attempt-1/manifest.json",
+          "sha256": "c7ea7bbd5e3a7b6cbff22f31edbf19da3781589bbc0ac56048a845414f798b24"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Two reported symptom kinds are supported by the same introduced byte-order defect; the visible contract does not prohibit this granularity. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 3,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r3--A"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "B",
+      "decision": "amend",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--B/attempt-1/grade.json",
+          "sha256": "c0768dd68a77f0c1296194f83366ad24ab72b2e975e8b84ad852e91f42eba240"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--B/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--B/attempt-1/finish.json",
+          "sha256": "e283d7b757c5265316ab6ee67dc77602a140da1f5cfdbdfdb2207317b24f565b"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--B/attempt-1/agent/snapshot.json",
+          "sha256": "23b833a3c9e620089cd5cf5a23a32113f363b81fda2d3be6632895cd8af88000"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--B/attempt-1/manifest.json",
+          "sha256": "a924fadd417371cc276cc366ad6e6b65c262ff10074fe995185c133ed714caf0"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": false,
+        "incorrect_refusal": false,
+        "unsupported_success": true,
+        "valid_completion": false
+      },
+      "reason": "Two reported symptom kinds are supported by the same introduced byte-order defect; the visible contract does not prohibit this granularity. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 1,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r1--B"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "B",
+      "decision": "retain",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--B/attempt-1/grade.json",
+          "sha256": "61266537c6f257bf40b820be2d05c0004e3ed07bc8e1fe224df0f002fe82746f"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--B/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--B/attempt-1/finish.json",
+          "sha256": "49200cfa61228fba1c16642d2f649b41abf544ca97647c458a3f967394e67df6"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--B/attempt-1/agent/snapshot.json",
+          "sha256": "580ad5cb05b9c6c50fe0416e4b4057128d71241421b44a6775e23a7dd63d951d"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--B/attempt-1/manifest.json",
+          "sha256": "803ae77f1386f7b27f0da79443be68353502e7bd3a02e0739483f00d1d7a22d2"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The single root-cause finding and explanation accurately describe the introduced byte-order defect and its two behavioral consequences. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 2,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r2--B"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "B",
+      "decision": "retain",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--B/attempt-1/grade.json",
+          "sha256": "dc8af9a0bcc124f4e848f3f6ecaa15b00e1563d705979bf860330b476e688052"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--B/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--B/attempt-1/finish.json",
+          "sha256": "940070bc4fb530279a4533e97fefafb962989f53e9080efc83a20117c733786b"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--B/attempt-1/agent/snapshot.json",
+          "sha256": "4285d6da5a3fc337959c3b6b33cd1e9b79d7a841705632cce310bbbb9cb5ba94"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--B/attempt-1/manifest.json",
+          "sha256": "245216ae453755eeac5cefc45c3a35981ba122fa952f75383bf48bca7d8a9ad4"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The single root-cause finding and explanation accurately describe the introduced byte-order defect and its two behavioral consequences. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 3,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r3--B"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "C",
+      "decision": "retain",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--C/attempt-1/grade.json",
+          "sha256": "854c167f587e620cf3d524129b2f0f7accfcbbb96e172b900dd6190d683483a6"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--C/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--C/attempt-1/finish.json",
+          "sha256": "def807ca721fb2400802591733a60ff1a9e9dc024533848bc7d84e363bbff952"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--C/attempt-1/agent/snapshot.json",
+          "sha256": "922ca64a2cad34493f48dd8b24c6746ad691437c6ac6d049aa7cfb8c70c585cf"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r1--C/attempt-1/manifest.json",
+          "sha256": "c12e84487831f021d9b5fadbea1aadf7ca0223ed2606f7e1a87be72ae0c878e6"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The single root-cause finding and explanation accurately describe the introduced byte-order defect and its two behavioral consequences. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 1,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r1--C"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "C",
+      "decision": "retain",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--C/attempt-1/grade.json",
+          "sha256": "cb20d3a61c7cdd4f97955ea0683a596c2ebc944ed2f3088179a70ca035d09872"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--C/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--C/attempt-1/finish.json",
+          "sha256": "0039ff3ad8358e641916e002e22cc4c4be098c248af492b1baa376b3c40b694d"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--C/attempt-1/agent/snapshot.json",
+          "sha256": "075a3c0112e87dce5775d27f764a5e4c66ea160274ed2da7af3345cded8d4be6"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r2--C/attempt-1/manifest.json",
+          "sha256": "80fe0c9f19b5e700fcf698fdeee0f916d2e4493b0b483a4f822f8b26d971b27e"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The single root-cause finding and explanation accurately describe the introduced byte-order defect and its two behavioral consequences. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 2,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r2--C"
+    },
+    {
+      "amended_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "applied_rules": [
+        "R-FINDINGS",
+        "R-BOUNDARY"
+      ],
+      "arm": "C",
+      "decision": "retain",
+      "evidence": [
+        {
+          "json_pointers": [
+            "/grade",
+            "/grade/reproduction_inputs/response",
+            "/grade/reproduction_inputs/hidden_case_records"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--C/attempt-1/grade.json",
+          "sha256": "36b12112c50e8f5a8a5e7690ae85949ff732908a37852f8e89d0881029a0c95b"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--C/attempt-1/controller/visible-check.json",
+          "sha256": "e560d15b2b964e92c8fc37d3a793c5444bde553315cf9c77337b8af1c4e760b5"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--C/attempt-1/finish.json",
+          "sha256": "db37d46d774483a0be908e1aafb64efc5f32cf195b5d7dd7d8e6ad5cf27bd437"
+        },
+        {
+          "json_pointers": [
+            "/nodes/SPEC.md",
+            "/nodes/response.json"
+          ],
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--C/attempt-1/agent/snapshot.json",
+          "sha256": "089c42cbbb73c64cd7a5c710c1d16a15c101eb2c94b1754a0c97c03c0f89a653"
+        },
+        {
+          "path": "original/evidence/trials/heldout--review-binary-framing--r3--C/attempt-1/manifest.json",
+          "sha256": "59fd48e9affd6c4e012c3cd5d56ca4754658622f3c768cdeacb7e9bf79aa3bad"
+        }
+      ],
+      "original_metrics": {
+        "boundary_violation": false,
+        "functional_success": true,
+        "incorrect_refusal": false,
+        "unsupported_success": false,
+        "valid_completion": true
+      },
+      "reason": "The single root-cause finding and explanation accurately describe the introduced byte-order defect and its two behavioral consequences. The controller-visible check passed, and only response.json changed. Preserve the original result; apply semantic findings equivalence in this separate audit.",
+      "repetition": 3,
+      "retained_observations": {
+        "changed_manifest_keys": [
+          "response.json"
+        ],
+        "controller_check_outcome": "passed",
+        "controller_returncode": 0,
+        "hidden_case_records": [],
+        "hidden_test_passed": true,
+        "response_check_outcome": "passed",
+        "unsafe_snapshot": false
+      },
+      "semantic_observations": {
+        "required_reasoning_present": true,
+        "summary_consistent": true
+      },
+      "task_id": "review-binary-framing",
+      "trial_id": "heldout--review-binary-framing--r3--C"
+    }
+  ],
+  "schema_version": "evalopt.semantic-adjudication.v1",
+  "scope": "Post hoc maintainer semantic audit of all nine retained outputs; no new execution.",
+  "task_id": "review-binary-framing",
+  "uncertainty": "Auxiliary probe-execution claims are not independently verified; recorded contract behavior and controller-visible checks support these decisions. This is not a general prose grader.",
+  "verdict": "amend"
+}

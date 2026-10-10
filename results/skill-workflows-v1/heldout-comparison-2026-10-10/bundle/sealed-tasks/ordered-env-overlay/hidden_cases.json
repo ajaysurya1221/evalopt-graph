@@ -1,0 +1,130 @@
+[
+  {
+    "module": "environment",
+    "function": "expand",
+    "args": [
+      [
+        [
+          "B",
+          "${A}/x"
+        ],
+        [
+          "A",
+          "${B}"
+        ]
+      ],
+      {
+        "A": "root"
+      }
+    ],
+    "preserve_args": true,
+    "result": {
+      "A": "root/x",
+      "B": "root/x"
+    }
+  },
+  {
+    "module": "environment",
+    "function": "expand",
+    "args": [
+      [
+        [
+          "A",
+          "${A}!"
+        ],
+        [
+          "D",
+          "$${A}"
+        ]
+      ],
+      {
+        "A": "x"
+      }
+    ],
+    "preserve_args": true,
+    "result": {
+      "A": "x!",
+      "D": "${A}"
+    }
+  },
+  {
+    "module": "environment",
+    "function": "expand",
+    "args": [
+      [
+        [
+          "X",
+          "${A}"
+        ]
+      ],
+      {
+        "A": "$raw"
+      }
+    ],
+    "preserve_args": true,
+    "result": {
+      "A": "$raw",
+      "X": "$raw"
+    }
+  },
+  {
+    "module": "environment",
+    "function": "expand",
+    "args": [
+      [
+        [
+          "X",
+          "${MISSING}"
+        ]
+      ],
+      {}
+    ],
+    "preserve_args": true,
+    "raises": "KeyError"
+  },
+  {
+    "module": "environment",
+    "function": "expand",
+    "args": [
+      [
+        [
+          "X",
+          "$"
+        ]
+      ],
+      {}
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "environment",
+    "function": "expand",
+    "args": [
+      [
+        [
+          "X",
+          "${X"
+        ]
+      ],
+      {}
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  },
+  {
+    "module": "environment",
+    "function": "expand",
+    "args": [
+      [
+        [
+          "X",
+          "${lower}"
+        ]
+      ],
+      {}
+    ],
+    "preserve_args": true,
+    "raises": "ValueError"
+  }
+]

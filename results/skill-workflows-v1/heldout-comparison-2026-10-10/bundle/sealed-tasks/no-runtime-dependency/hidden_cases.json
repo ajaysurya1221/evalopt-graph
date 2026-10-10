@@ -1,0 +1,92 @@
+[
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "0.0.0.0"
+    ],
+    "preserve_args": true,
+    "result": true
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "255.1.2.3"
+    ],
+    "preserve_args": true,
+    "result": true
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "256.1.2.3"
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "01.2.3.4"
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "1.2.3"
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "1.2.3.4.5"
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "\u0661.2.3.4"
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "1.2.3. 4"
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "::1"
+    ],
+    "preserve_args": true,
+    "result": false
+  },
+  {
+    "module": "validator",
+    "function": "valid_ipv4",
+    "args": [
+      "1.2.3.-4"
+    ],
+    "preserve_args": true,
+    "result": false
+  }
+]

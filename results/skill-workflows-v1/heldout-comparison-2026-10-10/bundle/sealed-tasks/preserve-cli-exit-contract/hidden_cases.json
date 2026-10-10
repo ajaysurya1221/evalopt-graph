@@ -1,0 +1,93 @@
+[
+  {
+    "module": "cli_format",
+    "function": "diagnose",
+    "args": [
+      "0012"
+    ],
+    "preserve_args": true,
+    "result": {
+      "exit": 0,
+      "stdout": "12\n",
+      "stderr": ""
+    }
+  },
+  {
+    "module": "cli_format",
+    "function": "diagnose",
+    "args": [
+      ""
+    ],
+    "preserve_args": true,
+    "result": {
+      "exit": 2,
+      "stdout": "",
+      "stderr": "invalid input: ''\n"
+    }
+  },
+  {
+    "module": "cli_format",
+    "function": "diagnose",
+    "args": [
+      "0"
+    ],
+    "preserve_args": true,
+    "result": {
+      "exit": 2,
+      "stdout": "",
+      "stderr": "invalid input: '0'\n"
+    }
+  },
+  {
+    "module": "cli_format",
+    "function": "diagnose",
+    "args": [
+      " 12"
+    ],
+    "preserve_args": true,
+    "result": {
+      "exit": 2,
+      "stdout": "",
+      "stderr": "invalid input: ' 12'\n"
+    }
+  },
+  {
+    "module": "cli_format",
+    "function": "diagnose",
+    "args": [
+      "x\ny"
+    ],
+    "preserve_args": true,
+    "result": {
+      "exit": 2,
+      "stdout": "",
+      "stderr": "invalid input: 'x\\ny'\n"
+    }
+  },
+  {
+    "module": "cli_format",
+    "function": "diagnose",
+    "args": [
+      "\"quote\""
+    ],
+    "preserve_args": true,
+    "result": {
+      "exit": 2,
+      "stdout": "",
+      "stderr": "invalid input: '\"quote\"'\n"
+    }
+  },
+  {
+    "module": "cli_format",
+    "function": "diagnose",
+    "args": [
+      "1111111111111111111"
+    ],
+    "preserve_args": true,
+    "result": {
+      "exit": 2,
+      "stdout": "",
+      "stderr": "invalid input: '1111111111111111111'\n"
+    }
+  }
+]

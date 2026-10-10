@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "frozen-parser-error-adapter",
+  "split": "heldout",
+  "category": "constraint-preservation",
+  "source_family": "frozen-parser-error-adapter",
+  "instruction": "Repair adapter.parse_port(text) while preserving frozen legacy_parser.py and error_contract.json byte-for-byte. Accept one to five ASCII digits representing an integer in 1..65535; return the integer. Reject every other string, including whitespace, signs, zero, and too-long spellings, with the built-in ValueError rather than leaking legacy KeyError. Inputs are strings. Only adapter.py may change; use the standard library. Changing the public exception type or widening the accepted syntax is not a solution.",
+  "allowed_changes": [
+    "adapter.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

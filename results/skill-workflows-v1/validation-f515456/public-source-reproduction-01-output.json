@@ -1,0 +1,79 @@
+{
+  "bundle_id": "8a54972502ec164d4b43125fe70459277b5ed28d57d5f6e0781180080a456eef",
+  "candidate_execution_performed": false,
+  "efficiency_comparison_eligible": false,
+  "independent_replication": false,
+  "original_pilot": {
+    "A": {
+      "scheduled": 12,
+      "valid_completion": 12
+    },
+    "B": {
+      "scheduled": 12,
+      "valid_completion": 12
+    },
+    "C": {
+      "scheduled": 12,
+      "valid_completion": 12
+    }
+  },
+  "overhead": {
+    "complete_capability_probes": 3,
+    "complete_total_for_all_listed_overhead": false,
+    "dollar_cost": null,
+    "efficiency_comparison_eligible": false,
+    "observed_complete_probe_totals": {
+      "input_tokens": 223938,
+      "model_calls": 17,
+      "output_tokens": 1017,
+      "parent_wall_seconds": "73.168",
+      "tool_calls": 10
+    },
+    "records": 5,
+    "retained_development_repair_attempts": 1,
+    "unavailable_accounting_records": 2,
+    "unknown_dispatch_records": 1
+  },
+  "pilot_policy_decisions_replayed": 108,
+  "raw_native_log_replay": false,
+  "regrade": {
+    "accounting_amendment_sha256": "29c2c08cdd2599546d104ec0fb2c02211323c29d11f5f0f8a6d5240c0906e5cd",
+    "agent_trials": 0,
+    "changed_trial_count": 0,
+    "evidence_sha256": "01ba436b0c0598590256fdc6c010d3b9fe8c0813ebb89b6493927d244fa509d4",
+    "grading": {
+      "current": {
+        "suite": "5e6321baf59c82ebe91508d8c52a8ebe72780ecb1201363e34cec5514dab546d",
+        "verifier": "856fd980d1a9d662c20e3567870d337ca775fc7c48e86f036d50b9735a35a712"
+      },
+      "pilot": {
+        "suite": "a9c77b49e7fb0e425b644b9dbf8e19dc70ecaf37e91895765a1b3d248d24b94f",
+        "verifier": "e9977f6b7073d818501427a8997aa0a6933d473c3f364bc65546f8b490e9c379"
+      }
+    },
+    "metric_changes": {
+      "boundary_violation": 0,
+      "functional_success": 0,
+      "incorrect_refusal": 0,
+      "unsupported_success": 0,
+      "valid_completion": 0
+    },
+    "original_policy_decisions_changed": false,
+    "pilot_export_id": "7c4bc4b91d4535491d9197711a2c3fc83e35f0931542a395a24ac61dfcdb340b",
+    "pilot_registration_sha256": "7685aa0e163d93b4e619852233511b34c69c17e682748223ce46b1201cc6ca04",
+    "registration_sha256": "64922637dbcfdab1838293d3dab1bfe2331226f09f9065e36fcba7a2de16a3b7",
+    "regraded_attempts": 36,
+    "schedule_sha256": "c3df4c0faa487a149d7929c180020897e91d02017c0c6cd87363742f72ae6f24",
+    "scheduled_trials": 36,
+    "schema_version": "evalopt.pilot-regrade-receipt.v1",
+    "scope": "current-grader isolated stopped-output reexecution; original live pilot outcomes and policies remain unchanged; public replay uses supplied hidden replies, not independent execution or authentication",
+    "source_pins": {
+      "baseline_bridge_sha256": "bff20bbeffedc04c8f34c8575f714e136a62091b08e739dda9407c5ed65d878b",
+      "benchmark_source_sha256": "609897280b357bf623379b9e14b12ca7aef1c12d86f487a449725bce5956c82c",
+      "controller_sha256": "e424b9f151d42db2c40a2a455a8a0e6ad61ca6fe6f5f31a15c9ea1b74ca9c983",
+      "frozen_benchmark_sha256": "fb2b2dbc9dc5bb636d42e0b90152e57e0770f2f747afb9ee313d74a51199a88c"
+    },
+    "verifier_image": "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33"
+  },
+  "schema_version": "evalopt.pilot-release-replay.v1"
+}

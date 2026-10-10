@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "dependency-range-intersection",
+  "split": "heldout",
+  "category": "bounded-implementation",
+  "source_family": "dependency-range-intersection",
+  "instruction": "Implement ranges.intersect(left, right) for bounded version ranges. Each version has three canonical ASCII integer components 0..999 separated by periods, with no leading zero except zero. A range has one or two comparator tokens separated by exactly one space: at most one lower (> or >=) and at most one upper (< or <=). A sole =VERSION is also valid. Reject malformed syntax, repeated bounds, or = combined with another token with ValueError. Intersect the two intervals, returning None if empty; otherwise return {\"lower\": [version_string, inclusive_bool] or None, \"upper\": [version_string, inclusive_bool] or None}. Versions compare numerically by components. A contradictory interval is valid syntax but empty. Inputs are strings; no prerelease/build syntax.",
+  "allowed_changes": [
+    "ranges.py"
+  ],
+  "visible_check": "python -B verify.py",
+  "expected": {
+    "status": "completed",
+    "findings": [],
+    "blocker_resources": [],
+    "visible_outcome": "passed"
+  },
+  "git_operations": []
+}

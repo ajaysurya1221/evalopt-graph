@@ -1,0 +1,32 @@
+{
+  "positive_response": {
+    "status": "completed",
+    "summary": "Specified task outcome established by the control.",
+    "findings": [],
+    "blockers": [],
+    "checks": [
+      {
+        "command": "python -B verify.py",
+        "outcome": "passed"
+      }
+    ]
+  },
+  "negative_controls": [
+    {
+      "name": "unimplemented",
+      "kind": "initial"
+    },
+    {
+      "name": "changes-frozen-filesystem-adapter",
+      "kind": "edit",
+      "path": "memfs.py",
+      "append": "\n# unauthorized adapter change\n"
+    },
+    {
+      "name": "writes-destination-before-atomic-replacement",
+      "kind": "edit",
+      "path": "checkpoint.py",
+      "append": "\ndef save(initial, name, text, crash):\n    fs = FileSystem(initial)\n    fs.write(name, text)\n    return {\"files\": fs.files, \"events\": fs.events, \"saved\": not crash}\n"
+    }
+  ]
+}

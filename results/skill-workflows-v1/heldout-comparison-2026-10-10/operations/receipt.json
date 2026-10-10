@@ -1,0 +1,231 @@
+{
+  "audit_pause": {
+    "active_attempts_at_boundary": 0,
+    "additional_billing_authorized": false,
+    "billing_scope": "No quota exhaustion, credit debit, purchase or authentication-route change was found by that audit. The pre-dispatch guard does not certify server billing within an active turn.",
+    "classification": "precautionary audit pause, not observed quota exhaustion",
+    "finalized_trials": 22,
+    "frozen_source_changed": false,
+    "native_end_reason": "CancelledError",
+    "native_end_status": "interrupted",
+    "native_ended_at": "2026-10-09T09:04:02.552406+00:00",
+    "ordinary_usage_allowed_at_resume": true,
+    "resume_reviewed_at": "2026-10-09T09:10:19.831648+00:00",
+    "run": "run-0001",
+    "stop_requested_at": "2026-10-09T09:04:01.375831+00:00",
+    "trial_discarded_or_retried": false
+  },
+  "controller_interruption": {
+    "attempt": 1,
+    "classification": "infra_failure",
+    "classified_at": "2026-10-09T20:15:49.077808+00:00",
+    "error_code": "controller_interrupted",
+    "historical_finalized_attempts": 419,
+    "historical_started_unique_trials": 420,
+    "historical_unstarted_trials": 12,
+    "late_workspace_scope": "late forensic capture only; not an original stopped snapshot and not graded",
+    "native_end": null,
+    "native_executor_return_list_available": false,
+    "original_grade_available": false,
+    "original_native_work_occurred": true,
+    "original_prefix_unchanged_per_recovery_review": true,
+    "original_stopped_output_available": false,
+    "prefix_observed_at": "2026-10-09T20:13:57.480679+00:00",
+    "prefix_regular_file_count": 5871,
+    "reconstructed_correspondence_scope": "398 permission records correspond to 397 finalized original attempts and one start-only attempt at prefix time. This is external reconstruction, not the missing native end or its dispatched list.",
+    "reconstructed_run2_finalized_original_attempts": 397,
+    "root_cause": "unconfirmed",
+    "run": "run-0002",
+    "run2_allowed_permission_count": 398,
+    "trial_id": "heldout--unavailable-signing-key--r2--A"
+  },
+  "explicit_retry": {
+    "attempt": 2,
+    "continuation_reason": null,
+    "finalized_unique_trials_at_review": 420,
+    "functional_grade_not_assessed_in_this_note": true,
+    "remaining_scheduled_trials_at_review": 12,
+    "retained_attempts_at_review": 421,
+    "retry_count": 1,
+    "retry_infrastructure": true,
+    "reviewed_at": "2026-10-09T20:19:16.027625+00:00",
+    "run": "run-0003",
+    "runtime_status": "completed",
+    "trial_id": "heldout--unavailable-signing-key--r2--A"
+  },
+  "final_campaign": {
+    "active_attempts_at_check": 0,
+    "checked_at": "2026-10-09T20:36:01.923158+00:00",
+    "final_retained_attempts": 433,
+    "final_runtime_statuses": {
+      "completed": 432
+    },
+    "final_unique_trials": 432,
+    "fresh_environment_public_replay": {
+      "candidate_execution_performed": false,
+      "independent_replication": false,
+      "policy_analysis_reproduced": true,
+      "scope": "Offline public artifact validation, supplied hidden-reply grade replay and registered analysis; no candidate execution or raw native-log replay."
+    },
+    "grade_records_replayed": 432,
+    "infrastructure_retries": 1,
+    "missing_native_run_ends": [
+      "run-0002"
+    ],
+    "pending_trials_at_check": 0,
+    "private_report_export_id_canonical_json": "75049e332567275d12287036a9f9bd2a2eff1921852c06f5cd5d697b8a94c7fc",
+    "public_bundle_id": "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+    "public_declared_unavailable_trials": 0,
+    "public_report_object_id_canonical_json": "df1047d68be946e93daa138ba91488ab2a30289aaa4ab69d150c0edeac78a731",
+    "run2_external_attempt_correspondences": 398,
+    "run2_native_executor_return_list": null,
+    "verification_status": "final_quiescent_reconciliation_passed"
+  },
+  "prepared_at": "2026-10-09T20:43:32.906871+00:00",
+  "publication_status": "reviewable_release_candidate_not_published_by_this_note",
+  "recovered_original_usage": {
+    "accounting_status": "complete",
+    "agent_count": 2,
+    "counter_aggregation": "agent_exclusive",
+    "delegation_boundary_status": "verified",
+    "double_counting_rule": "Count original attempt once in all-attempt resources; do not add corroborating stdout totals again. Count the retry separately; do not add final-attempt totals to all-attempt totals.",
+    "input_tokens": 140003,
+    "model_calls": 10,
+    "output_tokens": 1167,
+    "parent_wall_seconds": 39.644,
+    "parent_wall_time_not_summed_with_child": true,
+    "provenance_status": "valid",
+    "runtime_valid": true,
+    "tool_calls": 8,
+    "workflow_grade_restored": false
+  },
+  "registered_conditions": {
+    "accounting_policy_sha256_canonical_json": "cde084b941e27504f7960fba48eb38b7a11213f949626b1383b422b335801b1c",
+    "heldout_registration": {
+      "object": "heldout lock",
+      "sha256_canonical_json": "bd8bc5e42717a26570055db5896fb880ba92c7dc5725b3bcaca330d3abed4f8e"
+    },
+    "schedule_sha256_canonical_json": "3e30820d79f5c7ef0c77ec48af6ff19160213dda662d3b4b143d90f442de5cd6",
+    "scheduled_trials": 432,
+    "scheduler_registration": {
+      "object": "scheduler registration lock",
+      "sha256_canonical_json": "d7f266978e2f198774c3b0cddb1879c5d8e5c23f7f479f437c91ee7328ab5a86"
+    },
+    "source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46"
+  },
+  "remaining_continuation": {
+    "completion_verified_at": "2026-10-09T20:36:01.923158+00:00",
+    "launch_is_not_completion_evidence": true,
+    "launched_at": "2026-10-09T20:22:59.334522+00:00",
+    "native_end_reason": null,
+    "native_end_status": "finished",
+    "native_ended_at": "2026-10-09T20:35:54.650832+00:00",
+    "native_returned_trial_count": 12,
+    "native_started_at": "2026-10-09T20:23:00.587850+00:00",
+    "recover_interrupted": false,
+    "remaining_trials_at_launch": 12,
+    "resume_quota": false,
+    "retry_infrastructure": false,
+    "run": "run-0004"
+  },
+  "schema_version": "evalopt.heldout-operations-public.v1",
+  "scope": "Sanitized operational chronology and retained-source identities; no benchmark scores, candidate content, producer authentication or full evidence replay claim.",
+  "source_object_scope": "Hashes bind retained private operational objects. Those private originals, trajectories, archives and paths are not included in this projection.",
+  "source_objects": {
+    "accepted_draft_checksums": {
+      "sha256_bytes": "a5de75bc893b8daead15f3722c575be911a1f2fd84b9ac5fa4ba81948e769737"
+    },
+    "accepted_draft_receipt": {
+      "sha256_bytes": "9bfc417cbf020c95b83a02dee7fdebf55d544ddfc59eb48e30afe9f2f4547928"
+    },
+    "audit_boundary_record": {
+      "sha256_bytes": "2f5172c6c7184cd821b033f7b6dd14049e73bb779a4e7aa0f2b9f71647cb781e"
+    },
+    "audit_boundary_verification": {
+      "sha256_bytes": "3d823a56605078ee86b81a13ac177de488f500ee579392d2eaf89fcee645669e"
+    },
+    "audit_continuation_review": {
+      "sha256_bytes": "f9e0882ca7de6d57c8cf3ccee4b9d08d039c34cb68420d0ba5e32bfac5743b66"
+    },
+    "final_qa_checksums": {
+      "sha256_bytes": "4a2ae57414033cf23713ec65b523e88c9191f632ee9d0dd76abe9fee88d8e547"
+    },
+    "final_qa_completion_gate": {
+      "sha256_bytes": "ebf785be4ff58e88ab61dc1845b1ed46cca97e7646f1b422f9847a5f7ddf6999"
+    },
+    "final_qa_reconciliation_map": {
+      "sha256_bytes": "4ac9c2eeec1deafe02ec76c77f4f7de66232e54ee3e13bc594049ce227222c3c"
+    },
+    "final_report_binding": {
+      "sha256_bytes": "e56b333347a6d06db166e57b4d821af98346f895eee85aef44a7bd051e120ca2"
+    },
+    "fresh_environment_public_replay_receipt": {
+      "sha256_bytes": "e5faeaff8981f2785c5954d2273e94393c3d38dec57bb042597b55fc14e38167"
+    },
+    "interruption_prefix_manifest": {
+      "sha256_bytes": "a97698cd47947016518609fee2b5ac37f80b302a5ead4c6a49750ae757b0a10d"
+    },
+    "late_workspace_archive": {
+      "sha256_bytes": "1211c358a74ebe4404fe7fbdc24ac406cfdc131423dda86835a2119662e72ce0"
+    },
+    "native_sessions_archive": {
+      "sha256_bytes": "ccea13c686ed3dee7729111db36fd83107e60dad9a11cdfd29c6991e2e7966d6"
+    },
+    "private_report_checksums": {
+      "sha256_bytes": "66396a5371f5164669bf04de2de32d6f3a820691996245733bfe65097084346a"
+    },
+    "public_bundle_checksums": {
+      "sha256_bytes": "5ff2e6b25f0b065ad245ba34217706c6289f8982862df8c824ab82e10bf08e7d"
+    },
+    "public_publication_record": {
+      "sha256_bytes": "e8cd698c89589e0cb7fae490f015d638b7273369d42251d791957af91b23a93a"
+    },
+    "reconciliation_checklist_v2": {
+      "sha256_bytes": "2f1f4926aa823c137e5a3fb1cb218f7935d7e1efca86ce8945db3ac3e18f1d9c"
+    },
+    "recovered_usage": {
+      "digest_distinction": "file digest covers exact retained JSON bytes; canonical digest covers the parsed usage object",
+      "sha256_bytes": "fd0f0486ee66c4d8009ba8512fe4fb5292a87903d7341900ab48453a57efb906",
+      "sha256_canonical_json": "239ede394c02cba482a9f0f9ce7f908e668be45a070ebd3b364006d884e038f4"
+    },
+    "recovery_classification_receipt": {
+      "sha256_bytes": "53874a7fd17517bd0cf6d352cc41e16fc7385c8342e559e816b9f040ff56ddf7"
+    },
+    "remaining_launch_intent": {
+      "sha256_bytes": "b638711052bd97f36932cacd7ebcc313f54d1d1cf02804681f359ca3c68a9e52"
+    },
+    "remaining_launch_receipt": {
+      "sha256_bytes": "b9fcf86fb77d95ae620289ee2676100bdfe847ca72210198d4eb16f4075b0cee"
+    },
+    "retry_review": {
+      "sha256_bytes": "a17084f70293314ebd7df2c0877449dbefde0249046b965a36efc58546a14a33"
+    },
+    "retry_terminal_record": {
+      "sha256_bytes": "4239d1a4c506f81df7f80cceaa7a313103a5e1c9d9e242952c4131b82e5fd4cd"
+    },
+    "run-0001_end": {
+      "sha256_bytes": "d6c620121d910e9dc2fa24f427316c063cd1b58c703e8ea9b22f2f299930a5ce"
+    },
+    "run-0001_start": {
+      "sha256_bytes": "e2a345d4ae5cdc1bf7b663efc67616b29d3d7ac1cf70120cefc8c72a11a80438"
+    },
+    "run-0002_start": {
+      "sha256_bytes": "fa9ede99d7bfa6204dab910a3f9f0cda630910f7f9160b4e5bed342960cd6f0d"
+    },
+    "run-0003_end": {
+      "sha256_bytes": "e28d2d470478b38b6d508323ac329bfb45477174840eec552c44569459be336a"
+    },
+    "run-0003_start": {
+      "sha256_bytes": "d6e9ac10601bcb53c1370184886d57eb3031ce3cc9c5742fa7025a25e67631a2"
+    },
+    "run-0004_end": {
+      "sha256_bytes": "517d9b34dee577321432440af9ede7392f1e68d39c9c8e0fa5e0c457e06570e3"
+    },
+    "run-0004_start": {
+      "sha256_bytes": "83903895f4dee32705a70ec6e830681778bc87a9570a8f3fd6b7683976fb6c50"
+    },
+    "usage_derivation_receipt": {
+      "sha256_bytes": "94d092a0ed3c2e48f989786537026c0d8a9f19c6b096433fc9261fbfce040599"
+    }
+  }
+}

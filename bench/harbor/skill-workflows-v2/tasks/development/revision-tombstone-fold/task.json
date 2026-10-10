@@ -1,0 +1,221 @@
+{
+  "id": "revision-tombstone-fold",
+  "category": "bounded-implementation",
+  "split": "development",
+  "source_cluster": "revision-tombstone-fold",
+  "evidence_opportunity": false,
+  "schema_version": "evalopt-workflows-v2/1",
+  "task_id": "revision-tombstone-fold",
+  "attempt_id": "authored-control--revision-tombstone-fold",
+  "task_contract": "implementation",
+  "instruction": "Implement solve(events). Events are dictionaries with id (ASCII string), revision (nonnegative integer), writer (ASCII string), value (any JSON), deleted (bool). Select one event per id by maximum (revision,writer), using string codepoint order; exact ties select the last input occurrence. Return {id,value} objects sorted by id, omitting winners whose deleted is true. A value of null without deleted=true remains present. Earlier tombstones may be superseded by newer live events. Do not mutate any input.\nOnly state_fold.py may change; all other initial files and directory modes are frozen. New files are forbidden.\n\nRun the frozen visible command `python3 -B verify.py`; do not edit verify.py. Its result is an observation, not the complete task contract. Use the controller-provided record when available and preserve its exact command/execution_state/exit_code/evidence_availability values in response checks. Return a JSON object with status (completed or blocked), findings (array), blockers (array), checks (array of exactly that one four-field check record). For implementation, successful completion has empty findings and blockers. Review findings each have path (workspace-relative POSIX, no ./), symbol (unqualified function), kind (incorrect-result, unexpected-exception or data-loss), and witness {module,function,args} drawn from the declared finite domain. A witness is a data request, never executable code. A finding must be an introduced contract violation: the baseline meets the expectation, the candidate does not. One or more supported consequences can cover the same root cause; duplicate supported findings are neutral, extra unsupported findings fail. A blocker task requires status blocked, no findings, and one blocker {resource,reason}; do not claim a pass. No extra response fields are required. Python3/standard library only. Do not install packages, change permissions or access a network. Preserve arguments to every callable.\n",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ],
+  "allowed_changes": [
+    "state_fold.py"
+  ],
+  "cases": [
+    {
+      "case_id": "case-01",
+      "request": {
+        "module": "state_fold",
+        "function": "solve",
+        "args": [
+          [
+            {
+              "id": "x",
+              "revision": 1,
+              "writer": "a",
+              "value": 7,
+              "deleted": false
+            }
+          ]
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": "x",
+            "value": 7
+          }
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-02",
+      "request": {
+        "module": "state_fold",
+        "function": "solve",
+        "args": [
+          [
+            {
+              "id": "x",
+              "revision": 2,
+              "writer": "a",
+              "value": 2,
+              "deleted": false
+            },
+            {
+              "id": "x",
+              "revision": 1,
+              "writer": "z",
+              "value": 1,
+              "deleted": false
+            }
+          ]
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": "x",
+            "value": 2
+          }
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-03",
+      "request": {
+        "module": "state_fold",
+        "function": "solve",
+        "args": [
+          [
+            {
+              "id": "x",
+              "revision": 2,
+              "writer": "a",
+              "value": 2,
+              "deleted": false
+            },
+            {
+              "id": "x",
+              "revision": 2,
+              "writer": "b",
+              "value": null,
+              "deleted": true
+            },
+            {
+              "id": "x",
+              "revision": 1,
+              "writer": "z",
+              "value": 7,
+              "deleted": false
+            }
+          ]
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": []
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-04",
+      "request": {
+        "module": "state_fold",
+        "function": "solve",
+        "args": [
+          [
+            {
+              "id": "b",
+              "revision": 1,
+              "writer": "z",
+              "value": null,
+              "deleted": false
+            },
+            {
+              "id": "a",
+              "revision": 1,
+              "writer": "z",
+              "value": {
+                "n": [
+                  1
+                ]
+              },
+              "deleted": false
+            }
+          ]
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": "a",
+            "value": {
+              "n": [
+                1
+              ]
+            }
+          },
+          {
+            "id": "b",
+            "value": null
+          }
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-05",
+      "request": {
+        "module": "state_fold",
+        "function": "solve",
+        "args": [
+          [
+            {
+              "id": "a",
+              "revision": 1,
+              "writer": "a",
+              "value": 4,
+              "deleted": false
+            },
+            {
+              "id": "a",
+              "revision": 1,
+              "writer": "a",
+              "value": 9,
+              "deleted": false
+            }
+          ]
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": "a",
+            "value": 9
+          }
+        ]
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-06",
+      "request": {
+        "module": "state_fold",
+        "function": "solve",
+        "args": [
+          []
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": []
+      },
+      "preserve_args": true
+    }
+  ],
+  "preserve_review_args": true,
+  "max_findings": 8
+}

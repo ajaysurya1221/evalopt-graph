@@ -1,0 +1,199 @@
+[
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        ""
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": []
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "x=1"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "x",
+          "1"
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "x=1&x=2"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "x",
+          "1"
+        ],
+        [
+          "x",
+          "2"
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "k=a%26b"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "k",
+          "a&b"
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "a%3Db=c"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "a=b",
+          "c"
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "x=%2526"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "x",
+          "%26"
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "a+b=c+d"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "a b",
+          "c d"
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "x"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "x",
+          ""
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "x="
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "x",
+          ""
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "x==2"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "x",
+          "=2"
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "query_pairs",
+      "function": "solve",
+      "args": [
+        "x=%E2%98%83"
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          "x",
+          "☃"
+        ]
+      ]
+    }
+  }
+]

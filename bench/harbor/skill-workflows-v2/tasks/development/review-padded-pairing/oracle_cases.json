@@ -1,0 +1,153 @@
+[
+  {
+    "request": {
+      "module": "pairing",
+      "function": "solve",
+      "args": [
+        [],
+        []
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": []
+    }
+  },
+  {
+    "request": {
+      "module": "pairing",
+      "function": "solve",
+      "args": [
+        [
+          1
+        ],
+        []
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          1,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "pairing",
+      "function": "solve",
+      "args": [
+        [],
+        [
+          2
+        ]
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          null,
+          2
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "pairing",
+      "function": "solve",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          3
+        ]
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "pairing",
+      "function": "solve",
+      "args": [
+        [
+          null,
+          false
+        ],
+        [
+          0,
+          null,
+          4
+        ]
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          null,
+          0
+        ],
+        [
+          false,
+          null
+        ],
+        [
+          null,
+          4
+        ]
+      ]
+    }
+  },
+  {
+    "request": {
+      "module": "pairing",
+      "function": "solve",
+      "args": [
+        [
+          {
+            "x": 1
+          }
+        ],
+        [
+          [
+            2,
+            3
+          ]
+        ]
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": [
+        [
+          {
+            "x": 1
+          },
+          [
+            2,
+            3
+          ]
+        ]
+      ]
+    }
+  }
+]

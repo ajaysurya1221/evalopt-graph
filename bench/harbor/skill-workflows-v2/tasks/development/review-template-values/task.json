@@ -1,0 +1,136 @@
+{
+  "id": "review-template-values",
+  "category": "mixed-workspace-review",
+  "split": "development",
+  "source_cluster": "review-template-values",
+  "evidence_opportunity": true,
+  "schema_version": "evalopt-workflows-v2/1",
+  "task_id": "review-template-values",
+  "attempt_id": "authored-control--review-template-values",
+  "task_contract": "review",
+  "instruction": "Review all staged, unstaged and untracked changes to render.py and its helper. solve(template,bindings) substitutes original tokens {name}, with lowercase ASCII names, once. Missing bindings keep the original token. Binding values are literal strings: backslashes and inserted token-looking text must not be interpreted. The supported request pairs are listed below.\nReview only. Do not modify any workspace file, directory, mode or Git metadata. Review the complete candidate against baseline; the finite witness domain below is normative, not a list of expected answers.\n[[\"hello {x}\", {\"x\": \"world\"}], [\"{x}\", {\"x\": \"{y}\", \"y\": \"done\"}], [\"{x}\", {\"x\": \"\\\\q\"}], [\"{missing}\", {}], [\"{x}-{x}\", {\"x\": \"a\"}]]\n\nRun the frozen visible command `python3 -B verify.py`; do not edit verify.py. Its result is an observation, not the complete task contract. Use the controller-provided record when available and preserve its exact command/execution_state/exit_code/evidence_availability values in response checks. Return a JSON object with status (completed or blocked), findings (array), blockers (array), checks (array of exactly that one four-field check record). For implementation, successful completion has empty findings and blockers. Review findings each have path (workspace-relative POSIX, no ./), symbol (unqualified function), kind (incorrect-result, unexpected-exception or data-loss), and witness {module,function,args} drawn from the declared finite domain. A witness is a data request, never executable code. A finding must be an introduced contract violation: the baseline meets the expectation, the candidate does not. One or more supported consequences can cover the same root cause; duplicate supported findings are neutral, extra unsupported findings fail. A blocker task requires status blocked, no findings, and one blocker {resource,reason}; do not claim a pass. No extra response fields are required. Python3/standard library only. Do not install packages, change permissions or access a network. Preserve arguments to every callable.\n",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ],
+  "allowed_changes": [],
+  "cases": [
+    {
+      "case_id": "case-01",
+      "request": {
+        "module": "render",
+        "function": "solve",
+        "args": [
+          "hello {x}",
+          {
+            "x": "world"
+          }
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": "hello world"
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-02",
+      "request": {
+        "module": "render",
+        "function": "solve",
+        "args": [
+          "{x}",
+          {
+            "x": "{y}",
+            "y": "done"
+          }
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": "{y}"
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-03",
+      "request": {
+        "module": "render",
+        "function": "solve",
+        "args": [
+          "{x}",
+          {
+            "x": "\\q"
+          }
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": "\\q"
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-04",
+      "request": {
+        "module": "render",
+        "function": "solve",
+        "args": [
+          "{missing}",
+          {}
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": "{missing}"
+      },
+      "preserve_args": true
+    },
+    {
+      "case_id": "case-05",
+      "request": {
+        "module": "render",
+        "function": "solve",
+        "args": [
+          "{x}-{x}",
+          {
+            "x": "a"
+          }
+        ]
+      },
+      "expect": {
+        "kind": "return",
+        "value": "a-a"
+      },
+      "preserve_args": true
+    }
+  ],
+  "preserve_review_args": true,
+  "max_findings": 8,
+  "defect_obligations": [
+    {
+      "id": "recursive-substitution",
+      "path": "render.py",
+      "symbol": "solve",
+      "kinds": [
+        "incorrect-result",
+        "data-loss"
+      ]
+    },
+    {
+      "id": "replacement-escape",
+      "path": "render.py",
+      "symbol": "solve",
+      "kinds": [
+        "unexpected-exception"
+      ]
+    }
+  ],
+  "workspace_layers": {
+    "baseline": "baseline",
+    "committed": "committed",
+    "index": "index",
+    "workspace": "agent"
+  }
+}

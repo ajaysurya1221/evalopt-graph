@@ -1,0 +1,11 @@
+{
+  "worker-a": [
+    "enter",
+    "leave"
+  ],
+  "worker-b": [
+    "enter",
+    "leave"
+  ],
+  "shared_clock": null
+}

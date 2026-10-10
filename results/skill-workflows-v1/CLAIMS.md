@@ -10,7 +10,17 @@ The completed [held-out comparison](heldout-comparison-2026-10-10/README.md) is 
 | Accounting retains 417 complete and 16 partial attempts. | [Registered accounting view](heldout-comparison-2026-10-10/bundle/reports/analysis.json) | Lower bounds, no efficiency or dollar-cost claim; final-attempt and all-attempt totals overlap. |
 | Fresh local public-bundle replay checks 432 supplied-reply grades and all released assets. | [Validation](heldout-comparison-2026-10-10/validation.json); [offline entrypoint](heldout-comparison-2026-10-10/reproduce.py) | No candidate execution, native-log authentication, restored missing controller lifecycle or independent replication. |
 
-The [transfer registration](transfer-registration-2026-10-10/README.md) schedules 72 trials on a pinned Terminal-Bench feasibility subset. Registration and setup controls are not transfer outcomes or an official leaderboard score. Authored offline conformance controls, live workflow trials, supplied-evidence replay and independent replication are distinct evidence classes; independent replication is not established.
+The [stopped transfer report](transfer-comparison-2026-10-10/README.md) retains the full 72-row schedule after an explicitly approved incomplete finalization. The [registration](transfer-registration-2026-10-10/README.md) predates admission. Registration and setup controls are separate from the actual outcomes below.
+
+| Transfer claim | Evidence | Scope and limitation |
+| --- | --- | --- |
+| 58 executed attempts and 14 unstarted rows remain in all 72 scheduled identities. | [Outcomes](transfer-comparison-2026-10-10/bundle/reports/outcomes.json); [attempts](transfer-comparison-2026-10-10/bundle/reports/attempts.json) | Each executed row ran once; four timeouts retain null verifier rewards. Missing outcomes are unknown, not silently scored failures. |
+| Available verifier rewards give B 23/27 and C 19/27; full-schedule C-minus-B bounds are −36.11 to +13.89 points. | [Frozen analysis](transfer-comparison-2026-10-10/bundle/reports/analysis.json) | Each arm has nine missing rewards. These are identification bounds, not confidence intervals, superiority evidence or an official leaderboard score. |
+| Two failure-informed admission amendments and the final stop remain disclosed. | [Operations](transfer-comparison-2026-10-10/operations/README.md); [finalization provenance](transfer-comparison-2026-10-10/operations/finalization.json); [journal mapping](transfer-comparison-2026-10-10/operations/journal-mapping.json) | 58 genuine native ends versus 55 external acknowledgments; gaps 55/56/58 remain missing. Later absence does not repair a historical execution boundary. No causal phase comparison. |
+| Accounting has 54 complete, three partial and one unavailable attempt. | [Registered resource accounting](transfer-comparison-2026-10-10/bundle/reports/analysis.json) | Known counters are included once, including runtime-blocked consumption; unavailable consumption is unknown. No efficiency or dollar-cost claim. |
+| Fresh standard-library replay verifies retained attempts and reward/counter arithmetic. | [Validation](transfer-comparison-2026-10-10/validation.json); [entrypoint](transfer-comparison-2026-10-10/reproduce.py) | No original verifier, candidate, private archive, raw-log or process-observation reexecution. Private QA summaries are hash-bound references, not independently authenticated public evidence. |
+
+Authored conformance controls, live workflow trials, external transfer, supplied-evidence replay and independent replication remain distinct evidence classes. Independent replication is not established; the transfer stage does not change the primary no-demonstrated-upgrade result.
 
 ## Development pilot
 

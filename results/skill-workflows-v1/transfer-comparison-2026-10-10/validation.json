@@ -1,0 +1,25 @@
+{
+  "benchmark_source_sha256": "609897280b357bf623379b9e14b12ca7aef1c12d86f487a449725bce5956c82c",
+  "completed_at": "2026-10-10T09:55:56.463596+00:00",
+  "environment_setup_note": "Initial copy-mode virtual environment could not locate libpython on macOS. Its failure is retained privately. A fresh symlink-mode environment using the same pinned base interpreter passed; no study condition changed.",
+  "kernel_source_sha256": "461cdc169428470d578283171b3009b0f6dff0999801ed444e92fafde5c56700",
+  "result": {
+    "attempts_verified": 58,
+    "bundle_id": "6ac536cef0fa72f52dfd066e3c45861a61c5044ca3c7d0e82166b6ab1837e62d",
+    "files": 306,
+    "network_publication_performed": false,
+    "original_verifier_reexecuted": false,
+    "policy_replay": "not applicable; no U/M/G",
+    "raw_archives_included": false,
+    "reward_analysis_reproduced": true,
+    "schema_version": "evalopt.transfer-public-verification.v1",
+    "sensitive_scan_passed": true
+  },
+  "runtime": {
+    "implementation": "CPython",
+    "third_party_distributions": 0,
+    "version": "3.13.12"
+  },
+  "schema_version": "evalopt.transfer-clean-local-replay.v1",
+  "scope": "Fresh local standard-library retained-artifact and reward/counter arithmetic replay; original verifiers/private logs/candidates not reexecuted; not independent replication."
+}

@@ -1,0 +1,587 @@
+{
+  "mapping": [
+    {
+      "acknowledged": true,
+      "admission": 1,
+      "attempt": 1,
+      "export_id": "49a9f7a908b7f61b1a93b7286f06d176502a4e87da65ad6b16fd4eb2f50d27a5",
+      "journal": "old",
+      "native_run": "run-0001",
+      "operation": 1,
+      "trial_id": "transfer--build-cython-ext--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 2,
+      "attempt": 1,
+      "export_id": "5bf7f2e59847af229eb27a9b44872f8ea615033e00cf30e6c219e7ff665739c7",
+      "journal": "old",
+      "native_run": "run-0002",
+      "operation": 2,
+      "trial_id": "transfer--build-cython-ext--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 3,
+      "attempt": 1,
+      "export_id": "47b2d442bca526ac18ca7187a2b1ddcc95ce890fbdc0bae11884329dd6d37df1",
+      "journal": "old",
+      "native_run": "run-0003",
+      "operation": 2,
+      "trial_id": "transfer--build-cython-ext--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 4,
+      "attempt": 1,
+      "export_id": "62e53e7f2374e9b4600d287858e0b2b47959d3183361f61a778860d2d3f5e962",
+      "journal": "old",
+      "native_run": "run-0004",
+      "operation": 2,
+      "trial_id": "transfer--build-cython-ext--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 5,
+      "attempt": 1,
+      "export_id": "3b7d0f5971bae5d3235cc16865332111801c147e9251f6132ddddbfc3af0f73d",
+      "journal": "old",
+      "native_run": "run-0005",
+      "operation": 2,
+      "trial_id": "transfer--build-cython-ext--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 6,
+      "attempt": 1,
+      "export_id": "5789a28b773fb24c27d51d686ed8287e242e0c85f7ed76346ac0cfcef40d50f5",
+      "journal": "old",
+      "native_run": "run-0006",
+      "operation": 2,
+      "trial_id": "transfer--build-cython-ext--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 7,
+      "attempt": 1,
+      "export_id": "898ac50b4e502649233cdd5846d3302797d9ad9669172feb9e4f871373045229",
+      "journal": "old",
+      "native_run": "run-0007",
+      "operation": 2,
+      "trial_id": "transfer--build-pmars--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 8,
+      "attempt": 1,
+      "export_id": "f4d1bbb555e8319cef8393c5477c31f765815a250b8498f7ce88044cb70af4f2",
+      "journal": "old",
+      "native_run": "run-0008",
+      "operation": 2,
+      "trial_id": "transfer--build-pmars--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 9,
+      "attempt": 1,
+      "export_id": "292c76620da8bebb0ba417b0fe5512e8501cd36b885d4758ca148c17bb4b78b4",
+      "journal": "old",
+      "native_run": "run-0009",
+      "operation": 2,
+      "trial_id": "transfer--build-pmars--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 10,
+      "attempt": 1,
+      "export_id": "4e95dcf09d9268ae68edf318c3eb196b370ccb3746be89dbba2c3300dff99306",
+      "journal": "old",
+      "native_run": "run-0010",
+      "operation": 2,
+      "trial_id": "transfer--build-pmars--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 11,
+      "attempt": 1,
+      "export_id": "65ffdeed203b9f5436b341264773b65df6bd044405ed79e968fa7ddb1d819ffe",
+      "journal": "old",
+      "native_run": "run-0011",
+      "operation": 2,
+      "trial_id": "transfer--build-pmars--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 12,
+      "attempt": 1,
+      "export_id": "e28e10f0243490157007826ae74adcca24f0bcad980e07de46b57cc9586e8df4",
+      "journal": "old",
+      "native_run": "run-0012",
+      "operation": 2,
+      "trial_id": "transfer--build-pmars--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 13,
+      "attempt": 1,
+      "export_id": "31a790068faabf6af4b7234e56908134ef0b9eb5dce7c1342379d30d5b2fe25d",
+      "journal": "old",
+      "native_run": "run-0013",
+      "operation": 2,
+      "trial_id": "transfer--cancel-async-tasks--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 14,
+      "attempt": 1,
+      "export_id": "9beb9df68a0f0dff68202749eef56d4c1769da545d5fca35fcfe3b873c573f91",
+      "journal": "old",
+      "native_run": "run-0014",
+      "operation": 2,
+      "trial_id": "transfer--cancel-async-tasks--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 15,
+      "attempt": 1,
+      "export_id": "c9fb3bbf37654669f70ca5345f535ece1312d64256cccd746e4066c8a15dd157",
+      "journal": "old",
+      "native_run": "run-0015",
+      "operation": 2,
+      "trial_id": "transfer--cancel-async-tasks--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 16,
+      "attempt": 1,
+      "export_id": "d77455f0c5de70e9e1e81b70d0445dab30fb0915510f561db1a903561376c48c",
+      "journal": "old",
+      "native_run": "run-0016",
+      "operation": 2,
+      "trial_id": "transfer--cancel-async-tasks--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 17,
+      "attempt": 1,
+      "export_id": "c709f2a7b1556ebd62646af19acf84f962cafa10ebad87aa0902b214cc79bfc5",
+      "journal": "old",
+      "native_run": "run-0017",
+      "operation": 2,
+      "trial_id": "transfer--cancel-async-tasks--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 18,
+      "attempt": 1,
+      "export_id": "18848a9cdab51730d60b6d37f1693712b5c7cb471d33bcd3fc53d1bb0a922030",
+      "journal": "old",
+      "native_run": "run-0018",
+      "operation": 2,
+      "trial_id": "transfer--cancel-async-tasks--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 19,
+      "attempt": 1,
+      "export_id": "6823eb28ef54e6a7f8ca7448c908c02baba5bd739dd12f607e5d387d8cc561e2",
+      "journal": "old",
+      "native_run": "run-0019",
+      "operation": 2,
+      "trial_id": "transfer--cobol-modernization--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 20,
+      "attempt": 1,
+      "export_id": "e834073cd02b7bae616be392c8a7f5cab4afa622f889bb33eb4dbd37285a6fa5",
+      "journal": "old",
+      "native_run": "run-0020",
+      "operation": 2,
+      "trial_id": "transfer--cobol-modernization--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 21,
+      "attempt": 1,
+      "export_id": "8e3588f15ad7417f3ade818dc5b359f228a80ccd549b2698b325345e003217ba",
+      "journal": "old",
+      "native_run": "run-0021",
+      "operation": 2,
+      "trial_id": "transfer--cobol-modernization--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 22,
+      "attempt": 1,
+      "export_id": "091b22f83c30f7a2691db3d161594e6646a1beda59cae3a37c1f6e402cab4c56",
+      "journal": "old",
+      "native_run": "run-0022",
+      "operation": 2,
+      "trial_id": "transfer--cobol-modernization--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 23,
+      "attempt": 1,
+      "export_id": "ec8cb3a4af574598902b1c2efbd88ea49a5dba8c121cb89941ae73b19cbc9387",
+      "journal": "old",
+      "native_run": "run-0023",
+      "operation": 2,
+      "trial_id": "transfer--cobol-modernization--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 24,
+      "attempt": 1,
+      "export_id": "0eac75d6bc2abc2b303f369740b7b8af9c857db01fb3ffcd3b34c386eff8defc",
+      "journal": "old",
+      "native_run": "run-0024",
+      "operation": 2,
+      "trial_id": "transfer--cobol-modernization--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 25,
+      "attempt": 1,
+      "export_id": "e50a3f2cb04d4ac1e2a47cb1ad4b9bc57daa051c29fd1dace60e8451ac002d0d",
+      "journal": "old",
+      "native_run": "run-0025",
+      "operation": 2,
+      "trial_id": "transfer--custom-memory-heap-crash--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 26,
+      "attempt": 1,
+      "export_id": "1dcb9f31418569c039f602a6b459a4ae65442224791c9d229a31fc52e5bcc09e",
+      "journal": "old",
+      "native_run": "run-0026",
+      "operation": 2,
+      "trial_id": "transfer--custom-memory-heap-crash--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 27,
+      "attempt": 1,
+      "export_id": "9ffc388146a0447cda6c529ca16625a88f2521484a82d7a98fbe759137dbda56",
+      "journal": "old",
+      "native_run": "run-0027",
+      "operation": 2,
+      "trial_id": "transfer--custom-memory-heap-crash--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 28,
+      "attempt": 1,
+      "export_id": "ac0f1b403d3b52d7f654c13fe54741ba7bddc6bfdf83c1a77bb154a602b4e093",
+      "journal": "old",
+      "native_run": "run-0028",
+      "operation": 2,
+      "trial_id": "transfer--custom-memory-heap-crash--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 29,
+      "attempt": 1,
+      "export_id": "c9748ee414b205a257bdd7e9679fac76663880474f4907bd1c8edc503917f5db",
+      "journal": "old",
+      "native_run": "run-0029",
+      "operation": 2,
+      "trial_id": "transfer--custom-memory-heap-crash--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 30,
+      "attempt": 1,
+      "export_id": "094be988c18fdaa853254f75905f8fd35464e33187368661f15f58c367db6859",
+      "journal": "old",
+      "native_run": "run-0030",
+      "operation": 2,
+      "trial_id": "transfer--custom-memory-heap-crash--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 31,
+      "attempt": 1,
+      "export_id": "4dcb0f3b72ff9ecabef6c851d030dc49c805e7fa38a8b5f1de4ea119ae9bc209",
+      "journal": "old",
+      "native_run": "run-0031",
+      "operation": 2,
+      "trial_id": "transfer--fix-git--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 32,
+      "attempt": 1,
+      "export_id": "e6d22819ff0d336658291769b4baed3a2536e99927bbd9a69a0e0f6a9bdb7ab4",
+      "journal": "old",
+      "native_run": "run-0032",
+      "operation": 2,
+      "trial_id": "transfer--fix-git--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 33,
+      "attempt": 1,
+      "export_id": "0d6c1a4a2486bececd2762f225f462632c2b02871c85511ae20998856e8bf36b",
+      "journal": "old",
+      "native_run": "run-0033",
+      "operation": 2,
+      "trial_id": "transfer--fix-git--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 34,
+      "attempt": 1,
+      "export_id": "cd4480ce0a61e0fd08e7402b525bee79c1093778331822754122120192de26ca",
+      "journal": "old",
+      "native_run": "run-0034",
+      "operation": 2,
+      "trial_id": "transfer--fix-git--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 35,
+      "attempt": 1,
+      "export_id": "63dab00372642e38968ca52d5329912682154b9c5b2aa3b7cff443b20b83da6b",
+      "journal": "old",
+      "native_run": "run-0035",
+      "operation": 2,
+      "trial_id": "transfer--fix-git--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 36,
+      "attempt": 1,
+      "export_id": "756bdd6b5ed08a6e856b8386c56b008ca8638194d63c0116bb2031ce2717e7c9",
+      "journal": "old",
+      "native_run": "run-0036",
+      "operation": 2,
+      "trial_id": "transfer--fix-git--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 37,
+      "attempt": 1,
+      "export_id": "e37c66c9ef7abfc6f126425ad9831ccb08f72bd61c2775418e0e8b2a1e3bb3d5",
+      "journal": "old",
+      "native_run": "run-0037",
+      "operation": 2,
+      "trial_id": "transfer--git-leak-recovery--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 38,
+      "attempt": 1,
+      "export_id": "4be6326a12cdaa26accea6e24d1a1991ec6b26e290c0a7868c2a7388c20f79e8",
+      "journal": "old",
+      "native_run": "run-0038",
+      "operation": 2,
+      "trial_id": "transfer--git-leak-recovery--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 39,
+      "attempt": 1,
+      "export_id": "3ece95c50ec016d420fdfe3b1da8ea0fc8e1879d4d31a152eb025f725c155557",
+      "journal": "old",
+      "native_run": "run-0039",
+      "operation": 2,
+      "trial_id": "transfer--git-leak-recovery--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 40,
+      "attempt": 1,
+      "export_id": "792a9960970d4802f53c5d9bc0cc58f4c4dbb6211364e708ee0c74d2816713d3",
+      "journal": "old",
+      "native_run": "run-0040",
+      "operation": 2,
+      "trial_id": "transfer--git-leak-recovery--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 41,
+      "attempt": 1,
+      "export_id": "77dce126a6fc1c9809353ff5181636e0ad61f892fb74d56020e3200413eee54d",
+      "journal": "old",
+      "native_run": "run-0041",
+      "operation": 2,
+      "trial_id": "transfer--git-leak-recovery--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 42,
+      "attempt": 1,
+      "export_id": "355d435d0395ef6757b18b97fa32fd67459cb08b799b4d44bc40125d02964fb3",
+      "journal": "old",
+      "native_run": "run-0042",
+      "operation": 2,
+      "trial_id": "transfer--git-leak-recovery--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 43,
+      "attempt": 1,
+      "export_id": "c37e79c775e3701f5a2c29c0b5956ec330abdb3ad12b3458306b7fc53e5faeb1",
+      "journal": "old",
+      "native_run": "run-0043",
+      "operation": 2,
+      "trial_id": "transfer--headless-terminal--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 44,
+      "attempt": 1,
+      "export_id": "f5f70eee0d5b57721b51d62da101f0ca62633db62795ec535964241e9160cb45",
+      "journal": "old",
+      "native_run": "run-0044",
+      "operation": 2,
+      "trial_id": "transfer--headless-terminal--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 45,
+      "attempt": 1,
+      "export_id": "d4dcbc3eec9b3311b8f690fe35edb762da20644249fafd94d58e374d2c0c5d13",
+      "journal": "old",
+      "native_run": "run-0045",
+      "operation": 2,
+      "trial_id": "transfer--headless-terminal--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 46,
+      "attempt": 1,
+      "export_id": "5beb0ed8e353a69957c6da965741c6b016477a5b3e790c4e84461fa2d37310f1",
+      "journal": "old",
+      "native_run": "run-0046",
+      "operation": 2,
+      "trial_id": "transfer--headless-terminal--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 47,
+      "attempt": 1,
+      "export_id": "f585524cd8982a86dff1877c900396c3729c8817d0e91e10996e70796fcabec4",
+      "journal": "old",
+      "native_run": "run-0047",
+      "operation": 2,
+      "trial_id": "transfer--headless-terminal--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 48,
+      "attempt": 1,
+      "export_id": "139a4a9512d953b1e1b59b23b81ef41473c393bfb00467fbc1225b80437f8163",
+      "journal": "old",
+      "native_run": "run-0048",
+      "operation": 2,
+      "trial_id": "transfer--headless-terminal--r3--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 49,
+      "attempt": 1,
+      "export_id": "28283064f651c386227107fefcbfd0ed004236c79f971176edc986a8a2270376",
+      "journal": "old",
+      "native_run": "run-0049",
+      "operation": 2,
+      "trial_id": "transfer--kv-store-grpc--r1--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 50,
+      "attempt": 1,
+      "export_id": "0ce1fb097196b3d43cf3b5c65e17700ade39db60fd0e65e7f9e87cab8f17a9b4",
+      "journal": "old",
+      "native_run": "run-0050",
+      "operation": 2,
+      "trial_id": "transfer--kv-store-grpc--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 51,
+      "attempt": 1,
+      "export_id": "23df699cb3eb1ae77bb05b2d3d959b03fe219da4a56ccdc81c8c6b208bf26953",
+      "journal": "old",
+      "native_run": "run-0051",
+      "operation": 2,
+      "trial_id": "transfer--kv-store-grpc--r2--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 52,
+      "attempt": 1,
+      "export_id": "b138b9fb49a98208601c4c8b50dd11c693a79392518709d97ce384d7e0ce8a55",
+      "journal": "old",
+      "native_run": "run-0052",
+      "operation": 2,
+      "trial_id": "transfer--kv-store-grpc--r2--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 53,
+      "attempt": 1,
+      "export_id": "1205ec4932fa3b0a4e560ac80f338bccd318b189b43167f8e2ca0fb912dc9813",
+      "journal": "old",
+      "native_run": "run-0053",
+      "operation": 2,
+      "trial_id": "transfer--kv-store-grpc--r3--B"
+    },
+    {
+      "acknowledged": true,
+      "admission": 54,
+      "attempt": 1,
+      "export_id": "56af5160f3760e4b0d97cc5594b02fc07d6ed42443c5633a8f49e85a458905dc",
+      "journal": "old",
+      "native_run": "run-0054",
+      "operation": 2,
+      "trial_id": "transfer--kv-store-grpc--r3--C"
+    },
+    {
+      "acknowledged": false,
+      "admission": 55,
+      "attempt": 1,
+      "export_id": "19bbd542def8bffb1809b36a3dc0daaeb81101cafb9fe0e24e13764144096ecd",
+      "journal": "old",
+      "native_run": "run-0055",
+      "operation": 2,
+      "trial_id": "transfer--make-doom-for-mips--r1--B"
+    },
+    {
+      "acknowledged": false,
+      "admission": 1,
+      "attempt": 1,
+      "export_id": "e1471bddf51f9cd200a8c23d45a873127715a10562d16280afed8ed5fe606b98",
+      "journal": "first",
+      "native_run": "run-0056",
+      "operation": 1,
+      "trial_id": "transfer--make-doom-for-mips--r1--C"
+    },
+    {
+      "acknowledged": true,
+      "admission": 1,
+      "attempt": 1,
+      "export_id": "63997333df6c5c34492fe9c263e597ed71a603efffe0e2f2d0a01252543f4f2e",
+      "journal": "new",
+      "native_run": "run-0057",
+      "operation": 1,
+      "trial_id": "transfer--make-doom-for-mips--r2--C"
+    },
+    {
+      "acknowledged": false,
+      "admission": 2,
+      "attempt": 1,
+      "export_id": "4327db0ccd2ccee61dcc1c31db92b8075be49a60c1f1c08aa186ed06d2998232",
+      "journal": "new",
+      "native_run": "run-0058",
+      "operation": 1,
+      "trial_id": "transfer--make-doom-for-mips--r2--B"
+    }
+  ],
+  "schema_version": "evalopt.transfer-public-journal-mapping.v1",
+  "scope": "Allowlisted mapping from separately reconciled private journals; no private process/path/trajectory data. No claim that missing acknowledgments were reconstructed.",
+  "source_receipt_sha256": "f5c65ce9b3c9d1e3f7c5f987c650c4641dadf7503d2278862e635ad6322ee60f"
+}

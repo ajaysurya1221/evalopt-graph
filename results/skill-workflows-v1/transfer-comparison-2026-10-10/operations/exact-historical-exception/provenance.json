@@ -1,0 +1,255 @@
+{
+  "actual_grant_inspection": {
+    "aggregate_capture_complete": false,
+    "exit_code": 0,
+    "finished_at": "2026-10-10T05:39:37.592611+00:00",
+    "historical_capture_exception": "transfer--make-doom-for-mips--r1--B/1",
+    "next_trial": "transfer--make-doom-for-mips--r1--C",
+    "retained_attempts": 55,
+    "scope": "Read-only actual-grant inspection; no Docker, model, scheduler dispatch or report creation.",
+    "snapshot_sha256": "244b0ec5c195fb062777a55648c9a2dd976b4b63e538a9e830e053db016c65bd",
+    "started_at": "2026-10-10T05:39:32.583813+00:00",
+    "stop_reason": null
+  },
+  "approval": {
+    "answer": "Approve narrow continuation amendment (Recommended)",
+    "approved_scope": {
+      "frozen_per_trial_conditions_unchanged": true,
+      "future_strict_gates_unchanged": true,
+      "historical_exception": "transfer--make-doom-for-mips--r1--B/attempt-1",
+      "implementation_independent_review_and_tests_required_before_dispatch": true,
+      "no_retry": true,
+      "public_disclosure_required": true,
+      "unstarted_rows": 17
+    },
+    "limitations": [
+      "This is a retained transcript receipt, not a cryptographic proof of human identity.",
+      "Approval does not repair missing capture or execution-boundary evidence, change any reward, or authorize additional historical exceptions."
+    ],
+    "recorded_at": "2026-10-10T05:20:52.088734+00:00",
+    "source_description": "Retained explicit human-answer receipt; internal conversation/tool-call identifier omitted."
+  },
+  "code_review": {
+    "author_tests_included_in_independent_count": false,
+    "candidate_executions": 0,
+    "docker_probes": 0,
+    "independent_tests": 148,
+    "model_calls": 0,
+    "offline_controls_passed": true,
+    "resolved_findings": [
+      "Historical record and attempt matching now distinguish booleans, integers and floats.",
+      "Existing historical export directories reject additional files.",
+      "Every callback revalidates grant, code and referenced receipt identities after initial loading.",
+      "Admission tokens are durably consumed under the native scheduler lock, including a pre-dispatch quota pause."
+    ],
+    "reviewed_at": "2026-10-10T05:36:22.418536+00:00",
+    "scope": "Independent maintainer-agent code review and synthetic controls, not independent human task authorship or benchmark replication.",
+    "verdict": "ACCEPT"
+  },
+  "controller_files": {
+    "source/amendment.py": "6f58ba558027d0eee5efb4e015a76a073224aac23b9d665fa47d1b89c5da44c6",
+    "source/bridge.py": "50bcc877b6c2219d7505ccd28ff13eea60effc54295fe018b5a52e8462c5e9ba",
+    "source/operator.py": "574c5ab7f8dc75c7c8986aefad0c82232054a0afd54c07e7eb2cb41d35430fb2"
+  },
+  "freeze": {
+    "accounting_policy_sha256": "cde084b941e27504f7960fba48eb38b7a11213f949626b1383b422b335801b1c",
+    "grant_file_sha256": "242e0599e6417a5227fff8ffef4d412c52ea1eaa866ab88f8a8dea510320ec34",
+    "recorded_at": "2026-10-10T05:39:12.198658+00:00",
+    "registration_sha256": "1f3116fe8af392300a225ab79bfefb7278942dd48999f5875cfdc0bf757dc32f",
+    "scope": "Immutable approved amendment source/grant identity; actual-grant inspection and final launch readiness remain required.",
+    "source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46",
+    "trial_dispatches_at_freeze": 0
+  },
+  "grant_readiness_review": {
+    "checked_at": "2026-10-10T05:41:29.305661+00:00",
+    "historical_prefix": {
+      "nodes": 6229,
+      "sha256": "58764d677d1a4f38bea64df45888a54a39cb3df33a99cdc84d11c7abf5e94b52",
+      "unchanged": true
+    },
+    "limitations": [
+      "Human approval is the retained explicit conversation receipt, not cryptographic human identity proof.",
+      "Quiescence is the retained 05:35:15 UTC observation, not a new process/container/lock probe and not retrospective cutoff evidence.",
+      "This verifies the immutable grant and preserved current prefix; the root-owned bridge inspection and fresh launch/storage gates remain separate.",
+      "Historical timeout remains nonretryable with null reward and missing boundary/capture; no historical grading or resource projection was changed."
+    ],
+    "quiescence_observed_at": "2026-10-10T05:35:15.337477+00:00",
+    "runtime": {
+      "harbor": "0.24.0",
+      "implementation": "cpython",
+      "python": "3.13.12"
+    },
+    "state_at_review": {
+      "first_pending": "transfer--make-doom-for-mips--r1--C",
+      "last_pending": "transfer--polyglot-c-py--r3--B",
+      "no_retry_authorized": true,
+      "retained_final_attempts": 55,
+      "scheduled_trials": 72,
+      "statuses": {
+        "completed": 54,
+        "timeout": 1
+      },
+      "unstarted_original_rows": 17
+    },
+    "verdict": "ACCEPT"
+  },
+  "historical_incident": {
+    "attempt": 1,
+    "external_admission55_completion_present": false,
+    "external_operator_stop": {
+      "active_trial_policy": "await original frozen controller; no candidate signals",
+      "observed_at": "2026-10-10T03:49:51.974887+00:00",
+      "reason": "operator_error:CalledProcessError",
+      "registration_sha256": "1f3116fe8af392300a225ab79bfefb7278942dd48999f5875cfdc0bf757dc32f",
+      "source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46"
+    },
+    "frozen_accounting": {
+      "accounting_status": "unavailable",
+      "consumption": "unknown, not zero; frozen projection unchanged",
+      "delegation_boundary_status": "invalid",
+      "provenance_status": "invalid",
+      "runtime_valid": false
+    },
+    "limitations": [
+      "The native-stop command exceeded its ten-second controller limit; underlying mechanism is not established.",
+      "Current container absence is not evidence of the original deadline cutoff.",
+      "The old native scheduler end exists; the missing record is external admission acknowledgment."
+    ],
+    "native_scheduler_end": {
+      "dispatched": [
+        "transfer--make-doom-for-mips--r1--B"
+      ],
+      "ended_at": "2026-10-10T03:49:32.927317+00:00",
+      "reason": "runtime_identity_requires_remediation",
+      "schema_version": "evalopt.scheduler-stop.v1",
+      "status": "paused",
+      "trial_id": "transfer--make-doom-for-mips--r1--B"
+    },
+    "native_stop_failure": {
+      "agent_end_hook_at": "2026-10-10T03:49:19.269453+00:00",
+      "error_type": "RuntimeError",
+      "termination_started_at": "2026-10-10T03:49:16.457111+00:00"
+    },
+    "native_stop_receipt_present": false,
+    "original_finalization": {
+      "artifact_capture_complete": false,
+      "error_code": null,
+      "execution_boundary_complete": false,
+      "functional_success": null,
+      "runtime_evidence_complete": false,
+      "status": "timeout",
+      "upstream_reward": null
+    },
+    "parser_diagnostic": "Valid LF-delimited native JSONL contains literal U+0085 inside a string; frozen str.splitlines produces JSONDecodeError. No corrected counters are included here.",
+    "stopped_capture_present": false,
+    "trial_id": "transfer--make-doom-for-mips--r1--B"
+  },
+  "launch": {
+    "approved_original_pending_rows": 17,
+    "first_pending": "transfer--make-doom-for-mips--r1--C",
+    "historical_timeout_retry_authorized": false,
+    "intent_created_at": "2026-10-10T05:45:01.806375+00:00",
+    "invocation_projection": {
+      "grant_file_sha256": "242e0599e6417a5227fff8ffef4d412c52ea1eaa866ab88f8a8dea510320ec34",
+      "limit": 17,
+      "program": "source/operator.py",
+      "python_flags": [
+        "-I",
+        "-B",
+        "-X pycache_prefix=<fresh private directory>"
+      ]
+    },
+    "last_pending": "transfer--polyglot-c-py--r3--B",
+    "launched_at": "2026-10-10T05:45:01.807856+00:00",
+    "model_execution_confirmed_by_launch_receipt": false,
+    "omitted_fields": [
+      "private argv paths",
+      "working directory",
+      "host process ID"
+    ],
+    "operator_launch_recorded": true,
+    "original_finalized_attempts": 55,
+    "scope": "Retained operator-launch event only; not proof of any resumed trial completion or current running state."
+  },
+  "native_start_observation": {
+    "limits": "Native attempt start observed; no trial completion or outcome asserted.",
+    "observed_at": "2026-10-10T05:47:28.230919+00:00",
+    "scope": "Controller-retained native attempt start; no candidate outputs, completion, reward or final status inspected for this projection.",
+    "start": {
+      "attempt": 1,
+      "schedule_sha256": "dc27e1e37303391284ea2619961c9e717827249b289de609f259c1c8d4a6625f",
+      "schema_version": "evalopt.workflow-attempt.v1",
+      "started_at": "2026-10-10T05:45:25.749328+00:00",
+      "trial_id": "transfer--make-doom-for-mips--r1--C"
+    },
+    "start_file_sha256": "6cb98e969df3d3ce8d0a211ee295a32a16d490e4faa816d952ecc2abc9c8f969"
+  },
+  "original_input_file_sha256": {
+    "approval": "ad4c31a139d421468858ea8a2bef8671ceae622e0dcd1d79888ab7ee8e7da721",
+    "final_qa_helper_candidate": "ed1287aaedda6cdad0e3df537ec97c996784947fa56d3c2807ac9e07b1e4a37c",
+    "final_qa_helper_review": "de4258dcead6bca4912e78c8bec531fd0007206e71bffcbfc833f850c915079f",
+    "freeze": "e675721941573dbc8f7455a62a4e9ef85f5ab0e86e45176802f43ca2ad7ebbe2",
+    "grant_inspection_receipt": "6f3e009abce3ff862098f619729d4b29ca4121fbae5031cd98d23ddfcd30274a",
+    "grant_inspection_snapshot": "244b0ec5c195fb062777a55648c9a2dd976b4b63e538a9e830e053db016c65bd",
+    "grant_readiness_review": "acd8674c995046eeb1f5ed2b3a4c5c311bbc26ea8ed6cd7e22087a50e3c04103",
+    "independent_control_junit": "8a341d426c2d0fce2bcb0e56ff57deb232d3344c90b95644f328ae1743fa07e3",
+    "independent_review": "d6b88bd1811bc48584b52a7d54d25f73c8e00d7bf807916c465cb28b0dc43eb5",
+    "jsonl_delimiter_diagnostic": "0845cd2758e6afb36fbe7255ee0f30ab2b5389c7b93754e886789d59f4430e06",
+    "launch": "1f232f2314b265e634286b0a3a1008d029cd82c7fa1ce8a8ce294b76ca3e9ca0",
+    "launch_intent": "04cdccdebfca8e1fdbc04dfb278477a2ece961f64fc036790fcf2912d7bf2977",
+    "native_start_observation": "978e941f08937845bc086d5350034765c24484facaeb4cee25c6207d16e9c6be",
+    "native_stop_failure": "9fa64e02a37e82ef9a616cf3a6d6c2dc22d888fd08438670705b9e986a9700ad",
+    "old_native_end": "26b06bf6c8b9bb3dc7cc320d3b7522be6de217d535ba98696187fd8caaa8c25c",
+    "old_stop": "791a83b01b27f39f7c7c78664e6ebbfa79332ba833feec0abb0fa7d99b9e2d9c",
+    "prefix_manifest": "58764d677d1a4f38bea64df45888a54a39cb3df33a99cdc84d11c7abf5e94b52",
+    "private_grant": "242e0599e6417a5227fff8ffef4d412c52ea1eaa866ab88f8a8dea510320ec34",
+    "proposal": "05bcf48c1e20f38b9067781a4c6bf8a2cc9c682999844f25efb765035e19386e",
+    "root_control_junit": "b0715bfd258dfa2878270f03436eba470745ae7737f70f7b919f4862585b65d0",
+    "root_controls": "92c0d7e4f4df600ae93dbac7f3cdb331f3b082000f98d551c179b165aa7f6f6f"
+  },
+  "projection_notice": "Sanitized projections from named retained records; original private byte hashes are references, not hashes of these public projections.",
+  "publication_scope": {
+    "continuation_rows_authorized": 17,
+    "efficiency_claim_permitted": false,
+    "final72_completion_claimed": false,
+    "final_qa_claimed": false,
+    "historical_retries_authorized": 0,
+    "independent_benchmark_replication": false,
+    "new_model_calls_for_appendix_preparation": 0,
+    "official_leaderboard_score": false,
+    "original_full_schedule_denominator": 72,
+    "original_verifier_rerun": false,
+    "private_paths_or_contributor_identifiers_included": false,
+    "raw_archives_or_native_logs_included": false
+  },
+  "root_offline_validation": {
+    "checked_at": "2026-10-10T05:38:14.146537+00:00",
+    "combined_includes_independent_tests": 148,
+    "combined_tests": 162,
+    "commands": [
+      {
+        "exit_code": 0,
+        "name": "pytest"
+      },
+      {
+        "exit_code": 0,
+        "name": "ruff-check"
+      },
+      {
+        "exit_code": 0,
+        "name": "ruff-format"
+      },
+      {
+        "exit_code": 0,
+        "name": "gitleaks"
+      }
+    ],
+    "do_not_sum_repeated_control_counts": true,
+    "errors": 0,
+    "failures": 0,
+    "scope": "Offline integration controls and source checks; no trial dispatch.",
+    "skipped": 0
+  },
+  "schema_version": "evalopt.public-transfer-continuation-provenance.v1",
+  "status": "prospective_publication_draft_after_operator_launch_before_final_reconciliation"
+}

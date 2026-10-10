@@ -1,0 +1,23 @@
+{
+  "code_field_names_not_identifiers": "Exact source contains generic pid/process/path schema field names, not retained personal or process-identity values.",
+  "exact_accepted_source_copies": {
+    "amendment.py": "7474fffaee66ca45bb67117074d9a555c2792acc5f5a72c4f5006b71842b0b0e",
+    "bridge.py": "d9838cbef770fc2e5614428e79218b7517ecf635939e99c345565fef04638aa1",
+    "classifier.py": "593196a610d1947fc8f182eee23d3428d9964ebf32ec9653fd893b3f347ed1d8",
+    "observer.py": "6466d2520d8f470ef6cc28b480ad84c81ab5f8b7d31a554f9c4e074be1fd7965",
+    "operator.py": "460474be8ad0db023f78f66b49240a1fa6f1bac364b863308b1dd3e50cbc417a"
+  },
+  "frozen_public_scanner_passed": true,
+  "internal_identifiers_excluded_from_json_projections": true,
+  "license_notice": "Unchanged public repository MIT notice retained; legal attribution is not an internal contributor identity.",
+  "limitations": [
+    "Pattern scanning is bounded and does not prove absence of arbitrary unknown secrets.",
+    "No original private grant or raw evidence included; provenance.json is a labeled non-executable projection.",
+    "No final outcome or future QA claim."
+  ],
+  "models_docker_reports_or_endpoint_qa_executed": false,
+  "original_source_bytes_unchanged": true,
+  "private_host_paths_absent": true,
+  "schema_version": "evalopt.public-engineering-draft-validation.v1",
+  "status": "LOCAL_DRAFT_CHECKS_PASSED_INDEPENDENT_PRIVACY_METHODS_REVIEW_PENDING"
+}

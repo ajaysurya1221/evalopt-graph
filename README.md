@@ -199,11 +199,18 @@ reexecution changed none of the 36 grades and added no agent trials. The pilot h
 The [claim-to-evidence table](results/skill-workflows-v1/CLAIMS.md) keeps pilot,
 held-out, policy, transfer and replication scope distinct.
 
-The [72-trial Terminal-Bench transfer registration](results/skill-workflows-v1/transfer-registration-2026-10-10/README.md)
-is frozen after primary completion and report replay. It is a feasibility subset,
-not an official leaderboard score; no transfer result is established by the
-held-out report. The prior [12-image setup checks](results/skill-workflows-v1/transfer-readiness-2026-10-09/README.md)
-were infrastructure controls, not task outcomes.
+The [Terminal-Bench transfer report](results/skill-workflows-v1/transfer-comparison-2026-10-10/README.md)
+retains all 72 scheduled rows: **58 executed and 14 unstarted**. Available verifier
+rewards show upstream at 23/27 and eval-opt at 19/27. Full-schedule missing-outcome
+bounds for C-minus-B are −36.11 to +13.89 percentage points; these are identification
+bounds, not a confidence interval or superiority result. Two approved post-freeze
+admission amendments, four unscored timeouts and the final stop remain disclosed.
+This incomplete feasibility subset is not an official leaderboard score. Its
+[registration](results/skill-workflows-v1/transfer-registration-2026-10-10/README.md)
+predates admission; the prior
+[12-image setup checks](results/skill-workflows-v1/transfer-readiness-2026-10-09/README.md)
+were infrastructure controls, not task outcomes. Both result packages have offline
+reproduction commands, and CI replays their retained evidence.
 
 The [protocol](bench/harbor/skill-workflows-v1/PROTOCOL.md) and
 [frozen implementation notes](bench/harbor/skill-workflows-v1/STATUS.md) retain their

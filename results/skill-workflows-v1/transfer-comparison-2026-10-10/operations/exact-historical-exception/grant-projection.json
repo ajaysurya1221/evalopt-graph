@@ -1,0 +1,269 @@
+{
+  "hash_scope": "Original receipt/grant values are literal private-file SHA-256 identities; pending_rows_sha256 is canonical sorted-key compact JSON of all17 complete original rows.",
+  "omitted_fields": [
+    "original private paths object",
+    "private path components of referenced receipts"
+  ],
+  "original_private_grant_file_sha256": "242e0599e6417a5227fff8ffef4d412c52ea1eaa866ab88f8a8dea510320ec34",
+  "original_private_receipt_file_sha256": {
+    "approval_receipt": "ad4c31a139d421468858ea8a2bef8671ceae622e0dcd1d79888ab7ee8e7da721",
+    "independent_review_receipt": "d6b88bd1811bc48584b52a7d54d25f73c8e00d7bf807916c465cb28b0dc43eb5",
+    "prefix_manifest": "58764d677d1a4f38bea64df45888a54a39cb3df33a99cdc84d11c7abf5e94b52",
+    "quiescence_receipt": "034351271cfa4e25e4d85f4b549c952e0fbb7e5744033c0bdbc8122068e7f9b3"
+  },
+  "preserved_original_fields": {
+    "accounting_policy_sha256": "cde084b941e27504f7960fba48eb38b7a11213f949626b1383b422b335801b1c",
+    "controller_files": {
+      "amendment.py": "6f58ba558027d0eee5efb4e015a76a073224aac23b9d665fa47d1b89c5da44c6",
+      "bridge.py": "50bcc877b6c2219d7505ccd28ff13eea60effc54295fe018b5a52e8462c5e9ba",
+      "operator.py": "574c5ab7f8dc75c7c8986aefad0c82232054a0afd54c07e7eb2cb41d35430fb2"
+    },
+    "pending_rows": [
+      {
+        "agent_seconds": 900.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "make-doom-for-mips",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 55,
+        "repetition": 1,
+        "stage": "transfer",
+        "task_id": "make-doom-for-mips",
+        "task_sha256": "db7aca7246ea47533bf21f59dea96a2a92807c2477639ea249b784e846aa9d41",
+        "trial_id": "transfer--make-doom-for-mips--r1--C"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "make-doom-for-mips",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 56,
+        "repetition": 2,
+        "stage": "transfer",
+        "task_id": "make-doom-for-mips",
+        "task_sha256": "db7aca7246ea47533bf21f59dea96a2a92807c2477639ea249b784e846aa9d41",
+        "trial_id": "transfer--make-doom-for-mips--r2--C"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "make-doom-for-mips",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 57,
+        "repetition": 2,
+        "stage": "transfer",
+        "task_id": "make-doom-for-mips",
+        "task_sha256": "db7aca7246ea47533bf21f59dea96a2a92807c2477639ea249b784e846aa9d41",
+        "trial_id": "transfer--make-doom-for-mips--r2--B"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "make-doom-for-mips",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 58,
+        "repetition": 3,
+        "stage": "transfer",
+        "task_id": "make-doom-for-mips",
+        "task_sha256": "db7aca7246ea47533bf21f59dea96a2a92807c2477639ea249b784e846aa9d41",
+        "trial_id": "transfer--make-doom-for-mips--r3--C"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "make-doom-for-mips",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 59,
+        "repetition": 3,
+        "stage": "transfer",
+        "task_id": "make-doom-for-mips",
+        "task_sha256": "db7aca7246ea47533bf21f59dea96a2a92807c2477639ea249b784e846aa9d41",
+        "trial_id": "transfer--make-doom-for-mips--r3--B"
+      },
+      {
+        "agent_seconds": 1800.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "make-mips-interpreter",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 60,
+        "repetition": 1,
+        "stage": "transfer",
+        "task_id": "make-mips-interpreter",
+        "task_sha256": "045dd0d3d0167e54f8b667634a5e2ad790f7eec593bb7891e9ee617eabd89983",
+        "trial_id": "transfer--make-mips-interpreter--r1--B"
+      },
+      {
+        "agent_seconds": 1800.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "make-mips-interpreter",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 61,
+        "repetition": 1,
+        "stage": "transfer",
+        "task_id": "make-mips-interpreter",
+        "task_sha256": "045dd0d3d0167e54f8b667634a5e2ad790f7eec593bb7891e9ee617eabd89983",
+        "trial_id": "transfer--make-mips-interpreter--r1--C"
+      },
+      {
+        "agent_seconds": 1800.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "make-mips-interpreter",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 62,
+        "repetition": 2,
+        "stage": "transfer",
+        "task_id": "make-mips-interpreter",
+        "task_sha256": "045dd0d3d0167e54f8b667634a5e2ad790f7eec593bb7891e9ee617eabd89983",
+        "trial_id": "transfer--make-mips-interpreter--r2--C"
+      },
+      {
+        "agent_seconds": 1800.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "make-mips-interpreter",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 63,
+        "repetition": 2,
+        "stage": "transfer",
+        "task_id": "make-mips-interpreter",
+        "task_sha256": "045dd0d3d0167e54f8b667634a5e2ad790f7eec593bb7891e9ee617eabd89983",
+        "trial_id": "transfer--make-mips-interpreter--r2--B"
+      },
+      {
+        "agent_seconds": 1800.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "make-mips-interpreter",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 64,
+        "repetition": 3,
+        "stage": "transfer",
+        "task_id": "make-mips-interpreter",
+        "task_sha256": "045dd0d3d0167e54f8b667634a5e2ad790f7eec593bb7891e9ee617eabd89983",
+        "trial_id": "transfer--make-mips-interpreter--r3--B"
+      },
+      {
+        "agent_seconds": 1800.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "make-mips-interpreter",
+        "grader_sha256": "15538be551fc4f553d0d43516f7fb7b1cf95eff079216e61cdb71feb502d66db",
+        "ordinal": 65,
+        "repetition": 3,
+        "stage": "transfer",
+        "task_id": "make-mips-interpreter",
+        "task_sha256": "045dd0d3d0167e54f8b667634a5e2ad790f7eec593bb7891e9ee617eabd89983",
+        "trial_id": "transfer--make-mips-interpreter--r3--C"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "polyglot-c-py",
+        "grader_sha256": "7e50e05c5c4e67b9c0a31b7f1a705b67cce599da628172012a0d07853bb66e78",
+        "ordinal": 66,
+        "repetition": 1,
+        "stage": "transfer",
+        "task_id": "polyglot-c-py",
+        "task_sha256": "5c79551b40211faf6dc25d85814f7b359062edcb1d4dc1a2d7df4a92e2ba62e5",
+        "trial_id": "transfer--polyglot-c-py--r1--C"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "polyglot-c-py",
+        "grader_sha256": "7e50e05c5c4e67b9c0a31b7f1a705b67cce599da628172012a0d07853bb66e78",
+        "ordinal": 67,
+        "repetition": 1,
+        "stage": "transfer",
+        "task_id": "polyglot-c-py",
+        "task_sha256": "5c79551b40211faf6dc25d85814f7b359062edcb1d4dc1a2d7df4a92e2ba62e5",
+        "trial_id": "transfer--polyglot-c-py--r1--B"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "polyglot-c-py",
+        "grader_sha256": "7e50e05c5c4e67b9c0a31b7f1a705b67cce599da628172012a0d07853bb66e78",
+        "ordinal": 68,
+        "repetition": 2,
+        "stage": "transfer",
+        "task_id": "polyglot-c-py",
+        "task_sha256": "5c79551b40211faf6dc25d85814f7b359062edcb1d4dc1a2d7df4a92e2ba62e5",
+        "trial_id": "transfer--polyglot-c-py--r2--B"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "polyglot-c-py",
+        "grader_sha256": "7e50e05c5c4e67b9c0a31b7f1a705b67cce599da628172012a0d07853bb66e78",
+        "ordinal": 69,
+        "repetition": 2,
+        "stage": "transfer",
+        "task_id": "polyglot-c-py",
+        "task_sha256": "5c79551b40211faf6dc25d85814f7b359062edcb1d4dc1a2d7df4a92e2ba62e5",
+        "trial_id": "transfer--polyglot-c-py--r2--C"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "C",
+        "category": "software-engineering",
+        "cluster_id": "polyglot-c-py",
+        "grader_sha256": "7e50e05c5c4e67b9c0a31b7f1a705b67cce599da628172012a0d07853bb66e78",
+        "ordinal": 70,
+        "repetition": 3,
+        "stage": "transfer",
+        "task_id": "polyglot-c-py",
+        "task_sha256": "5c79551b40211faf6dc25d85814f7b359062edcb1d4dc1a2d7df4a92e2ba62e5",
+        "trial_id": "transfer--polyglot-c-py--r3--C"
+      },
+      {
+        "agent_seconds": 900.0,
+        "arm": "B",
+        "category": "software-engineering",
+        "cluster_id": "polyglot-c-py",
+        "grader_sha256": "7e50e05c5c4e67b9c0a31b7f1a705b67cce599da628172012a0d07853bb66e78",
+        "ordinal": 71,
+        "repetition": 3,
+        "stage": "transfer",
+        "task_id": "polyglot-c-py",
+        "task_sha256": "5c79551b40211faf6dc25d85814f7b359062edcb1d4dc1a2d7df4a92e2ba62e5",
+        "trial_id": "transfer--polyglot-c-py--r3--B"
+      }
+    ],
+    "pending_rows_sha256": "0fb4fbea1e1b088cbaabac3d42b33c3054a104070f690bed06350e31142c751a",
+    "proposal_sha256": "05bcf48c1e20f38b9067781a4c6bf8a2cc9c682999844f25efb765035e19386e",
+    "registration_sha256": "1f3116fe8af392300a225ab79bfefb7278942dd48999f5875cfdc0bf757dc32f",
+    "reporting_obligations": [
+      "disclose_post_freeze_admission_amendment",
+      "preserve_original_failure_and_missing_capture",
+      "bind_new_external_journal",
+      "no_efficiency_or_retroactive_boundary_claim"
+    ],
+    "source_commit": "31231949412ea6d0101331720c0f0ed2d9f50b46",
+    "waiver": {
+      "attempt": 1,
+      "files": {
+        "finish.json": "b6f344f92faa9cf72990f756b543187e1f8ab88fdc096fd4a4f5670037c88dcc",
+        "manifest.json": "7980f5e7e73dabd27ad86e6a585dd21dad01f9675f56bd99f2544335d9ca1eb0",
+        "raw/artifacts.json": "738258bc4a30486e52b4a81b25bff16cab9ac5faa6586d203462c4d78544446e",
+        "raw/result.json": "abf30c07c317ba87fa3b3187ef955c99f8b5f31ef91da6c4417dc984fbccf000",
+        "transfer-result.json": "f26cb2a5450274e191e1c82ecd91ac06b02e339113fcf111a7d91b7b876762cd"
+      },
+      "old_stop_sha256": "791a83b01b27f39f7c7c78664e6ebbfa79332ba833feec0abb0fa7d99b9e2d9c",
+      "trial_id": "transfer--make-doom-for-mips--r1--B"
+    }
+  },
+  "projection_notice": "Allowlisted projection; not the original private grant bytes and not an executable authorization grant.",
+  "schema_version": "evalopt.public-transfer-continuation-grant-projection.v1"
+}

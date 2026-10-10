@@ -93,6 +93,10 @@ jobs:
         run: |
           uv run --frozen --extra dev ruff check bench/harbor/skill-workflows-v1/*.py bench/harbor/skill-workflows-v1/lib bench/harbor/skill-workflows-v1/runtime bench/harbor/skill-workflows-v1/tasks/suite.py
           uv run --frozen --extra dev ruff format --check bench/harbor/skill-workflows-v1/*.py bench/harbor/skill-workflows-v1/lib bench/harbor/skill-workflows-v1/runtime bench/harbor/skill-workflows-v1/tasks/suite.py
+      - name: Reproduce published workflow and transfer evidence
+        run: |
+          uv run --frozen --extra dev python -I -B results/skill-workflows-v1/heldout-comparison-2026-10-10/reproduce.py --source .
+          uv run --frozen --extra dev python -I -B results/skill-workflows-v1/transfer-comparison-2026-10-10/reproduce.py --source .
 
   quality-build:
     name: Quality, demos, smoke, and artifacts

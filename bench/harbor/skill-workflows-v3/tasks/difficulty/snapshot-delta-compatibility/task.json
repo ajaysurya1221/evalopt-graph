@@ -1,0 +1,668 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "store.py",
+    "pieces.py"
+  ],
+  "attempt_id": "authored-control--snapshot-delta-compatibility",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "a": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+          },
+          "reads": [
+            "abc"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [
+              {
+                "length": 3,
+                "name": "a",
+                "start": 0
+              }
+            ],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|3|abc"
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "a": "a52dd81bfd5e4e66d96b9f598382f6cbf8c5c3897654e6ae9055e03620fcf38e"
+          },
+          "reads": [
+            "|b|"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [
+              {
+                "length": 3,
+                "name": "a",
+                "start": 1
+              }
+            ],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|5|a|b|c"
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "b": "a63c6845442f92cbc4b451a1c427511ba00ece7e52309df7b619481bdf80a57e"
+          },
+          "reads": [
+            "c!"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [
+              {
+                "length": 2,
+                "name": "b",
+                "start": 1
+              }
+            ],
+            "roots": [
+              "b"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|4|abcd"
+              },
+              "b": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      1,
+                      2
+                    ]
+                  },
+                  {
+                    "literal": "!"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "b": "1e0bbd6c686ba050b8eb03ffeedc64fdc9d80947fce821abbe5d6dc8d252c5ac",
+            "c": "96e31900cc68fc888c1780af22244926f630f384f956d03c71d042eedea86127"
+          },
+          "reads": []
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "c",
+              "b"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|4|abcd"
+              },
+              "b": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      1,
+                      2
+                    ]
+                  }
+                ]
+              },
+              "c": {
+                "delta": [
+                  {
+                    "copy": [
+                      "b",
+                      0,
+                      2
+                    ]
+                  },
+                  {
+                    "copy": [
+                      "a",
+                      0,
+                      1
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "a": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "b": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "reads": [
+            ""
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [
+              {
+                "length": 0,
+                "name": "b",
+                "start": 0
+              }
+            ],
+            "roots": [
+              "a",
+              "b"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|0|"
+              },
+              "b": {
+                "delta": []
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "b": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "reads": []
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "b"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|3|abc"
+              },
+              "b": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      3,
+                      0
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "b"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|3|abc"
+              },
+              "b": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      3,
+                      1
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "b"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|3|abc"
+              },
+              "b": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      -1,
+                      1
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      0,
+                      0
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "delta": [
+                  {
+                    "copy": [
+                      "b",
+                      0,
+                      0
+                    ]
+                  }
+                ]
+              },
+              "b": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      0,
+                      0
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "delta": [
+                  {
+                    "copy": [
+                      "missing",
+                      0,
+                      1
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "a": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+          },
+          "reads": []
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|3|abc"
+              },
+              "bad": {
+                "delta": [
+                  {
+                    "copy": [
+                      "bad",
+                      0,
+                      0
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|03|abc"
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {},
+          "reads": [
+            "abc"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [
+              {
+                "length": 3,
+                "name": "a",
+                "start": 0
+              }
+            ],
+            "roots": [],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|3|abc"
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "digests": {
+            "a": "88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589",
+            "b": "88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589"
+          },
+          "reads": [
+            "bc"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [
+              {
+                "length": 2,
+                "name": "b",
+                "start": 1
+              }
+            ],
+            "roots": [
+              "a",
+              "b"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|4|abcd"
+              },
+              "b": {
+                "delta": [
+                  {
+                    "copy": [
+                      "a",
+                      0,
+                      2
+                    ]
+                  },
+                  {
+                    "copy": [
+                      "a",
+                      2,
+                      2
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "reads": [
+              {
+                "length": 2,
+                "name": "a",
+                "start": 2
+              }
+            ],
+            "roots": [
+              "a"
+            ],
+            "snapshots": {
+              "a": {
+                "legacy": "L1|3|abc"
+              }
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "constraint-preservation",
+  "evidence_opportunity": false,
+  "id": "snapshot-delta-compatibility",
+  "instruction": "Extend service.solve(q) with nested content-addressed snapshot deltas. q is {snapshots:object,roots:[snapshotID,...],reads:[{name:snapshotID,start:integer,length:integer},...]}; roots and reads may be empty and duplicate requested roots are allowed. snapshots maps IDs to exactly one of {legacy:encodedString} or {delta:[parts]}; each part is {literal:ASCIIString} or {copy:[snapshotID,start,length]}. The frozen legacy.py format is L1|N|text, canonical nonnegative decimal N equal to ASCII text length; delimiter characters inside text are allowed. Do not edit legacy.py or change its existing bytes/semantics. Resolve only roots and reads (unreferenced bad frames do not matter), permitting shared/nested references, but reject any reachable cycle or missing reference with ValueError, even a zero-length copy. Every copy/read range requires start>=0,length>=0,start+length<=materialized length; Python's silent slice clipping is not the contract. Empty deltas materialize empty text. Return digests mapping each root ID to lowercase SHA256 of its materialized ASCII bytes, plus reads in input order. Hashes depend on content, not construction history. Frames<=12,parts<=8/frame,result length<=128, valid structural shapes, no unsupported non-ASCII strings. Preserve arguments and legacy codec.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, store.py, pieces.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v3/1",
+  "source_cluster": "snapshot-delta-compatibility",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "snapshot-delta-compatibility",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

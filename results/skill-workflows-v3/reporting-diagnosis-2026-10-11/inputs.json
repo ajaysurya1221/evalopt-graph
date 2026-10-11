@@ -1,0 +1,781 @@
+{
+  "registration_sha256": "f19253f9e47586e6568c37b112a584a1479ecdff4b8e69d1aafa54208d17b569",
+  "rows": [
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "mixed-workspace-review",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 3,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": false,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 2,
+      "response_keys": [
+        "checks",
+        "findings"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": {
+        "classification": "response_envelope_gated_before_review_coverage",
+        "covered_obligations": [
+          "failure-domain-diversity",
+          "physical-node-uniqueness",
+          "zero-capacity-eligibility"
+        ],
+        "missing_obligations": [],
+        "new_grade_assigned": false,
+        "official_grade_details_empty": true,
+        "witnesses": [
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 0,
+            "obligation_ids": [
+              "zero-capacity-eligibility"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 1,
+            "obligation_ids": [
+              "physical-node-uniqueness"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 2,
+            "obligation_ids": [
+              "failure-domain-diversity"
+            ],
+            "retained_supported": true
+          }
+        ]
+      },
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "review",
+      "task_id": "replica-placement-quorums",
+      "trial_id": "difficulty--replica-placement-quorums--r2--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "constraint-preservation",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 2,
+      "response_keys": [
+        "checks",
+        "findings",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "snapshot-delta-compatibility",
+      "trial_id": "difficulty--snapshot-delta-compatibility--r2--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "unavailable-or-misleading-evidence",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 1,
+      "repetition": 1,
+      "response_keys": [
+        "checks",
+        "findings",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "stale-vector-distance-fixture",
+      "trial_id": "difficulty--stale-vector-distance-fixture--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "committed-patch-review",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 6,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": false,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 1,
+      "response_keys": [
+        "checks",
+        "findings"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": {
+        "classification": "response_envelope_gated_before_review_coverage",
+        "covered_obligations": [
+          "applicable-range-precedence",
+          "parameter-applicability"
+        ],
+        "missing_obligations": [],
+        "new_grade_assigned": false,
+        "official_grade_details_empty": true,
+        "witnesses": [
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 0,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 1,
+            "obligation_ids": [
+              "parameter-applicability"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 2,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 3,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 4,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 5,
+            "obligation_ids": [
+              "parameter-applicability"
+            ],
+            "retained_supported": true
+          }
+        ]
+      },
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "review",
+      "task_id": "media-range-precedence",
+      "trial_id": "difficulty--media-range-precedence--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "unavailable-or-misleading-evidence",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 1,
+      "repetition": 2,
+      "response_keys": [
+        "checks",
+        "findings",
+        "legacy_check",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "stale-vector-distance-fixture",
+      "trial_id": "difficulty--stale-vector-distance-fixture--r2--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "bounded-implementation",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 2,
+      "response_keys": [
+        "changes",
+        "checks",
+        "findings",
+        "reviews",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "cyclic-module-exports",
+      "trial_id": "difficulty--cyclic-module-exports--r2--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "bounded-implementation",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 1,
+      "response_keys": [
+        "checks",
+        "findings",
+        "notes",
+        "review",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "incremental-build-invalidation",
+      "trial_id": "difficulty--incremental-build-invalidation--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "mixed-workspace-review",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 3,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": false,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 1,
+      "response_keys": [
+        "checks",
+        "findings"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": {
+        "classification": "response_envelope_gated_before_review_coverage",
+        "covered_obligations": [
+          "failure-domain-diversity",
+          "physical-node-uniqueness",
+          "zero-capacity-eligibility"
+        ],
+        "missing_obligations": [],
+        "new_grade_assigned": false,
+        "official_grade_details_empty": true,
+        "witnesses": [
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 0,
+            "obligation_ids": [
+              "zero-capacity-eligibility"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 1,
+            "obligation_ids": [
+              "physical-node-uniqueness"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 2,
+            "obligation_ids": [
+              "failure-domain-diversity"
+            ],
+            "retained_supported": true
+          }
+        ]
+      },
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "review",
+      "task_id": "replica-placement-quorums",
+      "trial_id": "difficulty--replica-placement-quorums--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "constraint-preservation",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 1,
+      "response_keys": [
+        "checks",
+        "findings",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "snapshot-delta-compatibility",
+      "trial_id": "difficulty--snapshot-delta-compatibility--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": true,
+      "category": "ordinary-bug-repair",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 3,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 2,
+      "response_keys": [
+        "checks",
+        "findings",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "atomic-migration-batches",
+      "trial_id": "difficulty--atomic-migration-batches--r2--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "bounded-implementation",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 1,
+      "response_keys": [
+        "changed_files",
+        "checks",
+        "commit",
+        "findings",
+        "reviews",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "cyclic-module-exports",
+      "trial_id": "difficulty--cyclic-module-exports--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": true,
+      "category": "ordinary-bug-repair",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 2,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 1,
+      "response_keys": [
+        "checks",
+        "findings",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "calendar-override-expansion",
+      "trial_id": "difficulty--calendar-override-expansion--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "ordinary-bug-repair",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 2,
+      "response_keys": [
+        "checks",
+        "findings",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "implementation",
+      "task_id": "calendar-override-expansion",
+      "trial_id": "difficulty--calendar-override-expansion--r2--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "bounded-implementation",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 2,
+      "response_keys": [
+        "checks",
+        "findings",
+        "reviews",
+        "scope",
+        "status",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": true,
+      "status_value": "completed",
+      "task_contract": "implementation",
+      "task_id": "incremental-build-invalidation",
+      "trial_id": "difficulty--incremental-build-invalidation--r2--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "ordinary-bug-repair",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 0,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": true,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 1,
+      "response_keys": [
+        "checks",
+        "findings",
+        "status",
+        "summary",
+        "validation"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": null,
+      "status_enum_valid": false,
+      "status_value": "repaired",
+      "task_contract": "implementation",
+      "task_id": "atomic-migration-batches",
+      "trial_id": "difficulty--atomic-migration-batches--r1--B"
+    },
+    {
+      "additional_implementation_empty_findings_condition": false,
+      "category": "committed-patch-review",
+      "checks_exact_supplied_initial_projection": true,
+      "declared_envelope_in_prompt": false,
+      "findings_count": 6,
+      "initial_exit_code": 0,
+      "missing_required_envelope_fields": [
+        "status",
+        "blockers"
+      ],
+      "native_final_response_exact_match": true,
+      "native_prompt_exact_match": true,
+      "official_claims_supported": false,
+      "official_functional_success": false,
+      "official_unsupported_success": false,
+      "official_valid_completion": false,
+      "phase_ids_valid_and_distinct": true,
+      "post_stop_exit_code": 0,
+      "repetition": 2,
+      "response_keys": [
+        "checks",
+        "findings",
+        "spec",
+        "standards"
+      ],
+      "response_transport": "parsed",
+      "review_evidence": {
+        "classification": "response_envelope_gated_before_review_coverage",
+        "covered_obligations": [
+          "applicable-range-precedence",
+          "parameter-applicability"
+        ],
+        "missing_obligations": [],
+        "new_grade_assigned": false,
+        "official_grade_details_empty": true,
+        "witnesses": [
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 0,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 1,
+            "obligation_ids": [
+              "parameter-applicability"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 2,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 3,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 4,
+            "obligation_ids": [
+              "applicable-range-precedence"
+            ],
+            "retained_supported": true
+          },
+          {
+            "arguments_preserved": true,
+            "baseline_matches_oracle": true,
+            "candidate_differs_from_oracle": true,
+            "finding_index": 5,
+            "obligation_ids": [
+              "parameter-applicability"
+            ],
+            "retained_supported": true
+          }
+        ]
+      },
+      "status_enum_valid": false,
+      "status_value": null,
+      "task_contract": "review",
+      "task_id": "media-range-precedence",
+      "trial_id": "difficulty--media-range-precedence--r2--B"
+    }
+  ],
+  "schema_version": "evalopt.v3.reporting-diagnosis-projection.v1",
+  "source_diagnosis_sha256": "3e6b829c431b5f3e604a9a35cb6a86b3f79820e67dc1e10a9a3f8753ed9e0eab"
+}

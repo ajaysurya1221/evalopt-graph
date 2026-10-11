@@ -1,0 +1,71 @@
+{
+  "claim_limits": [
+    "Difficulty not validated; ordinary functional checks passed 8/8",
+    "All16 exact initial check reports; undeclared envelope fields limit all raw reporting and four review labels",
+    "No corrected live score, superiority, efficacy, independent human authorship or live replication",
+    "No additional model trials or larger benchmark authorized",
+    "Token/call accounting complete; agent-only wall time unavailable"
+  ],
+  "endpoint_review_sha256": "6969a48cda568059010ecca4eeb00d49588b47da2623e89950450c42c877b917",
+  "final_scope_addendum_sha256": "6ecdbd40e45c7835090f1172aec8231d33eaf0b771c48cc0a424f740568db309",
+  "frozen_native_report_sha256": "72fc43ebfcfa81230f8a11d3d44219f098db9b62e95623d9abf781dee7652270",
+  "original_workflow_sha256": "d2af31aac66bdedf11bde29000f2c0309a79263b531808bcdae261df7e3ee6b7",
+  "preservation": {
+    "baseline_commit": "eb181fa47a2b44c3363034038c288ba821f64d7d",
+    "baseline_files": 9145,
+    "frozen_v3_source_tasks_and_workflow_changed": false,
+    "status": "PASS"
+  },
+  "prospective_correction_review_sha256": "2c36e2891c8891d83fd20c80a15c521f283850e323a068182c446e9b5b07156d",
+  "public_diagnosis_review_sha256": "89a4356f4f92336d85b2fcc9e5b76a65025194c505da6de4555af7f90c01d4a8",
+  "publication_kind": "Reviewed draft PR; no merge or release",
+  "publication_preparation_failures": [
+    "An appended check in the original workflow broke its frozen offline source pin; original bytes were restored.",
+    "A separate workflow proposal failed the original path-preservation allowlist; it was retained privately and not published.",
+    "No source pin, preservation rule or retained result was relaxed. Earlier review receipts remain historical; the final scope addendum supersedes the workflow proposal."
+  ],
+  "publication_review_sha256": "e9ffb770121eb2423c32d1a1fdbaecaca97949c1d95e7ca9bbdaab5f7a67608f",
+  "published_files": {
+    "README.md": "b31531da9a910e46ace914919d3d4a06116d3aac199b20463bfe43d27a2324fe",
+    "difficulty-2026-10-11/README.md": "11793477b44cf5b7078ee3c536d167985d399574611487e4ff891bb03e44d571",
+    "difficulty-2026-10-11/case-evidence.json": "9fb5e5e83ae4767f48a8433171d9f98f005f6215607e08fe120dd1329b249394",
+    "difficulty-2026-10-11/checksums.json": "7f94c878b4071cb6fbbf61770866861837198b6a881efc203a2768706b646472",
+    "difficulty-2026-10-11/endpoint-summary.json": "b49d400fa0c2e0992bced6dbbc6adacbed856304d425a5f0d78cc1275b484333",
+    "difficulty-2026-10-11/inputs.json": "aba8b27a9dff7ce6820ca727ec194210635d09767577a5c437a8b1edb68337e7",
+    "difficulty-2026-10-11/project_evidence.py": "7cbc3e492e55ebd2947c8c2cd5ff5323e1f1a6b1738ca0a04bc39b68eff36f9e",
+    "difficulty-2026-10-11/receipt.json": "f1f486765d350a97efba3b7be3ff719df92dcba3adba10259d00e20162e5446c",
+    "difficulty-2026-10-11/report.json": "72fc43ebfcfa81230f8a11d3d44219f098db9b62e95623d9abf781dee7652270",
+    "difficulty-2026-10-11/reproduce.py": "9f05d9aa447c9d4597416efff738f01c8bd8cd25186370c1c9ca24489fc20dff",
+    "difficulty-2026-10-11/review-scope.json": "d9339fa88f2e9666a7b55361759daf5de54929c3636083e9f5322f308a6171b2",
+    "reporting-diagnosis-2026-10-11/README.md": "c586a7015cb6a320de4ef98383016c93df1b1cf42ef199227f668f80b001046e",
+    "reporting-diagnosis-2026-10-11/checksums.json": "3a4d9514769ac5b45b2724f170a0f553d86c2b4cbe6cae43725b265a7e474fb1",
+    "reporting-diagnosis-2026-10-11/diagnosis.json": "84520f038a8f6e601fec083cc9acebd122ffa8d71390e96da07918ef84511617",
+    "reporting-diagnosis-2026-10-11/inputs.json": "bd15a7940b439e8db5888cc79c8c2aba22298c6230952a18dce57301eb118703",
+    "reporting-diagnosis-2026-10-11/receipt.json": "62e3165fa656e6d0ab76870471d8ca131de1833e91f80f7a3bb0f7ef3391912b",
+    "reporting-diagnosis-2026-10-11/reproduce.py": "7cd63970e38b9585b6e296f3680113ca0fa9f1cc4f9d0b8676319e31e8c1d6cf",
+    "response-contract-correction-2026-10-11/README.md": "fd91bc109c36c2e37f2679000e649eeda5cc92b82716ecba97e8f4e4ea3c6fdb",
+    "response-contract-correction-2026-10-11/apply_verify.py": "0e9723a510f55458c81e6a30647e21d979cbe0ec3a76c51ab7611b1b7ad6b9b0",
+    "response-contract-correction-2026-10-11/controls.json": "285792fade8a715963dc25d32bebe58460ccdcbb2f7ed4ff56d421546cd2e3c5",
+    "response-contract-correction-2026-10-11/manifest.json": "ff479a66114d5d1da828ce5104e1b92216fb04aeee4007ae052f23d614b07a38",
+    "response-contract-correction-2026-10-11/payload/grading.py": "267e611896b78a47ddc90838469e02f0e7649ef555cf949b98f7366fa9bc07e4",
+    "response-contract-correction-2026-10-11/payload/materialize.py": "50ae6165144bfef9a687714b6d8c5fac1097d13a7437d94ce5dafa7c8e65b6dc",
+    "response-contract-correction-2026-10-11/payload/reporting.py": "3011fedef99ae8a3ce798f175f0781995635e7d65edc03e1ed7f655d4b27bfda",
+    "response-contract-correction-2026-10-11/payload/response_contract.py": "54a5aaa716b8cbba7ee94df38a54c2317bd3486f5c39a57b9954a28d4709a7d0",
+    "response-contract-correction-2026-10-11/payload/test_response_contract.py": "11ac95afd1d0c12ab2df6ff356191a0625829ce3060f8334562f8af99b98657c",
+    "response-contract-correction-2026-10-11/prepare_bundle.py": "ed92f4cc417b76df33940e748b1ea5d380f0aaf03d8d45cdcdb634f6255ecedf",
+    "response-contract-correction-2026-10-11/response-contract.patch": "bbd32586d3a27ac3b264e730ca7d9b0a28920e437141e130e22a7b0916a57779",
+    "response-contract-correction-2026-10-11/review.json": "2c36e2891c8891d83fd20c80a15c521f283850e323a068182c446e9b5b07156d",
+    "response-contract-correction-2026-10-11/test_apply_verify.py": "44a382ab956e8e59d1f29a27ea4439729eec1a8d259513acaa9f82bf07a46c54"
+  },
+  "registration_sha256": "f19253f9e47586e6568c37b112a584a1479ecdff4b8e69d1aafa54208d17b569",
+  "reproduction": {
+    "diagnosis": "Pure retained-fact projection replay passed",
+    "hosted_ci_scope": "Unchanged compatibility, offline-package and registration checks; new packet replays are separate local fresh-checkout evidence",
+    "native_report": "Byte-identical frozen replay and independent arithmetic",
+    "prospective_correction": "Temporary exact-base source-copy controls passed; no live trial or regrade",
+    "public_report": "Pure projection replay passed in a fresh clone of verified public source plus reviewed new files"
+  },
+  "reviewer_scope": "Maintainer-run study with separated AI authors and reviewers",
+  "schema_version": "evalopt.v3-difficulty-closeout-review.v1",
+  "verdict": "ACCEPT_RETAINED_CONSISTENCY_WITH_MEASUREMENT_LIMITS"
+}

@@ -1,0 +1,62 @@
+{
+  "accepted_properties": [
+    "Complete top-level envelope declaration appears in all 8 authored task prompts across all 4 arm renderings.",
+    "Required status enum, array fields, ordered exact initial checks and per-contract empty arrays are explicit.",
+    "Shared declaration drives prompt text and pure response predicates; observed missing-envelope behavior is preserved, not silently repaired.",
+    "Original pure grader/reporting decisions match across the finite authored parity suite; independent JSON envelope parity covers 1715 combinations.",
+    "Only the exact proposed 5-file scope is applied to a new copied package; original source hashes remain unchanged.",
+    "Duplicate fields/nonfinite manifest, source/payload/patch mismatch, unsafe payload, existing output and overlap fail before modifying working source."
+  ],
+  "base_commit": "f36088d17adcbfdfe24ec2a15d1268fd539daae6",
+  "checks": {
+    "application_author_methods": 5,
+    "author_semantic_reporting_parity_variants": 78,
+    "candidate_executions": 0,
+    "docker_calls": 0,
+    "errors": 0,
+    "failures": 0,
+    "frozen_response_contract_module_absent": true,
+    "independent_json_envelope_parity_variants": 1715,
+    "independent_prompt_subcases": 32,
+    "independent_review_methods": 5,
+    "models": 0,
+    "original_working_source_hashes_unchanged": true,
+    "response_contract_author_methods": 12,
+    "ruff": "PASS",
+    "skips": 0
+  },
+  "files": {
+    "README.md": "fd91bc109c36c2e37f2679000e649eeda5cc92b82716ecba97e8f4e4ea3c6fdb",
+    "apply_verify.py": "0e9723a510f55458c81e6a30647e21d979cbe0ec3a76c51ab7611b1b7ad6b9b0",
+    "controls.json": "285792fade8a715963dc25d32bebe58460ccdcbb2f7ed4ff56d421546cd2e3c5",
+    "manifest.json": "ff479a66114d5d1da828ce5104e1b92216fb04aeee4007ae052f23d614b07a38",
+    "payload/grading.py": "267e611896b78a47ddc90838469e02f0e7649ef555cf949b98f7366fa9bc07e4",
+    "payload/materialize.py": "50ae6165144bfef9a687714b6d8c5fac1097d13a7437d94ce5dafa7c8e65b6dc",
+    "payload/reporting.py": "3011fedef99ae8a3ce798f175f0781995635e7d65edc03e1ed7f655d4b27bfda",
+    "payload/response_contract.py": "54a5aaa716b8cbba7ee94df38a54c2317bd3486f5c39a57b9954a28d4709a7d0",
+    "payload/test_response_contract.py": "11ac95afd1d0c12ab2df6ff356191a0625829ce3060f8334562f8af99b98657c",
+    "prepare_bundle.py": "ed92f4cc417b76df33940e748b1ea5d380f0aaf03d8d45cdcdb634f6255ecedf",
+    "response-contract.patch": "bbd32586d3a27ac3b264e730ca7d9b0a28920e437141e130e22a7b0916a57779",
+    "test_apply_verify.py": "44a382ab956e8e59d1f29a27ea4439729eec1a8d259513acaa9f82bf07a46c54"
+  },
+  "findings": [],
+  "independent_human_authorship": false,
+  "limitations": [
+    "This is a finite prospective prompt-completeness and synthetic parity review, not proof of every semantic equivalence.",
+    "No corrected live campaign ran and no empirical improvement, task-hardness or upgrade claim follows.",
+    "Original reporting and shape-gated review grades remain unchanged and instrument-limited.",
+    "Any future live run requires its own corrected freeze and authorization.",
+    "Hashes show correspondence under custody, not producer authentication."
+  ],
+  "review_evidence": {
+    "application_controls_log_sha256": "fb8369df76a7c6f8f5f3cb3675873a3bca488f0930c90fbe483be0dabdab97d4",
+    "fresh_application_receipt_sha256": "66b218241382efb29b216d513254a81c3ed6946f0020fb1615e36a879633a7f1",
+    "independent_controls_log_sha256": "1f11b6e880045ee35de832b81b45d06257342e13b5c79bbf0034379d4ca220b9",
+    "independent_test_source_sha256": "4eb60809e73e33d022f1378641b167ca207ffaf4234250a00b18c87d181ad822",
+    "response_controls_log_sha256": "8a5fe669aa05c943247dbbabbe97ae7a5a142de02b3fee2352ec3cd3e470a7b8"
+  },
+  "reviewer_role": "separated AI implementation reviewer",
+  "schema_version": "evalopt.prospective-response-contract-review.v1",
+  "scope": "Read-only source review and independent reproduction of a prospective offline response-envelope patch. Applied only to a new private source copy; no candidate/verifier/model execution, Docker calls, live outcome changes or regrading.",
+  "verdict": "ACCEPT"
+}

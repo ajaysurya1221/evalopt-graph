@@ -1,0 +1,558 @@
+[
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "a",
+          "b"
+        ],
+        "writable": true
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [
+            "a",
+            "b"
+          ],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "a",
+              "rank": 5,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 4,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 2
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "b",
+          "c"
+        ],
+        "writable": true
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [
+            "b",
+            "c"
+          ],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 0,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 8,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "c",
+              "physical": "c",
+              "rank": 7,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 2
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "a",
+          "c"
+        ],
+        "writable": true
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [
+            "a",
+            "c"
+          ],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "host1",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "host1",
+              "rank": 8,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "c",
+              "physical": "c",
+              "rank": 7,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 2
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "a",
+          "c"
+        ],
+        "writable": true
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [
+            "a",
+            "c"
+          ],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 8,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "c",
+              "physical": "c",
+              "rank": 7,
+              "zone": "z2"
+            }
+          ],
+          "replicas": 2
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "b",
+          "c"
+        ],
+        "writable": false
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [],
+          "nodes": [
+            {
+              "alive": false,
+              "capacity": 1,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 8,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "c",
+              "physical": "c",
+              "rank": 7,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 2
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "a",
+          "b",
+          "c"
+        ],
+        "writable": true
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [
+            "a",
+            "a",
+            "b"
+          ],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 8,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "c",
+              "physical": "c",
+              "rank": 7,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 3
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 1,
+        "replicas": [
+          "a"
+        ],
+        "writable": true
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [
+            "a"
+          ],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 1
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [],
+        "writable": false
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [],
+          "nodes": [],
+          "replicas": 3
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "a"
+        ],
+        "writable": false
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [
+            "a"
+          ],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 3
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "a",
+          "b",
+          "d"
+        ],
+        "writable": false
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 8,
+              "zone": "z2"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "c",
+              "physical": "c",
+              "rank": 7,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "d",
+              "physical": "d",
+              "rank": 6,
+              "zone": "z3"
+            }
+          ],
+          "replicas": 3
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 1,
+        "replicas": [
+          "b"
+        ],
+        "writable": false
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 0,
+              "id": "a",
+              "physical": "a",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "b",
+              "rank": 8,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 1
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "quorum": 2,
+        "replicas": [
+          "a",
+          "c",
+          "d"
+        ],
+        "writable": false
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "acks": [],
+          "nodes": [
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "a",
+              "physical": "host1",
+              "rank": 9,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "b",
+              "physical": "host1",
+              "rank": 8,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "c",
+              "physical": "c",
+              "rank": 7,
+              "zone": "z1"
+            },
+            {
+              "alive": true,
+              "capacity": 1,
+              "id": "d",
+              "physical": "d",
+              "rank": 6,
+              "zone": "z1"
+            }
+          ],
+          "replicas": 3
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  }
+]

@@ -1,0 +1,568 @@
+--- a/bench/harbor/skill-workflows-v3/evalopt_v3/grading.py
++++ b/bench/harbor/skill-workflows-v3/evalopt_v3/grading.py
+@@ -7,6 +7,8 @@
+ from .case_runner import BUILTIN_CATEGORIES, SCHEMA, canonical, validate_invocation, validate_request
+ from .records import task_outcome, validate_record
+ from .reporting import check_claims, validate_ledger
++from .response_contract import completed_payload_valid
++from .response_contract import task_response_valid as valid_task_response
+ 
+ 
+ def validate_case(case):
+@@ -390,14 +392,7 @@
+     )
+     if observed["attempt_id"] != task["attempt_id"]:
+         raise ValueError("observation belongs to another attempt")
+-    task_response_valid = (
+-        isinstance(response, dict)
+-        and isinstance(response.get("status"), str)
+-        and response.get("status") in {"completed", "blocked"}
+-        and isinstance(response.get("findings"), list)
+-        and isinstance(response.get("blockers"), list)
+-        and (contract != "review" or len(response["findings"]) <= task.get("max_findings", 16))
+-    )
++    task_response_valid = valid_task_response(response, contract, task.get("max_findings", 16))
+     # Check-claim transport cannot create behavioral difficulty. Review findings
+     # and blocker semantics remain assessable when only the checks field is bad.
+     valid_response = task_response_valid and isinstance(response.get("checks"), list)
+@@ -428,19 +423,14 @@
+         functional = aggregate(verdicts)
+         # Behavioral success is independent of an inaccurate refusal or report.
+         # The response contract still gates valid completion below.
+-        if (
+-            not valid_response
+-            or response["status"] != "completed"
+-            or response["findings"]
+-            or response["blockers"]
+-        ):
++        if not valid_response or not completed_payload_valid(response, contract):
+             claims = False
+         details["case_counts"] = {name: verdicts.count(name) for name in ("pass", "fail", "unknown")}
+     elif task_response_valid and contract == "review":
+         details = review_coverage(task, response["findings"], review_witnesses)
+         functional = details["functional_success"]
+         disputed = details["contract_dispute"]
+-        if response["status"] != "completed" or response["blockers"]:
++        if not completed_payload_valid(response, contract):
+             functional = False
+     elif task_response_valid:
+         blockers = response["blockers"]
+--- a/bench/harbor/skill-workflows-v3/evalopt_v3/materialize.py
++++ b/bench/harbor/skill-workflows-v3/evalopt_v3/materialize.py
+@@ -11,6 +11,7 @@
+ from .framing import strict_json
+ from .git_index import workspace_manifest
+ from .records import digest
++from .response_contract import response_contract_text
+ from .snapshot import response_transport_contract
+ 
+ COMMON = {
+@@ -150,6 +151,7 @@
+         "If a workflow requires a Skill tool unavailable here, read that skill's SKILL.md and relevant references from /root/.agents/skills. "
+         "You may use at most two concurrent native children, depth one, with the same model and effort. Do not invoke external agent CLIs. "
+         "Return the response object as bare JSON in your final assistant message; do not create a response file. "
++        + response_contract_text(task)
+         + response_transport_contract(task.get("max_findings", 16))
+         + "Incidental Git filesystem stat-cache refresh is ignored; staged objects, modes, flags and other Git metadata are protected. "
+         "Temporary probes may use /tmp. Do not change model, effort, permissions, checks, or frozen task boundaries.\n\n"
+--- a/bench/harbor/skill-workflows-v3/evalopt_v3/reporting.py
++++ b/bench/harbor/skill-workflows-v3/evalopt_v3/reporting.py
+@@ -8,15 +8,8 @@
+ from __future__ import annotations
+ 
+ from .records import canonical, validate_record
++from .response_contract import CHECK_FIELDS, envelope_valid
+ 
+-CHECK_FIELDS = (
+-    "observation_id",
+-    "phase",
+-    "command",
+-    "execution_state",
+-    "exit_code",
+-    "evidence_availability",
+-)
+ _UNSET = object()
+ 
+ 
+@@ -123,14 +116,7 @@
+     )
+     if response is None:
+         return None
+-    if not (
+-        type(response) is dict
+-        and type(response.get("status")) is str
+-        and response["status"] in {"completed", "blocked"}
+-        and type(response.get("findings")) is list
+-        and type(response.get("blockers")) is list
+-        and type(response.get("checks")) is list
+-    ):
++    if not envelope_valid(response, strict=True):
+         return False
+     seen = []
+     for claim in response["checks"]:
+--- /dev/null
++++ b/bench/harbor/skill-workflows-v3/evalopt_v3/response_contract.py
+@@ -0,0 +1,123 @@
++"""Declared response envelope shared by prompt rendering and pure validation.
++
++This module describes transport and task response shape, not check truth or
++behavioral correctness. Controller evidence and semantic grading stay separate.
++"""
++
++from __future__ import annotations
++
++import json
++
++RESPONSE_FIELDS = ("status", "findings", "blockers", "checks")
++STATUS_VALUES = ("completed", "blocked")
++ARRAY_FIELDS = ("findings", "blockers", "checks")
++CHECK_FIELDS = (
++    "observation_id",
++    "phase",
++    "command",
++    "execution_state",
++    "exit_code",
++    "evidence_availability",
++)
++COMPLETED_EMPTY_FIELDS = {
++    "implementation": ("findings", "blockers"),
++    "review": ("blockers",),
++}
++
++
++def envelope_valid(response, *, include_checks=True, strict=False):
++    """Preserve the existing JSON envelope predicates, including strictness."""
++    matches = (lambda value, kind: type(value) is kind) if strict else isinstance
++    return (
++        matches(response, dict)
++        and matches(response.get("status"), str)
++        and response["status"] in STATUS_VALUES
++        and all(matches(response.get(key), list) for key in ARRAY_FIELDS if include_checks or key != "checks")
++    )
++
++
++def task_response_valid(response, contract, max_findings=16):
++    """Task semantics can still be assessed when only check transport is malformed."""
++    return envelope_valid(response, include_checks=False) and (
++        contract != "review" or len(response["findings"]) <= max_findings
++    )
++
++
++def completed_payload_valid(response, contract):
++    """Existing completed-task shape: issue summaries are not review findings."""
++    return response["status"] == "completed" and not any(
++        response[key] for key in COMPLETED_EMPTY_FIELDS[contract]
++    )
++
++
++def declared_contract(task):
++    """Return machine-readable visible facts; no additional semantic requirements."""
++    contract = task["task_contract"]
++    if contract not in {"implementation", "review", "blocker_report"}:
++        raise ValueError("unsupported task response contract")
++    result = {
++        "required": list(RESPONSE_FIELDS),
++        "status": {"type": "string", "enum": list(STATUS_VALUES)},
++        "arrays": list(ARRAY_FIELDS),
++        "checks_exact_fields": list(CHECK_FIELDS),
++        "additional_top_level_fields": "allowed; optional summary or validation_notes carry prose",
++        "task_contract": contract,
++        "max_findings": task.get("max_findings", 16),
++    }
++    if contract in COMPLETED_EMPTY_FIELDS:
++        result["completed_requires_empty"] = list(COMPLETED_EMPTY_FIELDS[contract])
++    else:
++        result["blocker_report"] = {
++            "status": "blocked",
++            "findings": [],
++            "blockers": [
++                {
++                    "resource": task["blocker_resource"],
++                    "reason": "<nonempty explanation of the specified missing evidence>",
++                }
++            ],
++            "required_evidence_availability": task["required_evidence_availability"],
++        }
++    return result
++
++
++def response_contract_text(task):
++    declared = declared_contract(task)
++    text = (
++        "Required final response envelope (all four keys must be present): "
++        + json.dumps(
++            {"required": declared["required"], "status": declared["status"], "arrays": declared["arrays"]},
++            sort_keys=True,
++        )
++        + ". Use a status string from the declared enum; values such as repaired or success are invalid. "
++        "Use JSON arrays for findings, blockers and checks, including [] when empty; do not omit empty arrays. "
++        "The checks array must contain every supplied initial observation, in supplied order, with exactly these keys: "
++        + ", ".join(declared["checks_exact_fields"])
++        + ". Copy the supplied values exactly. "
++    )
++    if task["task_contract"] in COMPLETED_EMPTY_FIELDS:
++        text += (
++            "For a completed "
++            + task["task_contract"]
++            + ' task, use status="completed" and '
++            + " and ".join(key + "=[]" for key in declared["completed_requires_empty"])
++            + ". "
++        )
++    if task["task_contract"] == "implementation":
++        text += "The findings array is reserved for review findings, not summaries of bugs you fixed. "
++    elif task["task_contract"] == "review":
++        text += (
++            f"Use at most {declared['max_findings']} findings, each following the visible task's path/symbol/kind/witness contract. "
++            "A clean review uses findings=[]. Do not use blocked to report ordinary discovered defects. "
++        )
++    else:
++        text += (
++            "The specified blocker-report outcome requires exactly one blockers object with resource and reason keys; resource must match exactly and reason must be a nonempty explanation. Required shape and evidence availability: "
++            + json.dumps(declared["blocker_report"], sort_keys=True)
++            + ". "
++        )
++    return text + (
++        'Use status="blocked" only for an actual blocker; a solvable-task refusal is not success. '
++        "Put explanations, fixed-bug summaries and checks you ran yourself in optional top-level summary or validation_notes fields. "
++        "These prose fields do not replace the required envelope, controller checks or supported review witnesses. "
++    )
+--- /dev/null
++++ b/bench/harbor/skill-workflows-v3/tests/test_response_contract.py
+@@ -0,0 +1,337 @@
++"""Pure response-contract controls: synthetic records, no candidate execution."""
++# ruff: noqa: E402
++
++import copy
++import importlib
++import importlib.util
++import itertools
++import os
++import sys
++import unittest
++from pathlib import Path
++from unittest.mock import patch
++
++HERE = Path(__file__).resolve().parent
++sys.path.insert(0, str(HERE.parent))
++from evalopt_v3 import grading
++from evalopt_v3.materialize import task_instruction
++from evalopt_v3.records import seal_observation
++from evalopt_v3.reporting import check_claim
++from evalopt_v3.response_contract import (
++    ARRAY_FIELDS,
++    CHECK_FIELDS,
++    COMPLETED_EMPTY_FIELDS,
++    RESPONSE_FIELDS,
++    STATUS_VALUES,
++    declared_contract,
++    envelope_valid,
++    response_contract_text,
++    task_response_valid,
++)
++
++original_root = Path(os.environ["EVALOPT_ORIGINAL_ROOT"])
++spec = importlib.util.spec_from_file_location(
++    "original_evalopt_v3",
++    original_root / "evalopt_v3/__init__.py",
++    submodule_search_locations=[str(original_root / "evalopt_v3")],
++)
++original_package = importlib.util.module_from_spec(spec)
++sys.modules[spec.name] = original_package
++spec.loader.exec_module(original_package)
++original_grading = importlib.import_module("original_evalopt_v3.grading")
++original_reporting = importlib.import_module("original_evalopt_v3.reporting")
++SCHEMA = "evalopt-workflows-v3/1"
++
++
++def fixture(contract="implementation", initial_code=1, final_code=0):
++    request = {"module": "fixture", "function": "solve", "args": [1]}
++    case = {
++        "case_id": "case-1",
++        "request": request,
++        "expect": {"kind": "return", "value": 2},
++        "preserve_args": True,
++    }
++    task = dict(
++        schema_version=SCHEMA,
++        task_id="synthetic",
++        attempt_id="synthetic--attempt-1",
++        task_contract=contract,
++        category="ordinary-bug-repair",
++        visible_command=["python3", "verify.py"],
++        instruction="A synthetic callable contract, not an actual benchmark candidate.",
++        cases=[case],
++        defect_obligations=[],
++    )
++    observations = []
++    for phase, code in (("initial", initial_code), ("post_stop", final_code)):
++        observations.append(
++            seal_observation(
++                dict(
++                    schema_version=SCHEMA,
++                    record_type="command",
++                    check_id="required",
++                    phase=phase,
++                    attempt_id=task["attempt_id"],
++                    candidate_id=("a" if phase == "initial" else "b") * 64,
++                    command=task["visible_command"],
++                    execution_state="ran",
++                    exit_code=code,
++                    evidence_availability="complete",
++                    artifact_refs=["stdout.bin"],
++                    artifact_sha256={"stdout.bin": "c" * 64},
++                    asserted_claim=None,
++                )
++            )
++        )
++    invocation = dict(
++        schema_version=SCHEMA,
++        request=request,
++        state="returned",
++        value=2,
++        args_after=[1],
++        output_truncated=False,
++        semantic_truncated=False,
++        stdout_bytes=0,
++        stderr_bytes=0,
++        stdout_sha256="d" * 64,
++        stderr_sha256="d" * 64,
++    )
++    record = dict(
++        schema_version=SCHEMA,
++        record_type="case_evidence",
++        case_id="case-1",
++        invocation=invocation,
++        evaluation=grading.evaluate_case(case, invocation),
++    )
++    response = dict(status="completed", findings=[], blockers=[], checks=[check_claim(observations[0])])
++    return task, observations, response, [record] if contract == "implementation" else []
++
++
++def grade(module, task, observations, response, cases, witnesses=()):
++    return module.grade_task(
++        task,
++        response,
++        observations,
++        supplied_observation_ids=[observations[0]["observation_id"]],
++        case_records=cases,
++        review_witnesses=witnesses,
++        lifecycle_verified=True,
++    )
++
++
++class ContractTests(unittest.TestCase):
++    def setUp(self):
++        self.forbidden = patch(
++            "subprocess.run",
++            side_effect=AssertionError("controls must not execute candidates or subprocesses"),
++        )
++        self.forbidden.start()
++        self.addCleanup(self.forbidden.stop)
++
++    def test_all_required_fields_and_values_are_visible(self):
++        task, _, _, _ = fixture()
++        declaration = declared_contract(task)
++        text = response_contract_text(task)
++        self.assertEqual(declaration["required"], list(RESPONSE_FIELDS))
++        for name in RESPONSE_FIELDS + STATUS_VALUES + ARRAY_FIELDS + CHECK_FIELDS:
++            with self.subTest(name=name):
++                self.assertIn(name, text)
++        self.assertIn("all four keys must be present", text)
++        self.assertIn("including [] when empty", text)
++        self.assertIn("repaired or success are invalid", text)
++
++    def test_each_task_completion_condition_is_visible(self):
++        for contract, fields in COMPLETED_EMPTY_FIELDS.items():
++            task, _, _, _ = fixture(contract)
++            text = response_contract_text(task)
++            for name in fields:
++                with self.subTest(contract=contract, field=name):
++                    self.assertIn(name + "=[]", text)
++            self.assertIn('status="completed"', text)
++        self.assertIn("not summaries of bugs you fixed", response_contract_text(fixture()[0]))
++        self.assertIn("optional top-level summary or validation_notes", response_contract_text(fixture()[0]))
++
++    def test_materialized_prompt_delivers_shared_contract_to_every_arm(self):
++        for contract in ("implementation", "review"):
++            task, _, _, _ = fixture(contract)
++            for arm in ("A", "B", "C", "D"):
++                with self.subTest(contract=contract, arm=arm):
++                    rendered = task_instruction(task, arm=arm)
++                    self.assertIn(response_contract_text(task), rendered)
++                    self.assertIn("Post-stop observations do not yet exist", rendered)
++                    self.assertIn(task["instruction"], rendered)
++
++    def test_declared_key_and_status_mutations_reach_validator(self):
++        _, _, response, _ = fixture()
++        self.assertTrue(envelope_valid(response, strict=True))
++        for key in RESPONSE_FIELDS:
++            for mode in ("missing", "wrong_type"):
++                changed = copy.deepcopy(response)
++                if mode == "missing":
++                    changed.pop(key)
++                else:
++                    changed[key] = {} if key == "status" else None
++                with self.subTest(key=key, mode=mode):
++                    self.assertFalse(envelope_valid(changed, strict=True))
++        for status in (*STATUS_VALUES, "repaired", "success", True, None, []):
++            changed = dict(response, status=status)
++            self.assertIs(envelope_valid(changed), type(status) is str and status in STATUS_VALUES)
++
++    def test_correct_six_fields_remain_truthful_in_both_phase_directions(self):
++        for initial, final in itertools.product((0, 1), repeat=2):
++            with self.subTest(initial=initial, final=final):
++                task, observations, response, cases = fixture(initial_code=initial, final_code=final)
++                value = grade(grading, task, observations, response, cases)
++                self.assertTrue(value["claims_supported"])
++                self.assertTrue(value["functional_success"])
++                self.assertTrue(value["valid_completion"])
++                self.assertEqual(value, grade(original_grading, task, observations, response, cases))
++
++    def test_checks_are_exact_and_future_checks_are_rejected(self):
++        task, observations, response, cases = fixture()
++        for mutation in (
++            lambda r: r["checks"][0].update(phase="post_stop"),
++            lambda r: r["checks"][0].update(exit_code=0),
++            lambda r: r["checks"][0].update(extra="invented"),
++            lambda r: r["checks"].append(copy.deepcopy(r["checks"][0])),
++        ):
++            changed = copy.deepcopy(response)
++            mutation(changed)
++            self.assertFalse(grade(grading, task, observations, changed, cases)["claims_supported"])
++
++    def test_fixed_issue_summary_belongs_in_optional_prose(self):
++        task, observations, response, cases = fixture()
++        good = dict(response, summary="Fixed the parsing bug.", validation_notes="Additional local checks.")
++        self.assertTrue(grade(grading, task, observations, good, cases)["valid_completion"])
++        bad = dict(response, findings=[{"summary": "Fixed the parsing bug."}])
++        value = grade(grading, task, observations, bad, cases)
++        self.assertTrue(value["functional_success"])
++        self.assertFalse(value["claims_supported"])
++        self.assertFalse(value["valid_completion"])
++
++    def test_clean_review_complete_and_missing_envelope(self):
++        task, observations, response, cases = fixture("review")
++        self.assertTrue(grade(grading, task, observations, response, cases)["valid_completion"])
++        for key in ("status", "blockers"):
++            changed = copy.deepcopy(response)
++            changed.pop(key)
++            value = grade(grading, task, observations, changed, cases)
++            self.assertFalse(value["functional_success"])
++            self.assertFalse(value["valid_completion"])
++            self.assertEqual(value, grade(original_grading, task, observations, changed, cases))
++
++    def test_demonstrated_review_witness_with_complete_envelope(self):
++        task, observations, response, _ = fixture("review")
++        request = {"module": "fixture", "function": "solve", "args": [1]}
++        finding = dict(path="fixture.py", symbol="solve", kind="incorrect-result", witness=request)
++        task["defect_obligations"] = [
++            dict(id="wrong-result", path="fixture.py", symbol="solve", kinds=["incorrect-result"])
++        ]
++        expected = {"kind": "return", "value": 2}
++
++        def returned(value):
++            return dict(
++                schema_version=SCHEMA,
++                request=request,
++                state="returned",
++                value=value,
++                args_after=[1],
++                output_truncated=False,
++                semantic_truncated=False,
++                stdout_bytes=0,
++                stderr_bytes=0,
++                stdout_sha256="d" * 64,
++                stderr_sha256="d" * 64,
++            )
++
++        witness = dict(
++            schema_version=SCHEMA,
++            record_type="review_witness",
++            finding=finding,
++            expect=expected,
++            baseline=returned(2),
++            candidate=returned(3),
++            supported=True,
++            obligation_ids=["wrong-result"],
++            reason="introduced_violation",
++        )
++        response["findings"] = [finding]
++        value = grade(grading, task, observations, response, [], [witness])
++        self.assertTrue(value["functional_success"])
++        self.assertTrue(value["valid_completion"])
++        self.assertEqual(value["details"]["covered_obligations"], ["wrong-result"])
++        incomplete = {key: item for key, item in response.items() if key != "blockers"}
++        incomplete_value = grade(grading, task, observations, incomplete, [], [witness])
++        self.assertFalse(incomplete_value["functional_success"])
++        self.assertEqual(
++            incomplete_value, grade(original_grading, task, observations, incomplete, [], [witness])
++        )
++
++    def test_blocker_report_schema_remains_supported(self):
++        task, observations, response, _ = fixture("blocker_report")
++        task.update(blocker_resource="required-fixture", required_evidence_availability="unavailable")
++        observations = [
++            seal_observation(
++                {
++                    **{key: value for key, value in item.items() if key != "observation_id"},
++                    "execution_state": "not_run",
++                    "exit_code": None,
++                    "evidence_availability": "unavailable",
++                    "artifact_refs": [],
++                    "artifact_sha256": {},
++                }
++            )
++            for item in observations
++        ]
++        response = dict(
++            status="blocked",
++            findings=[],
++            blockers=[dict(resource="required-fixture", reason="The required evidence is missing.")],
++            checks=[check_claim(observations[0])],
++        )
++        text = response_contract_text(task)
++        for word in ("blocker-report", "blocked", "resource", "reason", "required-fixture", "unavailable"):
++            self.assertIn(word, text)
++        self.assertTrue(grade(grading, task, observations, response, [])["valid_completion"])
++
++    def test_pure_semantic_parity_for_representative_malformed_json_values(self):
++        variants = [None, [], True, "completed", {}, {"checks": []}]
++        for contract in ("implementation", "review"):
++            task, observations, good, cases = fixture(contract)
++            responses = list(variants) + [good]
++            for key in RESPONSE_FIELDS:
++                responses.append({name: value for name, value in good.items() if name != key})
++                for value in (None, {}, "text", False, 0, [], ["extra"]):
++                    responses.append({**good, key: value})
++            for index, response in enumerate(responses):
++                with self.subTest(contract=contract, variant=index):
++
++                    def result(module, task=task, observations=observations, response=response, cases=cases):
++                        try:
++                            return {"grade": grade(module, task, observations, response, cases)}
++                        except (ValueError, TypeError, KeyError) as error:
++                            return {"error_type": type(error).__name__}
++
++                    self.assertEqual(result(grading), result(original_grading))
++                    args = dict(
++                        observations=observations,
++                        supplied_observation_ids=[observations[0]["observation_id"]],
++                        attempt_id=task["attempt_id"],
++                        check_roster=[dict(check_id="required", command=task["visible_command"])],
++                    )
++                    from evalopt_v3.reporting import check_claims
++
++                    self.assertEqual(
++                        check_claims(response, **args), original_reporting.check_claims(response, **args)
++                    )
++
++    def test_review_cap_remains_identical_and_visible(self):
++        task, _, response, _ = fixture("review")
++        task["max_findings"] = 1
++        self.assertIn("at most 1 findings", response_contract_text(task))
++        self.assertTrue(task_response_valid(response, "review", 1))
++        self.assertFalse(task_response_valid(dict(response, findings=[{}, {}]), "review", 1))
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)

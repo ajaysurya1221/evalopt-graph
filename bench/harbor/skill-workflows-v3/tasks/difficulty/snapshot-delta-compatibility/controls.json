@@ -1,0 +1,15 @@
+{
+  "initial_check_exit": 0,
+  "negative_snapshots": [
+    "mutant-1",
+    "mutant-2"
+  ],
+  "positive_check_exit": 0,
+  "positive_response": {
+    "blockers": [],
+    "checks": [],
+    "findings": [],
+    "status": "completed"
+  },
+  "positive_snapshot": "oracle"
+}

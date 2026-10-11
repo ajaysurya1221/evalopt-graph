@@ -1,0 +1,145 @@
+{
+  "initial_check_exit": 0,
+  "negative_snapshots": [],
+  "positive_check_exit": 0,
+  "positive_response": {
+    "blockers": [],
+    "checks": [],
+    "findings": [
+      {
+        "kind": "incorrect-result",
+        "path": "eligibility.py",
+        "symbol": "representatives",
+        "witness": {
+          "args": [
+            {
+              "acks": [
+                "b",
+                "c"
+              ],
+              "nodes": [
+                {
+                  "alive": true,
+                  "capacity": 0,
+                  "id": "a",
+                  "physical": "a",
+                  "rank": 9,
+                  "zone": "z1"
+                },
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "b",
+                  "physical": "b",
+                  "rank": 8,
+                  "zone": "z1"
+                },
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "c",
+                  "physical": "c",
+                  "rank": 7,
+                  "zone": "z1"
+                }
+              ],
+              "replicas": 2
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      },
+      {
+        "kind": "incorrect-result",
+        "path": "eligibility.py",
+        "symbol": "representatives",
+        "witness": {
+          "args": [
+            {
+              "acks": [
+                "a",
+                "c"
+              ],
+              "nodes": [
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "a",
+                  "physical": "host1",
+                  "rank": 9,
+                  "zone": "z1"
+                },
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "b",
+                  "physical": "host1",
+                  "rank": 8,
+                  "zone": "z1"
+                },
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "c",
+                  "physical": "c",
+                  "rank": 7,
+                  "zone": "z1"
+                }
+              ],
+              "replicas": 2
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      },
+      {
+        "kind": "incorrect-result",
+        "path": "placement.py",
+        "symbol": "choose",
+        "witness": {
+          "args": [
+            {
+              "acks": [
+                "a",
+                "c"
+              ],
+              "nodes": [
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "a",
+                  "physical": "a",
+                  "rank": 9,
+                  "zone": "z1"
+                },
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "b",
+                  "physical": "b",
+                  "rank": 8,
+                  "zone": "z1"
+                },
+                {
+                  "alive": true,
+                  "capacity": 1,
+                  "id": "c",
+                  "physical": "c",
+                  "rank": 7,
+                  "zone": "z2"
+                }
+              ],
+              "replicas": 2
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      }
+    ],
+    "status": "completed"
+  },
+  "positive_snapshot": "agent"
+}

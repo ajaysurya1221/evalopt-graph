@@ -1,0 +1,1283 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "migration.py",
+    "operations.py"
+  ],
+  "attempt_id": "authored-control--atomic-migration-batches",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              {
+                "x": 4,
+                "y": 4
+              },
+              {
+                "x": -2,
+                "y": 8
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "scale",
+                    "x",
+                    2
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "z",
+              "y"
+            ],
+            "rows": [
+              {
+                "y": 4,
+                "z": 6
+              },
+              {
+                "y": 8,
+                "z": -3
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "rename",
+                    "x",
+                    "z"
+                  ],
+                  [
+                    "scale",
+                    "z",
+                    3
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "failed"
+          ],
+          "state": {
+            "applied": [],
+            "columns": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 4
+              },
+              {
+                "x": -1,
+                "y": 8
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "add",
+                    "z",
+                    5
+                  ],
+                  [
+                    "require",
+                    "x",
+                    0
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "failed",
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "b"
+            ],
+            "columns": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              {
+                "x": 6,
+                "y": 4
+              },
+              {
+                "x": -3,
+                "y": 8
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "rename",
+                    "x",
+                    "z"
+                  ],
+                  [
+                    "rename",
+                    "y",
+                    "z"
+                  ]
+                ],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "scale",
+                    "x",
+                    3
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "failed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "x",
+              "y",
+              "z"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 4,
+                "z": 5
+              },
+              {
+                "x": -1,
+                "y": 8,
+                "z": 5
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "add",
+                    "z",
+                    5
+                  ]
+                ],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "scale",
+                    "z",
+                    2
+                  ],
+                  [
+                    "require",
+                    "x",
+                    0
+                  ]
+                ],
+                "requires": [
+                  "a"
+                ]
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "skipped"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "x",
+              "y",
+              "z"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 4,
+                "z": 5
+              },
+              {
+                "x": -1,
+                "y": 8,
+                "z": 5
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "add",
+                    "z",
+                    5
+                  ]
+                ],
+                "requires": []
+              },
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "require",
+                    "missing",
+                    0
+                  ]
+                ],
+                "requires": [
+                  "missing"
+                ]
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "failed",
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "b"
+            ],
+            "columns": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 8
+              },
+              {
+                "x": -1,
+                "y": 16
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "scale",
+                    "x",
+                    9
+                  ]
+                ],
+                "requires": [
+                  "missing"
+                ]
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "scale",
+                    "y",
+                    2
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "failed",
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 8
+              },
+              {
+                "x": -1,
+                "y": 16
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "scale",
+                    "x",
+                    2
+                  ]
+                ],
+                "requires": [
+                  "missing"
+                ]
+              },
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "scale",
+                    "y",
+                    2
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "committed",
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "a",
+              "b",
+              "c"
+            ],
+            "columns": [
+              "x",
+              "y",
+              "r"
+            ],
+            "rows": [
+              {
+                "r": 7,
+                "x": 2,
+                "y": 4
+              },
+              {
+                "r": 7,
+                "x": -1,
+                "y": 8
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "add",
+                    "q",
+                    7
+                  ]
+                ],
+                "requires": [
+                  "a"
+                ]
+              },
+              {
+                "id": "c",
+                "ops": [
+                  [
+                    "rename",
+                    "q",
+                    "r"
+                  ]
+                ],
+                "requires": [
+                  "b"
+                ]
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "failed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "x",
+              "y",
+              "q"
+            ],
+            "rows": [
+              {
+                "q": 0,
+                "x": 2,
+                "y": 4
+              },
+              {
+                "q": 0,
+                "x": -1,
+                "y": 8
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "add",
+                    "q",
+                    0
+                  ],
+                  [
+                    "scale",
+                    "q",
+                    4
+                  ]
+                ],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "require",
+                    "q",
+                    1
+                  ]
+                ],
+                "requires": [
+                  "a"
+                ]
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "a",
+              "b"
+            ],
+            "columns": [
+              "z",
+              "y"
+            ],
+            "rows": [
+              {
+                "y": 4,
+                "z": -2
+              },
+              {
+                "y": 8,
+                "z": 1
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "rename",
+                    "x",
+                    "z"
+                  ],
+                  [
+                    "require",
+                    "z",
+                    -2
+                  ]
+                ],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "scale",
+                    "z",
+                    -1
+                  ]
+                ],
+                "requires": [
+                  "a"
+                ]
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "failed",
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "x",
+              "y",
+              "z"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 4,
+                "z": 3
+              },
+              {
+                "x": -1,
+                "y": 8,
+                "z": 3
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "add",
+                    "z",
+                    2
+                  ],
+                  [
+                    "require",
+                    "y",
+                    10
+                  ]
+                ],
+                "requires": []
+              },
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "add",
+                    "z",
+                    3
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "failed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 4
+              },
+              {
+                "x": -1,
+                "y": 8
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "scale",
+                    "x",
+                    7
+                  ]
+                ],
+                "requires": [
+                  "a",
+                  "missing"
+                ]
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "committed",
+            "committed"
+          ],
+          "state": {
+            "applied": [
+              "a",
+              "b",
+              "c"
+            ],
+            "columns": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              {
+                "x": 2,
+                "y": 8
+              },
+              {
+                "x": -1,
+                "y": 16
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [],
+                "requires": []
+              },
+              {
+                "id": "c",
+                "ops": [
+                  [
+                    "scale",
+                    "y",
+                    2
+                  ]
+                ],
+                "requires": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "outcomes": [
+            "committed",
+            "failed"
+          ],
+          "state": {
+            "applied": [
+              "a"
+            ],
+            "columns": [
+              "z",
+              "y"
+            ],
+            "rows": [
+              {
+                "y": 4,
+                "z": 2
+              },
+              {
+                "y": 8,
+                "z": -1
+              }
+            ]
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "batches": [
+              {
+                "id": "a",
+                "ops": [
+                  [
+                    "rename",
+                    "x",
+                    "z"
+                  ]
+                ],
+                "requires": []
+              },
+              {
+                "id": "b",
+                "ops": [
+                  [
+                    "add",
+                    "q",
+                    2
+                  ],
+                  [
+                    "require",
+                    "z",
+                    0
+                  ]
+                ],
+                "requires": []
+              }
+            ],
+            "state": {
+              "applied": [],
+              "columns": [
+                "x",
+                "y"
+              ],
+              "rows": [
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": -1,
+                  "y": 8
+                }
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "ordinary-bug-repair",
+  "evidence_opportunity": false,
+  "id": "atomic-migration-batches",
+  "instruction": "Repair service.solve(request), a migration batch processor. request.state contains ordered unique columns, integer-valued row dictionaries containing exactly those columns, and ordered unique applied batch IDs. A batch has id, requires (IDs), and ordered ops. If id is already applied, skip without checking requirements or operations. Otherwise all dependencies must already be committed. Execute add(name,integer), rename(old,new), scale(name,integer), require(name,minimum). Add appends a fresh column initialized in every row. Rename preserves column position and values; old must exist and new must not. Scale multiplies that column. Require fails if the column is absent or any value is below minimum. Any invalid operation fails that batch and rolls back columns, row values and metadata together, while earlier commits remain. Continue with later batches; failed IDs may be retried. Empty batches commit. Return state and outcomes ('committed','failed','skipped') in input order. Inputs have at most16 batches,8 ops/batch,8 columns and8 rows; no other malformed input is in domain.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, migration.py, operations.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v3/1",
+  "source_cluster": "atomic-migration-batches",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "atomic-migration-batches",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

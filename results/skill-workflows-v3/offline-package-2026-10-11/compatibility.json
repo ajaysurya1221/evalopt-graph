@@ -1,0 +1,104 @@
+{
+  "candidate_execution_performed": false,
+  "legacy_kernel_checks": {
+    "retained_log_sha256": "be54c0ebbdc54e2ec2ba3c02cb5af7df535c7d590a839a539003619bd2bd8967",
+    "skip_scope": "Eight legacy explicit-prerequisite tests were skipped; this group is not represented as zero-skips.",
+    "skipped": 8,
+    "status": "PASS"
+  },
+  "public_replays": {
+    "v1-heldout": {
+      "result": {
+        "asset_mode_scope": "Declared POSIX asset modes restored in a temporary hash-verified copy because Git does not preserve non-executable permission bits; checkout and frozen evidence bytes unchanged.",
+        "candidate_execution_performed": false,
+        "heldout": {
+          "bundle_id": "6e6047ae3e4561c8b011e6bfcdc8756959332cad56ec5b9a03d348209d25effa",
+          "candidate_execution_performed": false,
+          "declared_unavailable_trials": 0,
+          "grade_records_replayed": 432,
+          "independent_replication": false,
+          "network_publication_performed": false,
+          "policy_analysis_reproduced": true,
+          "released_tasks": 48,
+          "scheduled_trials": 432,
+          "schema_version": "evalopt.heldout-public-verification.v1",
+          "sensitive_scan_passed": true
+        },
+        "independent_replication": false,
+        "network_publication_performed": false,
+        "operational_note_scope": "File identities verified; private incident reconstruction is not independently reexecuted by public replay.",
+        "release_bundle_id": "abacaacbe48ac0adaa8476778815915ff54671c7dbaacc8d23edbbe059568e4c",
+        "schema_version": "evalopt.heldout-release-replay.v1"
+      },
+      "retained_output_sha256": "b8df5ac42453fe9192685f6ae0d8bea75650300287b31ecbd9e807d9efc571d2"
+    },
+    "v1-semantic-audit": {
+      "result": {
+        "audited_rows": 45,
+        "original_trials": 432,
+        "outputs": {
+          "report.json": "8f445f434f4ae7bdf2bc5c1d2b60af34b80a8f745a9223666632ca519700a743",
+          "row-ledger.json": "bc51ad1aaa2f65094ad950278f1b10db4447c9067b1b3548ea41d1b3683fdeed"
+        },
+        "release_id": "812499ebaa027767f34aa4b1ac3967e24af475a9f3862123c1c1acf666f2fd3c",
+        "reproduction_executes_candidates": false,
+        "scenarios": [
+          "exclude_all_five_families",
+          "original_frozen",
+          "supplemental_diagnostic",
+          "trace_only_adjudicated"
+        ],
+        "schema_version": "evalopt.semantic-audit-reproduction.v1",
+        "unchanged_rows": 387
+      },
+      "retained_output_sha256": "6c9e6d0aceb27719306f75bbdaaf2e6625cd55d1a4d136f38e93f9ff94de2351"
+    },
+    "v1-transfer": {
+      "result": {
+        "candidate_execution_performed": false,
+        "executed_attempts": 58,
+        "independent_replication": false,
+        "network_publication_performed": false,
+        "operational_note_scope": "File identities verified; private raw bytes, process observations and controller-journal reconstruction are not independently reexecuted by public replay.",
+        "release_bundle_id": "aa07c944c232bbb18f88c29484c54ee3e54804fc4801faf406b136bd906fe596",
+        "scheduled_trials": 72,
+        "schema_version": "evalopt.transfer-release-replay.v1",
+        "transfer": {
+          "attempts_verified": 58,
+          "bundle_id": "6ac536cef0fa72f52dfd066e3c45861a61c5044ca3c7d0e82166b6ab1837e62d",
+          "files": 306,
+          "network_publication_performed": false,
+          "original_verifier_reexecuted": false,
+          "policy_replay": "not applicable; no U/M/G",
+          "raw_archives_included": false,
+          "reward_analysis_reproduced": true,
+          "schema_version": "evalopt.transfer-public-verification.v1",
+          "sensitive_scan_passed": true
+        },
+        "unstarted_rows": 14
+      },
+      "retained_output_sha256": "184451d47fd4da6a3a84a475cf056cd7d408c6c0bc099ee9b3834d02c91b08ff"
+    },
+    "v2-development-revision": {
+      "result": {
+        "finalized_rows": 48,
+        "gate": {
+          "disputed_tasks": [],
+          "evidence_level": "difficulty headroom control; not a power calculation",
+          "next": "development_not_ready",
+          "ready": false,
+          "recorded": 48,
+          "scheduled": 48,
+          "upstream_successes": 11
+        },
+        "retained_attempts": 48,
+        "scope": "public projection consistency only; no candidate execution or live replication",
+        "status": "PASS",
+        "unknown_outcomes": 0
+      },
+      "retained_output_sha256": "8cb1b0ddff7824c619b52da220ea4ea76496453d0c717fd6900bb3ce54bc1daf"
+    }
+  },
+  "schema_version": "evalopt-workflows-v3/offline-package/1",
+  "scope": "Four previously published replayers reproduced their retained public reports unchanged. Original candidates, verifiers, private custody and live model trials were not rerun."
+}

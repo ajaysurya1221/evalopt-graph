@@ -1,0 +1,21 @@
+model = "gpt-6-astra"
+model_reasoning_effort = "ultra"
+forced_login_method = "chatgpt"
+web_search = "disabled"
+check_for_update_on_startup = false
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 2
+max_depth = 1
+default_subagent_model = "gpt-6-astra"
+default_subagent_reasoning_effort = "ultra"
+
+[features]
+multi_agent = true
+multi_agent_v2 = false
+apps = false
+skill_mcp_dependency_install = false
+
+[analytics]
+enabled = false

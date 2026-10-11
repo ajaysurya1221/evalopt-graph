@@ -1,0 +1,86 @@
+[
+  {
+    "id": "chunked-quoted-rows",
+    "category": "ordinary-bug-repair",
+    "split": "development",
+    "source_cluster": "chunked-quoted-rows",
+    "evidence_opportunity": true
+  },
+  {
+    "id": "lexicographic-shortest-route",
+    "category": "ordinary-bug-repair",
+    "split": "development",
+    "source_cluster": "lexicographic-shortest-route",
+    "evidence_opportunity": false
+  },
+  {
+    "id": "largest-remainder-seats",
+    "category": "bounded-implementation",
+    "split": "development",
+    "source_cluster": "largest-remainder-seats",
+    "evidence_opportunity": false
+  },
+  {
+    "id": "revision-tombstone-fold",
+    "category": "bounded-implementation",
+    "split": "development",
+    "source_cluster": "revision-tombstone-fold",
+    "evidence_opportunity": false
+  },
+  {
+    "id": "review-query-decoding",
+    "category": "committed-patch-review",
+    "split": "development",
+    "source_cluster": "review-query-decoding",
+    "evidence_opportunity": true
+  },
+  {
+    "id": "review-bit-window",
+    "category": "committed-patch-review",
+    "split": "development",
+    "source_cluster": "review-bit-window",
+    "evidence_opportunity": false
+  },
+  {
+    "id": "review-template-values",
+    "category": "mixed-workspace-review",
+    "split": "development",
+    "source_cluster": "review-template-values",
+    "evidence_opportunity": true
+  },
+  {
+    "id": "review-padded-pairing",
+    "category": "mixed-workspace-review",
+    "split": "development",
+    "source_cluster": "review-padded-pairing",
+    "evidence_opportunity": false
+  },
+  {
+    "id": "bounded-run-expansion",
+    "category": "constraint-preservation",
+    "split": "development",
+    "source_cluster": "bounded-run-expansion",
+    "evidence_opportunity": false
+  },
+  {
+    "id": "exact-rational-accumulator",
+    "category": "constraint-preservation",
+    "split": "development",
+    "source_cluster": "exact-rational-accumulator",
+    "evidence_opportunity": false
+  },
+  {
+    "id": "signed-hex-offset-contract",
+    "category": "unavailable-or-misleading-evidence",
+    "split": "development",
+    "source_cluster": "signed-hex-offset-contract",
+    "evidence_opportunity": true
+  },
+  {
+    "id": "unavailable-cross-worker-replay",
+    "category": "unavailable-or-misleading-evidence",
+    "split": "development",
+    "source_cluster": "unavailable-cross-worker-replay",
+    "evidence_opportunity": true
+  }
+]

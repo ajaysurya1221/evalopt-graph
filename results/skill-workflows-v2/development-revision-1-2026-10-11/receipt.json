@@ -1,0 +1,22 @@
+{
+  "controls_passed": true,
+  "development_revision": 1,
+  "endpoint_audit_sha256": "4c4bff482b771034f54adb3eb4d49e52ebfce16758b0d837317fc393d81ab279",
+  "native_replay_review_sha256": "2ae98beab63b6436eaf4566c1619a29147f8281e10627a4f79b2040d6ddf3fea",
+  "preservation_manifest_sha256": "66a03f6a47392f1f6c904582cff4d21540b7144263b2a2770ba09896dbd8dccb",
+  "registration_artifact": "results/skill-workflows-v2/development-revision-1-registration-2026-10-11/registration.json",
+  "registration_sha256": "d792728a37e4d1725f8d9d68b5a0bea9ab9bdeb86942afe53eddb68e370cfd62",
+  "report_canonical_sha256": "2e505d3e74613a5a813fb99c950a2ac793b11ee40db093d1d5532fd90ba730ea",
+  "report_sha256": "2e505d3e74613a5a813fb99c950a2ac793b11ee40db093d1d5532fd90ba730ea",
+  "schema_version": "evalopt.v2-development-publication.v1",
+  "source_hashes": {
+    "bench/harbor/skill-workflows-v2/evalopt_v2/__init__.py": "9a26eaadb1dad00bff3e2bf6b1f963b0a65844aab4acb8ba1f0c456c2d5a9423",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/accounting.py": "4307494dbf0bbe81338ba9c453a7d23aba6241383b57fdca5756f0ccdc1fcb28",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/analysis.py": "2bb38004b30983979a2771a284b3c8b9521fdeff806884ea16954058f91dae94",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/descriptive.py": "9a932eba19522a17e721e3ece0f05368055ae6923912b353e8e5b7755b73a101",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/framing.py": "bb3ea36833f02c5e436630c5f6744b3eac35990ed771aeb84ed76c474d0cf928",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/records.py": "495aebd99e1a4b7168fce26e4d645f44e55238b8bc3b8f7f1bb75fbfd7902287",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/registration.py": "264349b23298be75c6695c9cea4bac77a64b815903355fa0ff8a8c889cfa50f8"
+  },
+  "superiority_claim_allowed": false
+}

@@ -1,0 +1,208 @@
+{
+  "schema_version": "evalopt.v2-authored-controls.v1",
+  "tasks": [
+    {
+      "task_id": "chunked-quoted-rows",
+      "checks": [
+        "every-oracle-case",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "negative-snapshot:agent",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 8,
+      "case_count": 10,
+      "task_source_sha256": "ccdbe970aa3d4254654c84e2f40aea7063d95b7743c76db4dcf1c2d5ab3400e0"
+    },
+    {
+      "task_id": "lexicographic-shortest-route",
+      "checks": [
+        "every-oracle-case",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "negative-snapshot:agent",
+        "negative-snapshot:mutant",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 9,
+      "case_count": 6,
+      "task_source_sha256": "da0284131a894e0a4c6a08de251b983cde5ecf846aae1d4ff7d2fa3892f6e97a"
+    },
+    {
+      "task_id": "largest-remainder-seats",
+      "checks": [
+        "every-oracle-case",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "negative-snapshot:agent",
+        "negative-snapshot:mutant",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 9,
+      "case_count": 9,
+      "task_source_sha256": "8f9bfc9932cee320f722ef88bba79c061fb8bad9baa60a999f78a46d800f3aa6"
+    },
+    {
+      "task_id": "revision-tombstone-fold",
+      "checks": [
+        "every-oracle-case",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "negative-snapshot:agent",
+        "negative-snapshot:mutant",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 9,
+      "case_count": 6,
+      "task_source_sha256": "694c5982f6119659543ce79e3174bffe4974b654d1cd17dfc05aec6173fef7eb"
+    },
+    {
+      "task_id": "review-query-decoding",
+      "checks": [
+        "finite-baseline-contract",
+        "finite-candidate-contract",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "false-command-claim",
+        "negative-response",
+        "extra-unsupported-finding",
+        "duplicate-supported-neutral",
+        "boundary-violation"
+      ],
+      "passed": 10,
+      "case_count": 11,
+      "task_source_sha256": "34065cadffb0804ad2d76eaca7c53069604922c767bf637e04ad549a5d6ea50c"
+    },
+    {
+      "task_id": "review-bit-window",
+      "checks": [
+        "finite-baseline-contract",
+        "finite-candidate-contract",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 8,
+      "case_count": 25,
+      "task_source_sha256": "1272bf6c569292671f8e2f445d69ecbc3b8df4f5120da0da20864b724759fb6b"
+    },
+    {
+      "task_id": "review-template-values",
+      "checks": [
+        "finite-baseline-contract",
+        "finite-candidate-contract",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "false-command-claim",
+        "negative-response",
+        "extra-unsupported-finding",
+        "duplicate-supported-neutral",
+        "boundary-violation"
+      ],
+      "passed": 10,
+      "case_count": 5,
+      "task_source_sha256": "9464a46c10ae93adb84326d742311804789bbed09cfb9ea95bb0a83eb7993062"
+    },
+    {
+      "task_id": "review-padded-pairing",
+      "checks": [
+        "finite-baseline-contract",
+        "finite-candidate-contract",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 8,
+      "case_count": 6,
+      "task_source_sha256": "c520b17852bdc6d3f485cf621e5981bd73a97463b473c43c406d499595c0602d"
+    },
+    {
+      "task_id": "bounded-run-expansion",
+      "checks": [
+        "every-oracle-case",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "negative-snapshot:agent",
+        "negative-snapshot:mutant",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 9,
+      "case_count": 9,
+      "task_source_sha256": "fa30d06d749a8e0a05f9a3f1cc32a49b46739094953b4f25752260825e2dee67"
+    },
+    {
+      "task_id": "exact-rational-accumulator",
+      "checks": [
+        "every-oracle-case",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "negative-snapshot:agent",
+        "negative-snapshot:mutant",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 9,
+      "case_count": 7,
+      "task_source_sha256": "1cdca2851cb5bfcebd8e3612e859365e03ca653501a6b056623563a85a9f1786"
+    },
+    {
+      "task_id": "signed-hex-offset-contract",
+      "checks": [
+        "every-oracle-case",
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "negative-snapshot:agent",
+        "false-command-claim",
+        "negative-response",
+        "boundary-violation"
+      ],
+      "passed": 8,
+      "case_count": 9,
+      "task_source_sha256": "7c1ec2f3c43e32656299432c3249de9c51c942d768b164547e3bb15753b0ea9e"
+    },
+    {
+      "task_id": "unavailable-cross-worker-replay",
+      "checks": [
+        "positive-completion",
+        "positive-boundaries",
+        "actual-visible-check",
+        "false-command-claim",
+        "negative-response",
+        "wrong-blocker-resource",
+        "boundary-violation"
+      ],
+      "passed": 7,
+      "case_count": 0,
+      "task_source_sha256": "afdae6dc161baca7dfc608bebbc4da1cd7bfef60438aafad48e2b0635eeec175"
+    }
+  ],
+  "passed": 104,
+  "models_invoked": 0,
+  "isolation": "trusted-authored-fresh-process-controls"
+}

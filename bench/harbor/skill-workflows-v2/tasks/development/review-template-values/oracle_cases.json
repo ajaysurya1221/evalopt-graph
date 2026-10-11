@@ -1,0 +1,81 @@
+[
+  {
+    "request": {
+      "module": "render",
+      "function": "solve",
+      "args": [
+        "hello {x}",
+        {
+          "x": "world"
+        }
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": "hello world"
+    }
+  },
+  {
+    "request": {
+      "module": "render",
+      "function": "solve",
+      "args": [
+        "{x}",
+        {
+          "x": "{y}",
+          "y": "done"
+        }
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": "{y}"
+    }
+  },
+  {
+    "request": {
+      "module": "render",
+      "function": "solve",
+      "args": [
+        "{x}",
+        {
+          "x": "\\q"
+        }
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": "\\q"
+    }
+  },
+  {
+    "request": {
+      "module": "render",
+      "function": "solve",
+      "args": [
+        "{missing}",
+        {}
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": "{missing}"
+    }
+  },
+  {
+    "request": {
+      "module": "render",
+      "function": "solve",
+      "args": [
+        "{x}-{x}",
+        {
+          "x": "a"
+        }
+      ]
+    },
+    "expect": {
+      "kind": "return",
+      "value": "a-a"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "agent_image": "sha256:2088a1d3f04f5168c13174c30ebbf60453e2744a421f4d3337f55425f3075710",
+  "authentication": "chatgpt",
+  "model_availability": "not_probed_no_model_request",
+  "native_config_sha256": "558dfb8ac663b2249d9e3176acb3f33cd8f8af8c838b682ee9b07f55bd1e4165",
+  "subscription_permission": {
+    "kind": "subscription_permission",
+    "ordinary_usage_allowed": false,
+    "schema_version": "evalopt-workflows-v2/1",
+    "state": "exhausted"
+  },
+  "verifier_image": "sha256:37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33",
+  "versions": {
+    "codex": "0.154.0",
+    "controller": "CPython 3.13.12",
+    "harbor": "0.24.0"
+  }
+}

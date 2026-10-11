@@ -1,0 +1,73 @@
+{
+  "custody": {
+    "endpoint_audit_sha256": "4c4bff482b771034f54adb3eb4d49e52ebfce16758b0d837317fc393d81ab279",
+    "independent_endpoint_review_sha256": "2ae98beab63b6436eaf4566c1619a29147f8281e10627a4f79b2040d6ddf3fea",
+    "signed_hex_free_text_annotations": "Matched to the separately reviewed endpoint annotations and their source hashes. Omitted private prose is not independently checkable by the public arithmetic replayer.",
+    "v1_preservation_receipt_sha256": "66a03f6a47392f1f6c904582cff4d21540b7144263b2a2770ba09896dbd8dccb",
+    "v1_preservation_scope": "The existing closeout receipt reports PASS for 8852 baseline files; this publication reviewer did not rerun that preservation checker."
+  },
+  "files_sha256": {
+    "README.md": "fc05ca62640836e403610743e3dca269d6d781686b572af9c41fabab7be66870",
+    "arithmetic-review.json": "af1046f6f632f71639a61f99a84b23abe02bab1cda5fc35b3759b665fc055560",
+    "case-evidence.json": "9a155a6706ece28436fc8e584827b6096e1179697f97474e663b1020f1992778",
+    "endpoint-summary.json": "31e15d382e3f0e693b148b873cfbbaca0f50fd49d4f3d3a45972d9c029688148",
+    "inputs.json": "ba4be4d6bb81ba6b75f921c32410603edbb114b53e6cf9495064617e54d9bd3e",
+    "project_evidence.py": "c1f32572da03dc186d7970999277ebf1e783b28f823b49fe34eedab9eed52dfd",
+    "receipt.json": "f796b41632e6c254f09687891fde5ffb8ddc2bb8c4c4b5611e4313b944cacf78",
+    "report.json": "2e505d3e74613a5a813fb99c950a2ac793b11ee40db093d1d5532fd90ba730ea",
+    "reproduce.py": "11892835ce5553e0c9e207ba56f80151e85cfa940177978ac1b7a6b05471cfa1"
+  },
+  "kind": "sanitized_development_publication_review",
+  "limits": [
+    "Maintainer-run separated AI review, not independent human authorship or live-model replication.",
+    "Retained-record correspondence and arithmetic consistency do not authenticate producers cryptographically.",
+    "No candidate code, model call, Docker operation or native execution was performed by this publication review.",
+    "Review reference entries are derived roster joins; they are not executed cases or native not_run records.",
+    "Frozen grades, unsupported-success labels, nulls and disputes were not corrected or reinterpreted.",
+    "The result is development_not_ready; no superiority, efficiency, power or held-out admission claim is supported.",
+    "Fresh-environment CLI verification of the final checksum inventory remains a separate publication assembly check.",
+    "This receipt excludes itself and the subsequently assembled checksums.json from its hash inventory."
+  ],
+  "private_extractor_sha256": "4cced61c92ef971aad107244d82698a0eef9e7bd5f984ebce39fdace521f3844",
+  "projector_test_source_sha256": "1b18130fe69ced58ec176042dde954651b502b009bfd549a4c2d34ac4cb71959",
+  "registration_sha256": "d792728a37e4d1725f8d9d68b5a0bea9ab9bdeb86942afe53eddb68e370cfd62",
+  "reviewed_at": "2026-10-11T09:39:20.439872+00:00",
+  "reviewer_role": "Separated AI maintainer reviewer; not the projector author and not independent human authorship",
+  "schema_version": "evalopt.v2-publication-review.v1",
+  "verdict": "ACCEPT_SANITIZED_PROJECTION_AND_DOCUMENTED_DEVELOPMENT_RESULT",
+  "verification": {
+    "additional_reviewer_synthetic_probes": 14,
+    "all_registered_case_rosters_represented": true,
+    "all_trial_projections_recomputed_equal": true,
+    "author_synthetic_tests_independently_rerun": 14,
+    "callable_case_records": 224,
+    "completion_and_visible_command_fields_match_raw_sources": true,
+    "control_failures": 0,
+    "derived_review_reference_entries": 188,
+    "final_seals_match_independent_endpoint_review": true,
+    "full_public_report_arithmetic_rebuilt_in_isolated_python": true,
+    "hash_comparison_scope": "Per-trial provided raw artifacts and retained case records, including repeated frozen task definitions; not a count of unique files.",
+    "held_data_bytes_unchanged_during_review": true,
+    "internal_readme_links_checked": 26,
+    "partial_accounting_attempts": 8,
+    "partial_accounting_exact_totals_are_null": true,
+    "partial_accounting_reason": "owned_turn_aborted",
+    "probe_scope": [
+      "implementation and review privacy plus input immutability",
+      "categorical fields reject arbitrary private strings",
+      "per-case raw-byte seals and cross-attempt identity",
+      "foreign witness obligation rejected",
+      "mixed malformed, oversized and incorrectly typed check claims",
+      "empty and absent claims stay distinct; malformed claims cannot rewrite observations"
+    ],
+    "public_pattern_scan": "PASS: no personal absolute paths, native UUIDs or selected credential patterns in reviewed public files.",
+    "public_report_matches_both_retained_native_report_bytes": true,
+    "raw_source_hash_comparisons": 624,
+    "raw_task_bytes_match_frozen_source_manifest": true,
+    "retained_attempts_compared": 48,
+    "review_witness_records": 16,
+    "sanitization_method": "Fixed field projections and categorical allowlists, supplemented by synthetic private-string probes and actual public byte scans.",
+    "scheduled_rows_compared": 48,
+    "usage_records_match_raw_sources": true
+  }
+}

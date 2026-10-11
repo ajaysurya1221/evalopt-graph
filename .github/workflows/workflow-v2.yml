@@ -1,0 +1,49 @@
+name: Workflow v2
+
+on:
+  push:
+    branches: [feat/skill-workflows-v2]
+  pull_request:
+    paths:
+      - skills/eval-opt-v2/**
+      - bench/harbor/skill-workflows-v2/**
+      - results/skill-workflows-v2/**
+      - .github/workflows/workflow-v2.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: workflow-v2-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compatibility:
+    uses: ./.github/workflows/ci.yml
+  offline:
+    name: V2 controls and v1 preservation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out full preservation history
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up exact controller Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13.12'
+      - name: Sync locked development tools
+        run: |
+          python -m pip install --disable-pip-version-check uv==0.11.29
+          uv sync --frozen --extra dev --python 3.13.12
+      - name: Verify every original byte and mode
+        run: uv run --frozen --extra dev python -I -B bench/harbor/skill-workflows-v2/run.py preserve
+      - name: Run independent v2 test process
+        run: uv run --frozen --extra dev python -I -B -m pytest -p no:cacheprovider -rs bench/harbor/skill-workflows-v2/tests
+      - name: Check v2 source quality
+        run: |
+          uv run --frozen --extra dev ruff check bench/harbor/skill-workflows-v2
+          uv run --frozen --extra dev ruff format --check bench/harbor/skill-workflows-v2

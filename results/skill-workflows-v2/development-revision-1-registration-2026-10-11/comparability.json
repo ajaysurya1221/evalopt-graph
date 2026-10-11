@@ -1,0 +1,27 @@
+{
+  "changed_identities": [
+    "source",
+    "controller"
+  ],
+  "development_revision": 1,
+  "live_trials_started": 0,
+  "old_attempts_imported": false,
+  "prior_registration_sha256": "4a3f1b85670651f3b52d5ec3bfa8608f41fe1d227cc2cb56df8627a5b3880ccd",
+  "registration_sha256": "d792728a37e4d1725f8d9d68b5a0bea9ab9bdeb86942afe53eddb68e370cfd62",
+  "runtime_unchanged": true,
+  "same_ordered_48_row_schedule": true,
+  "scope": "Preregistration; controller address allocation and predecessor admission changed prospectively. Original evidence is preserved, no model execution here.",
+  "status": "PASS",
+  "unchanged_identities": {
+    "agent_image": "2088a1d3f04f5168c13174c30ebbf60453e2744a421f4d3337f55425f3075710",
+    "analysis": "25e3af90fb0f83e3e434a0321a3da523b572784f77692ffb42d7882636bbd76e",
+    "continuation_policy": "bc41481869fd11a721d6785dda075579050a0b7fa9abc226469dba3a29fcb371",
+    "grader": "3f495262e7f36cdc446b1c9404bae182b09d37db9fb8bea7071fc1636d0071a7",
+    "parser": "b16813f87fbf9f28c22d396bffa08c2353fd5c8c7f5a714efa42494fab7710c6",
+    "skill_c": "d81eff08d040314783239f58c3583db3c2620710bf8c4848c82c3c32554c9a94",
+    "skill_d": "575d95bb65c55960e273394866220a687d8f97598094d0c50bbfab97dc1869ae",
+    "tasks": "3d06c0db3a1824e27a66f0c6c515890acbfe2b34b041908e024418705867acb5",
+    "upstream": "a1683add4b0cb3ae4f25fae2471c260d7c33847c2711336adb10a2c4d4213253",
+    "verifier_image": "37412af07bfd6a95db6c891f1d57bc2cff0fd569d1e23fcf5af86f1f32eb1d33"
+  }
+}

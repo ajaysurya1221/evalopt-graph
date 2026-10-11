@@ -1,0 +1,11 @@
+{
+  "README.md": "567b420299faf7d94018c0dad1972f30ef3578c8a2f13775c4eee1a99c9a06cd",
+  "compatibility.json": "2c3854ba252f4722ad934e79cd27227e238b6e00cca2d8ef97d050ef6012a5a8",
+  "controls.json": "db328ddf40cf5018eead3943676787eed6723a094856ac51fdd3fb27cf31d5b9",
+  "development-task-controls.json": "06f9ed794dd1e3b86e81cc2f238336af2e3d439d49155dd5b86bdad2dd73ca68",
+  "reproduce.py": "b2c76f7245bcf8b3bebfd1b8c8346459bf2210eb9d53ed0b23a617ae1210f1ce",
+  "review.json": "04dedb49aa2ce78422b131309a8c05a9af0e0920f642f2d3fef8fa89076570d1",
+  "review.md": "2855c12c02b95d9163d76bf49b97656037e021defac50fd2e9a6c670750ab9ce",
+  "validation.json": "020090da3f3e74b133cc092c5fd7543121bad6dd59d80fcb8a3a3ab4e38bb838",
+  "wheel.json": "fb79bd3927099ab83bb753d0b2003742e3dd9471cb129ebcc8707b1a6c2322ba"
+}

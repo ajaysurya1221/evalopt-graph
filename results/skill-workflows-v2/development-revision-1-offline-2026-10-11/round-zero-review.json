@@ -1,0 +1,33 @@
+{
+  "checks": [
+    "Public standard-library reproduce.py passed: 48 scheduled, 3 finalized, 1 unfinalized, 44 unstarted, 45 unknown, difficulty gate false.",
+    "Public report bytes equal original frozen private report exactly.",
+    "Independently reran frozen private replay with process execution restricted to read-only Git; report matched public report and retained native/grading/boundary replay passed.",
+    "All 990 original campaign files matched preserved modes, sizes and SHA-256; actual file roster exactly equals preservation manifest.",
+    "All published ledger start/final/grade/usage/failure hashes matched original attempt files.",
+    "All finalized usage, outcome, controller timing and U/M/G projections matched retained records. Unfinalized usage stays null/unavailable.",
+    "Read the network default-pool probe: daemon refused allocation; README distinguishes later pool-exhaustion confirmation from the unretained original exception text.",
+    "Public privacy checks found no personal paths, credential-like values, native UUIDs, native account/thread/response identifiers, or internal reviewer identities.",
+    "Prospective revision remains separate. Original registration/source identities and attempt numbering are not replaced."
+  ],
+  "findings": [],
+  "limits": [
+    "Review is separated AI review within a maintainer-run study, not independent human replication.",
+    "Public projections reproduce arithmetic and source-bound analysis, not private raw observation custody or model behavior.",
+    "No workflow comparison or improvement claim is supported; all three finalized rows concern one blocker task.",
+    "The historical public replayer depends on the six pinned analysis source files remaining available unchanged. A future change requires an immutable original-analysis copy rather than updating historical hashes.",
+    "No campaign source, raw evidence, historical container, network, or public package was modified by this reviewer."
+  ],
+  "public_hashes": {
+    "README.md": "4e6675cf4b1bc56d578de1b1b2c97305964066d99e14e6d9f1f6de2e9e03bce7",
+    "checksums.json": "f408a8ec0aafe91b906f428f3836a60b293f548004a0ce7cb2b37daf072434d6",
+    "inputs.json": "4e7ccfc8ca372a070645661b9e54de5010056476c709e9074aaa554d4662a95c",
+    "receipt.json": "8a1d54eef3430a51408e587e29b6b8c8b3be2effc368d88aba5104cf64f619b1",
+    "report.json": "5c94b9f3baa3ebd000b97e84238f6aa5bcc12a35c6c3bea8612a8746805a7e1f",
+    "reproduce.py": "992ee4bc21ddc54f33c0c98c335d3a39607a5a9e6d662e3f23285ec6aa3b2377"
+  },
+  "registration_sha256": "4a3f1b85670651f3b52d5ec3bfa8608f41fe1d227cc2cb56df8627a5b3880ccd",
+  "schema_version": "evalopt.v2-stopped-round-publication-review.v1",
+  "scope": "Read-only review of original stopped development round public projections; no revised-round approval or live performance claim.",
+  "verdict": "ACCEPT"
+}

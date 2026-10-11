@@ -1,0 +1,69 @@
+{
+  "conclusion": "instrument_limited_reporting_and_review_labels",
+  "corrected_aggregate_assigned": false,
+  "exact_initial_check_projections": 16,
+  "implementation_nonempty_findings": 2,
+  "interpretation_limits": [
+    "Original metrics remain unchanged; this companion is a diagnosis, not regrading.",
+    "False claims_supported values do not establish inaccurate supplied-check reporting.",
+    "The four review failures do not demonstrate missed or unsupported defects.",
+    "The original unsupported_success false values are shape-gated defaults, not proof of absent unsupported prose claims.",
+    "Public projection arithmetic cannot authenticate or independently verify the retained native execution."
+  ],
+  "invalid_present_status": 1,
+  "larger_benchmark_authorized": false,
+  "missing_blockers": 16,
+  "missing_status": 14,
+  "ordinary_original_functional_successes": 8,
+  "ordinary_trials": 8,
+  "original_functional_successes": 12,
+  "parsed_responses": 16,
+  "registration_sha256": "f19253f9e47586e6568c37b112a584a1479ecdff4b8e69d1aafa54208d17b569",
+  "schema_version": "evalopt.v3.reporting-diagnosis-summary.v1",
+  "shape_gated_review_rows": [
+    {
+      "covered_obligations": [
+        "failure-domain-diversity",
+        "physical-node-uniqueness",
+        "zero-capacity-eligibility"
+      ],
+      "new_grade_assigned": false,
+      "official_functional_success": false,
+      "supported_witnesses": 3,
+      "trial_id": "difficulty--replica-placement-quorums--r2--B"
+    },
+    {
+      "covered_obligations": [
+        "applicable-range-precedence",
+        "parameter-applicability"
+      ],
+      "new_grade_assigned": false,
+      "official_functional_success": false,
+      "supported_witnesses": 6,
+      "trial_id": "difficulty--media-range-precedence--r1--B"
+    },
+    {
+      "covered_obligations": [
+        "failure-domain-diversity",
+        "physical-node-uniqueness",
+        "zero-capacity-eligibility"
+      ],
+      "new_grade_assigned": false,
+      "official_functional_success": false,
+      "supported_witnesses": 3,
+      "trial_id": "difficulty--replica-placement-quorums--r1--B"
+    },
+    {
+      "covered_obligations": [
+        "applicable-range-precedence",
+        "parameter-applicability"
+      ],
+      "new_grade_assigned": false,
+      "official_functional_success": false,
+      "supported_witnesses": 6,
+      "trial_id": "difficulty--media-range-precedence--r2--B"
+    }
+  ],
+  "trials": 16,
+  "undeclared_envelopes": 16
+}

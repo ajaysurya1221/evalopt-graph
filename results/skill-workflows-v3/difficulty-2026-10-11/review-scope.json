@@ -1,0 +1,30 @@
+{
+  "actual_review_sha256": "6969a48cda568059010ecca4eeb00d49588b47da2623e89950450c42c877b917",
+  "additional_trials_authorized": false,
+  "case_container_closures": 214,
+  "correction_applied_to_campaign": false,
+  "diagnosis_receipt_sha256": "5b0273819f3fdfeb2036c63f947165868fec71780036232a14f7a04633b98191",
+  "directories_checked": 2921,
+  "directory_inventory_sha256": "b8aa221853233a16a545ea2c15d632a02c609c813a4b0a1bf7de0fadfb4c8d17",
+  "endpoint_audit_sha256": "6f02e82049a20691050857b8077ec44753089e4e225ba3106dd7f732284682b0",
+  "file_inventory_sha256": "07f67f360405141dd6fa4f9b87cefeba5a963017046b3ec180638fd593e0f8cc",
+  "files_checked": 5771,
+  "finalized_attempts": 16,
+  "network_releases": 16,
+  "not_established": [
+    "task difficulty",
+    "workflow superiority",
+    "independent human authorship",
+    "independent live replication",
+    "producer authentication"
+  ],
+  "report_sha256": "72fc43ebfcfa81230f8a11d3d44219f098db9b62e95623d9abf781dee7652270",
+  "review_role": "Separate AI reviewer; maintainer-run study",
+  "schema_version": "evalopt.v3-difficulty-review-scope.v1",
+  "scope": [
+    "Unchanged bytes, immutable seals, original schedule, runtime identity, phase correspondence, lifecycle and accounting",
+    "Frozen native report and independent gate arithmetic",
+    "Raw reporting and four review labels are instrument-limited; semantic misses and false check claims are not established"
+  ],
+  "verdict": "ACCEPT_RETAINED_CONSISTENCY_ONLY"
+}

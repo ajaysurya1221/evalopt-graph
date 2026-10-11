@@ -1,0 +1,20 @@
+{
+  "diagnosis_sha256": "84520f038a8f6e601fec083cc9acebd122ffa8d71390e96da07918ef84511617",
+  "inputs_sha256": "bd15a7940b439e8db5888cc79c8c2aba22298c6230952a18dce57301eb118703",
+  "limits": [
+    "Reproduction checks public projection consistency and arithmetic, not native execution authenticity.",
+    "No response repaired, grade replaced or corrected aggregate assigned.",
+    "Reporting and review labels are instrument-limited; no genuine semantic-miss or inaccurate initial-check claim is inferred.",
+    "No comparative result, upgrade claim or larger campaign authorization."
+  ],
+  "original_native_report_sha256": "72fc43ebfcfa81230f8a11d3d44219f098db9b62e95623d9abf781dee7652270",
+  "private_diagnosis_receipt_sha256": "5b0273819f3fdfeb2036c63f947165868fec71780036232a14f7a04633b98191",
+  "private_diagnosis_sha256": "3e6b829c431b5f3e604a9a35cb6a86b3f79820e67dc1e10a9a3f8753ed9e0eab",
+  "projection_rows": 16,
+  "projection_scope": "Allowlisted per-trial typed facts and retained finite witness support/coverage; no native artifact names, native IDs, host paths, raw requests, values or response prose.",
+  "projection_script_sha256": "30a2fe4cfeebebb19b2c27c253154be649d72a4c2990ebd0a8f3f4dc523ce935",
+  "registration_sha256": "f19253f9e47586e6568c37b112a584a1479ecdff4b8e69d1aafa54208d17b569",
+  "schema_version": "evalopt.v3.reporting-diagnosis-correspondence.v1",
+  "source_correspondence": "Each projected field is copied from the separately retained read-only diagnosis, whose script verified original final seals, frozen oracle correspondence and native prompt/final bytes. The accepted original report remains separate and unchanged.",
+  "status": "PROJECTED_FOR_REVIEW"
+}

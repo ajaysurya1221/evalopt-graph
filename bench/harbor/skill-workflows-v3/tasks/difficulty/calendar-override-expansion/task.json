@@ -1,0 +1,857 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "recurrence.py",
+    "zones.py",
+    "overrides.py"
+  ],
+  "attempt_id": "authored-control--calendar-override-expansion",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 0
+          },
+          {
+            "id": 1,
+            "utc": 20
+          },
+          {
+            "id": 2,
+            "utc": 40
+          },
+          {
+            "id": 3,
+            "utc": 60
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {},
+            "start": 0,
+            "step": 20,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 0
+          },
+          {
+            "id": 2,
+            "utc": 40
+          },
+          {
+            "id": 3,
+            "utc": 60
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [
+              1
+            ],
+            "count": 4,
+            "replace": {},
+            "start": 0,
+            "step": 20,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 200
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {
+              "0": 200
+            },
+            "start": 0,
+            "step": 20,
+            "window": [
+              180,
+              220
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 0
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {
+              "0": 0
+            },
+            "start": 200,
+            "step": 20,
+            "window": [
+              -10,
+              20
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 0
+          },
+          {
+            "id": 2,
+            "utc": 40
+          },
+          {
+            "id": 3,
+            "utc": 60
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [
+              1
+            ],
+            "count": 4,
+            "replace": {
+              "1": 40
+            },
+            "start": 0,
+            "step": 20,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 40
+          },
+          {
+            "id": 1,
+            "utc": 50
+          },
+          {
+            "id": 2,
+            "utc": 60
+          },
+          {
+            "id": 3,
+            "utc": 70
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {},
+            "start": 40,
+            "step": 10,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 50,
+                "lo": -500,
+                "offset": 0
+              },
+              {
+                "hi": 500,
+                "lo": 50,
+                "offset": 30
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 10
+          },
+          {
+            "id": 1,
+            "utc": 20
+          },
+          {
+            "id": 2,
+            "utc": 30
+          },
+          {
+            "id": 3,
+            "utc": 40
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {},
+            "start": 40,
+            "step": 10,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 50,
+                "lo": -500,
+                "offset": 30
+              },
+              {
+                "hi": 500,
+                "lo": 50,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 10
+          },
+          {
+            "id": 1,
+            "utc": 20
+          },
+          {
+            "id": 3,
+            "utc": 25
+          },
+          {
+            "id": 2,
+            "utc": 30
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {
+              "3": 55
+            },
+            "start": 40,
+            "step": 10,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 50,
+                "lo": -500,
+                "offset": 30
+              },
+              {
+                "hi": 500,
+                "lo": 50,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": []
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 0,
+            "replace": {},
+            "start": 0,
+            "step": 20,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 40
+          },
+          {
+            "id": 1,
+            "utc": 40
+          },
+          {
+            "id": 2,
+            "utc": 40
+          },
+          {
+            "id": 3,
+            "utc": 60
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {
+              "0": 40,
+              "1": 40
+            },
+            "start": 0,
+            "step": 20,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 1,
+            "utc": 20
+          },
+          {
+            "id": 2,
+            "utc": 40
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {},
+            "start": 0,
+            "step": 20,
+            "window": [
+              20,
+              60
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 49
+          },
+          {
+            "id": 1,
+            "utc": 50
+          },
+          {
+            "id": 2,
+            "utc": 51
+          },
+          {
+            "id": 3,
+            "utc": 52
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {},
+            "start": 49,
+            "step": 1,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 50,
+                "lo": -500,
+                "offset": 0
+              },
+              {
+                "hi": 500,
+                "lo": 50,
+                "offset": 30
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 49
+          },
+          {
+            "id": 1,
+            "utc": 80
+          },
+          {
+            "id": 2,
+            "utc": 81
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 3,
+            "replace": {},
+            "start": 79,
+            "step": 1,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 50,
+                "lo": -500,
+                "offset": 30
+              },
+              {
+                "hi": 500,
+                "lo": 50,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 1,
+            "utc": 56
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [
+              0
+            ],
+            "count": 2,
+            "replace": {},
+            "start": 55,
+            "step": 1,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 50,
+                "lo": -500,
+                "offset": 0
+              },
+              {
+                "hi": 500,
+                "lo": 50,
+                "offset": 30
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 3,
+            "replace": {},
+            "start": 480,
+            "step": 20,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 10
+          },
+          {
+            "id": 1,
+            "utc": 30
+          },
+          {
+            "id": 2,
+            "utc": 50
+          },
+          {
+            "id": 3,
+            "utc": 70
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 4,
+            "replace": {
+              "9": 0
+            },
+            "start": 10,
+            "step": 20,
+            "window": [
+              -100,
+              300
+            ],
+            "zones": [
+              {
+                "hi": 500,
+                "lo": -500,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-17",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 1,
+            "replace": {},
+            "start": 20,
+            "step": 1,
+            "window": [
+              -500,
+              500
+            ],
+            "zones": [
+              {
+                "hi": 0,
+                "lo": -10,
+                "offset": 0
+              },
+              {
+                "hi": 5,
+                "lo": 0,
+                "offset": 100
+              },
+              {
+                "hi": 10,
+                "lo": 5,
+                "offset": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-18",
+      "expect": {
+        "kind": "return",
+        "value": [
+          {
+            "id": 0,
+            "utc": 8
+          }
+        ]
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": [],
+            "count": 1,
+            "replace": {},
+            "start": 8,
+            "step": 1,
+            "window": [
+              -500,
+              500
+            ],
+            "zones": [
+              {
+                "hi": 0,
+                "lo": -10,
+                "offset": 0
+              },
+              {
+                "hi": 5,
+                "lo": 0,
+                "offset": 10
+              },
+              {
+                "hi": 50,
+                "lo": 5,
+                "offset": 20
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "ordinary-bug-repair",
+  "evidence_opportunity": false,
+  "id": "calendar-override-expansion",
+  "instruction": "Repair service.solve(q). This self-contained calendar uses integer civil minutes, not external timezone rules. Generate count nominal occurrences (id i, local time start+i*step), with step>0 and count<=16. IDs always refer to this original counted sequence. Cancel removes IDs; cancellation wins over replacement. replace maps decimal ID strings to new local times; out-of-range IDs are ignored. Apply cancellation/replacement before filtering. zones is an ordered contiguous partition of UTC integer minutes [lo,hi), each with an integer offset; civil=UTC+offset. If multiple UTC values represent a local minute choose the earliest. For a nonexistent civil minute, choose the first forward-offset transition in UTC interval order whose civil gap contains it, shift forward by that gap width, and resolve the shifted civil minute again. Repeat until a supported UTC representation is found; direct representations always take precedence over gaps. If no direct representation or applicable gap exists, raise ValueError, including after a shift. Convert every retained event, then include it iff UTC is in the half-open window; return [{id,utc}], sorted by UTC then ID. Converting a retained unsupported time raises even if the window would exclude it. No source argument may change. UTC zone range is within[-500,500], at most4 intervals; all other input shapes are valid.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, recurrence.py, zones.py, overrides.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v3/1",
+  "source_cluster": "calendar-override-expansion",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "calendar-override-expansion",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

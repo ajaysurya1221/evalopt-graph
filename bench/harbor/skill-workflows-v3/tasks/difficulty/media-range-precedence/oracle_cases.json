@@ -1,0 +1,443 @@
+[
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": 0,
+        "quality": 1000
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {},
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {},
+              "q": 1000,
+              "subtype": "*",
+              "type": "*"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": null,
+        "quality": 0
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {},
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {},
+              "q": 900,
+              "subtype": "*",
+              "type": "*"
+            },
+            {
+              "params": {},
+              "q": 0,
+              "subtype": "plain",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": 0,
+        "quality": 300
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {
+                "level": "1"
+              },
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {
+                "level": "2"
+              },
+              "q": 900,
+              "subtype": "plain",
+              "type": "text"
+            },
+            {
+              "params": {},
+              "q": 300,
+              "subtype": "*",
+              "type": "*"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": 1,
+        "quality": 700
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {},
+              "subtype": "plain",
+              "type": "text"
+            },
+            {
+              "params": {},
+              "subtype": "png",
+              "type": "image"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {},
+              "q": 700,
+              "subtype": "*",
+              "type": "*"
+            },
+            {
+              "params": {},
+              "q": 200,
+              "subtype": "plain",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": 0,
+        "quality": 600
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {
+                "level": "1"
+              },
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {
+                "level": "1"
+              },
+              "q": 600,
+              "subtype": "plain",
+              "type": "text"
+            },
+            {
+              "params": {},
+              "q": 600,
+              "subtype": "plain",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": null,
+        "quality": 0
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {},
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {},
+              "q": 1000,
+              "subtype": "png",
+              "type": "image"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": 0,
+        "quality": 500
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {},
+              "subtype": "plain",
+              "type": "text"
+            },
+            {
+              "params": {},
+              "subtype": "html",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {},
+              "q": 500,
+              "subtype": "*",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": 0,
+        "quality": 100
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {},
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {},
+              "q": 100,
+              "subtype": "plain",
+              "type": "text"
+            },
+            {
+              "params": {},
+              "q": 900,
+              "subtype": "plain",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": null,
+        "quality": 0
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {
+                "a": "x",
+                "b": "y"
+              },
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {
+                "a": "x"
+              },
+              "q": 0,
+              "subtype": "plain",
+              "type": "text"
+            },
+            {
+              "params": {},
+              "q": 800,
+              "subtype": "*",
+              "type": "*"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": 0,
+        "quality": 400
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {
+                "a": "x"
+              },
+              "subtype": "plain",
+              "type": "text"
+            }
+          ],
+          "ranges": [
+            {
+              "params": {
+                "a": "x",
+                "b": "y"
+              },
+              "q": 900,
+              "subtype": "plain",
+              "type": "text"
+            },
+            {
+              "params": {},
+              "q": 400,
+              "subtype": "*",
+              "type": "*"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": null,
+        "quality": 0
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [],
+          "ranges": [
+            {
+              "params": {},
+              "q": 1000,
+              "subtype": "*",
+              "type": "*"
+            }
+          ]
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "offer": null,
+        "quality": 0
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "offers": [
+            {
+              "params": {},
+              "subtype": "png",
+              "type": "image"
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  }
+]

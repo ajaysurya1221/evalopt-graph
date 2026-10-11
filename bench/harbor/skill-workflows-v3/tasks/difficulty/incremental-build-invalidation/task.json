@@ -1,0 +1,797 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "graph.py",
+    "scheduler.py"
+  ],
+  "attempt_id": "authored-control--incremental-build-invalidation",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": false
+          },
+          "order": [
+            "a"
+          ],
+          "status": {
+            "a": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "a"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": false,
+            "b": false
+          },
+          "order": [
+            "a",
+            "b"
+          ],
+          "status": {
+            "a": "built",
+            "b": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": true,
+            "b": false
+          },
+          "order": [
+            "a",
+            "b"
+          ],
+          "status": {
+            "a": "built",
+            "b": "built"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": false,
+                "new": "b",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": true,
+            "b": false
+          },
+          "order": [
+            "a",
+            "b"
+          ],
+          "status": {
+            "a": "built",
+            "b": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": false,
+                "new": "b",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": [
+                  "a"
+                ]
+              }
+            },
+            "roots": [
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": true,
+            "b": false
+          },
+          "order": [
+            "a",
+            "b"
+          ],
+          "status": {
+            "a": "built",
+            "b": "built"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": true,
+                "dirty": false,
+                "fail": false,
+                "new": "b",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": true
+          },
+          "order": [
+            "a"
+          ],
+          "status": {
+            "a": "built"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": null,
+                "order": []
+              }
+            },
+            "roots": [
+              "a"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": false,
+            "b": false,
+            "c": false
+          },
+          "order": [
+            "a",
+            "b",
+            "c"
+          ],
+          "status": {
+            "a": "failed",
+            "b": "skipped",
+            "c": "built"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": true,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              },
+              "c": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "b",
+              "c"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": false,
+            "b": false
+          },
+          "order": [
+            "a",
+            "b"
+          ],
+          "status": {
+            "a": "failed",
+            "b": "skipped"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": true,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": [
+                  "a"
+                ]
+              }
+            },
+            "roots": [
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": false,
+            "b": false
+          },
+          "order": [
+            "a",
+            "b"
+          ],
+          "status": {
+            "a": "clean",
+            "b": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": true,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": false,
+            "b": false,
+            "z": false
+          },
+          "order": [
+            "b",
+            "z",
+            "a"
+          ],
+          "status": {
+            "a": "clean",
+            "b": "clean",
+            "z": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": [
+                  "z"
+                ]
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "z": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "a",
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": true,
+            "b": false,
+            "c": false,
+            "d": false
+          },
+          "order": [
+            "a",
+            "b",
+            "c",
+            "d"
+          ],
+          "status": {
+            "a": "built",
+            "b": "built",
+            "c": "built",
+            "d": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": false,
+                "new": "b",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              },
+              "c": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              },
+              "d": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "b",
+                  "c"
+                ],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "d"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "b"
+                ],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              },
+              "c": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "a"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "b": false
+          },
+          "order": [
+            "b"
+          ],
+          "status": {
+            "b": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [
+                  "a"
+                ],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "b"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "changed": {
+            "a": false
+          },
+          "order": [
+            "a"
+          ],
+          "status": {
+            "a": "clean"
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "jobs": {
+              "a": {
+                "config_changed": false,
+                "dirty": false,
+                "fail": false,
+                "new": "a",
+                "normal": [],
+                "old": "a",
+                "order": []
+              },
+              "b": {
+                "config_changed": false,
+                "dirty": true,
+                "fail": false,
+                "new": "b",
+                "normal": [],
+                "old": "a",
+                "order": []
+              }
+            },
+            "roots": [
+              "a"
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "bounded-implementation",
+  "evidence_opportunity": false,
+  "id": "incremental-build-invalidation",
+  "instruction": "Complete service.solve(q), an incremental build simulator. jobs maps names to {normal:[dependencies],order:[order-only dependencies],old:null|string,new:string,dirty:bool,config_changed:bool,fail:bool}; roots names select the transitive closure of both dependency classes. Only that closure matters; a cycle there raises ValueError. Repeated dependencies are permitted. Repeated roots do not repeat work. At each step choose the lexicographically first ready job; readiness requires all dependencies processed. A failed or skipped dependency of either class skips this job. Otherwise build iff old is null, dirty, config_changed, or a NORMAL dependency actually changed content. Order-only dependencies never dirty a job. A requested build with fail=true is failed; fail is ignored for clean jobs. A successful build changes content iff new != old; a rebuild producing the same content does not invalidate downstream jobs. Return execution order, per-job status(built,clean,failed,skipped), and changed booleans. No real commands run. jobs<=12; referenced jobs always exist.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, graph.py, scheduler.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v3/1",
+  "source_cluster": "incremental-build-invalidation",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "incremental-build-invalidation",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

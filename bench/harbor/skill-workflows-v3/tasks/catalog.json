@@ -1,0 +1,58 @@
+[
+  {
+    "category": "ordinary-bug-repair",
+    "evidence_opportunity": false,
+    "id": "atomic-migration-batches",
+    "source_cluster": "atomic-migration-batches",
+    "split": "difficulty"
+  },
+  {
+    "category": "ordinary-bug-repair",
+    "evidence_opportunity": false,
+    "id": "calendar-override-expansion",
+    "source_cluster": "calendar-override-expansion",
+    "split": "difficulty"
+  },
+  {
+    "category": "bounded-implementation",
+    "evidence_opportunity": false,
+    "id": "cyclic-module-exports",
+    "source_cluster": "cyclic-module-exports",
+    "split": "difficulty"
+  },
+  {
+    "category": "bounded-implementation",
+    "evidence_opportunity": false,
+    "id": "incremental-build-invalidation",
+    "source_cluster": "incremental-build-invalidation",
+    "split": "difficulty"
+  },
+  {
+    "category": "committed-patch-review",
+    "evidence_opportunity": false,
+    "id": "media-range-precedence",
+    "source_cluster": "media-range-precedence",
+    "split": "difficulty"
+  },
+  {
+    "category": "mixed-workspace-review",
+    "evidence_opportunity": false,
+    "id": "replica-placement-quorums",
+    "source_cluster": "replica-placement-quorums",
+    "split": "difficulty"
+  },
+  {
+    "category": "constraint-preservation",
+    "evidence_opportunity": false,
+    "id": "snapshot-delta-compatibility",
+    "source_cluster": "snapshot-delta-compatibility",
+    "split": "difficulty"
+  },
+  {
+    "category": "unavailable-or-misleading-evidence",
+    "evidence_opportunity": true,
+    "id": "stale-vector-distance-fixture",
+    "source_cluster": "stale-vector-distance-fixture",
+    "split": "difficulty"
+  }
+]

@@ -1,0 +1,543 @@
+{
+  "allowed_changes": [],
+  "attempt_id": "authored-control--media-range-precedence",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": 0,
+          "quality": 1000
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {},
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {},
+                "q": 1000,
+                "subtype": "*",
+                "type": "*"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": null,
+          "quality": 0
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {},
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {},
+                "q": 900,
+                "subtype": "*",
+                "type": "*"
+              },
+              {
+                "params": {},
+                "q": 0,
+                "subtype": "plain",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": 0,
+          "quality": 300
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {
+                  "level": "1"
+                },
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {
+                  "level": "2"
+                },
+                "q": 900,
+                "subtype": "plain",
+                "type": "text"
+              },
+              {
+                "params": {},
+                "q": 300,
+                "subtype": "*",
+                "type": "*"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": 1,
+          "quality": 700
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {},
+                "subtype": "plain",
+                "type": "text"
+              },
+              {
+                "params": {},
+                "subtype": "png",
+                "type": "image"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {},
+                "q": 700,
+                "subtype": "*",
+                "type": "*"
+              },
+              {
+                "params": {},
+                "q": 200,
+                "subtype": "plain",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": 0,
+          "quality": 600
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {
+                  "level": "1"
+                },
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {
+                  "level": "1"
+                },
+                "q": 600,
+                "subtype": "plain",
+                "type": "text"
+              },
+              {
+                "params": {},
+                "q": 600,
+                "subtype": "plain",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": null,
+          "quality": 0
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {},
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {},
+                "q": 1000,
+                "subtype": "png",
+                "type": "image"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": 0,
+          "quality": 500
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {},
+                "subtype": "plain",
+                "type": "text"
+              },
+              {
+                "params": {},
+                "subtype": "html",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {},
+                "q": 500,
+                "subtype": "*",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": 0,
+          "quality": 100
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {},
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {},
+                "q": 100,
+                "subtype": "plain",
+                "type": "text"
+              },
+              {
+                "params": {},
+                "q": 900,
+                "subtype": "plain",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": null,
+          "quality": 0
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {
+                  "a": "x",
+                  "b": "y"
+                },
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {
+                  "a": "x"
+                },
+                "q": 0,
+                "subtype": "plain",
+                "type": "text"
+              },
+              {
+                "params": {},
+                "q": 800,
+                "subtype": "*",
+                "type": "*"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": 0,
+          "quality": 400
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {
+                  "a": "x"
+                },
+                "subtype": "plain",
+                "type": "text"
+              }
+            ],
+            "ranges": [
+              {
+                "params": {
+                  "a": "x",
+                  "b": "y"
+                },
+                "q": 900,
+                "subtype": "plain",
+                "type": "text"
+              },
+              {
+                "params": {},
+                "q": 400,
+                "subtype": "*",
+                "type": "*"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": null,
+          "quality": 0
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [],
+            "ranges": [
+              {
+                "params": {},
+                "q": 1000,
+                "subtype": "*",
+                "type": "*"
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "offer": null,
+          "quality": 0
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "offers": [
+              {
+                "params": {},
+                "subtype": "png",
+                "type": "image"
+              }
+            ],
+            "ranges": []
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "committed-patch-review",
+  "defect_obligations": [
+    {
+      "id": "applicable-range-precedence",
+      "kinds": [
+        "incorrect-result"
+      ],
+      "path": "quality.py",
+      "supported_locations": [
+        {
+          "path": "quality.py",
+          "symbol": "effective",
+          "witness_function": "solve",
+          "witness_module": "service"
+        },
+        {
+          "path": "service.py",
+          "symbol": "solve",
+          "witness_function": "solve",
+          "witness_module": "service"
+        }
+      ],
+      "symbol": "effective",
+      "witness_case_ids": [
+        "case-02",
+        "case-04",
+        "case-08",
+        "case-09"
+      ]
+    },
+    {
+      "id": "parameter-applicability",
+      "kinds": [
+        "incorrect-result"
+      ],
+      "path": "ranges.py",
+      "supported_locations": [
+        {
+          "path": "ranges.py",
+          "symbol": "matches",
+          "witness_function": "solve",
+          "witness_module": "service"
+        },
+        {
+          "path": "service.py",
+          "symbol": "solve",
+          "witness_function": "solve",
+          "witness_module": "service"
+        }
+      ],
+      "symbol": "matches",
+      "witness_case_ids": [
+        "case-03",
+        "case-10"
+      ]
+    }
+  ],
+  "evidence_opportunity": false,
+  "id": "media-range-precedence",
+  "instruction": "Review the committed patch implementing service.solve(q), a structured media negotiation service. offers is an ordered list of {type,subtype,params}; ranges is an ordered list of {type,subtype,params,q}. Type/subtype are lowercase strings, '*' is a wildcard (a wildcard type always has wildcard subtype), params maps strings to literal strings, and q is integer0..1000. A range matches iff its type/subtype match and ALL its parameter pairs occur in the offer. For EACH offer first select the applicable range by highest specificity tuple (non-wildcard type,non-wildcard subtype,parameter count), with earlier range winning equal specificity. That range's q is the offer's effective quality, INCLUDING q=0 exclusions. No applicable range means0. Select the highest positive effective-quality offer, breaking ties by original offer order. Return {offer:index|null,quality:integer}. This is the entire authored contract; no unstated HTTP parsing/RFC requirements. Offers/ranges<=8.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: none (review only). Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n\nReview all supplied workspace layers against benchmark-base. Do not modify any file or Git metadata. The finite witness domain is exactly these requests (without expected answers):\n[{\"args\": [{\"offers\": [{\"params\": {}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {}, \"q\": 1000, \"subtype\": \"*\", \"type\": \"*\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {}, \"q\": 900, \"subtype\": \"*\", \"type\": \"*\"}, {\"params\": {}, \"q\": 0, \"subtype\": \"plain\", \"type\": \"text\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {\"level\": \"1\"}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {\"level\": \"2\"}, \"q\": 900, \"subtype\": \"plain\", \"type\": \"text\"}, {\"params\": {}, \"q\": 300, \"subtype\": \"*\", \"type\": \"*\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {}, \"subtype\": \"plain\", \"type\": \"text\"}, {\"params\": {}, \"subtype\": \"png\", \"type\": \"image\"}], \"ranges\": [{\"params\": {}, \"q\": 700, \"subtype\": \"*\", \"type\": \"*\"}, {\"params\": {}, \"q\": 200, \"subtype\": \"plain\", \"type\": \"text\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {\"level\": \"1\"}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {\"level\": \"1\"}, \"q\": 600, \"subtype\": \"plain\", \"type\": \"text\"}, {\"params\": {}, \"q\": 600, \"subtype\": \"plain\", \"type\": \"text\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {}, \"q\": 1000, \"subtype\": \"png\", \"type\": \"image\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {}, \"subtype\": \"plain\", \"type\": \"text\"}, {\"params\": {}, \"subtype\": \"html\", \"type\": \"text\"}], \"ranges\": [{\"params\": {}, \"q\": 500, \"subtype\": \"*\", \"type\": \"text\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {}, \"q\": 100, \"subtype\": \"plain\", \"type\": \"text\"}, {\"params\": {}, \"q\": 900, \"subtype\": \"plain\", \"type\": \"text\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {\"a\": \"x\", \"b\": \"y\"}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {\"a\": \"x\"}, \"q\": 0, \"subtype\": \"plain\", \"type\": \"text\"}, {\"params\": {}, \"q\": 800, \"subtype\": \"*\", \"type\": \"*\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {\"a\": \"x\"}, \"subtype\": \"plain\", \"type\": \"text\"}], \"ranges\": [{\"params\": {\"a\": \"x\", \"b\": \"y\"}, \"q\": 900, \"subtype\": \"plain\", \"type\": \"text\"}, {\"params\": {}, \"q\": 400, \"subtype\": \"*\", \"type\": \"*\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [], \"ranges\": [{\"params\": {}, \"q\": 1000, \"subtype\": \"*\", \"type\": \"*\"}]}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"offers\": [{\"params\": {}, \"subtype\": \"png\", \"type\": \"image\"}], \"ranges\": []}], \"function\": \"solve\", \"module\": \"service\"}]\nEach finding is {path:workspace-relative POSIX filename,symbol:unqualified function name,kind:incorrect-result|unexpected-exception|data-loss,witness:{module,function,args}}. The witness must equal a request in this finite domain and is data, never verifier code. Report demonstrated introduced contract violations: baseline satisfies the expectation and candidate violates it. Duplicate supported findings are neutral; unsupported findings and missed defects fail. A finding may name service.solve or the responsible helper listed in the source. Do not report stylistic preferences.\n",
+  "max_findings": 12,
+  "preserve_review_args": true,
+  "schema_version": "evalopt-workflows-v3/1",
+  "source_cluster": "media-range-precedence",
+  "split": "difficulty",
+  "task_contract": "review",
+  "task_id": "media-range-precedence",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

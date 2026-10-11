@@ -1,0 +1,85 @@
+{
+  "initial_check_exit": 0,
+  "negative_snapshots": [],
+  "positive_check_exit": 0,
+  "positive_response": {
+    "blockers": [],
+    "checks": [],
+    "findings": [
+      {
+        "kind": "incorrect-result",
+        "path": "quality.py",
+        "symbol": "effective",
+        "witness": {
+          "args": [
+            {
+              "offers": [
+                {
+                  "params": {},
+                  "subtype": "plain",
+                  "type": "text"
+                }
+              ],
+              "ranges": [
+                {
+                  "params": {},
+                  "q": 900,
+                  "subtype": "*",
+                  "type": "*"
+                },
+                {
+                  "params": {},
+                  "q": 0,
+                  "subtype": "plain",
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      },
+      {
+        "kind": "incorrect-result",
+        "path": "ranges.py",
+        "symbol": "matches",
+        "witness": {
+          "args": [
+            {
+              "offers": [
+                {
+                  "params": {
+                    "level": "1"
+                  },
+                  "subtype": "plain",
+                  "type": "text"
+                }
+              ],
+              "ranges": [
+                {
+                  "params": {
+                    "level": "2"
+                  },
+                  "q": 900,
+                  "subtype": "plain",
+                  "type": "text"
+                },
+                {
+                  "params": {},
+                  "q": 300,
+                  "subtype": "*",
+                  "type": "*"
+                }
+              ]
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      }
+    ],
+    "status": "completed"
+  },
+  "positive_snapshot": "agent"
+}

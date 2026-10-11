@@ -1,0 +1,811 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "bindings.py",
+    "propagation.py"
+  ],
+  "attempt_id": "authored-control--cyclic-module-exports",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "default": "a:default",
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x",
+                "default"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "c": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "d": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            },
+            "c": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            },
+            "d": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "b",
+                "c"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "b:x"
+            }
+          },
+          "c": {
+            "ambiguous": [
+              "x"
+            ],
+            "exports": {}
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "c": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "a",
+                "b"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "b:x"
+            }
+          },
+          "c": {
+            "ambiguous": [],
+            "exports": {
+              "x": "c:x"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "c": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": [
+                "a",
+                "b"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": [
+                "b"
+              ]
+            },
+            "b": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {}
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {}
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {
+                "x": [
+                  "b",
+                  "y"
+                ]
+              },
+              "locals": [],
+              "stars": []
+            },
+            "b": {
+              "aliases": {
+                "y": [
+                  "a",
+                  "x"
+                ]
+              },
+              "locals": [],
+              "stars": []
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:z",
+              "z": "a:z"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "y": "a:z"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {
+                "x": [
+                  "b",
+                  "y"
+                ]
+              },
+              "locals": [
+                "z"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {
+                "y": [
+                  "a",
+                  "z"
+                ]
+              },
+              "locals": [],
+              "stars": []
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "b:x"
+            }
+          },
+          "c": {
+            "ambiguous": [
+              "x"
+            ],
+            "exports": {}
+          },
+          "d": {
+            "ambiguous": [
+              "z"
+            ],
+            "exports": {}
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "c": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "a",
+                "b"
+              ]
+            },
+            "d": {
+              "aliases": {
+                "z": [
+                  "c",
+                  "x"
+                ]
+              },
+              "locals": [],
+              "stars": []
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {}
+          },
+          "c": {
+            "ambiguous": [],
+            "exports": {}
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {
+                "x": [
+                  "c",
+                  "missing"
+                ]
+              },
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            },
+            "c": {
+              "aliases": {},
+              "locals": [],
+              "stars": []
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "c": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "d": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            },
+            "c": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "b"
+              ]
+            },
+            "d": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "c"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "default": "a:default"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "named": "a:default"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "default"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {
+                "named": [
+                  "a",
+                  "default"
+                ]
+              },
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x",
+              "y": "c:y"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x",
+              "y": "c:y"
+            }
+          },
+          "c": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x",
+              "y": "c:y"
+            }
+          },
+          "d": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x",
+              "y": "c:y"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": [
+                "b"
+              ]
+            },
+            "b": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "c"
+              ]
+            },
+            "c": {
+              "aliases": {},
+              "locals": [
+                "y"
+              ],
+              "stars": [
+                "a"
+              ]
+            },
+            "d": {
+              "aliases": {},
+              "locals": [],
+              "stars": [
+                "b",
+                "c"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "a": {
+            "ambiguous": [],
+            "exports": {
+              "x": "a:x"
+            }
+          },
+          "b": {
+            "ambiguous": [],
+            "exports": {
+              "y": "b:y"
+            }
+          },
+          "c": {
+            "ambiguous": [],
+            "exports": {
+              "x": "b:y"
+            }
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "a": {
+              "aliases": {},
+              "locals": [
+                "x"
+              ],
+              "stars": []
+            },
+            "b": {
+              "aliases": {},
+              "locals": [
+                "y"
+              ],
+              "stars": []
+            },
+            "c": {
+              "aliases": {
+                "x": [
+                  "b",
+                  "y"
+                ]
+              },
+              "locals": [],
+              "stars": [
+                "a"
+              ]
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "bounded-implementation",
+  "evidence_opportunity": false,
+  "id": "cyclic-module-exports",
+  "instruction": "Complete service.solve(modules), a miniature module linker. Each module has unique local export names, aliases mapping an exported name to [module,importedName], and wildcard stars. Locals and alias keys are disjoint. A local name denotes origin 'module:name'. An alias exports all origins of its target name. Wildcards union origin sets, excluding name 'default'. Any explicit local or alias shadows every wildcard of the same name, including an unresolved alias. Distinct paths to the same origin are one binding. Resolve to the least fixed point, including cycles: ungrounded cycles export nothing. Return each module as {exports:{name:origin for exactly one origin},ambiguous:[names with multiple distinct origins sorted]}; omit unresolved names. Results cannot depend on object insertion order or wildcard order. Modules<=8, unique names<=16, all module references exist, unknown imported names are allowed.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, bindings.py, propagation.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v3/1",
+  "source_cluster": "cyclic-module-exports",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "cyclic-module-exports",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

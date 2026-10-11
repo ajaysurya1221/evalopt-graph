@@ -1,0 +1,102 @@
+{
+  "review_model": "Separated AI maintainer author/reviewer roles; not independent human authorship. Reviewed hashes establish correspondence, not custody authentication.",
+  "reviews": [
+    {
+      "id": "phase-capture",
+      "limitations": [
+        "Observation hashes establish correspondence under controller custody, not authentication",
+        "No candidate outcome or live campaign examined",
+        "Code remains prospective until full source freeze and integrated admission",
+        "Reviewer fast run:96 passed,8 explicit Docker skips. Author actual controls and final full suite provide Docker evidence."
+      ],
+      "retained_review_sha256": [
+        "b648ae1c31c47f472fbcafba40d29d8406d8c97eabb292eb8b52ded40c8cf41b"
+      ],
+      "scope": "Separated read-only review of phase observations, supplied prompt, retained bytes/candidate identity and replay binding; no live model or Docker execution by reviewer",
+      "source_sha256": {
+        "bench/harbor/skill-workflows-v3/evalopt_v3/harbor_bridge.py": "1dc5a33bd6aae3ae6e69bddcee5f9fb25ac3ef2199055a7034d8d730bb25c7a0",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/materialize.py": "e7d72a79db172865d2cb9c37bb8b76ddc92c3e051c2b7d456e7267615d7e2ae7",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/observe.py": "7d6818049f9f92637f57bbc5af3cffac3bd1af875fae7fcdeb20627db3bd8dd2",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/snapshot.py": "39596f8741940f2d4d56eb62027615fc191ace88d70567a9c242f7923d206809",
+        "bench/harbor/skill-workflows-v3/tests/test_phase_observations.py": "3d62bd7ab5881fdc21cbd9753e36da3a3b3606e4b6a3caa1f0e7f54f6d76f25e"
+      },
+      "verdict": "ACCEPT"
+    },
+    {
+      "id": "semantic-reporting",
+      "limitations": [
+        "Bounded static delta and regression review; not an exhaustive audit of all inherited code.",
+        "Caller must establish frozen task, prompt and artifact custody; matching hashes alone are not authentication.",
+        "No live models or candidate scores inspected; no workflow superiority or independent-human claim.",
+        "Docker lifecycle and authored task correctness are separate review surfaces.",
+        "Prior reviewer missed this inherited coupling; separate core reviewer identified it after the first acceptance.",
+        "Scope is the two-file delta plus relevant regressions, not independent human authorship or live efficacy."
+      ],
+      "retained_review_sha256": [
+        "d587525fb200a588aa1e17484e816e57f90039122a146aacee6ffa8a961d830e",
+        "55d4dadfba254ce9fd302087a1be9f8d0df97c46d668c0c81e373ab71532c965"
+      ],
+      "scope": "Read-only review of phase-bound record/reporting/grading/policy/replay/verifier changes and corresponding portable skill instructions.",
+      "source_sha256": {
+        "bench/harbor/skill-workflows-v3/evalopt_v3/grading.py": "52ca8f90d2f9a680874c838c3df833ecb755795419d7627d66e06d1344bdf891",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/policies.py": "5d27498883fe6a8067a62b830dc90391d41758570254b5d69ded4ea519b6df27",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/records.py": "b965b99a66dc3a34bbf7047917a81e690de2a1513a89168a81dc2657ec086ff3",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/replay_grade.py": "4810219fac70f589083fa15da8ef7bd2792bb746ba34f161a22f64e2ab729b75",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/reporting.py": "44bee0cd393b799e09e98bd0d44dfb7cbb666fa793104c90f9620a780129dcd9",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/verifier.py": "f0c16798db7b2985160a74659298e4bdc628eb18a2448ce24ab1fe49967a62e7",
+        "bench/harbor/skill-workflows-v3/tests/test_grading.py": "325a567e6a1cbbd6ed018f3ddd66ca5aaea6df9b449a78bee37d6654da230c58",
+        "skills/eval-opt-v3/SKILL.md": "7d969159a3a5d8c58123a606f5b513bfcf8860e467623a48b05ebc8af817345f",
+        "skills/eval-opt-v3/references/evidence-dispute.md": "09005a6f7e1f4a3acef30af7de8dfe288aa9a5118a192c337699510423109710",
+        "skills/eval-opt-v3/references/evidence-record.md": "1d8fec2d59e7a92f9869c5115261015d8b070e23de0e2e6fb2c4fa5d0a3694a7"
+      },
+      "verdict": "ACCEPT"
+    },
+    {
+      "id": "orchestration",
+      "limitations": [
+        "No model calls, Docker calls, live dispatch, publication or original evidence writes",
+        "Source is not yet frozen; subsequent source changes need delta review",
+        "Did not independently review own records/reporting/grading/policies/replay_grade/verifier implementation",
+        "Review hashes establish inspected bytes, not independent human authorship or authentication"
+      ],
+      "retained_review_sha256": [
+        "90695542de43deebc3ac6f36e9fd79e0742554d17744089d193e7a4bdddefc65"
+      ],
+      "scope": "Separated AI source review of bounded B-only registration, difficulty gate, frozen-input custody, sequential admission and retained replay; not a live readiness or model-performance result",
+      "source_sha256": {
+        "bench/harbor/skill-workflows-v3/PROTOCOL.md": "a5aa7d8883a3a020b9d705a41d00d294fb793d2528e01e294036ea512d6a4ec3",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/analysis.py": "5ee4fcb592859d1d417ca6adc9792436f3bfb45d4559309a4433854af143ffe6",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/campaign.py": "f86294f3865a5c7185ff4631bed45961ecaec11def88a2d53ee8ea45e9ee177f",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/freeze.py": "a7b2ff8bfd6956cf2b98edef40faef811efac872eec6322bff443eac12f2cce1",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/preservation.py": "ef737f32561606c1ddaab4b1445de6e6fbe5e5115530bb55357f98be63db5388",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/registration.py": "da3448fe27a057aa4b9e7399f2ae2399a331c9e5c04fa3465d7c1225dfc9ee9a",
+        "bench/harbor/skill-workflows-v3/evalopt_v3/store.py": "5140f329365963201aafccdd486df2fa20ac6a2bd099429911de546d3225abe9",
+        "bench/harbor/skill-workflows-v3/run.py": "3d9e04f4f6e7bf5025f89b90240270102813d7245f9c40deb36a3b31c8838289"
+      },
+      "verdict": "ACCEPT"
+    },
+    {
+      "id": "task-authoring",
+      "limitations": [
+        "No empirical difficulty or model-performance conclusion; baselines provide broader missing functionality, not demonstrated hardness.",
+        "Finite authored cases do not prove correctness for every contract input.",
+        "This is separated AI maintainer review, not independent-human adjudication or independent replication.",
+        "This acceptance neither freezes source nor authorizes an enlarged study; parent final integration and registered16-row gate remain separate.",
+        "Unchanged5 Docker controls predate the final narrow grading split; this is not an all8 same-runtime Docker claim. Current local all8 tests pass."
+      ],
+      "retained_review_sha256": [
+        "58f2bc6c309f606a1e79acc836720633ed13962c0e6933d0827094e5b9f76dce"
+      ],
+      "scope": "Separated AI maintainer review of authored task contracts, oracle fixtures, mutants and finite QA; no model outcomes, no model calls, no reviewer Docker invocation.",
+      "source_sha256": {
+        "bench/harbor/skill-workflows-v3/evalopt_v3/grading.py": "52ca8f90d2f9a680874c838c3df833ecb755795419d7627d66e06d1344bdf891",
+        "bench/harbor/skill-workflows-v3/tasks/author.py": "e45d961b766839c4de2c384d1b8e02cda6b08d5aaf101c1b6fe83020b165a64c",
+        "bench/harbor/skill-workflows-v3/tasks/manifest.json": "f881ea87149bd4898dbd9a4cbd14217cf667551a58cc5959ff2edb6698eb80ca",
+        "bench/harbor/skill-workflows-v3/tasks/qa.py": "b0ea4dd9b771cecf3371f747f3fa5417c278d535edfe2257f146b786190788af",
+        "bench/harbor/skill-workflows-v3/tests/test_fresh_tasks.py": "76f0461a7da6998d32c4a857354131bc9362a794efd8ae72f4f375cef96bb721"
+      },
+      "verdict": "ACCEPT"
+    }
+  ],
+  "schema_version": "evalopt-workflows-v3/offline-package/1"
+}

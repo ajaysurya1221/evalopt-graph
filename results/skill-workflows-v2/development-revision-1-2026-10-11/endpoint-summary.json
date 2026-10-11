@@ -1,0 +1,75 @@
+{
+  "accounting_status_counts": {
+    "complete": 40,
+    "partial": 8
+  },
+  "all_capture_and_case_boundaries_confirmed": true,
+  "all_delegation_verified": true,
+  "all_evidence_before_after_equal": true,
+  "all_provenance_valid": true,
+  "campaign_files": 9406,
+  "campaign_inventory_sha256": "78c82b7d6f537d50ec7a739228c498c5ff4332a06b209eb154c532e76d979f26",
+  "distinct_released_owned_networks": 48,
+  "finalized_rows": 48,
+  "frozen_v1_files_preserved": 8852,
+  "independent_review_sha256": "2ae98beab63b6436eaf4566c1619a29147f8281e10627a4f79b2040d6ddf3fea",
+  "native_report_sha256": "2e505d3e74613a5a813fb99c950a2ac793b11ee40db093d1d5532fd90ba730ea",
+  "original_round_files_preserved": 990,
+  "registration_sha256": "d792728a37e4d1725f8d9d68b5a0bea9ab9bdeb86942afe53eddb68e370cfd62",
+  "retained_attempts": 48,
+  "schema_version": "evalopt.v2-public-endpoint-summary.v1",
+  "signed_hex_check_record_review": [
+    {
+      "free_text_note_explicitly_reports_failure": false,
+      "functional_cases_passed": 9,
+      "functional_cases_total": 9,
+      "grade_sha256": "1754b483a84b538ab7ddd932972bdcefdfdaa667d3e1ed6438f897e134080f60",
+      "initial_controller_exit_code": 0,
+      "initial_observation_sha256": "b27d38d425135368d17c69e0565f7fc044f445706a38aca6f60188490994a938",
+      "post_stop_controller_exit_code": 1,
+      "raw_response_note_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "structured_response_exit_code": 0,
+      "trial_id": "development--signed-hex-offset-contract--r1--A",
+      "visible_policy_sha256": "3549c4d0fdfd062d241159d14ee2bb6b6909b47c2ddca1b72563883984d8d8de"
+    },
+    {
+      "free_text_note_explicitly_reports_failure": true,
+      "functional_cases_passed": 9,
+      "functional_cases_total": 9,
+      "grade_sha256": "87463aa4c3f6f273341846a20232229bafdda6c56646208382066cac2af97923",
+      "initial_controller_exit_code": 0,
+      "initial_observation_sha256": "0e5d56877064ac3a20d03b10afe5b2aafac90c9631516ee7bf9f0e1dc73fa0da",
+      "post_stop_controller_exit_code": 1,
+      "raw_response_note_sha256": "f7b7b451e0647ff8aa0f34e5ffd50e29cc89193c18ee9d8ed725594815cf54e7",
+      "structured_response_exit_code": 0,
+      "trial_id": "development--signed-hex-offset-contract--r1--C",
+      "visible_policy_sha256": "33d8c0614bb255ef93d65a9b8a6bb44e8eaab4dff1975911a05f8f6fe89659b8"
+    },
+    {
+      "free_text_note_explicitly_reports_failure": false,
+      "functional_cases_passed": 9,
+      "functional_cases_total": 9,
+      "grade_sha256": "d8e24a83480639f6e8c4ba0088d7fc343faa5cab516bae250271ab9d55a87d89",
+      "initial_controller_exit_code": 0,
+      "initial_observation_sha256": "156e60ef29960a3b8663f10af6cb28213a44303fda2a148b577534a6fe97d5d9",
+      "post_stop_controller_exit_code": 1,
+      "raw_response_note_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "structured_response_exit_code": 0,
+      "trial_id": "development--signed-hex-offset-contract--r1--B",
+      "visible_policy_sha256": "e9ed004995417d9f288065456c27c483854b917bb6b95d60afc16474c6ad05f5"
+    },
+    {
+      "free_text_note_explicitly_reports_failure": true,
+      "functional_cases_passed": 9,
+      "functional_cases_total": 9,
+      "grade_sha256": "ccf934bbe0c4baddad7867accec070aaed7d9d2391029930c3ea02107a27a0cb",
+      "initial_controller_exit_code": 0,
+      "initial_observation_sha256": "6ff9f63f614d13c615b8560753d318b2477ae27d94eed5b9dae605090fc058f8",
+      "post_stop_controller_exit_code": 1,
+      "raw_response_note_sha256": "735068a1c50f3f91730cef90a71bde4db0cdcc181c54340736d4778f9b1a303b",
+      "structured_response_exit_code": 0,
+      "trial_id": "development--signed-hex-offset-contract--r1--D",
+      "visible_policy_sha256": "2c7d557de7b1c5c87da74bfc64732238976313082a171ab4d04edd252290abe3"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "files": {
+    "READINESS.md": "e521e8fbfc1c60a356af2cfc37e1e76826f6e2bae26ac4a6d7ca86339cf922fd",
+    "prepared.json": "3656fa2197bcb88a42f79bd74a4fe386967a2eacd04da6cbcfa5fbec4e543a84",
+    "reproduce_development.py": "11892835ce5553e0c9e207ba56f80151e85cfa940177978ac1b7a6b05471cfa1",
+    "test_reproduce_development.py": "69e426e582508463b8287898fad10d058ac3ace88840e8fedefdffa30e5abbaf"
+  },
+  "findings_resolved": [
+    {
+      "id": "P1-flat-roster",
+      "prior_line": 155,
+      "prior_source_sha256": "0417735bfaff99f881c09e933922b161a57ff0b76f6abe1c09b1362d2a98ec3b",
+      "repair": "Flat inventory now requires every node regular and exact checksums roster.",
+      "reproducer": "Valid synthetic CLI bundle plus an unlisted directory containing a synthetic private marker returned PASS."
+    },
+    {
+      "id": "P1-projection-fields",
+      "prior_line": 95,
+      "repair": "Exact nested projection/receipt schemas retain actual outcome_row fields and reject unknown fields.",
+      "reproducer": "Extra private_path in synthetic outcome input propagated through reconcile into report and returned PASS."
+    },
+    {
+      "id": "P2-typed-report",
+      "prior_line": 204,
+      "repair": "Canonical typed JSON comparison, strict JSON and booleans/integer schemas.",
+      "reproducer": "Change report.gate.ready true to integer1 and rehash report envelope: returned PASS."
+    },
+    {
+      "id": "P1-floating-parity",
+      "prior_line": 126,
+      "repair": "Registered schedule/attempt order and exact sequential += accumulation underCPython3.13.12.",
+      "reproducer": "48 synthetic controller durations0.1 produced helper4.800000000000001 vs frozen sequential4.799999999999999."
+    }
+  ],
+  "frozen_campaign_sha256": "717bb20a88d85387f625a6f95a67ba1f38b9a50f9d6a99b2d5da57ffc8760897",
+  "kind": "prospective_publication_helper_review",
+  "limits": [
+    "No actual campaign attempts, later candidates, outcomes or scores were read.",
+    "No actual campaign replay, models, Docker, auth, dispatch or cleanup.",
+    "Only this review receipt written by reviewer; authored helper/source/frozen/live evidence unchanged.",
+    "Public arithmetic consistency cannot authenticate projected producer evidence; endpoint custody/correspondence/privacy review remains required.",
+    "All scheduled rows and all retained attempts stay in denominators; original round remains separate.",
+    "Revision1 difficulty gate remains unchanged; no superiority/efficiency/power/live replication or automatic heldout admission claim.",
+    "Actual completed or stopped public bundle and clean-environment replay require later separate review."
+  ],
+  "pure_source_hashes": {
+    "bench/harbor/skill-workflows-v2/evalopt_v2/__init__.py": "9a26eaadb1dad00bff3e2bf6b1f963b0a65844aab4acb8ba1f0c456c2d5a9423",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/accounting.py": "4307494dbf0bbe81338ba9c453a7d23aba6241383b57fdca5756f0ccdc1fcb28",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/analysis.py": "2bb38004b30983979a2771a284b3c8b9521fdeff806884ea16954058f91dae94",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/descriptive.py": "9a932eba19522a17e721e3ece0f05368055ae6923912b353e8e5b7755b73a101",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/framing.py": "bb3ea36833f02c5e436630c5f6744b3eac35990ed771aeb84ed76c474d0cf928",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/records.py": "495aebd99e1a4b7168fce26e4d645f44e55238b8bc3b8f7f1bb75fbfd7902287",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/registration.py": "264349b23298be75c6695c9cea4bac77a64b815903355fa0ff8a8c889cfa50f8"
+  },
+  "reviewed_at": "2026-10-11T09:19:35.099488+00:00",
+  "reviewer_role": "Separated AI maintainer review; not independent human authorship",
+  "schema_version": "evalopt-workflows-v2/1",
+  "source_before_after_equal": true,
+  "verdict": "ACCEPT_PROSPECTIVE_HELPER_ONLY",
+  "verification": {
+    "authored_tests_rerun": 18,
+    "failures": 0,
+    "fixed_negative_cases": "Held18-test rerun exercises original3 counterexamples, nestedfields, links, typedflags, timing order, strictJSON and runtime isolation.",
+    "independent_full_report_parity_cases": [
+      "complete48",
+      "stopped3_final1_unfinalized44_unstarted",
+      "zero_final",
+      "49_attempts_retry48_outcomes",
+      "task_wide_dispute",
+      "unknown_outcome",
+      "fractional_timing",
+      "absent_timing",
+      "mixed_complete_partial_unavailable_usage"
+    ],
+    "initial_probe_environment": "Initial working-checkout CLI probe correctly rejected existing bytecode. Repeated in clean temporary copy of7pinned pure modules plus public registration; baseline and3negative probes then exposed above gaps.",
+    "parity_method": "Compile only exact trusted frozen campaign.replay/outcome_row/kernel_ground_truth function ASTs into memory; supply synthetic store/files and mocked custody validation; compare entire canonical report to helper. Reducer parity only, not real custody validation.",
+    "ruff_check": "PASS",
+    "ruff_format": "PASS"
+  }
+}

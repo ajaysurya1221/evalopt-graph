@@ -1,0 +1,63 @@
+{
+  "blocking_findings": [],
+  "checks": [
+    {
+      "deselected": 1,
+      "failures": 0,
+      "name": "Independent targeted admission/freeze/mocked-network controls",
+      "note": "Actual Docker network control was deliberately excluded from this combined run and independently run separately.",
+      "passed": 128,
+      "skipped": 0,
+      "subtests_passed": 27
+    },
+    {
+      "failures": 0,
+      "name": "Independent actual Docker sequential owned-network capture/release",
+      "note": "No auth or model calls. New exact-owned network reused the explicit subnet after safe release; stopped archive unchanged; historical network ID inventory unchanged.",
+      "passed": 1,
+      "skipped": 0
+    },
+    {
+      "name": "Legacy frozen campaign identity verification using revised validator",
+      "status": "PASS"
+    },
+    {
+      "name": "Original stopped-round public report reproduction after source changes",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual predecessor correspondence against original files",
+      "receipt_sha256": "5a5a5ff765fa6b66223009c861b7659b0b026f4324b01ed89a2a1508fa922813",
+      "status": "PASS"
+    }
+  ],
+  "limits": [
+    "Targeted controls are not a live-model study or difficulty/effect result. The final full-suite receipt is produced separately.",
+    "Predecessor correspondence is inspected consistency, not independent human authentication; supplied counters remain bound to the separately reviewed original artifacts.",
+    "New-network bridge/NAT behavior was checked with local Docker. This does not establish reachability of a live subscription/model backend or compatibility with every host route.",
+    "No frozen campaign files, historical resources or runtime source files were changed by this reviewer."
+  ],
+  "reviewed_invariants": [
+    "Durable fresh network ownership intent predates the single Docker create call; explicit /28 allocation excludes observed Docker networks and configured automatic pools.",
+    "Existing project/name resources fail before Harbor compose cleanup. No broad cleanup, subnet retry or historical-resource recovery is introduced.",
+    "Exact image/container/network/nonce/endpoint identity and bridge/NAT conditions are checked before authentication upload.",
+    "Release requires matching binding, confirmed stopped identity and complete durable closure; foreign endpoints, ambiguous create/disconnect/remove and uncertain release stop admission.",
+    "Startup diagnostics retain phase, static classification and hashes, excluding raw potentially credential-bearing output.",
+    "Original finalized subscription-stop/resume linkage is retained; unfinished-only usage stays null and unfinished controller time cannot become known.",
+    "The predecessor has one original first-attempt sequential prefix, one unfinished attempt and an exact remaining suffix; revision one freezes a new complete 48-row schedule without importing old outcomes.",
+    "Network source enters the new controller identity, while original legacy frozen identity verification and analysis-source hashes remain compatible."
+  ],
+  "schema_version": "evalopt.v2-network-revision-review.v1",
+  "scope": "Prospective network ownership/binding/release and sanitized setup diagnostics; stopped-incomplete predecessor consistency and fresh single-revision admission. No approval to repair or resume the original stopped round.",
+  "source_hashes": {
+    "bench/harbor/skill-workflows-v2/PROTOCOL.md": "1a0d73647b139943d203aad40093ed1775d448619a841a3d896519500720800a",
+    "bench/harbor/skill-workflows-v2/README.md": "bd05398d519e40f399ce330f9c23e056a9e3d3af5893a11ef98fe08d5b7f4d53",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/freeze.py": "a58cad24d3f56f0a67b93d199d12174989102bbb7e3aadf1bda7985a0304ac30",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/harbor_bridge.py": "2f89794281220f47c9aebf0cb83f350e1ac1e9031cbcd67025f012cac680c59e",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/network.py": "979b7856821266280f7477f78b6dd479780b64e46db2d08029157c95719a010f",
+    "bench/harbor/skill-workflows-v2/tests/test_freeze.py": "fa7c7ad2d342791987cbefe7e04c72975be696b4ddc179a1e5a25a4ff4917b85",
+    "bench/harbor/skill-workflows-v2/tests/test_incomplete_revision.py": "3d0879103208a2ff41aca2ce26278d072bbf8b8068b042b1087142b7806330a6",
+    "bench/harbor/skill-workflows-v2/tests/test_network.py": "29cdce5406ca51e9f1b586c68384f5e196ced954b83691a77c7da408aec689b8"
+  },
+  "verdict": "ACCEPT"
+}

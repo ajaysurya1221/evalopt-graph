@@ -28,6 +28,7 @@ from .framing import SCHEMA, strict_json
 from .git_index import workspace_manifest
 from .lifecycle import prepare_supervisor, read_record, recover_closure, signal_agent_complete, write_once
 from .materialize import boundary_violations, materialize
+from .network import OWNER_LABEL, TrialNetwork, record_failure
 from .observe import command_record, visible_check
 from .preflight import (
     CLI,
@@ -484,90 +485,117 @@ async def execute_one(
     label = "trial-" + uuid.uuid4().hex
     envdir = root / "environment"
     envdir.mkdir()
-    # JSON is valid YAML. Unique project/container identities ensure Harbor's
-    # initial compose-down cannot target any pre-existing trial.
-    compose = {
-        "services": {
-            "main": {
-                "image": agent_image,
-                "pull_policy": "never",
-                "container_name": label,
-                "labels": {LABEL: label},
-                "restart": "no",
-                "working_dir": "/workspace",
-            }
+    phase = "network_prepare"
+    try:
+        network = TrialNetwork(root / "network")
+        network_identity = await asyncio.to_thread(network.create, attempt_label=label, image_id=agent_image)
+    except Exception as exc:
+        record_failure(root, phase, exc)
+        raise
+    phase = "harbor_start"
+    try:
+        # JSON is valid YAML. Unique project/container identities ensure Harbor's
+        # initial compose-down cannot target any pre-existing trial.
+        compose = {
+            "services": {
+                "main": {
+                    "image": agent_image,
+                    "pull_policy": "never",
+                    "container_name": label,
+                    "labels": {LABEL: label, OWNER_LABEL: network.plan["ownership_nonce"]},
+                    "restart": "no",
+                    "working_dir": "/workspace",
+                    "networks": ["trial"],
+                }
+            },
+            "networks": {"trial": {"external": True, "name": network_identity["name"]}},
         }
-    }
-    (envdir / "docker-compose.yaml").write_text(json.dumps(compose))
-    paths = TrialPaths(root / "harbor")
-    paths.mkdir()
-    env = DockerEnvironment(
-        environment_dir=envdir,
-        environment_name=label,
-        session_id=label,
-        trial_paths=paths,
-        task_env_config=EnvironmentConfig(
-            docker_image=agent_image, cpus=1, memory_mb=2048, workdir="/workspace"
-        ),
-        keep_containers=True,
-        enable_environment_dir_upload=False,
-        mounts=[],
-    )
-    await env.start(force_build=False)
-    identity = await asyncio.to_thread(_inspect_runtime_container, label, agent_image, label)
-    write_once(root / "identity.json", identity)
-    await env.upload_dir(root / "initial", "/workspace")
-    await env.upload_dir(root / "skills", "/harbor/skills")
-    agent = retained_codex_class()(
-        logs_dir=paths.agent_dir,
-        model_name=MODEL,
-        version=CLI,
-        config=config,
-        skills_dir="/harbor/skills",
-        mcp_servers=[],
-        extra_env={},
-    )
-    await agent.prepare(env, auth=auth, config=config)
-    version = await env.exec(command="codex --version", timeout_sec=10)
-    if version.return_code != 0 or version.stdout.strip() != "codex-cli " + CLI:
-        raise ValueError("container_codex_version_mismatch")
-    exposure = await env.exec(command=shlex.join(["python3", "-I", "-B", "-c", EXPOSURE]), timeout_sec=20)
-    if exposure.return_code != 0:
-        raise ValueError("workflow_exposure_unavailable")
-    actual = strict_json(exposure.stdout)
-    if (
-        canonical(actual.get("workspace")) != canonical(snapshot_manifest(root / "initial"))
-        or canonical(actual.get("skills")) != canonical(expected_skills)
-        or canonical(actual.get("config")) != canonical(config)
-    ):
-        raise ValueError("workflow_exposure_changed")
-    write_once(
-        root / "exposure.json",
-        {
-            "schema_version": SCHEMA,
-            "kind": "workflow_exposure",
-            "versions": versions,
-            "native_flags": NATIVE_FLAGS,
-            "native_config_sha256": config_sha,
-            "observed": actual,
-            "proof": "controller_pre_agent_byte_observation",
-            "read_by_agent_proven": False,
-        },
-    )
-    permission = await asyncio.to_thread(subscription_permission)
-    write_once(root / "permission.json", permission)
-    if permission["ordinary_usage_allowed"] is not True:
-        raise ValueError("included_usage_permission_unavailable")
-    closure, error = await run_supervised(
-        agent, env, instruction, AgentContext(), identity=identity, directory=root / "supervisor"
-    )
-    return await finish_stopped(
-        row,
-        task_dir,
-        root,
-        materialized,
-        closure,
-        verifier_image=verifier_image,
-        freeze_visible=freeze_visible,
-        agent_error=error,
-    )
+        (envdir / "docker-compose.yaml").write_text(json.dumps(compose))
+        paths = TrialPaths(root / "harbor")
+        paths.mkdir()
+        env = DockerEnvironment(
+            environment_dir=envdir,
+            environment_name=label,
+            session_id=label,
+            trial_paths=paths,
+            task_env_config=EnvironmentConfig(
+                docker_image=agent_image, cpus=1, memory_mb=2048, workdir="/workspace"
+            ),
+            keep_containers=True,
+            enable_environment_dir_upload=False,
+            mounts=[],
+        )
+        await env.start(force_build=False)
+        phase = "container_binding"
+        identity = await asyncio.to_thread(_inspect_runtime_container, label, agent_image, label)
+        write_once(root / "identity.json", identity)
+        await asyncio.to_thread(network.bind, identity)
+        phase = "workspace_upload"
+        await env.upload_dir(root / "initial", "/workspace")
+        await env.upload_dir(root / "skills", "/harbor/skills")
+        agent = retained_codex_class()(
+            logs_dir=paths.agent_dir,
+            model_name=MODEL,
+            version=CLI,
+            config=config,
+            skills_dir="/harbor/skills",
+            mcp_servers=[],
+            extra_env={},
+        )
+        phase = "agent_prepare"
+        await agent.prepare(env, auth=auth, config=config)
+        phase = "exposure"
+        version = await env.exec(command="codex --version", timeout_sec=10)
+        if version.return_code != 0 or version.stdout.strip() != "codex-cli " + CLI:
+            raise ValueError("container_codex_version_mismatch")
+        exposure = await env.exec(command=shlex.join(["python3", "-I", "-B", "-c", EXPOSURE]), timeout_sec=20)
+        if exposure.return_code != 0:
+            raise ValueError("workflow_exposure_unavailable")
+        actual = strict_json(exposure.stdout)
+        if (
+            canonical(actual.get("workspace")) != canonical(snapshot_manifest(root / "initial"))
+            or canonical(actual.get("skills")) != canonical(expected_skills)
+            or canonical(actual.get("config")) != canonical(config)
+        ):
+            raise ValueError("workflow_exposure_changed")
+        write_once(
+            root / "exposure.json",
+            {
+                "schema_version": SCHEMA,
+                "kind": "workflow_exposure",
+                "versions": versions,
+                "native_flags": NATIVE_FLAGS,
+                "native_config_sha256": config_sha,
+                "observed": actual,
+                "proof": "controller_pre_agent_byte_observation",
+                "read_by_agent_proven": False,
+            },
+        )
+        phase = "subscription"
+        permission = await asyncio.to_thread(subscription_permission)
+        write_once(root / "permission.json", permission)
+        if permission["ordinary_usage_allowed"] is not True:
+            raise ValueError("included_usage_permission_unavailable")
+        phase = "supervisor"
+        closure, error = await run_supervised(
+            agent, env, instruction, AgentContext(), identity=identity, directory=root / "supervisor"
+        )
+        phase = "stopped_processing"
+        result = await finish_stopped(
+            row,
+            task_dir,
+            root,
+            materialized,
+            closure,
+            verifier_image=verifier_image,
+            freeze_visible=freeze_visible,
+            agent_error=error,
+        )
+        # The stopped archives and semantic result already exist durably. Any
+        # release failure blocks admission without erasing or rewriting them.
+        phase = "network_release"
+        await asyncio.to_thread(network.release, identity, closure_directory=root / "supervisor/closure")
+        return result
+    except Exception as exc:
+        record_failure(root, phase, exc)
+        raise

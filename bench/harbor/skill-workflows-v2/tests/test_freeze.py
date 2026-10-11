@@ -50,6 +50,7 @@ class FreezeTests(unittest.TestCase):
             "observe",
             "snapshot",
             "preflight",
+            "network",
         ):
             (package / f"{name}.py").write_text('"""Nonexecuted unit fixture."""\n')
         repository = Path(__file__).resolve().parents[4]

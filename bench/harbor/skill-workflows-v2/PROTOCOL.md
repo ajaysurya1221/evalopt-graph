@@ -80,6 +80,16 @@ representativeness. If the gate fails, permit one documented development revisio
 and full 48-trial rerun. Preserve the first run. A second failure ends this study
 as `development_not_ready`, without consuming the held-out suite.
 
+The same single revision allowance can follow a stopped, incomplete development
+round after a documented infrastructure repair. A separately typed predecessor
+receipt must retain the original registration, frozen replay, preservation-seal
+digest and exact finalized/unfinalized/unstarted partition. Unknown rows remain
+null; reconciliation of all 48 scheduled rows does not mean 48 executions or
+resolved outcomes. Preserve the original gate's actual recorded count. The new
+round runs the complete 48-row design under a new registration and consumes
+revision 1; it neither resumes the stopped campaign nor retries its unfinished
+attempt. No second revision is allowed. The held-out admission gate is unchanged.
+
 Freeze held-out task, grader, skill C/D, upstream, analysis, controller, parser,
 continuation policy, image and schedule identities after development. The seed is
 `20261008`: randomize task/repetition blocks and arm order within each matched
@@ -141,6 +151,21 @@ materialized on the host; missing required snapshots stop admission. Executable
 frozen source must contain no bytecode caches, and policy imports must resolve
 to the frozen preserved kernel. These are controller conditions common to all
 arms, not additional candidate instructions.
+
+For the prospective network repair, record ownership before explicitly creating
+each trial's isolated bridge network. Use `/28` subnets from `10.254.0.0/16`,
+checked against observed Docker allocations and configured automatic pools;
+do not depend on Docker's exhausted
+automatic pool. Compose references that exact owned network, and the controller
+verifies the container's network identity before uploading authentication or
+dispatching the agent. Bridge/NAT internet access, model settings and resource
+limits stay common to all arms. The separate verifier remains networkless.
+Release only a newly owned network after confirmed termination and durable
+capture, with fresh exact identity and endpoint checks. Historical resources
+are preserved. Ambiguous creation, foreign/running endpoints, identity mismatch
+or uncertain release stop admission. Retain allowlisted startup-phase/error
+classifications; never publish raw credential-bearing command output. This
+repair does not broaden the retry class or waive an existing frozen stop.
 
 ## Outcomes, missingness and claims
 

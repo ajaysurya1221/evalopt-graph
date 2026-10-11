@@ -91,7 +91,11 @@ are not accepted; all image arguments require complete local content IDs.
 `--upstream` checkout, two image IDs, and a controller-owned `--admission` receipt.
 The receipt binds the current harness/skill/tasks to all five passing control
 groups and separated accepting reviews. It also identifies development round
-zero, or the one permitted revision with the complete preceding failed round.
+zero, or the one permitted revision with the preserved preceding failed round.
+An explicit `stopped_incomplete` predecessor retains the original registration,
+replay, preservation-seal digest and exact finalized/unfinalized/unstarted
+partition; it never represents missing rows as completed executions. The revision
+is a fresh complete 48-row campaign, not a retry or resume of the stopped round.
 Receipt labels establish neither reviewer identity nor authenticity; the
 operator retains the actual source-bound controls and review artifacts.
 
@@ -123,6 +127,14 @@ kernel ground-truth labels unknown across the complete matched task. Unsealed
 attempts count toward resource completeness with unknown counters. Controller
 wall time includes setup, capture and verification and is labeled separately
 from agent time; it is not a token-matched or dollar-cost experiment.
+
+The prospective network controller creates an explicitly owned bridge network
+from a bounded reservation, verifies exact container attachment before agent
+dispatch and releases only that new network after confirmed stop and durable
+capture. Existing stopped containers and historical networks are retained.
+Network identity, endpoint or cleanup uncertainty stops admission. This avoids
+exhausting Docker's automatic address pools without reconfiguring the daemon or
+changing the verifier's networkless execution.
 
 A stopped archive containing symlinks, special nodes or owner-unreadable modes
 is retained but is not materialized onto the host. Such a missing required

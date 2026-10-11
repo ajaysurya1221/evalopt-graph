@@ -1,0 +1,23 @@
+{
+  "conditions_unchanged": [
+    "skills/eval-opt-v2",
+    "bench/harbor/skill-workflows-v2/tasks",
+    "bench/harbor/skill-workflows-v2/runtime",
+    "accounting.py",
+    "analysis.py",
+    "case_runner.py",
+    "descriptive.py",
+    "framing.py",
+    "grading.py",
+    "records.py",
+    "registration.py",
+    "verifier.py",
+    "verifier_container.py"
+  ],
+  "original_campaign_files_unchanged": 990,
+  "original_replay_byte_equal": true,
+  "raw_junit_sha256": "29ffc8dba0b20df06ba8eaed84fc7fa840871df8bc53fe1ffb67705d185e60f9",
+  "source_unchanged_after_tests": true,
+  "status": "PASS",
+  "tested_source_files": 237
+}

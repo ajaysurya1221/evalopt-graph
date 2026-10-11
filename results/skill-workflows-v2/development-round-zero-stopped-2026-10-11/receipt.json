@@ -1,0 +1,34 @@
+{
+  "accounting": "Three finalized attempt totals are retained; unfinalized accounting remains unavailable, not zero. Unstarted rows have no attempts. No efficiency claim.",
+  "finalized": 3,
+  "original_commit": "c015a4cd9215f1925663dfdee9447d5b4866d244",
+  "original_gate": {
+    "disputed_tasks": [],
+    "evidence_level": "difficulty headroom control; not a power calculation",
+    "next": "development_revision",
+    "ready": false,
+    "recorded": 3,
+    "scheduled": 48,
+    "upstream_successes": 1
+  },
+  "preservation_manifest_sha256": "91ac32f0dbc322cc8969a721b6453bf825aa4323715e22c5c7c64b1219875d1a",
+  "preserved_campaign_files": 990,
+  "raw_frozen_replay": "PASS",
+  "registration_sha256": "4a3f1b85670651f3b52d5ec3bfa8608f41fe1d227cc2cb56df8627a5b3880ccd",
+  "report_canonical_sha256": "5c94b9f3baa3ebd000b97e84238f6aa5bcc12a35c6c3bea8612a8746805a7e1f",
+  "report_sha256": "5c94b9f3baa3ebd000b97e84238f6aa5bcc12a35c6c3bea8612a8746805a7e1f",
+  "scheduled": 48,
+  "schema_version": "evalopt.v2-stopped-development-receipt.v1",
+  "source_hashes": {
+    "bench/harbor/skill-workflows-v2/evalopt_v2/accounting.py": "4307494dbf0bbe81338ba9c453a7d23aba6241383b57fdca5756f0ccdc1fcb28",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/analysis.py": "2bb38004b30983979a2771a284b3c8b9521fdeff806884ea16954058f91dae94",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/descriptive.py": "9a932eba19522a17e721e3ece0f05368055ae6923912b353e8e5b7755b73a101",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/framing.py": "bb3ea36833f02c5e436630c5f6744b3eac35990ed771aeb84ed76c474d0cf928",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/records.py": "495aebd99e1a4b7168fce26e4d645f44e55238b8bc3b8f7f1bb75fbfd7902287",
+    "bench/harbor/skill-workflows-v2/evalopt_v2/registration.py": "264349b23298be75c6695c9cea4bac77a64b815903355fa0ff8a8c889cfa50f8"
+  },
+  "superiority_claim_allowed": false,
+  "unfinalized": 1,
+  "unknown_outcomes": 45,
+  "unstarted": 44
+}

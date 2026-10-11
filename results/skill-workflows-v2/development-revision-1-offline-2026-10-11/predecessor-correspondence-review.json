@@ -1,0 +1,44 @@
+{
+  "checks": [
+    "Original registration payload and external pin match retained original registration.",
+    "Original replay content and canonical byte hash match unchanged retained frozen report.",
+    "Registered source/controller identities and actual frozen entrypoint bytes match replay-source projection.",
+    "All 990 preserved campaign files match exact roster, regular-file status, modes, sizes and SHA-256.",
+    "Every start, final and controller-failure byte hash matches its original file; every finalized outcome projection and continuation matches original grading/final records.",
+    "The first finalized subscription STOP remains a STOP. Its exact original pause0002 and resume records and byte hashes bind that final and original registration.",
+    "The 3/1/44 partition and original gate recorded=3 remain unchanged; unknown outcomes are not converted into executed or resolved trials.",
+    "The PENDING template is rejected. An in-memory PASS-pointer control passes structural validation; the actual predecessor file remains PENDING and unmodified."
+  ],
+  "limits": [
+    "AI review separated from implementation within a maintainer-run study; no independent human identity authentication.",
+    "This receipt establishes inspected private-to-projection correspondence, not model replication, a successful development gate, or live revised-round dispatch authorization by itself.",
+    "No original campaign, source, raw evidence, historical container/network or predecessor projection was modified."
+  ],
+  "original_gate": {
+    "disputed_tasks": [],
+    "evidence_level": "difficulty headroom control; not a power calculation",
+    "next": "development_revision",
+    "ready": false,
+    "recorded": 3,
+    "scheduled": 48,
+    "upstream_successes": 1
+  },
+  "original_preservation": {
+    "file_count": 990,
+    "sha256": "91ac32f0dbc322cc8969a721b6453bf825aa4323715e22c5c7c64b1219875d1a"
+  },
+  "original_registration_sha256": "4a3f1b85670651f3b52d5ec3bfa8608f41fe1d227cc2cb56df8627a5b3880ccd",
+  "original_replay_sha256": "5c94b9f3baa3ebd000b97e84238f6aa5bcc12a35c6c3bea8612a8746805a7e1f",
+  "partition_counts": {
+    "finalized": 3,
+    "scheduled": 48,
+    "unfinalized": 1,
+    "unstarted": 44
+  },
+  "predecessor_projection_excluding_correspondence_sha256": "6dbdc519fb0135b39d37be147146357c5b9509038b07be04754b88f34c811df6",
+  "predecessor_projection_hash_method": "SHA-256 of canonical UTF-8 JSON with sorted keys, compact separators, ensure_ascii=false and one trailing LF; omit only top-level correspondence.",
+  "schema_version": "evalopt.v2-stopped-predecessor-correspondence-review.v1",
+  "scope": "independently_reviewed_consistency_not_authentication",
+  "status": "PASS",
+  "verdict": "ACCEPT"
+}

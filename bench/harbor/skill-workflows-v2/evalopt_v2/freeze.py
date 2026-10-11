@@ -16,6 +16,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+from datetime import datetime
 from pathlib import Path
 
 from .ablation import derive_ablation, validate_pair
@@ -132,6 +133,8 @@ def validate_admission(receipt, inputs):
     if round_["revision"] == 0:
         if previous is not None:
             raise ValueError("initial development round cannot have previous evidence")
+    elif isinstance(previous, dict) and previous.get("status") == "stopped_incomplete":
+        validate_stopped_incomplete(previous)
     else:
         if (
             not isinstance(previous, dict)
@@ -150,6 +153,328 @@ def validate_admission(receipt, inputs):
         )
         if gate["ready"] or gate["recorded"] != 48 or gate != previous["result"]:
             raise ValueError("revision requires a complete nonready development round")
+
+
+def _keys(value, names):
+    if not isinstance(value, dict) or set(value) != set(names.split()):
+        raise ValueError("invalid stopped-incomplete evidence fields")
+
+
+def _same(left, right):
+    # JSON identity must distinguish true from 1, including nested schedule data.
+    if digest(left) != digest(right):
+        raise ValueError("stopped-incomplete evidence identity mismatch")
+
+
+def validate_stopped_incomplete(previous):
+    """Check a portable predecessor projection without changing its old gate.
+
+    This is consistency replay, not authentication. The separately reviewed
+    correspondence receipt must bind the supplied original replay, starts,
+    final/failure byte hashes and private preservation seal before preparation.
+    No private native filenames, raw logs, executable code or mutable paths are
+    required here. Only the original revision-zero, sequential first-attempt
+    prefix is supported; its unfinished attempt is never made a task result.
+    """
+    from .analysis import reconcile
+    from .descriptive import outcomes
+    from .registration import validate_registration
+
+    _keys(
+        previous,
+        "status revision registration registration_sha256 replay replay_sha256 "
+        "replay_source preservation partition started_attempts resumptions correspondence",
+    )
+    if (
+        previous["status"] != "stopped_incomplete"
+        or type(previous["revision"]) is not int
+        or previous["revision"] != 0
+    ):
+        raise ValueError("stopped predecessor must be development revision zero")
+    registered = previous["registration"]
+    pin = previous["registration_sha256"]
+    if not _sha(pin) or not isinstance(registered, dict):
+        raise ValueError("original external registration pin required")
+    validate_registration(registered, expected_sha256=pin)
+    _same(registered, registration(registered["tasks"], "development", registered["identities"]))
+    _same(pin, digest({key: value for key, value in registered.items() if key != "registration_sha256"}))
+    source = previous["replay_source"]
+    _keys(source, "source_sha256 controller_sha256 entrypoint_sha256")
+    if (
+        source["source_sha256"] != registered["identities"]["source"]
+        or source["controller_sha256"] != registered["identities"]["controller"]
+        or not _sha(source["entrypoint_sha256"])
+    ):
+        raise ValueError("replay source differs from original registered source")
+    seal = previous["preservation"]
+    _keys(seal, "file_count sha256")
+    if type(seal["file_count"]) is not int or seal["file_count"] <= 0 or not _sha(seal["sha256"]):
+        raise ValueError("original private preservation seal required")
+    correspondence = previous["correspondence"]
+    _keys(correspondence, "status evidence_sha256 scope")
+    if (
+        correspondence["status"] != "PASS"
+        or not _sha(correspondence["evidence_sha256"])
+        or correspondence["scope"] != "independently_reviewed_consistency_not_authentication"
+    ):
+        raise ValueError("reviewed private-artifact correspondence required")
+
+    scheduled = registered["schedule"]
+    ids = [row["trial_id"] for row in scheduled]
+    partition = previous["partition"]
+    _keys(partition, "finalized unfinalized unstarted")
+    if any(not isinstance(value, list) for value in partition.values()):
+        raise ValueError("partition lists required")
+    count = len(partition["finalized"])
+    if len(partition["unfinalized"]) != 1 or count >= len(ids):
+        raise ValueError("one stopped, unfinished first attempt required")
+    _same(
+        partition,
+        {"finalized": ids[:count], "unfinalized": ids[count : count + 1], "unstarted": ids[count + 1 :]},
+    )
+    ledger = previous["started_attempts"]
+    if not isinstance(ledger, list) or len(ledger) != count + 1:
+        raise ValueError("started-attempt ledger coverage differs from partition")
+    resumptions = previous["resumptions"]
+    if not isinstance(resumptions, list):
+        raise ValueError("original subscription resumption list required")
+    pauses = []
+    rows = []
+    metrics = {
+        "valid_completion",
+        "functional_success",
+        "unsupported_success",
+        "incorrect_refusal",
+        "boundary_violation",
+        "raw_valid_completion",
+        "raw_functional_success",
+    }
+    for index, entry in enumerate(ledger):
+        final = index < count
+        _keys(
+            entry,
+            "trial_id start start_sha256 state "
+            + ("final_sha256 outcome continuation" if final else "failure failure_sha256"),
+        )
+        row = scheduled[index]
+        expected_start = {
+            "row": row,
+            "registration_sha256": pin,
+            "attempt": 1,
+            "attempt_id": row["trial_id"] + "--attempt-1",
+        }
+        _same(entry["start"], expected_start)
+        if (
+            entry["trial_id"] != row["trial_id"]
+            or entry["state"] != ("finalized" if final else "unfinalized")
+            or entry["start_sha256"] != digest(expected_start)
+        ):
+            raise ValueError("started-attempt identity or digest mismatch")
+        if final:
+            if not _sha(entry["final_sha256"]):
+                raise ValueError("original final artifact byte hash required")
+            continuation = entry["continuation"]
+            if not isinstance(continuation, dict) or continuation.get("historical_delegation") not in {
+                "verified",
+                "unverified",
+            }:
+                raise ValueError("original continuation record required")
+            paused = continuation.get("decision") == "stop"
+            _same(
+                continuation,
+                {
+                    "schema_version": "evalopt-workflows-v2/1",
+                    "kind": "continuation",
+                    "decision": "stop" if paused else "continue",
+                    "reasons": ["subscription_permission_unavailable"] if paused else [],
+                    "retry_authorized": False,
+                    "task_success_inferred": False,
+                    "historical_delegation": continuation["historical_delegation"],
+                },
+            )
+            if paused:
+                pauses.append(entry)
+            outcome = entry["outcome"]
+            required = set(row) | metrics | {"contract_dispute", "runtime_identity_verified"}
+            if not isinstance(outcome, dict) or set(outcome) not in (required, required | {"missing_reason"}):
+                raise ValueError("original finalized outcome projection required")
+            _same({key: outcome[key] for key in row}, row)
+            if any(type(outcome[key]) is not bool and outcome[key] is not None for key in metrics) or any(
+                type(outcome[key]) is not bool for key in ("contract_dispute", "runtime_identity_verified")
+            ):
+                raise ValueError("invalid finalized outcome types")
+            if outcome["valid_completion"] is None:
+                reason = outcome.get("missing_reason")
+                if (
+                    not isinstance(reason, str)
+                    or not reason
+                    or any(c not in "abcdefghijklmnopqrstuvwxyz_" for c in reason)
+                ):
+                    raise ValueError("unknown finalized outcome requires static missing reason")
+            elif "missing_reason" in outcome:
+                raise ValueError("known finalized outcome cannot have missing reason")
+            rows.append(outcome)
+        else:
+            failure = entry["failure"]
+            _keys(failure, "kind error_type observed_at automatic_retry_allowed")
+            if (
+                failure["kind"] != "controller_failure"
+                or failure["automatic_retry_allowed"] is not False
+                or entry["failure_sha256"] != digest(failure)
+            ):
+                raise ValueError("retained nonretryable controller failure required")
+            error = failure["error_type"]
+            if not isinstance(error, str) or not error.isascii() or not error.isidentifier():
+                raise ValueError("sanitized exception class required")
+            try:
+                observed = datetime.fromisoformat(failure["observed_at"])
+            except (TypeError, ValueError) as exc:
+                raise ValueError("invalid controller failure timestamp") from exc
+            if observed.utcoffset() is None:
+                raise ValueError("controller failure timestamp requires timezone")
+
+    if len(resumptions) != len(pauses):
+        raise ValueError("every stopped subscription continuation requires its original resumption")
+    for resumption, entry in zip(resumptions, pauses, strict=True):
+        _keys(resumption, "pause pause_sha256 resume resume_sha256")
+        expected_pause = {
+            "registration_sha256": pin,
+            "stopped_trial_id": entry["trial_id"],
+            "stopped_final_sha256": entry["final_sha256"],
+            "permission": {
+                "schema_version": "evalopt-workflows-v2/1",
+                "kind": "subscription_permission",
+                "ordinary_usage_allowed": False,
+                "state": "exhausted",
+            },
+        }
+        _same(resumption["pause"], expected_pause)
+        _same(resumption["pause_sha256"], digest(expected_pause))
+        expected_resume = {
+            "registration_sha256": pin,
+            "pause_sha256": digest(expected_pause),
+            "permission": {
+                "schema_version": "evalopt-workflows-v2/1",
+                "kind": "subscription_permission",
+                "ordinary_usage_allowed": True,
+                "state": "allowed",
+            },
+        }
+        _same(resumption["resume"], expected_resume)
+        _same(resumption["resume_sha256"], digest(expected_resume))
+
+    replay = previous["replay"]
+    _keys(
+        replay,
+        "stage scheduled_rows secondary_outcomes gate conclusion resources kernel registration_sha256 retained_attempts finalized_rows unfinalized_trials controller_time",
+    )
+    if not _sha(previous["replay_sha256"]) or digest(replay) != previous["replay_sha256"]:
+        raise ValueError("original frozen replay digest mismatch")
+    resolved = reconcile(registered["tasks"], rows, "development")
+    gate = development_gate(registered["tasks"], rows, controls_passed=True, revision=0)
+    for key, expected in {
+        "stage": "development",
+        "conclusion": "development_only",
+        "registration_sha256": pin,
+        "scheduled_rows": resolved,
+        "secondary_outcomes": outcomes(resolved),
+        "gate": gate,
+        "finalized_rows": count,
+        "retained_attempts": count + 1,
+        "unfinalized_trials": partition["unfinalized"],
+    }.items():
+        _same(replay[key], expected)
+    if gate["ready"] or gate["recorded"] != count or gate["next"] != "development_revision":
+        raise ValueError("stopped original round cannot pass or inflate its gate")
+    _validate_stopped_report_counts(replay, scheduled[: count + 1], rows)
+    return {
+        "scheduled": len(ids),
+        "finalized": count,
+        "unfinalized": 1,
+        "unstarted": len(ids) - count - 1,
+        "gate": gate,
+    }
+
+
+def _validate_stopped_report_counts(replay, started, outcomes):
+    """Check retained report denominators; counters remain supplied original evidence."""
+    import math
+
+    from .accounting import COUNTERS
+    from .registration import ARMS
+
+    def integer(value):
+        return type(value) is int and value >= 0
+
+    def duration(value):
+        return type(value) in (int, float) and math.isfinite(value) and value >= 0
+
+    _keys(replay["resources"], " ".join(ARMS))
+    for arm, bucket in replay["resources"].items():
+        _keys(
+            bucket,
+            "attempts complete_usage_attempts partial_usage_attempts unavailable_usage_attempts exact_totals observed_lower_bounds agent_wall_seconds_observed agent_wall_seconds_known_attempts efficiency_claim_allowed",
+        )
+        counts = [
+            bucket[key]
+            for key in (
+                "attempts",
+                "complete_usage_attempts",
+                "partial_usage_attempts",
+                "unavailable_usage_attempts",
+                "agent_wall_seconds_known_attempts",
+            )
+        ]
+        if (
+            not all(map(integer, counts))
+            or counts[0] != sum(row["arm"] == arm for row in started)
+            or sum(counts[1:4]) != counts[0]
+            or counts[4] > counts[0]
+            or bucket["efficiency_claim_allowed"] is not False
+        ):
+            raise ValueError("invalid original all-attempt resource denominator")
+        if arm == started[-1]["arm"] and counts[3] < 1:
+            raise ValueError("unfinished attempt consumption must remain unavailable")
+        lower = bucket["observed_lower_bounds"]
+        _keys(lower, " ".join(COUNTERS))
+        if any(value is not None and not integer(value) for value in lower.values()) or (
+            not sum(counts[1:3]) and any(value is not None for value in lower.values())
+        ):
+            raise ValueError("invalid original resource counters")
+        expected_exact = lower if counts[0] and counts[1] == counts[0] else None
+        _same(bucket["exact_totals"], expected_exact)
+        seconds = bucket["agent_wall_seconds_observed"]
+        if (counts[4] == 0 and seconds is not None) or (counts[4] > 0 and not duration(seconds)):
+            raise ValueError("invalid original observed agent duration")
+    _keys(replay["kernel"], "U M G")
+    for bucket in replay["kernel"].values():
+        _keys(
+            bucket,
+            "stopped_outputs accepted rejected incorrect_acceptance false_rejection abstained artifact_failures unknown_outcomes approval_coverage",
+        )
+        if (
+            any(not integer(value) for key, value in bucket.items() if key != "approval_coverage")
+            or bucket["stopped_outputs"] != len(outcomes)
+            or bucket["unknown_outcomes"] != sum(row["valid_completion"] is None for row in outcomes)
+            or sum(bucket[key] for key in ("accepted", "rejected", "abstained", "artifact_failures"))
+            != len(outcomes)
+            or bucket["incorrect_acceptance"] > bucket["accepted"]
+            or bucket["false_rejection"] > bucket["rejected"]
+        ):
+            raise ValueError("invalid original kernel denominator")
+        _same(bucket["approval_coverage"], bucket["accepted"] / len(outcomes) if outcomes else None)
+    timing = replay["controller_time"]
+    _keys(timing, "observed_seconds known_attempts retained_attempts scope")
+    if (
+        not integer(timing["known_attempts"])
+        or timing["known_attempts"] > len(outcomes)
+        or type(timing["retained_attempts"]) is not int
+        or timing["retained_attempts"] != len(started)
+        or timing["scope"] != "setup_agent_capture_visible_and_hidden_verification"
+        or (timing["known_attempts"] == 0 and timing["observed_seconds"] is not None)
+        or (timing["known_attempts"] > 0 and not duration(timing["observed_seconds"]))
+    ):
+        raise ValueError("invalid original controller-time denominator")
 
 
 def _validate_stage_round(admission, stage, development_admission):
@@ -192,6 +517,12 @@ def derive_identities(frozen, admission, manifest):
     images = [environment[key].removeprefix("sha256:") for key in ("agent_image", "verifier_image")]
     if not all(_sha(value) for value in images):
         raise ValueError("frozen image digests required")
+    controller = ["harbor_bridge.py", "observe.py", "snapshot.py", "preflight.py", "campaign.py"]
+    # Legacy freezes predate explicit network configuration. Their exact source
+    # manifest and external registration still determine the original identity;
+    # every new prepare requires and explicitly pins the new network module.
+    if "harness/evalopt_v2/network.py" in manifest:
+        controller.append("network.py")
     return {
         "tasks": inputs["tasks"],
         "skill_c": inputs["skill_c"],
@@ -204,9 +535,7 @@ def derive_identities(frozen, admission, manifest):
         "parser": subset(["framing.py", "accounting.py"]),
         "continuation_policy": subset(["lifecycle.py", "store.py", "campaign.py"]),
         "analysis": subset(["analysis.py", "descriptive.py", "registration.py"]),
-        "controller": subset(
-            ["harbor_bridge.py", "observe.py", "snapshot.py", "preflight.py", "campaign.py"]
-        ),
+        "controller": subset(controller),
     }
 
 
@@ -296,6 +625,8 @@ def prepare(
     harness, skill_c, task_root, upstream = map(
         lambda value: Path(value).resolve(), (harness, skill_c, task_root, upstream)
     )
+    if not (harness / "evalopt_v2/network.py").is_file():
+        raise ValueError("new freezes require the reviewed network controller")
     kernel = _preserved_kernel(kernel)
     inputs = reviewed_inputs(harness, skill_c, task_root)
     validate_admission(admission, inputs)

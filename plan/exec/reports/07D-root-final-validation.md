@@ -1,0 +1,3 @@
+# Task07D root final verification
+
+Root independently ran the complete required check set at `ba179f3a188710e38ec4557d2f65b66a8953c099`: baseline-to-head diff check, all48FROZEN hashes, Ruff format/check, basedpyright and `.venv/bin/pytest -p no:cacheprovider -rs`. Every command exited0. The suite reported881passed and2pre-existing NodeSDKexample skips; the missingoptional examplepackage was not installed and no skip was hidden. Raw command timings/output remain in `artifacts/07D-root-final-validation/`. This verifies the final revised README locally; hosted checks and independent freshFable review remain distinct gates.

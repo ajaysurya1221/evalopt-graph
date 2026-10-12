@@ -32,3 +32,10 @@
 - Terminal JSON does not expose effective effort; record requested effort and that observability limit.
 - Provision uv0.11.29 in run-private tooling because installed global uv is0.12.5; do not replace global tooling.
 - Task00 review found terminal blank lines in extracted tasks. Trim those task files only; preserve PLAN.md verbatim and record the failed initial committed-diff check.
+
+## Independent proposal sequence and evidence boundaries
+
+- Fable's three blind proposals completed at lane commit `0663549f652bb868c3a5ad040fb67d6a7bed4663`; native supervision completed with model identity and exit checks. Root read only file metadata and the content-free completion report before committing Astra's independent proposals at `aa28b4c`. Only afterwards did root read the Fable proposal contents.
+- Agreement on STOP, the sixteen-entry roster, four relationship categories and all preservation limits is retained. A fresh xhigh consultation resolves the three remaining documentation-form differences. Proposals are not implementation authorization; the accepted plan and owned-path limits prevail.
+- Task06's first independent reviews both require correcting the audit's claimed search scope, timestamps, artifact coverage and README-guard handoff. Original reports remain retained; a separate revision report will supersede their inaccurate wording. No dependency removal is justified.
+- Public-history scan diagnosis covers seventeen nonsecret findings at fixed historical paths; it is not approval of a scanner patch. Task08 must preserve stock detections and prove exact value-plus-path scope through negative controls and independent review.

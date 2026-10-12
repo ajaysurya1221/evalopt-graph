@@ -46,3 +46,11 @@
 - Workspace contract check `python3 -B -m unittest discover -s tools/tests` ran from `/Users/ajay/Developer`: 32 tests passed in 9.828 seconds. No workspace integration file changed.
 - For all remaining inspections, exclude `.env` and credential/authentication stores entirely; command-status probes are sufficient. No secret-file inspection is needed for documentation, package qualification or portfolio README edits.
 - Native receipts, not approximate worker self-reports, establish call timing: 03-proposals 19:46:31.296741–19:59:37.097417 UTC, 785.705 seconds; 03-tiebreak 20:01:28.195144–20:03:46.651851 UTC, 138.358 seconds, all on 2026-10-12. The latter worker report's approximate end time is superseded by this retained native interval.
+
+## 2026-10-12 20:25 UTC — Version-specific SLSA wording
+
+Independent primary-source inspection found the cited SLSA VSA v1.0 and v1.1 pages marked Retired, while v1.2 is Approved. Task03/04 must qualify the retired version and record current-version status as context. This corrects a version scope without adding a route or reopening STOP. The immutable approved PLAN is retained as supplied; factual clarification follows its accuracy boundary and no-new-integration constraint. Source evidence is retained in reports/04-primary-sources-preflight.md.
+
+## 2026-10-12 20:27 UTC — Task03 first review and bounded correction
+
+Task03 implementation finalized at 2d5c307 with native DONE in 875.219 seconds. Root inspected the four-file diff and reran preservation (75 files unchanged). Independent Codex and fresh Fable both returned REVISE for incomplete inherited-source disclosure and overbroad identity wording. Fable review itself exited normally; supervisor PARTIAL means its required verdict was not ACCEPT. Original reports/reviews remain retained. Revision1 also narrows VSA status by version and correctly attributes release authority to the human. No protected source or experimental evidence changes are authorized.

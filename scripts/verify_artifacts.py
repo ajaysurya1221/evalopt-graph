@@ -178,7 +178,7 @@ def verify_sdist(sdist: Path, version: str) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("dist", type=Path)
-    parser.add_argument("--version", default="0.1.0")
+    parser.add_argument("--version", default="0.1.1")
     args = parser.parse_args()
     wheels = sorted(args.dist.glob("*.whl"))
     sdists = sorted(args.dist.glob("*.tar.gz"))

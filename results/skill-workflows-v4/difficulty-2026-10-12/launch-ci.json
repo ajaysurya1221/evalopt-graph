@@ -1,0 +1,92 @@
+{
+  "ci_all_green": false,
+  "clean_scan": false,
+  "external_scan": {
+    "adjudication": "ACCEPT_KNOWN_NONSECRETS",
+    "adjudicator_sha256": "44866981ce3277ca8e4558512eecc2fba291d61aa2840c50222e685d758dc3e5",
+    "capture_sha256": {
+      "adjudication.json": "eff7f2295430d82da5f9a84eadf6bdf13fd32ee62c1beb216ef66979a4f0af7a",
+      "report.redacted.json": "1b4e1801c5d142fc809d6ecabf17b286f2582827fa63c352a068ea6486582a51",
+      "scan.json": "6fdc009ed7c0110471277ae505d0c8cde22a1c5171bee9fbe1fd6ee458e50a88",
+      "scanner.redacted.log": "cf0c70ab8b592354c06b2788664b70da02edf6d6df55c14cc76c1fbd4fd92dc8"
+    },
+    "config_sha256": "be739780ff6fb9d3eee469a149acb6a56ac3c00586fe45ac90b6eeeef748f96a",
+    "exit_code": 1,
+    "expected_findings_sha256": "943d01b687acbb2ca53d75951d4d51fa0f34f96ad1b79adb645c582b822c6c98",
+    "finding_count": 11,
+    "finding_scope": "Only the same eleven historical occurrences; no permission for new findings.",
+    "full_history": true,
+    "hosted_linux_scan_rerun_claim": false,
+    "independent_review_sha256": "4a23696c33260ee938fda7316fe62e57f97a9d7765fbe69142df216fe0e63fd2",
+    "platform": "macOS",
+    "reachable_commits": 34,
+    "scanner_binary_sha256": "f414bc2fb952be6c9072b75cb411e3368614ef4b16d48dbd9ad238034afd2302",
+    "scope_sha256": "9f38816170d0704255d3ce67369ab0c67f90d42ff6d31553d95fa1e5457ef831",
+    "version": "8.30.1"
+  },
+  "hosted": {
+    "collector_review_sha256": "008142a96d8f0b72559975cc36b5b573869fa5aae65f97a61aa5c50db34565de",
+    "collector_sha256": "f5785a80d303e5c00e0ec96bc7a93578245e2239ca81fa62a3cf904261a04209",
+    "distinct_independent_job_names_per_run": 10,
+    "independent_review_sha256": "9a835ad29d0ee0b0e70b26a81cf032e24fb80d2e04c31e15ee64d73249f136fc",
+    "observed_at": "2026-10-12T12:53:06.726032+00:00",
+    "original_cancelled_attempt": {
+      "attempt": 1,
+      "conclusion": "cancelled",
+      "duplicate_event_cause": "not established",
+      "full_same_source_reruns_requested": 1,
+      "observed_cause": "higher-priority waiting request in the frozen workflow concurrency group",
+      "rerun_requested_at": "2026-10-12T12:30:02.861691+00:00",
+      "run_id": 38247358819,
+      "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38247358819/attempts/1"
+    },
+    "retained_capture_sha256": "ae3e4a827bfce8c22d0126434b46f9ba1fdabc43208e23438e0d4c8fff0f6a62",
+    "runs": [
+      {
+        "attempt": 2,
+        "event": "push",
+        "independent_jobs_succeeded": 10,
+        "required_aggregate_conclusion": "failure",
+        "run_id": 38247358819,
+        "scanner_conclusion": "failure",
+        "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38247358819/attempts/2"
+      },
+      {
+        "attempt": 1,
+        "event": "pull_request",
+        "independent_jobs_succeeded": 10,
+        "required_aggregate_conclusion": "failure",
+        "run_id": 38247365021,
+        "scanner_conclusion": "failure",
+        "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38247365021/attempts/1"
+      },
+      {
+        "attempt": 1,
+        "event": "push",
+        "independent_jobs_succeeded": 10,
+        "required_aggregate_conclusion": "failure",
+        "run_id": 38247372693,
+        "scanner_conclusion": "failure",
+        "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38247372693/attempts/1"
+      }
+    ]
+  },
+  "larger_benchmark_authorized": false,
+  "limits": [
+    "Hashes bind retained records under controller custody; they do not authenticate producers.",
+    "Separated AI maintainer reviews are not independent human or live replication.",
+    "The original cancelled attempt and red hosted scanner/required aggregate remain in history.",
+    "Passing the same ten job names on three runs is not thirty distinct test lanes.",
+    "Current result publication requires fresh source/CI/scan/reproduction checks at its new exact head."
+  ],
+  "new_trials_authorized": false,
+  "operational_disposition": "../ci-disposition-2026-10-12/README.md",
+  "pr_url": "https://github.com/ajaysurya1221/evalopt-graph/pull/36",
+  "registration_sha256": "5c75186aeb6081b4a7dac4b10704c9992cda7f55b62acc8ae64718c5dd06b0ac",
+  "result_publication_check_status": "PENDING_NEW_RESULT_HEAD",
+  "result_publication_head": null,
+  "root_prelaunch_decision_sha256": "2e1c5cc21849e9cd178ea60421d41857603de16a5c590d38ff996d483bb8c8fb",
+  "schema_version": "evalopt.v4-final-report-ci-provenance-projection.v1",
+  "scope": "Historical prelaunch CI evidence for the completed fixed screen; not clearance of a later result-publication commit.",
+  "source_head": "14575abf2ecd02b3f33962f481b2f14bff6cab5b"
+}

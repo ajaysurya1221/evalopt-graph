@@ -1,0 +1,81 @@
+{
+  "initial_check_exit": 0,
+  "negative_snapshots": [],
+  "positive_check_exit": 0,
+  "positive_response": {
+    "blockers": [],
+    "checks": [],
+    "findings": [
+      {
+        "kind": "incorrect-result",
+        "path": "reachability.py",
+        "symbol": "closure",
+        "witness": {
+          "args": [
+            {
+              "grace": 5,
+              "keep": 1,
+              "now": 20,
+              "objects": {
+                "a": {
+                  "base": null,
+                  "refs": []
+                },
+                "b": {
+                  "base": "a",
+                  "refs": []
+                }
+              },
+              "quarantine": {},
+              "snapshots": [
+                {
+                  "branch": "main",
+                  "created": 0,
+                  "id": "one",
+                  "object": "b",
+                  "pinned": false
+                }
+              ],
+              "window": 0
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      },
+      {
+        "kind": "incorrect-result",
+        "path": "quarantine.py",
+        "symbol": "collect",
+        "witness": {
+          "args": [
+            {
+              "grace": 5,
+              "keep": 1,
+              "now": 20,
+              "objects": {
+                "a": {
+                  "base": null,
+                  "refs": []
+                }
+              },
+              "quarantine": {
+                "a": 15
+              },
+              "snapshots": [],
+              "window": 0
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      }
+    ],
+    "status": "completed"
+  },
+  "positive_snapshot": "agent",
+  "review_mutants": {
+    "delta-base-retention": "defect-controls/delta-base-retention",
+    "inclusive-grace-expiry": "defect-controls/inclusive-grace-expiry"
+  }
+}

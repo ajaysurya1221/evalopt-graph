@@ -1,0 +1,14 @@
+{
+  "README.md": "ad7648511907e15dcf081011ca835de659ccd90213fc039d2079276abb7bf189",
+  "adjudicate.py": "44866981ce3277ca8e4558512eecc2fba291d61aa2840c50222e685d758dc3e5",
+  "adjudicator-review.json": "ba3056c5b4fe55dc456b29d98ae4b6a494af5cd2645b0d38f2274ec3ad04d212",
+  "diagnosis.json": "3ccdb27be0321b052a17bc693239b456fa07ae34943d1536235747af015b7fbc",
+  "expected-findings.json": "943d01b687acbb2ca53d75951d4d51fa0f34f96ad1b79adb645c582b822c6c98",
+  "historical-adjudication.json": "09782bc3e2b677d06b95b48e5eae8c48a480e001f297c4c0b12c66940749c159",
+  "historical-hosted-status.json": "d1d8adda3799d3e86318c34429ff423a404403202a2aadd16efda2f4cd0187e6",
+  "hosted-gate.py": "d4b2d8545d6bd195e5b9162d798d20026f0fab2d5ac812f85e99f5bfb48db32d",
+  "hosted-review.json": "46afaf59ad247ed9e7d214b840d53f4366348dd53f03e0d35f754a5c4eb038bd",
+  "operational-policy.json": "bfda412c444b51f22bd41551a3819928c52ae0201f5840f733beaa1759e3f620",
+  "receipt.json": "b47b5a4b0678d46bac2999a2446386b0c168459ef4e00571442baa3e3b42a5c7",
+  "reproduce.py": "6e588338d96695c05fc29e0eb75045b54d999ec4216e14b74d1f370df56d7ebb"
+}

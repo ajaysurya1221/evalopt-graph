@@ -1,0 +1,97 @@
+{
+  "actions": {
+    "candidate_executions": 0,
+    "corrected_scores": 0,
+    "docker_calls": 0,
+    "models_invoked": 0,
+    "new_grader_executions": 0,
+    "original_evidence_mutations": 0,
+    "source_mutations": 0
+  },
+  "allowed_public_conclusions": [
+    "All 16 original upstream-B trials finalized; the frozen result contains 14 known functional and valid completions, zero known functional failures, and two unresolved grading-contract disputes.",
+    "All 16 responses satisfy the declared envelope and accurately quote the supplied initial checks. This is finite observed behavior, not a causal estimate of the correction or proof of semantic grader completeness.",
+    "Ordinary repair and implementation completed 8/8; seven task pairs succeeded twice. The target difficulty variation was not validated.",
+    "The conclusion is robust to every assignment of the two unknowns: 14 known successes already exceed the upper target of 12, and the ordinary failure-control requirement cannot be met.",
+    "M/G rejected the two known successful inherited-glob outputs at the deliberately obsolete post-stop check and accepted the two disputed backup outputs. These are secondary stopped-output decisions; unknown correctness remains unknown.",
+    "The same report records complete token/call accounting for all 16 attempts but no separate agent-only wall time. No efficiency or dollar-cost inference is supported."
+  ],
+  "checks": {
+    "boundary_violations": 0,
+    "check_claims_supported": 16,
+    "completed_original_attempts": 16,
+    "consistent_success_tasks": 7,
+    "genuine_consistent_failure_tasks": 0,
+    "known_functional_failures": 0,
+    "known_valid_and_functional_completions": 14,
+    "ordinary_successes": 8,
+    "ordinary_trials": 8,
+    "preserved_raw_grade_matches": 16,
+    "registered_gate_checks_independently_reproduced": true,
+    "repetitions_per_task": 2,
+    "response_contract_valid": 16,
+    "retained_callable_case_passes": 216,
+    "retained_supported_review_witnesses": 10,
+    "reviewed_files_unchanged": true,
+    "scheduled_trials_reviewed": 16,
+    "selective_files_bound_to_endpoint_inventory": 78,
+    "semantic_response_assessable": 16,
+    "supplied_initial_checks_exact_matches": 16,
+    "task_units": 8,
+    "timeouts": 0,
+    "unresolved_disputed_rows": 2
+  },
+  "endpoint_audit_sha256": "c989c7cab58ec3ff8eb0895b406ac3ce6dfbdfc28c9ec6adc7087f18cea18e44",
+  "findings": [
+    {
+      "affected_repetitions": [
+        1,
+        2
+      ],
+      "evidence": "Each response uses the common-prompt-permitted data-loss kind with exact published case-18 and reachability.py/closure location. Retained executions mark both findings supported. The task obligation allows only incorrect-result and its visible binding omits that restriction. The kind filter alone prevents matching delta-base-retention, producing a contract dispute. Separate case-04 expiry findings match normally.",
+      "id": "obligation-kind-contract-gap",
+      "implication": "The disputed rows are unresolved measurement outcomes, not demonstrated model failures, fabricated findings, missing evidence or missed defects. No corrected score was calculated.",
+      "prospective_recommendation": "Align declared allowed kinds with task-level obligation matching, then test all semantically appropriate kind/location/witness combinations. Any fresh difficulty screen needs separate authorization.",
+      "severity": "measurement_limitation",
+      "status": "DISCLOSED_ORIGINAL_NULL_GRADES_PRESERVED",
+      "task_id": "backup-reachability-collection"
+    }
+  ],
+  "gate_conclusion": "difficulty_not_validated",
+  "larger_benchmark_authorized": false,
+  "limits": [
+    "Read-only retained-record and pure arithmetic review. No grader, candidate, model, Docker or new oracle execution; no regrading, source edits, trials or tuning.",
+    "Reviewed selected retained source and trial bytes against the exact full-byte audit inventory; full endpoint integrity acceptance is a separate assigned review.",
+    "Producer authentication, independent human authorship and live replication are not established by content hashes or this separated AI review.",
+    "Original report, tasks, grades, source and history remain unchanged. This acceptance permits faithful reporting only and does not authorize further evaluation."
+  ],
+  "original_report_sha256": "754eb66f0b0425e19f9f41eb55abd53896119a3420a13de3bb7a44ba31cc1f68",
+  "public_bytes_reviewed_sha256": {
+    "CLAIMS.md": "7e59c26f5eb384b5312ddcb6c0d6605b464d843c241054b1a1ef54dd0a6235cb",
+    "README.md": "b6df840563fbd4f3d236db5e07aedef4d811c4b0930f3a276eff80eecb3530aa",
+    "semantic-dispute.json": "a169ece9f3813a038387566efad7dc6558cef2b55991e59ece55dcfc2896a913"
+  },
+  "publication_review": {
+    "README_and_CLAIMS_match_frozen_report": true,
+    "diagnosis_copy_byte_identical": true,
+    "remaining_required_prose_fixes": [],
+    "statistical_wording_fix": "Changed independent attempts to fresh isolated attempts and stated that repeated trials are not independent task units."
+  },
+  "registration_sha256": "5c75186aeb6081b4a7dac4b10704c9992cda7f55b62acc8ae64718c5dd06b0ac",
+  "reviewed_at": "2026-10-12T14:20:35.229438+00:00",
+  "reviewer_evidence_sha256": {
+    "interpretation.json": "3998c8c1b31957232b7aa131a9955c115790d74e77d4ad516ff37610e2a83059",
+    "review-analysis.log": "cb31dde1ddf6a10ce5ae79564c68c0a64068931cf0100da07d273e4ca695ec7b",
+    "review_analysis.py": "d0cabdca0663b430c82b2a1dc1bf3e37426d19d5c0a9b80fbe3cb6c3050fadd4"
+  },
+  "schema_version": "evalopt.v4-difficulty-interpretation-review.v1",
+  "statistical_limits": [
+    "Eight authored tasks are problem units; two repetitions are not 16 independent tasks.",
+    "This is a finite maintainer-run upstream-only development difficulty screen, not a representative population sample, power calculation or held-out efficacy study.",
+    "No eval-opt treatment arm ran; no comparison with upstream, causal benefit, effect size, superiority, generality or independent-human-replication claim follows.",
+    "Possible completion-count bounds 14 to 16 are missing-outcome assignments, not confidence intervals or corrected grades.",
+    "Zero known incorrect kernel acceptances does not establish protection against incorrect outputs: there are no known functional failures and two accepted outcomes remain unresolved."
+  ],
+  "verdict": "ACCEPT",
+  "verdict_scope": "Faithful frozen-report interpretation and disclosure of a semantic measurement limitation; not acceptance of grader completeness or difficulty readiness."
+}

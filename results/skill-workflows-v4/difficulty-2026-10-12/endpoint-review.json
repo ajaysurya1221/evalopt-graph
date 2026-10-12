@@ -1,0 +1,89 @@
+{
+  "accounting": {
+    "complete_attempts": 16,
+    "exact_totals": {
+      "input_tokens": 11385116,
+      "model_calls": 437,
+      "output_tokens": 169883,
+      "tool_calls": 387
+    },
+    "partial_attempts": 0,
+    "unavailable_attempts": 0
+  },
+  "audit_helper_sha256": "ce90a95f5baf2f43523c6d26e9b28c5b6390ae9b3093e01b5811968767be1687",
+  "audit_sha256": "c989c7cab58ec3ff8eb0895b406ac3ce6dfbdfc28c9ec6adc7087f18cea18e44",
+  "campaign_directories_sha256": "e78f011b28adb5f5679212a16c49c40095eafa017dcc4972524c13438aae1e19",
+  "campaign_inventory_file_sha256": "50fe92bfb020c1905db6b0900f93c623bc3c0e0c54938da589773e5b1b8b7459",
+  "campaign_inventory_sha256": "50fe92bfb020c1905db6b0900f93c623bc3c0e0c54938da589773e5b1b8b7459",
+  "checks_performed": [
+    "Verified real operator/controller start/end chain, root process/Docker/existing-lock provenance and freshness at accepted audit; reviewer rechecked PID absence, no matching controller/observer, zero owned running containers and free existing lock.",
+    "Verified accepted auditor/review identities, externally pinned frozen dependency closure before import/replay, exact original16-row schedule, no retries, all6110 file bytes/modes and full directory roster before/after.",
+    "Independently ran original frozen CLI retained-record replay into a new private file; report matches both root replays exactly.",
+    "Verified every finalized artifact seal; both stopped archive member/file/mode rosters against retained extraction for all16 trials.",
+    "Replayed native runtime/accounting across all native sessions and independently summed unique owner responses; copied history must match originals and is excluded.",
+    "Checked every phase/initial-observation/prompt/visible copy, raw case/witness roster,236 exact verifier container ownership/closure/cleanup joins, and16 unique released network chains.",
+    "Recomputed registered task-level difficulty checks directly from raw typed outcome/evidence fields; whole-task dispute remains unknown across both attempts and no readiness is inferred."
+  ],
+  "counts": {
+    "archive_files": 543,
+    "archives": 32,
+    "attempts": 16,
+    "campaign_directories": 3013,
+    "campaign_files": 6110,
+    "case_containers": 236,
+    "case_records": 216,
+    "copied_responses_excluded": 0,
+    "native_sessions": 47,
+    "owned_responses": 437,
+    "released_networks": 16,
+    "review_witnesses": 10,
+    "sealed_artifacts": 5253,
+    "trials": 16
+  },
+  "findings": [],
+  "gate": {
+    "conclusion": "difficulty_not_validated",
+    "disputed_tasks": [
+      "backup-reachability-collection"
+    ],
+    "known_completions": 14,
+    "larger_benchmark_authorized": false,
+    "next": "stop_and_report",
+    "ordinary_attempts": 8,
+    "ordinary_completions": 8,
+    "ready": false,
+    "unknown": 2
+  },
+  "independent_report_sha256": "754eb66f0b0425e19f9f41eb55abd53896119a3420a13de3bb7a44ba31cc1f68",
+  "kind": "difficulty_endpoint_independent_review",
+  "limits": [
+    "Separated AI maintainer endpoint review, not independent human validation or new live replication.",
+    "Reviewer authored task assets earlier; this receipt does not independently validate task semantics/oracle correctness. Existing separately reviewed task controls are retained, and separate semantic diagnosis is owned elsewhere.",
+    "No candidate/oracle code rerun, new grading rule, outcome repair, frozen/evidence/source modification, new model request or dispatch. Raw outcomes only replay under frozen rules.",
+    "Retained controller evidence and hashes establish correspondence under custody assumptions, not cryptographic producer authentication.",
+    "Fresh Docker calls were read-only ps listings; no container or network mutation occurred. Process/quiescence observations are point-in-time.",
+    "All16 trials are finalized and custody checks pass, but difficulty is not validated:14 known completions,2 disputed unknowns and no ordinary consistent functional failure. No larger study is authorized."
+  ],
+  "quiescence_sha256": "be4e26ba745ce16fceccfdd706a54b05f90a7b664fc9b58d3efa1f0a7ae3197e",
+  "receipt_assembly_note": "The prior reviewer receipt sampled its own still-open stdout before the final summary was written. This replacement binds the now-closed reviewer logs; all actual endpoint checks and evidence remain unchanged. The prior receipt is retained.",
+  "recorded_at": "2026-10-12T14:14:46.879185+00:00",
+  "registration_sha256": "5c75186aeb6081b4a7dac4b10704c9992cda7f55b62acc8ae64718c5dd06b0ac",
+  "report_canonical_sha256": "754eb66f0b0425e19f9f41eb55abd53896119a3420a13de3bb7a44ba31cc1f68",
+  "report_sha256": "754eb66f0b0425e19f9f41eb55abd53896119a3420a13de3bb7a44ba31cc1f68",
+  "reviewer_evidence_sha256": {
+    "check-01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "check-01.stdout": "910c4225ca64b46770e49f399e1da1b8ffb73dfeb91b026608e928a322837199",
+    "check_endpoint.py": "2ba3c06513afe216eaa2c5494092c0e0c01e870e1c22f0feb882bd04fdc3720d",
+    "checked-trials.json": "9562dc2c9e54bc4e261347cf63c1cb796fdf8a5c7be0dfa1f9c88208352e4d74",
+    "current-quiescence.json": "bdaa7d192e76450cfdde185bcdfde893ddffe2441dd3dd96eac7456c1e511520",
+    "native-replay.process.json": "ee113966d85d042d0599286dda05ed9dfb253130725444c419ce931a5d83c890",
+    "native-replay.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-replay.stdout": "758373373779ba17c2dc2a95af0e2c8ad2eca8c972d431a1f8732a1db062e933",
+    "native-report-independent.json": "754eb66f0b0425e19f9f41eb55abd53896119a3420a13de3bb7a44ba31cc1f68"
+  },
+  "reviewer_source_sha256": "2ba3c06513afe216eaa2c5494092c0e0c01e870e1c22f0feb882bd04fdc3720d",
+  "schema_version": "evalopt-workflows-v4/1",
+  "scope": "Actual16-row endpoint integrity, retained-record reproduction and registered decision correspondence. Allows sanitized extraction for reviewed publication only; no new dispatch.",
+  "supersedes_review_sha256": "78fb02ca5f499b9c1c5be520eef371b512282cc46af07717c59b18f00afde618",
+  "verdict": "ACCEPT"
+}

@@ -1,0 +1,1082 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "presence.py",
+    "fields.py",
+    "structure.py"
+  ],
+  "attempt_id": "authored-control--ordered-tree-three-way-merge",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": []
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [],
+            "local": [],
+            "remote": []
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "a",
+              "name": "a",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "a",
+              "name": "a",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": []
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "a",
+              "name": "a",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "a",
+              "add"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 1
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "a",
+              "name": "renamed",
+              "order": 0,
+              "parent": null,
+              "value": 5
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "renamed",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 5
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "a",
+              "value"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 1
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": []
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "a",
+              "delete"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "a",
+              "cycle"
+            ],
+            [
+              "b",
+              "cycle"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": "b",
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": "a",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "b",
+              "parent_missing"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": "a",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "a",
+              "name_collision"
+            ],
+            [
+              "b",
+              "name_collision"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [],
+            "local": [
+              {
+                "id": "a",
+                "name": "x",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "b",
+                "name": "x",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "b",
+              "name": "b",
+              "order": -1,
+              "parent": null,
+              "value": 0
+            },
+            {
+              "id": "a",
+              "name": "a",
+              "order": 2,
+              "parent": null,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 2,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": -1,
+                "parent": null,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "a",
+              "name": "a",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            },
+            {
+              "id": "c",
+              "name": "c",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            },
+            {
+              "id": "b",
+              "name": "b",
+              "order": 0,
+              "parent": "c",
+              "value": 7
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": "a",
+                "value": 0
+              },
+              {
+                "id": "c",
+                "name": "c",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": "c",
+                "value": 0
+              },
+              {
+                "id": "c",
+                "name": "c",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": "a",
+                "value": 7
+              },
+              {
+                "id": "c",
+                "name": "c",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "b",
+              "delete"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": "a",
+                "value": 0
+              }
+            ],
+            "local": [],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": "a",
+                "value": 1
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [
+            [
+              "a",
+              "name"
+            ],
+            [
+              "a",
+              "value"
+            ]
+          ],
+          "nodes": null
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "x",
+                "order": 0,
+                "parent": null,
+                "value": 1
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "y",
+                "order": 0,
+                "parent": null,
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-17",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "c",
+              "name": "c",
+              "order": -1,
+              "parent": null,
+              "value": 0
+            },
+            {
+              "id": "d",
+              "name": "d",
+              "order": 0,
+              "parent": "c",
+              "value": 0
+            },
+            {
+              "id": "a",
+              "name": "a",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            },
+            {
+              "id": "b",
+              "name": "b",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [],
+            "local": [
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "c",
+                "name": "c",
+                "order": -1,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "d",
+                "name": "d",
+                "order": 0,
+                "parent": "c",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-18",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "conflicts": [],
+          "nodes": [
+            {
+              "id": "a",
+              "name": "a",
+              "order": 0,
+              "parent": null,
+              "value": 8
+            },
+            {
+              "id": "b",
+              "name": "b",
+              "order": 0,
+              "parent": null,
+              "value": 0
+            },
+            {
+              "id": "c",
+              "name": "renamed",
+              "order": 3,
+              "parent": "b",
+              "value": 0
+            }
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "base": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "c",
+                "name": "c",
+                "order": 0,
+                "parent": "a",
+                "value": 0
+              }
+            ],
+            "local": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "c",
+                "name": "c",
+                "order": 3,
+                "parent": "b",
+                "value": 0
+              }
+            ],
+            "remote": [
+              {
+                "id": "a",
+                "name": "a",
+                "order": 0,
+                "parent": null,
+                "value": 8
+              },
+              {
+                "id": "b",
+                "name": "b",
+                "order": 0,
+                "parent": null,
+                "value": 0
+              },
+              {
+                "id": "c",
+                "name": "renamed",
+                "order": 0,
+                "parent": "a",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "bounded-implementation",
+  "evidence_opportunity": false,
+  "id": "ordered-tree-three-way-merge",
+  "instruction": "Implement service.solve(q) three-way tree reconciliation, replacing incomplete local-only helpers. q={base,local,remote}; each value is a list<=12 of nodes {id,parent,name,value,order}. IDs/names are nonempty lowercase strings, parent null or an ID in that same input, value/order integers[-20,20]. Each input independently is an acyclic forest with unique IDs and unique sibling names; input order is irrelevant. Merge by ID, not path; do not mutate input.\nFor an ID absent from base: one added side wins; identical concurrent additions coalesce; different concurrent additions give [id,add]. For an ID in base: if either side deletes it, deletion wins only if the other side is absent or byte-equal (all fields) to base; otherwise [id,delete]. If both retain it, merge parent,name,value,order independently: equal side values win; a side equal to base yields to the changed side; two different changed values give [id,field]. Collect ALL such identity/field conflicts and, if any exist, skip global validation and return {nodes:null,conflicts:sortedPairs}.\nOtherwise validate the combined nodes without silently repairing them: missing parent gives [child,parent_missing]; every node ON a directed parent cycle gets [id,cycle] (not descendants feeding the cycle); every member of a duplicate (parent,name) group gets [id,name_collision]. Collect all global conflicts, deduplicate and sort pairs lexicographically. If none exist, output nodes in preorder: roots and each sibling group ordered by (order,id), children immediately after parent; return {nodes:list,conflicts:[]}. Deletions can conflict with an independently added descendant through parent_missing. Moves and value/name edits commute when they affect separate fields; conflicting moves/collisions must remain explicit. No behavior is required for structurally invalid individual inputs.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, presence.py, fields.py, structure.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v4/1",
+  "source_cluster": "ordered-tree-three-way-merge",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "ordered-tree-three-way-merge",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

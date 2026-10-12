@@ -1,0 +1,1568 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "versions.py",
+    "transaction.py",
+    "conflicts.py"
+  ],
+  "attempt_id": "authored-control--mvcc-predicate-serialization",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [],
+          "revision": 0,
+          "values": {}
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": []
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "get",
+              "a",
+              null
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              0
+            ]
+          ],
+          "revision": 0,
+          "values": {}
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "get",
+              "a",
+              1
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "x": 1
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "put",
+                "a",
+                "x",
+                1
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "get",
+              "a",
+              1
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "x": 2
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {
+              "x": 1
+            },
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "x",
+                2
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              1
+            ],
+            [
+              "commit",
+              "b",
+              "conflict",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "x": 1
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "x",
+                1
+              ],
+              [
+                "put",
+                "b",
+                "x",
+                2
+              ],
+              [
+                "commit",
+                "a"
+              ],
+              [
+                "commit",
+                "b"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "scan",
+              "a",
+              []
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "conflict",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "m": 9
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "scan",
+                "a",
+                "a",
+                "z"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "m",
+                9
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "q",
+                1
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "scan",
+              "a",
+              []
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              2
+            ]
+          ],
+          "revision": 2,
+          "values": {
+            "m": 9,
+            "q": 1
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "scan",
+                "a",
+                "a",
+                "m"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "m",
+                9
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "q",
+                1
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "get",
+              "a",
+              5
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "delete",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "conflict",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {}
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {
+              "x": 5
+            },
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "delete",
+                "b",
+                "x"
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "y",
+                1
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "get",
+              "a",
+              null
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "x": 8
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "x",
+                8
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "delete",
+              "a"
+            ],
+            [
+              "get",
+              "a",
+              null
+            ],
+            [
+              "scan",
+              "a",
+              []
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "x": 7
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {
+              "x": 4
+            },
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "delete",
+                "a",
+                "x"
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "scan",
+                "a",
+                "a",
+                "z"
+              ],
+              [
+                "put",
+                "a",
+                "x",
+                7
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "scan",
+              "a",
+              [
+                [
+                  "x",
+                  4
+                ]
+              ]
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "delete",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "conflict",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {}
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {
+              "x": 4
+            },
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "scan",
+                "a",
+                "a",
+                "z"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "delete",
+                "b",
+                "x"
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "w",
+                1
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "delete",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "conflict",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {}
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "delete",
+                "b",
+                "x"
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "x",
+                4
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "scan",
+              "a",
+              []
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "conflict",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "m": 9
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "scan",
+                "a",
+                "m",
+                "z"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "m",
+                9
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "q",
+                1
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              2
+            ]
+          ],
+          "revision": 2,
+          "values": {
+            "x": 1,
+            "y": 2
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "put",
+                "a",
+                "x",
+                1
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "y",
+                2
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "get",
+              "a",
+              1
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "conflict",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "x": 1
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {
+              "x": 1
+            },
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "x",
+                1
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "y",
+                2
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "scan",
+              "a",
+              []
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              2
+            ]
+          ],
+          "revision": 2,
+          "values": {
+            "a": 2,
+            "b": 1
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {},
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "scan",
+                "a",
+                "b",
+                "b"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "b",
+                1
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "put",
+                "a",
+                "a",
+                2
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-17",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "begin",
+              "b",
+              0
+            ],
+            [
+              "put",
+              "b"
+            ],
+            [
+              "commit",
+              "b",
+              "ok",
+              1
+            ],
+            [
+              "begin",
+              "c",
+              1
+            ],
+            [
+              "delete",
+              "c"
+            ],
+            [
+              "commit",
+              "c",
+              "ok",
+              2
+            ],
+            [
+              "get",
+              "a",
+              1
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "commit",
+              "a",
+              "conflict",
+              2
+            ]
+          ],
+          "revision": 2,
+          "values": {}
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {
+              "x": 1
+            },
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "begin",
+                "b"
+              ],
+              [
+                "put",
+                "b",
+                "x",
+                2
+              ],
+              [
+                "commit",
+                "b"
+              ],
+              [
+                "begin",
+                "c"
+              ],
+              [
+                "delete",
+                "c",
+                "x"
+              ],
+              [
+                "commit",
+                "c"
+              ],
+              [
+                "get",
+                "a",
+                "x"
+              ],
+              [
+                "put",
+                "a",
+                "y",
+                3
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-18",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "events": [
+            [
+              "begin",
+              "a",
+              0
+            ],
+            [
+              "put",
+              "a"
+            ],
+            [
+              "scan",
+              "a",
+              [
+                [
+                  "a",
+                  1
+                ],
+                [
+                  "b",
+                  2
+                ]
+              ]
+            ],
+            [
+              "delete",
+              "a"
+            ],
+            [
+              "scan",
+              "a",
+              [
+                [
+                  "b",
+                  2
+                ]
+              ]
+            ],
+            [
+              "commit",
+              "a",
+              "ok",
+              1
+            ]
+          ],
+          "revision": 1,
+          "values": {
+            "b": 2,
+            "z": 9
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "initial": {
+              "a": 1,
+              "z": 9
+            },
+            "operations": [
+              [
+                "begin",
+                "a"
+              ],
+              [
+                "put",
+                "a",
+                "b",
+                2
+              ],
+              [
+                "scan",
+                "a",
+                "a",
+                "z"
+              ],
+              [
+                "delete",
+                "a",
+                "a"
+              ],
+              [
+                "scan",
+                "a",
+                "a",
+                "c"
+              ],
+              [
+                "commit",
+                "a"
+              ]
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "ordinary-bug-repair",
+  "evidence_opportunity": false,
+  "id": "mvcc-predicate-serialization",
+  "instruction": "Repair service.solve(q), a deterministic optimistic serializable key/value engine. q={initial:{string:int},operations:[list]}. Keys are lowercase ASCII strings length1..4, values integers[-20,20], <=20 keys and<=60 operations; transaction IDs are strings. Operations are [begin,id], [get,id,key], [scan,id,lo,hi], [put,id,key,value], [delete,id,key], [commit,id]. IDs begin only when inactive; all other operations name active IDs; lo<=hi. Inputs meet this structural domain; no validation behavior outside it is required.\nBegin captures the current revision and immutable committed snapshot. Reads see the transaction's latest local write/delete, otherwise that captured snapshot; absent/deleted returns null. scan returns sorted [key,value] pairs for lo<=key<hi, excluding absent values. Register every get key and every scan predicate even if empty. put/delete stage writes and return no value. Repeated writes replace earlier ones. On commit with ANY staged write, reject if any key read OR written, or any key in ANY scanned range, has been committed after begin. Every committed write counts, including same-value writes and deletes of absent keys; retain their conflict history. Read-only commits always succeed even after concurrent changes. Successful write commit atomically increments revision once and applies all writes; no-write success and conflicts do not increment. Commit closes the transaction. Remaining open transactions do not affect committed state.\nReturn {events,revision,values}. events contains [begin,id,capturedRevision], [get,id,valueOrNull], [scan,id,pairs], [put|delete,id], or [commit,id,ok|conflict,currentRevision] for every operation in order. values is final nondeleted committed mapping. Repair all interacting snapshot, write-conflict and predicate/tombstone defects; preserve arguments.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, versions.py, transaction.py, conflicts.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v4/1",
+  "source_cluster": "mvcc-predicate-serialization",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "mvcc-predicate-serialization",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

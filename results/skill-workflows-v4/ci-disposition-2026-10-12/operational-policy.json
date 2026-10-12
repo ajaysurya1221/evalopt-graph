@@ -1,0 +1,91 @@
+{
+  "blocking_conditions": [
+    "Any new or unclassified finding, including one introduced by this disposition packet",
+    "Any missing, duplicate or changed expected finding or source binding",
+    "Pending, skipped, cancelled, missing or failed independent nonsecret lane",
+    "Scanner setup, download, execution, configuration or provenance failure",
+    "Any changed experimental file, condition, preservation result or native gate failure"
+  ],
+  "claims": {
+    "ci_all_green": false,
+    "credential_authentication_performed": false,
+    "future_exceptions_authorized": false,
+    "independent_live_replication": false,
+    "larger_benchmark_authorized": false,
+    "scanner_pass_claim": false
+  },
+  "decision": "Replace only the operator-imposed all-green hosted-CI launch predicate with exact known-nonsecret adjudication plus success of every independent nonsecret exact-head lane.",
+  "diagnosed_commit": "49a379c7001b5b156f9f75b358da03a4367b252e",
+  "evidence_bindings_reference": "receipt.json",
+  "historical_runs": {
+    "pull_request": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38243792456",
+    "push": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38243778569"
+  },
+  "historical_status_rule": "Preserve original failed Gitleaks results and dependent aggregate failures; never rewrite them as passed. No assertion is made here that unfinished nonsecret lanes have passed.",
+  "independent_nonsecret_lane_groups_required_success": [
+    "Compatibility Ubuntu Python matrix, every configured version",
+    "Compatibility macOS tests",
+    "Compatibility workflow benchmark",
+    "Compatibility quality/demos/smoke/artifacts",
+    "Compatibility Windows clean wheel",
+    "V4 offline controls, preservation and published replayers"
+  ],
+  "kind": "prospective_external_ci_dispatch_policy",
+  "known_findings": {
+    "count": 11,
+    "diagnosis_reference": "diagnosis.json",
+    "exact_fingerprints": [
+      "49a379c7001b5b156f9f75b358da03a4367b252e:bench/harbor/skill-workflows-v4/tasks/manifest.json:generic-api-key:49",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:bench/harbor/skill-workflows-v4/tasks/manifest.json:generic-api-key:56",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:bench/harbor/skill-workflows-v4/tasks/manifest.json:generic-api-key:62",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:bench/harbor/skill-workflows-v4/tasks/manifest.json:generic-api-key:68",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:bench/harbor/skill-workflows-v4/tasks/manifest.json:generic-api-key:74",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:results/skill-workflows-v4/offline-package-2026-10-12/compatibility.json:github-pat:4282",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:results/skill-workflows-v4/offline-package-2026-10-12/reviews.json:generic-api-key:140",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:results/skill-workflows-v4/offline-package-2026-10-12/reviews.json:generic-api-key:147",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:results/skill-workflows-v4/offline-package-2026-10-12/reviews.json:generic-api-key:153",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:results/skill-workflows-v4/offline-package-2026-10-12/reviews.json:generic-api-key:159",
+      "49a379c7001b5b156f9f75b358da03a4367b252e:results/skill-workflows-v4/offline-package-2026-10-12/reviews.json:generic-api-key:165"
+    ],
+    "source_checksum_occurrences": 10,
+    "synthetic_test_parameter_occurrences": 1
+  },
+  "limits": [
+    "This policy is not evidence that its preconditions have completed and is not executable dispatch authorization by itself.",
+    "Hashes prove content correspondence, not authentic producer identity or execution custody. Retained trusted controller/scanner execution evidence and review remain necessary.",
+    "Classification is limited to these eleven detected occurrences; it is not proof of absence of every possible credential.",
+    "Repository branch protection, merge authority and release authority are unchanged. A failed protected check is not bypassed or relabeled by this appendix."
+  ],
+  "only_permitted_failed_jobs": [
+    "Gitleaks full-history scanner, solely because the exact eleven adjudicated findings were detected",
+    "Required or workflow aggregates that fail solely from that scanner result while all their independent nonsecret dependencies succeeded"
+  ],
+  "pull_request": "https://github.com/ajaysurya1221/evalopt-graph/pull/36",
+  "required_before_dispatch": [
+    "Bind the current public commit and applicable push/pull-request run attempts. Every independent nonsecret lane must complete successfully at that exact head; do not reuse prior-head successes.",
+    "Run stock Gitleaks 8.30.1 with the unchanged committed .gitleaks.toml and complete --all reachable public history. Retain verified installation identity, exact argv/config, head/ref scope, raw report/log hashes and actual exit status.",
+    "Require independently reviewed adjudication of exactly eleven unique provenance-bound expected findings. Validate immutable Git blobs/line hashes and actual source checksum or synthetic-test construction for every occurrence.",
+    "Require adjudication result ACCEPT_KNOWN_NONSECRETS while preserving scanner exit status 1. Reject duplicates, omitted/extra/novel findings, malformed input, incorrect scope, mismatched source/config/scanner identity, and scanner execution failures.",
+    "Require unchanged preservation, offline/source and registration reproduction and final packet/receipt correspondence. Then apply all unchanged native prelaunch checks before the already registered single-screen invocation."
+  ],
+  "schema_version": "evalopt-workflows-v4/ci-disposition-policy/1",
+  "scope": "This fixed v4 difficulty screen only; no future exceptions.",
+  "unchanged_experiment": {
+    "arms": [
+      "B"
+    ],
+    "attempts_per_task": 2,
+    "frozen_manifest_entries": 819,
+    "protocol_reference": "../../../bench/harbor/skill-workflows-v4/PROTOCOL.md",
+    "registration_reference": "../difficulty-registration-2026-10-12/registration.json",
+    "registration_sha256": "5c75186aeb6081b4a7dac4b10704c9992cda7f55b62acc8ae64718c5dd06b0ac",
+    "scheduled_trials": 16,
+    "task_count": 8,
+    "unchanged": [
+      "All existing v1/v2/v3/v4 files and published packets",
+      "Frozen tasks, prompts, grading, analysis and difficulty decision",
+      "Model, effort, toolchain, images, budgets, delegation and authentication conditions",
+      "Native lock, storage, quiescence, runtime, subscription, capture and continuation gates"
+    ]
+  }
+}

@@ -1,0 +1,1212 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "events.py",
+    "dependencies.py",
+    "fairness.py"
+  ],
+  "attempt_id": "authored-control--dependency-fair-dispatch",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {},
+          "served": {
+            "a": 0,
+            "b": 0
+          },
+          "trace": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 1,
+              "remaining": 0,
+              "state": "complete"
+            }
+          },
+          "served": {
+            "a": 1,
+            "b": 0
+          },
+          "trace": [
+            "x",
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": null,
+              "remaining": 3,
+              "state": "pending"
+            },
+            "y": {
+              "finished": null,
+              "remaining": 1,
+              "state": "pending"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 4
+          },
+          "trace": [
+            "x",
+            "y",
+            "y",
+            "x",
+            "y",
+            "y"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 5
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "y",
+                "release": 0,
+                "tenant": "b",
+                "work": 5
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": null,
+              "remaining": 1,
+              "state": "pending"
+            },
+            "y": {
+              "finished": 5,
+              "remaining": 0,
+              "state": "complete"
+            }
+          },
+          "served": {
+            "a": 3,
+            "b": 3
+          },
+          "trace": [
+            "x",
+            "x",
+            "y",
+            "y",
+            "y",
+            "x"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 4
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "y",
+                "release": 2,
+                "tenant": "b",
+                "work": 3
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "a": {
+              "finished": 2,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "b": {
+              "finished": 4,
+              "remaining": 0,
+              "state": "complete"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 2
+          },
+          "trace": [
+            "a",
+            "a",
+            "b",
+            "b",
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "a",
+                "release": 0,
+                "tenant": "a",
+                "work": 2
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "a"
+                ],
+                "id": "b",
+                "release": 0,
+                "tenant": "b",
+                "work": 2
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "a": {
+              "finished": 2,
+              "remaining": 3,
+              "state": "cancelled"
+            },
+            "b": {
+              "finished": 2,
+              "remaining": 1,
+              "state": "blocked"
+            },
+            "c": {
+              "finished": 2,
+              "remaining": 1,
+              "state": "blocked"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 0
+          },
+          "trace": [
+            "a",
+            "a",
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {
+              "a": 2
+            },
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "a",
+                "release": 0,
+                "tenant": "a",
+                "work": 5
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "a"
+                ],
+                "id": "b",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "b"
+                ],
+                "id": "c",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 2,
+              "remaining": 2,
+              "state": "expired"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 0
+          },
+          "trace": [
+            "x",
+            "x",
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 2,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 4
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 2,
+              "remaining": 0,
+              "state": "complete"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 0
+          },
+          "trace": [
+            "x",
+            "x",
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 2,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 2
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 2,
+              "remaining": 3,
+              "state": "expired"
+            }
+          },
+          "served": {
+            "a": 0,
+            "b": 0
+          },
+          "trace": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 2,
+                "deps": [],
+                "id": "x",
+                "release": 4,
+                "tenant": "a",
+                "work": 3
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 2,
+              "remaining": 1,
+              "state": "cancelled"
+            }
+          },
+          "served": {
+            "a": 0,
+            "b": 0
+          },
+          "trace": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {
+              "x": 2
+            },
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 2,
+                "deps": [],
+                "id": "x",
+                "release": 3,
+                "tenant": "a",
+                "work": 1
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "a": {
+              "finished": 2,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "b": {
+              "finished": 3,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "c": {
+              "finished": 1,
+              "remaining": 0,
+              "state": "complete"
+            }
+          },
+          "served": {
+            "a": 3,
+            "b": 0
+          },
+          "trace": [
+            "c",
+            "a",
+            "b",
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 4,
+                "deps": [],
+                "id": "b",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              },
+              {
+                "deadline": 4,
+                "deps": [],
+                "id": "a",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              },
+              {
+                "deadline": 2,
+                "deps": [],
+                "id": "c",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "a": {
+              "finished": 5,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "b": {
+              "finished": null,
+              "remaining": 2,
+              "state": "pending"
+            },
+            "c": {
+              "finished": null,
+              "remaining": 3,
+              "state": "pending"
+            }
+          },
+          "served": {
+            "a": 4,
+            "b": 2
+          },
+          "trace": [
+            "a",
+            "c",
+            "a",
+            "c",
+            "a",
+            "b"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "a",
+                "release": 0,
+                "tenant": "a",
+                "work": 3
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "b",
+                "release": 0,
+                "tenant": "a",
+                "work": 3
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "c",
+                "release": 0,
+                "tenant": "b",
+                "work": 5
+              }
+            ],
+            "weights": {
+              "a": 3,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 1,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "y": {
+              "finished": 4,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "z": {
+              "finished": null,
+              "remaining": 1,
+              "state": "pending"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 4
+          },
+          "trace": [
+            "x",
+            "z",
+            "z",
+            "y",
+            "z",
+            "z"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "y",
+                "release": 3,
+                "tenant": "a",
+                "work": 1
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "z",
+                "release": 0,
+                "tenant": "b",
+                "work": 5
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": null,
+              "remaining": 2,
+              "state": "pending"
+            },
+            "y": {
+              "finished": null,
+              "remaining": 3,
+              "state": "pending"
+            }
+          },
+          "served": {
+            "a": 0,
+            "b": 0
+          },
+          "trace": []
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 0,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 2
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "y",
+                "release": 0,
+                "tenant": "b",
+                "work": 3
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 4,
+              "remaining": 4,
+              "state": "cancelled"
+            },
+            "y": {
+              "finished": null,
+              "remaining": 4,
+              "state": "pending"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 2
+          },
+          "trace": [
+            "x",
+            "y",
+            "y",
+            "x"
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {
+              "x": 4
+            },
+            "horizon": 4,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 6
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "y",
+                "release": 0,
+                "tenant": "b",
+                "work": 6
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "x": {
+              "finished": 1,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "y": {
+              "finished": 2,
+              "remaining": 0,
+              "state": "complete"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 0
+          },
+          "trace": [
+            "x",
+            "y",
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {
+              "x": 3
+            },
+            "horizon": 6,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "x",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "x"
+                ],
+                "id": "y",
+                "release": 0,
+                "tenant": "a",
+                "work": 1
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-17",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "end": {
+              "finished": 8,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "left": {
+              "finished": 4,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "right": {
+              "finished": 7,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "root": {
+              "finished": 2,
+              "remaining": 0,
+              "state": "complete"
+            }
+          },
+          "served": {
+            "a": 5,
+            "b": 3
+          },
+          "trace": [
+            "root",
+            "root",
+            "left",
+            "left",
+            "right",
+            "right",
+            "right",
+            "end",
+            null,
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 10,
+            "jobs": [
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "root",
+                "release": 0,
+                "tenant": "a",
+                "work": 2
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "root"
+                ],
+                "id": "left",
+                "release": 0,
+                "tenant": "b",
+                "work": 2
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "root"
+                ],
+                "id": "right",
+                "release": 0,
+                "tenant": "a",
+                "work": 3
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "left",
+                  "right"
+                ],
+                "id": "end",
+                "release": 0,
+                "tenant": "b",
+                "work": 1
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-18",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "jobs": {
+            "child": {
+              "finished": 1,
+              "remaining": 1,
+              "state": "blocked"
+            },
+            "independent": {
+              "finished": 4,
+              "remaining": 0,
+              "state": "complete"
+            },
+            "root": {
+              "finished": 1,
+              "remaining": 2,
+              "state": "expired"
+            }
+          },
+          "served": {
+            "a": 2,
+            "b": 0
+          },
+          "trace": [
+            "root",
+            null,
+            null,
+            "independent",
+            null
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "cancel": {},
+            "horizon": 5,
+            "jobs": [
+              {
+                "deadline": 1,
+                "deps": [],
+                "id": "root",
+                "release": 0,
+                "tenant": "a",
+                "work": 3
+              },
+              {
+                "deadline": 20,
+                "deps": [
+                  "root"
+                ],
+                "id": "child",
+                "release": 0,
+                "tenant": "b",
+                "work": 1
+              },
+              {
+                "deadline": 20,
+                "deps": [],
+                "id": "independent",
+                "release": 3,
+                "tenant": "a",
+                "work": 1
+              }
+            ],
+            "weights": {
+              "a": 1,
+              "b": 2
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "bounded-implementation",
+  "evidence_opportunity": false,
+  "id": "dependency-fair-dispatch",
+  "instruction": "Implement service.solve(q), a deterministic single-slot preemptive dispatcher. q={jobs,weights,cancel,horizon}. jobs<=10 have unique string id,tenant listed in weights,work1..10,release0..40,deadline1..60,deps list of existing IDs forming a DAG. weights maps<=4 tenants to integer1..7, cancel maps some job IDs to integer0..40, horizon0..40. Each unit tick [t,t+1) executes at most one unit. Pending includes never-started and partially completed jobs. Preserve every input.\nAt every integer time t from0 THROUGH horizon, first cancel pending jobs with cancel[id]==t; otherwise expire pending jobs with deadline<=t. Cancellation beats expiration on that tick; completed jobs never change. Then repeatedly mark pending jobs blocked if any dependency is cancelled, expired or blocked, reaching a fixed point at the same t. These terminal states record finished=t and retain unexecuted remaining work. If t==horizon stop before scheduling.\nReady pending jobs have release<=t and ALL dependencies complete. Select the job whose tenant has smallest cumulative servedUnits/weight, using exact rational comparison (no rounding), then smaller deadline, then lexicographic job ID. Service counts persist across idle periods, job completion and arrivals; they aggregate ALL jobs of a tenant. Re-evaluate every tick (preemptive). Increment served by1 and decrement remaining; if it reaches0 mark complete at t+1, so completing exactly at deadline is legal. After horizon unfinished pending jobs remain pending/finished=null. Return {trace:[idOrNull for exactly horizon ticks],jobs:{id:{state,finished,remaining}},served:{every declared tenant:units}}. States are pending,complete,cancelled,expired,blocked. Required work includes event ordering, transitive dependency failure, readiness, exact weighted fairness and persistent accounting; supplied helpers are intentionally incomplete.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, events.py, dependencies.py, fairness.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v4/1",
+  "source_cluster": "dependency-fair-dispatch",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "dependency-fair-dispatch",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "actual_retained_capture": {
+    "capture_sha256": {
+      "adjudication.json": "09782bc3e2b677d06b95b48e5eae8c48a480e001f297c4c0b12c66940749c159",
+      "report.redacted.json": "1b4e1801c5d142fc809d6ecabf17b286f2582827fa63c352a068ea6486582a51",
+      "scan.json": "9177131a9b5b9d140860aef2d3c0643c6f3b70ad14c0e2fb898629c0b3b35b72",
+      "scanner.redacted.log": "aaadb64bd27d07e7d206c8b73b01520a81f2d106b87870cefc9cbeb1023060fc"
+    },
+    "clean_scan": false,
+    "green_ci_claim": false,
+    "head": "49a379c7001b5b156f9f75b358da03a4367b252e",
+    "independent_verify_sha256": "17b4477ec82a905b3d9694d3fe39ce8c3551fb0cd706cf36ea988d98cbae2dfb",
+    "retained_findings": 11,
+    "scope_sha256": "ac5f4897ef982ab9cf989863de5fcd3704fe4107cf9e50f5f94d2243300c1353",
+    "status": "ACCEPT_KNOWN_NONSECRETS",
+    "stock_scan_exit": 1
+  },
+  "checks_performed": [
+    "Re-ran all 63 author controls and 38 additional independent controls with no skips.",
+    "Verified missing/extra/duplicate/moved/new-commit/new-rule/new-line/new-column findings fail; actual source/blob edits and altered synthetic expression fail.",
+    "Verified strict JSON, malformed records, typed identities, configuration/binary/head/scope mismatches, unchanged raw exit-one semantics and scanner-error rejection.",
+    "Verified inherited PATH/config exclusion, pre-import isolation flags, no overwrite of an existing capture bundle and durable original exit retention with a synthetic scanner seam.",
+    "Verified pure public projection accepts only exact allowlisted fields/provenance and never invokes subprocesses; it carries neither authenticated scanner-execution status nor producer identity.",
+    "Independently ran verify on the retained actual capture, querying only pinned Git/scanner version and reading existing artifacts. Did not execute another Gitleaks scan.",
+    "Independently compared every extended expected record to the immutable original diagnosis and native columns; the extended file contains no broadened occurrence permission."
+  ],
+  "closed_findings": [
+    "Exact native start/end columns are now bound to a separately pinned eleven-record expected projection independently compared to original diagnosis plus native report.",
+    "Gitleaks and state inspection use fixed OS PATH and a pinned system Git binary; inherited configuration hooks are excluded.",
+    "Actual scan subject/head and reachable-history digest are now caller-supplied external pins, separate from the immutable historical finding commit."
+  ],
+  "controls": {
+    "author_tests": 63,
+    "errors": 0,
+    "failures": 0,
+    "independent_test_source_sha256": "ec8aba36634db190c8cb4347dc071fd8784474cf21890d818e3fef506ce4455a",
+    "independent_tests": 38,
+    "log_sha256": "6674452e653bfb530342ae4a12971ba9538f6465c6ef2a5c3b8904713e1c32c9",
+    "skips": 0,
+    "total_tests": 101,
+    "xml_sha256": "a4dd4df731682c5c3750cff60ae0f8db46b3f55669fdb7b5494c1d848e4d194a"
+  },
+  "findings": [],
+  "limits": [
+    "Retained controller custody and correct external subject/ref-scope pins remain assumptions; hashes are consistency evidence, not cryptographic producer authentication.",
+    "Actual capture uses the recorded macOS scanner binary; it is an external validation, not a rerun of the hosted Linux job.",
+    "Acceptance of historical-head capture-02 is not a final-publication-head clearance. After additions, root must bind and verify a fresh full-history scan of that exact head and scope, retaining only the same eleven original occurrences.",
+    "Every genuine non-Gitleaks required hosted lane must pass; original Gitleaks and consequent required-aggregate failures remain disclosed. No check-name impersonation, branch-rule change or global green-CI claim is authorized.",
+    "No Docker/model/candidate execution, live campaign mutation, source edit, detector suppression or credential validation occurred in this review. Only private review controls/receipts were created."
+  ],
+  "schema_version": "evalopt.v4.ci-adjudicator-review.v1",
+  "scope": "Independent read-only implementation review, pure/synthetic adversarial controls and verification of retained stock-scan capture-02. This does not convert the failed stock scan into green CI or admit model dispatch.",
+  "source_sha256": {
+    ".benchmark/v4-ci/adjudication/adjudicate.py": "44866981ce3277ca8e4558512eecc2fba291d61aa2840c50222e685d758dc3e5",
+    ".benchmark/v4-ci/adjudication/expected-findings.json": "943d01b687acbb2ca53d75951d4d51fa0f34f96ad1b79adb645c582b822c6c98",
+    ".benchmark/v4-ci/adjudication/test_adjudicate.py": "2b48aa72641904868996d8343656c75597f650b18c4046250833686b274d5f75"
+  },
+  "verdict": "ACCEPT"
+}

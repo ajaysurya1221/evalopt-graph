@@ -1,0 +1,833 @@
+{
+  "allowed_changes": [
+    "utf8.py",
+    "lexer.py"
+  ],
+  "attempt_id": "authored-control--chunked-escaped-tokenizer",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            []
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 0
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              []
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [
+              {
+                "end": 1,
+                "start": 0,
+                "text": "a"
+              },
+              {
+                "end": 3,
+                "start": 2,
+                "text": "b"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 3
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                97,
+                32,
+                98
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [],
+            [
+              {
+                "end": 5,
+                "start": 0,
+                "text": "alpha"
+              }
+            ],
+            [],
+            [
+              {
+                "end": 10,
+                "start": 6,
+                "text": "beta"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 10
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                97,
+                108
+              ],
+              [
+                112,
+                104,
+                97,
+                32
+              ],
+              [
+                98,
+                101
+              ],
+              [
+                116,
+                97
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [
+              {
+                "end": 5,
+                "start": 0,
+                "text": "a b"
+              },
+              {
+                "end": 7,
+                "start": 6,
+                "text": "c"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 7
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                34,
+                97,
+                32,
+                98,
+                34,
+                32,
+                99
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [
+              {
+                "end": 2,
+                "start": 0,
+                "text": ""
+              }
+            ],
+            [
+              {
+                "end": 10,
+                "start": 3,
+                "text": "ab cd"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 10
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                34,
+                34,
+                32
+              ],
+              [
+                97,
+                34,
+                98,
+                32,
+                99,
+                34,
+                100
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [],
+            [
+              {
+                "end": 4,
+                "start": 0,
+                "text": "a b"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 5
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                97,
+                92
+              ],
+              [
+                32,
+                98,
+                32
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [
+              {
+                "end": 1,
+                "start": 0,
+                "text": "a"
+              },
+              {
+                "end": 8,
+                "start": 7,
+                "text": "b"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 8
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                97,
+                35,
+                110,
+                111,
+                116,
+                101,
+                10,
+                98
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [],
+            [],
+            [
+              {
+                "end": 7,
+                "start": 6,
+                "text": "x"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 7
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                35,
+                110,
+                111
+              ],
+              [
+                116,
+                101,
+                10
+              ],
+              [
+                120
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [],
+            [
+              {
+                "end": 2,
+                "start": 0,
+                "text": "\u00e9"
+              }
+            ],
+            [
+              {
+                "end": 6,
+                "start": 3,
+                "text": "\u96ea"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 6
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                195
+              ],
+              [
+                169,
+                32
+              ],
+              [
+                233,
+                155,
+                170
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [],
+            [],
+            [
+              {
+                "end": 7,
+                "start": 0,
+                "text": "\u00e9\"z"
+              }
+            ]
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 8
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                34,
+                195,
+                169
+              ],
+              [
+                92,
+                34,
+                122
+              ],
+              [
+                34,
+                32
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            []
+          ],
+          "state": {
+            "buffer": [
+              112,
+              97,
+              114,
+              116,
+              105,
+              97,
+              108
+            ],
+            "offset": 0
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                112,
+                97,
+                114,
+                116,
+                105,
+                97,
+                108
+              ]
+            ],
+            "finish": false
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            []
+          ],
+          "state": {
+            "buffer": [
+              34,
+              117,
+              110,
+              116,
+              101,
+              114,
+              109,
+              105,
+              110,
+              97,
+              116,
+              101,
+              100
+            ],
+            "offset": 0
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                34,
+                117,
+                110,
+                116,
+                101,
+                114,
+                109,
+                105,
+                110,
+                97,
+                116,
+                101,
+                100
+              ]
+            ],
+            "finish": false
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                34,
+                117,
+                110,
+                116,
+                101,
+                114,
+                109,
+                105,
+                110,
+                97,
+                116,
+                101,
+                100
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                120,
+                92
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                195
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "builtin": "ValueError",
+        "kind": "raise"
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                255
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-17",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [
+              {
+                "end": 3,
+                "start": 0,
+                "text": "one"
+              }
+            ],
+            [
+              {
+                "end": 15,
+                "start": 5,
+                "text": "two\nthree"
+              }
+            ],
+            []
+          ],
+          "state": {
+            "buffer": [],
+            "offset": 22
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                111,
+                110,
+                101,
+                13,
+                10
+              ],
+              [
+                116,
+                119,
+                111,
+                92,
+                10,
+                116,
+                104,
+                114,
+                101,
+                101,
+                32
+              ],
+              [
+                35,
+                102,
+                105,
+                110,
+                97,
+                108
+              ]
+            ],
+            "finish": true
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-18",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "batches": [
+            [],
+            [
+              {
+                "end": 2,
+                "start": 0,
+                "text": "\u00e9"
+              }
+            ],
+            [],
+            [
+              {
+                "end": 6,
+                "start": 3,
+                "text": "\u96ea"
+              }
+            ],
+            []
+          ],
+          "state": {
+            "buffer": [
+              101,
+              110,
+              100
+            ],
+            "offset": 7
+          }
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "chunks": [
+              [
+                195,
+                169
+              ],
+              [
+                32
+              ],
+              [
+                233,
+                155
+              ],
+              [
+                170,
+                32
+              ],
+              [
+                101,
+                110,
+                100
+              ]
+            ],
+            "finish": false
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "constraint-preservation",
+  "evidence_opportunity": false,
+  "id": "chunked-escaped-tokenizer",
+  "instruction": "Repair the incremental tokenizer behind service.solve(q), preserving frozen service.py and api.py exactly. q={chunks:[byteLists],finish:boolean};1..12 chunks, each0..64 bytes, total<=256. Byte values0..255. feed's frozen state is {buffer:[unconsumed bytes],offset:number of committed prefix bytes}; no state keys or public return fields may change. Return {batches:[tokens emitted by each feed],state:finalState}. UTF-8 is strict: incomplete final sequence or any invalid sequence raises ValueError; an incomplete terminal sequence in a nonfinal chunk is buffered. Offsets count bytes, not Unicode characters.\nOutside double quotes, ASCII space/tab/CR/LF separate tokens and # begins a comment through newline. A comment can immediately follow a token. Double quotes concatenate quoted/unquoted components, and are omitted from decoded text; an empty quoted component is still a token. Backslash escapes the next Unicode character literally in/outside quotes, including newline or # or quote; slash itself is omitted. Within quotes whitespace/# are literal. Each token is {text,start,end}, zero-based global byte interval INCLUDING syntactic quotes/backslashes and excluding separating whitespace/comment. An unterminated quote or trailing escape at final input raises ValueError. Other Unicode whitespace is not in the authored input domain; normal Unicode letters are allowed.\nOn nonfinal feed, emit only tokens already followed by a separator or #; even a closed quoted token at physical chunk end remains buffered until a following delimiter or final feed. Commit complete whitespace and complete newline-terminated comments; an unfinished nonfinal comment stays buffered starting at#. Token fragments stay buffered starting at their first syntax byte; previously committed offset must be retained exactly. Final feed flushes a complete token and discards final comment; unfinished syntax errors as above. Only final chunk gets final=True when finish=True; finish=False intentionally leaves incomplete state. Correctness includes per-chunk emission timing, escape carry, invalid-byte categories and byte offsets, not only concatenated tokens.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: utf8.py, lexer.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v4/1",
+  "source_cluster": "chunked-escaped-tokenizer",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "chunked-escaped-tokenizer",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

@@ -74,7 +74,7 @@ Install into an isolated environment (Python 3.10–3.14), then run the example 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install evalopt-graph==0.1.0
+python -m pip install evalopt-graph==0.1.1
 ```
 
 On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`.
@@ -228,6 +228,7 @@ Anything that still imports evalopt should depend only on the ten root exports a
 - [Evidence results and limitations](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md)
 - [External evaluation protocol (historical, preserved; no new benchmark programme)](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md)
 - [Harbor integration](https://github.com/ajaysurya1221/evalopt-graph/blob/main/bench/harbor/README.md)
+- [v0.1.1 final deprecation release notes](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/releases/v0.1.1.md)
 - [v0.1.0 release notes](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/releases/v0.1.0.md)
 - [Changelog](https://github.com/ajaysurya1221/evalopt-graph/blob/main/CHANGELOG.md)
 

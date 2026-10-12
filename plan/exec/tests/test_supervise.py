@@ -15,17 +15,32 @@ class Controls(unittest.TestCase):
         self.assertEqual(m.classify(0,False,self.valid(),'REPORT 02 — Status DONE',[])['state'],'DONE')
     def test_failures(self):
         for code,timeout,raw,report,errors,reason in [
-            (1,False,self.valid(),'Status DONE',[],'nonzero_exit'),
-            (0,False,'{','Status DONE',[],'invalid_json'),
-            (0,False,'[]','Status DONE',[],'invalid_json'),
+            (1,False,self.valid(),'REPORT 02 — Status DONE',[],'nonzero_exit'),
+            (0,False,'{','REPORT 02 — Status DONE',[],'invalid_json'),
+            (0,False,'[]','REPORT 02 — Status DONE',[],'invalid_json'),
             (0,False,self.valid(),'',[],'missing_or_nonaccepted_report'),
-            (-15,True,self.valid(),'Status DONE',[],'timeout'),
-            (0,False,self.valid(),'Status DONE',['src/kernel.py'],'out_of_scope'),
-            (0,False,self.valid().replace('claude-fable-5-1','other'),'Status DONE',[],'model_identity'),
-            (0,False,self.valid().replace('firstParty','other'),'Status DONE',[],'provider_identity')]:
+            (-15,True,self.valid(),'REPORT 02 — Status DONE',[],'timeout'),
+            (0,False,self.valid(),'REPORT 02 — Status DONE',['src/kernel.py'],'out_of_scope'),
+            (0,False,self.valid().replace('claude-fable-5-1','other'),'REPORT 02 — Status DONE',[],'model_identity'),
+            (0,False,self.valid().replace('firstParty','other'),'REPORT 02 — Status DONE',[],'provider_identity')]:
             with self.subTest(reason=reason):
                 result=m.classify(code,timeout,raw,report,errors)
                 self.assertEqual(result['state'],'PARTIAL');self.assertIn(reason,result['reasons'])
+    def test_rejected_headers_and_identity(self):
+        for report in ['REPORT 02 — Status PARTIAL\nEarlier Status DONE',
+                       'REVIEW 02 — Reviewer Fable high | Verdict REJECT\nPrior Verdict ACCEPT',
+                       'REPORT 03 — Status DONE', 'quoted REPORT 02 — Status DONE']:
+            with self.subTest(report=report):
+                self.assertEqual(m.classify(0,False,self.valid(),report,[])['state'],'PARTIAL')
+    def test_child_survives_leader_term(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            child='import signal,time; signal.signal(signal.SIGTERM,signal.SIG_IGN); time.sleep(30)'
+            leader='import subprocess,sys,time; subprocess.Popen([sys.executable,"-c",'+repr(child)+']); time.sleep(30)'
+            result=m.execute([sys.executable,'-c',leader],p,p/'out',p/'err',.3)
+            self.assertTrue(result['timed_out'])
+            self.assertTrue(result['termination_confirmed'])
+            self.assertFalse(m.group_live(result['pid']))
     def test_scope(self):
         self.assertEqual(m.scope_errors(['docs/migration.md','src/kernel.py'],['docs/*.md']),['src/kernel.py'])
     def test_real_process_success_nonzero_timeout(self):
@@ -36,6 +51,6 @@ class Controls(unittest.TestCase):
                 self.assertEqual(result['timed_out'],timed)
                 if code is not None:self.assertEqual(result['exit_code'],code)
     def test_review(self):
-        self.assertEqual(m.classify(0,False,self.valid(),'REVIEW 02 — Verdict ACCEPT',[])['state'],'DONE')
+        self.assertEqual(m.classify(0,False,self.valid(),'REVIEW 02 — Reviewer Fable high | Verdict ACCEPT',[])['state'],'DONE')
 
 if __name__=='__main__': unittest.main()

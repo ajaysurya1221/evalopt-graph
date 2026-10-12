@@ -18,7 +18,7 @@ ADMISSION_END = '2026-10-13T04:37:18+00:00'
 RUN_END = '2026-10-13T05:22:18+00:00'
 
 
-def classify(exit_code, timed_out, raw, report, scope_errors):
+def classify(exit_code, timed_out, raw, report, scope_errors, expected_id="02"):
     reasons = []
     try:
         obj = json.loads(raw)
@@ -38,7 +38,11 @@ def classify(exit_code, timed_out, raw, report, scope_errors):
         reasons.append('model_identity')
     elif not isinstance(usage[EXPECTED_MODEL], dict) or usage[EXPECTED_MODEL].get('provider') != 'firstParty':
         reasons.append('provider_identity')
-    if not report or not re.search(r'(?:Status\s*:?\s*DONE|Verdict\s*:?\s*ACCEPT)', report.replace('**', '')):
+    header = next((line.strip().lstrip('# ').replace('**', '') for line in report.splitlines() if line.strip()), '')
+    ident = re.escape(expected_id)
+    valid_report = re.match(r'^REPORT ' + ident + r' [—-] Status:? DONE(?:[ |].*)?$', header)
+    valid_review = re.match(r'^REVIEW ' + ident + r' [—-] Reviewer\b.*?\| Verdict:? ACCEPT(?:[ |].*)?$', header)
+    if not (valid_report or valid_review):
         reasons.append('missing_or_nonaccepted_report')
     if scope_errors:
         reasons.append('out_of_scope')
@@ -58,22 +62,45 @@ def scope_errors(paths, allow):
     return [p for p in paths if not any(fnmatch.fnmatchcase(p, pattern) for pattern in allow)]
 
 
+def group_live(pgid):
+    rows = subprocess.check_output(['ps', '-axo', 'pgid=,stat='], text=True).splitlines()
+    return any(len(parts := row.split()) >= 2 and parts[0] == str(pgid)
+               and not parts[1].startswith('Z') for row in rows)
+
+
+def signal_group(pgid, sig):
+    try:
+        os.killpg(pgid, sig)
+    except ProcessLookupError:
+        pass
+
+
 def execute(command, cwd, output, stderr, timeout):
     started = time.monotonic()
     with output.open('xb') as out, stderr.open('xb') as err:
         child = subprocess.Popen(command, cwd=cwd, stdout=out, stderr=err, start_new_session=True)
         timed_out = False
+        leftovers = False
         try:
             code = child.wait(timeout=timeout)
         except subprocess.TimeoutExpired:
             timed_out = True
-            os.killpg(child.pid, signal.SIGTERM)
+            signal_group(child.pid, signal.SIGTERM)
             try:
                 code = child.wait(timeout=5)
             except subprocess.TimeoutExpired:
-                os.killpg(child.pid, signal.SIGKILL)
-                code = child.wait()
+                code = None
+        # A leader exit does not establish that its process group has stopped.
+        if timed_out or group_live(child.pid):
+            leftovers = not timed_out
+            signal_group(child.pid, signal.SIGKILL)
+            code = child.wait()
+            until = time.monotonic() + 5
+            while group_live(child.pid) and time.monotonic() < until:
+                time.sleep(.05)
+        stopped = not group_live(child.pid)
     return {'pid': child.pid, 'exit_code': code, 'timed_out': timed_out,
+            'leftover_children': leftovers, 'termination_confirmed': stopped,
             'elapsed_seconds': round(time.monotonic() - started, 3)}
 
 
@@ -130,7 +157,10 @@ def main():
     errors = scope_errors(changed_paths(cwd, cfg['base']), cfg['allow'])
     result.update(classify(result['exit_code'], result['timed_out'],
                            (output_dir/'native.json').read_text(),
-                           report.read_text() if report.exists() else '', errors))
+                           report.read_text() if report.exists() else '', errors, cfg['report_id']))
+    if not result['termination_confirmed'] or result['leftover_children']:
+        result['state'] = 'PARTIAL'
+        result['reasons'].append('process_group_lifecycle')
     result['finished_at'] = datetime.now(timezone.utc).isoformat()
     result['head'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=cwd, text=True).strip()
     (output_dir/'finish.json').write_text(json.dumps(result, indent=2) + '\n')

@@ -1,0 +1,15 @@
+# Astra independent proposal: public migration interface
+
+Decision scope: documentation structure only. No API, schema, converter, policy language or integration is introduced. STOP and baseline kernel semantics are fixed by the accepted plan.
+
+Use docs/migration.md as one navigable guide. Begin with the preservation rule: keep original records, policy, inputs, source version and material together; a new tool does not retroactively authorize or reinterpret old evidence. Follow with a short job-to-tool table, the fixed sixteen-row capability roster, and a practical migration checklist. Each roster row states current responsibility, relevant destination or analogy, relationship label, and a specific limit. Put detailed source URLs and the checked date in a source appendix. A separate coverage record indexes the same sixteen IDs and their review dispositions; it is a finite coverage inventory, not a machine-readable migration standard.
+
+Use four plain labels: conceptual analogy; host responsibility; project-specific semantics; no supported equivalence. Labels may combine where a row has separate parts. No blank destination should imply automatic equivalence. All ten stable exports appear individually; the six cross-cutting topics cover terminal states/reasons, serialization/hash binding, replay, authentication/signatures, freshness/record authority and deprecated host surfaces. The five statuses and reason codes remain evalopt-specific. Retain their precedence and distinction between missing mechanisms, incomplete evidence, observed failures and explicit blocks.
+
+Acceptance is evaluation of supplied evidence against policy. Hash consistency does not establish a signer, retrieval event, source truth or current freshness. Retained record validation differs from replay of a complete policy/input decision; neither reruns the world. Do not imply that in-toto statements or signed envelopes establish semantic claim support. Do not advertise an existing standard as a lossless replacement for SupportAssessment or the five outcomes. SLSA VSA is retired historical prior art only.
+
+Migration instructions are documentation: inventory which decisions and host controls are used; choose an established tool for the actual job; explicitly specify any project-specific semantics that remain the host's responsibility; retain original evidence and test the new host policy independently before operational use. This run supplies no converter or new tests of a replacement integration. Legacy graph, CLI, provider, bridge, research and filesystem surfaces remain unchanged and frozen for feature work.
+
+The map is complete when all sixteen rows have honest dispositions, sources support their limited claims, and two reviewers accept it. Coverage does not equal interoperability certification.
+
+Recorded 2026-10-12T20:00:27.217009+00:00. Fable proposals were committed at 0663549f652bb868c3a5ad040fb67d6a7bed4663 before this proposal was written; their contents have not been read by Astra.

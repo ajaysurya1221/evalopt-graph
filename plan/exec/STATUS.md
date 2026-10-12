@@ -11,7 +11,7 @@
 - 07B: PARTIAL; originalauthor exited withoutREPORT/commit; independentfulltestsPASS; Fablecompletionqueued
 - 07C: REVISE; authored b0a0b14; Codex requests current-state wording; revisionqueued
 - 07D: IN PROGRESS; Fableauthor active; root ownscommit; reviewerspending
-- 08: REVIEW; candidate1d814864; 422tests/75preservation/79nativecontrolsPASS; independentCodexactive; freshFablequeued
-- 09: PENDING; reviewers —; commit —
+- 08: DONE; exact 1d814864 accepted by independent Codex and fresh Fable xhigh; source integrated unchanged; reviews/08-codex.md and 08-fable.md
+- 09: IN PROGRESS; exact accepted release source admitted for artifact qualification
 - 10: PENDING; reviewers —; commit —
 - 11: PENDING; reviewers —; commit —

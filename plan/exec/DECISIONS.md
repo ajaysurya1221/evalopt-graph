@@ -106,3 +106,7 @@ Task08 candidate1d814864 is prepared without release/tag/publication. Native sca
 ## 2026-10-12 21:55 UTC — Task08 accepted; artifact qualification admitted
 
 Codex and fresh Fable xhigh independently ACCEPT exact release patch1d814864. Both independently reproduced the native scanner controls. The fixed public mirror has99 reachable commits; Gitleaks processed78 nonmerge diff-bearing commits. Separate local-all-ref scan processed91 native commits. These counts are not interchangeable, and neither local scan establishes hosted CI. Root is retaining an explicit release-identity output during Task09 to resolve the review's logging observation. Candidate source is integrated unchanged; no tag, merge or publication is yet approved.
+
+## 2026-10-12 21:59 UTC — Qualification invocation correction
+
+The earlier publication preflight's `uv x` spelling is unsupported in pinned uv0.11.29. Task09 retained the actual exit2 failure and changed only the command invocation to `uv tool run --from twine==6.2.0 twine check`. Both unchanged candidate archives then passed. The original preflight and failed output remain historical records; future runbooks use the supported spelling. RECORD hashes establish internal consistency, never producer authentication.

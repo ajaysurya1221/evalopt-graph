@@ -1,0 +1,103 @@
+{
+  "checked_at": "2026-10-12T22:57:43.334826+00:00",
+  "source": "8c8b7f4583a161947578fdd62d4c6658a1956f55",
+  "run": 38317836286,
+  "attempt": 1,
+  "jobs": 15,
+  "reported_steps": 123,
+  "release_url": "https://github.com/ajaysurya1221/evalopt-graph/releases/tag/v0.1.1",
+  "published_at": "2026-10-12T22:56:37Z",
+  "is_latest": true,
+  "tag_object": "b5b96001bb2fcc0059183bcc0a2a2151129f1404",
+  "github_assets_sha256": {
+    "evalopt_graph-0.1.1-py3-none-any.whl": "d6cffc1a0f1b56b087805ee18662d11863d6063b231b2d8e97d64a3430c8e739",
+    "evalopt_graph-0.1.1.tar.gz": "2c49351a7c6343b31faf3b9ff2c7359cc51a41f6249559c31f388be600facf10",
+    "SHA256SUMS.txt": "7d7661547846d824f0709288d4730a73352903a4e58e9e63e6a68bfd7ca52e22",
+    "evalopt-graph-0.1.1.spdx.json": "9dee6be448e411d3190ea8ae25eb4fef2801feaa8dcdbd9065628c04ea95ff29"
+  },
+  "pypi_files": [
+    {
+      "filename": "evalopt_graph-0.1.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/e0/d6/0f69185e85c478811dc7170a21a7caa4bf06b943013c1e166981b0a2d77a/evalopt_graph-0.1.1-py3-none-any.whl",
+      "final_url": "https://files.pythonhosted.org/packages/e0/d6/0f69185e85c478811dc7170a21a7caa4bf06b943013c1e166981b0a2d77a/evalopt_graph-0.1.1-py3-none-any.whl",
+      "status": 200,
+      "at": "2026-10-12T22:57:17.510378+00:00",
+      "bytes": 137354,
+      "sha256": "d6cffc1a0f1b56b087805ee18662d11863d6063b231b2d8e97d64a3430c8e739"
+    },
+    {
+      "filename": "evalopt_graph-0.1.1.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/f1/27/44faf0638384753a17a16d454e55efe9c00f5f4cab48237a324979d3860b/evalopt_graph-0.1.1.tar.gz",
+      "final_url": "https://files.pythonhosted.org/packages/f1/27/44faf0638384753a17a16d454e55efe9c00f5f4cab48237a324979d3860b/evalopt_graph-0.1.1.tar.gz",
+      "status": 200,
+      "at": "2026-10-12T22:57:17.635257+00:00",
+      "bytes": 382132,
+      "sha256": "2c49351a7c6343b31faf3b9ff2c7359cc51a41f6249559c31f388be600facf10"
+    }
+  ],
+  "attestation_bindings": [
+    {
+      "file": "evalopt_graph-0.1.1-py3-none-any.whl",
+      "predicate": "https://slsa.dev/provenance/v1",
+      "subject_names": [
+        ".gitignore",
+        "evalopt_graph-0.1.1-py3-none-any.whl",
+        "evalopt_graph-0.1.1.tar.gz"
+      ],
+      "runInvocationURI": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38317836286/attempts/1"
+    },
+    {
+      "file": "evalopt_graph-0.1.1-py3-none-any.whl",
+      "predicate": "https://spdx.dev/Document/v2.3",
+      "subject_names": [
+        ".gitignore",
+        "evalopt_graph-0.1.1-py3-none-any.whl",
+        "evalopt_graph-0.1.1.tar.gz"
+      ],
+      "runInvocationURI": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38317836286/attempts/1"
+    },
+    {
+      "file": "evalopt_graph-0.1.1.tar.gz",
+      "predicate": "https://slsa.dev/provenance/v1",
+      "subject_names": [
+        ".gitignore",
+        "evalopt_graph-0.1.1-py3-none-any.whl",
+        "evalopt_graph-0.1.1.tar.gz"
+      ],
+      "runInvocationURI": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38317836286/attempts/1"
+    },
+    {
+      "file": "evalopt_graph-0.1.1.tar.gz",
+      "predicate": "https://spdx.dev/Document/v2.3",
+      "subject_names": [
+        ".gitignore",
+        "evalopt_graph-0.1.1-py3-none-any.whl",
+        "evalopt_graph-0.1.1.tar.gz"
+      ],
+      "runInvocationURI": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38317836286/attempts/1"
+    }
+  ],
+  "limitations": [
+    "GitHub Sigstore workflow attestations verified; no separate PyPI publisher-attestation verification claimed.",
+    "Signed roster also includes an unretained .gitignore marker; both published archives individually bound.",
+    "SPDX inventories two archives, not every source or dependency."
+  ],
+  "approval": {
+    "environment_id": 18433764700,
+    "eligible_at": "2026-10-12T22:55:41.923275+00:00",
+    "gate_receipt_sha256": "77e9235d89fc0ea5f65712e00243d81eb0e662add4275d5f7158e11ef664dc98",
+    "deployment_id": 7025528904,
+    "accepted_review_sha256": {
+      "10-hosted-artifacts-codex.md": "2654e853df3d47e4a61e246d78efa6bbf6885f847ab757842da4a3ffc5138f58",
+      "10-hosted-fable.md": "7196adcb7d229c7e5a43cf513fdcbe5066fb3b27211e3f694ccdea3059bb3f5f",
+      "10-hosted-workflow-codex.md": "c07cca2001017600c47eb458b790bcdf6642075d2ccf9e7cc138e9abfaf345aa"
+    }
+  },
+  "baseline": "fc3045dbda29c1d274747329ceb6724a783b0df7",
+  "merged_pr": 42,
+  "reviewed_pr_head": "7043a0879a8a5491c110bd7d8a9f466700f920b7",
+  "main_ci_runs": [
+    38317333493,
+    38317333455
+  ]
+}

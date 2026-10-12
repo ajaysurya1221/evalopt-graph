@@ -1,0 +1,103 @@
+{
+  "at": "2026-10-12T23:16:40.244602+00:00",
+  "branches": [
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/00",
+      "sha": "29ae21eef3e21c905df810dbbd6f6f4344c0ce03"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/01",
+      "sha": "08c87b89f8a0d0ef09b6b8716ec13a014a4fd3b5"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/02",
+      "sha": "5d6df50e7dbc73323503be211269ed872c5f6215"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/03",
+      "sha": "9d306137ab78b473ff3419c4375735819a803cce"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/04",
+      "sha": "8f60a3a40cd0f1f1100211009f25cbf920b11dd6"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/05",
+      "sha": "c8f2b1dee5f3f0a705e87ab0f4e520695275b3d4"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/06",
+      "sha": "f030ccdb5361ef393b2c8ec41181a773da29c706"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/08",
+      "sha": "1d8148644984ab7a8548960439b3a9d0adf7f729"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/09",
+      "sha": "95b61a3ff9cbe6dc62acde75cf475958546aafc9"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/10",
+      "sha": "d76d6587ecd51747db6c8094613473bdf3ab896b"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/10-ops",
+      "sha": "7ebd12580d155b7aa14cc065c26354ccd51c01ac"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/10-publication",
+      "sha": "8c8b7f4583a161947578fdd62d4c6658a1956f55"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/10-r1",
+      "sha": "7043a0879a8a5491c110bd7d8a9f466700f920b7"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/11",
+      "sha": "ba5db20743e632f6295a2d9bfbda7867e6579978"
+    },
+    {
+      "repo": "evalopt-graph",
+      "ref": "refs/heads/winddown/20261013/control-review-01",
+      "sha": "4fcce2394270cfe8c4e082de418dc9b322e9c97f"
+    },
+    {
+      "repo": "actseal",
+      "ref": "refs/heads/winddown/20261013/07A",
+      "sha": "52dbc14554486e8ff9e31455d550bfc3d43f139e"
+    },
+    {
+      "repo": "dorian",
+      "ref": "refs/heads/winddown/20261013/07B",
+      "sha": "5222f256ba23c2fa345fb5a2f6d033c336dcbcc1"
+    },
+    {
+      "repo": "frontier-scout",
+      "ref": "refs/heads/winddown/20261013/07C",
+      "sha": "b0d2ae108e62ef7c8a890e8294104a577217b4f8"
+    },
+    {
+      "repo": "agent-reliability-ci",
+      "ref": "refs/heads/winddown/20261013/07D",
+      "sha": "ba179f3a188710e38ec4557d2f65b66a8953c099"
+    }
+  ],
+  "all_exact": true,
+  "count": 19,
+  "note": "Control branch records will advance once with this terminal receipt; final native readback follows its push. All other listed lane heads remain unchanged."
+}

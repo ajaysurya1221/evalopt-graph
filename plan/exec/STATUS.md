@@ -8,10 +8,10 @@
 - 05: DONE; Codex + fresh Fable final ACCEPT at c8f2b1d; root desktop/phone render and focused checks pass; accepted source integrated unchanged; preview branch pushed
 - 06: DONE; Codex + fresh Fable ACCEPT; lane head f030ccd; audit bounds corrected, 0/4 observed coupling, 48 frozen hashes verified; reports/06-r1.md and final reviews supersede first records
 - 07A: DONE; both reviews ACCEPT at 52dbc145; root full checks PASS; Actseal PR70 open; all17 hosted entries SUCCESS at the recorded read; no main merge authorized
-- 07B: PR OPEN; both reviews ACCEPT at 5222f256; root full checks PASS; Dorian PR44; hosted checks pending; original PARTIAL preserved
-- 07C: REVIEW; revisedb0d2ae1 accepted by Codex; rootfullchecksPASS; freshFable queued
-- 07D: REVIEW; revised ba179f3 accepted by Codex; final root checks running; fresh Fable review queued; original records preserved
-- 08: DONE; exact 1d814864 accepted by independent Codex and fresh Fable xhigh; source integrated unchanged; reviews/08-codex.md and 08-fable.md
-- 09: REVIEW; exact source 95b61a3 local artifacts qualified and Codex ACCEPT; fresh Fable artifact review active; hosted publication remains separate
-- 10: PENDING; reviewers —; commit —
-- 11: PENDING; reviewers —; commit —
+- 07B: DONE; Codex + fresh Fable ACCEPT at 5222f256; root 1119 passed/1 optional skip; Dorian PR44 open; all5 hosted entries success
+- 07C: DONE; Codex + fresh Fable ACCEPT at b0d2ae1; root254nonlive tests/lint/type pass; Frontier Scout PR81 open; all7 hosted entries success
+- 07D: DONE; Codex + fresh Fable ACCEPT at ba179f3; root881passed/2pre-existing skips,48frozen hashes/typing/lint pass; ARCI PR14 open; all5 hosted entries success
+- 08: DONE; exact1d814864 accepted by independent Codex and fresh Fable xhigh; source integrated unchanged; no new capability
+- 09: DONE; original95b61a3 and rebuilt d76 candidate artifacts each independently accepted by Codex and fresh Fable; actual hosted bytes qualified separately
+- 10: DONE; PR42 merged to8c8b7f4; required mainCI pass; annotatedv0.1.1 release38317836286/1 published; hosted-byte Codex/Fable ACCEPT; published channels and full workflow independently accepted by Codex; see release-receipt.json
+- 11: DONE; closeout source ba5db207 independently accepted by Codex + fresh Fable; PR43 merged to b52c875; final main CI 11 jobs/95 steps pass; cleanup preference restored and protections unchanged; terminal observations separately reviewed by Codex; reports/11-r1.md and TERMINAL_RECEIPT.md supersede the prepared-endpoint status

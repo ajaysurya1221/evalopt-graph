@@ -1,0 +1,88 @@
+{
+  "snapshot_started_utc": "2026-10-12T23:14:30.018796+00:00",
+  "snapshot_finished_utc": "2026-10-12T23:14:30.049779+00:00",
+  "incomplete_snapshot": true,
+  "attempts": 50,
+  "supervised_attempts": 44,
+  "direct_attempts": 6,
+  "complete_unique_native_results": 50,
+  "unknown_native_usage_attempts": [],
+  "supervised_open_attempts": [],
+  "supervisor_states": {
+    "DONE": 38,
+    "PARTIAL": 6
+  },
+  "native_subtypes": {
+    "success": 48,
+    "error_max_turns": 2
+  },
+  "native_turns_total": 885,
+  "native_duration_ms_sum": 15108079,
+  "native_api_duration_ms_sum": 13651139,
+  "requested_cap_histogram_supervised": {
+    "20": 27,
+    "30": 3,
+    "12": 1,
+    "45": 1,
+    "35": 1,
+    "25": 7,
+    "15": 2,
+    "3": 1,
+    "6": 1
+  },
+  "requested_effort_histogram_supervised": {
+    "high": 30,
+    "xhigh": 14
+  },
+  "models": {
+    "claude-fable-5-1": {
+      "entries": 50,
+      "raw_model_keys": [
+        "claude-fable-5-1"
+      ],
+      "providers": [
+        "firstParty"
+      ],
+      "cost_bases": [
+        "list"
+      ],
+      "costUSD": "123.37904824999999700",
+      "inputTokens": 16516,
+      "outputTokens": 1030219,
+      "cacheReadInputTokens": 25832473,
+      "cacheCreationInputTokens": 3262241,
+      "thinkingTokens": 412954,
+      "webSearchRequests": 0,
+      "missing_fields": {}
+    },
+    "claude-haiku-4-5": {
+      "entries": 1,
+      "raw_model_keys": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "providers": [
+        "firstParty"
+      ],
+      "cost_bases": [
+        "list"
+      ],
+      "costUSD": "0.0019850000000000002",
+      "inputTokens": 1670,
+      "outputTokens": 63,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "thinkingTokens": 0,
+      "webSearchRequests": 0,
+      "missing_fields": {}
+    }
+  },
+  "native_total_cost_usd_sum": "123.38103324999999700",
+  "model_cost_usd_sum": "123.3810332499999970002",
+  "cost_reconciliation_differences": [],
+  "deduplicated_copies": [],
+  "identity_conflicts": [],
+  "repeated_sessions": {},
+  "read_errors": [],
+  "files_changed_during_capture": [],
+  "new_starts_during_capture": []
+}

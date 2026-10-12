@@ -45,15 +45,16 @@ Conformance evidence only; no external capability or comparative result is claim
 
 New systems should start from one of these destinations. Seven jobs, one destination each, in the
 order fixed by the [migration map](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md). These are job-oriented
-pointers, not tested drop-in replacements: the destinations are independent of evalopt and of each
-other, and none carries evalopt's five decision states, reason codes or records across. A content
+pointers, not tested drop-in replacements. The four sibling projects are independent of evalopt and
+of each other. This guide and the sources it inspected supply no automatic or lossless mapping of
+evalopt's five decision states, reason codes or decision records into any destination. A content
 hash binds bytes; a trusted signature binds a statement to an identity within its verification
 system; neither proves a claim true.
 
 | Your job | Go to | What it does, in its own terms |
 | --- | --- | --- |
 | General policy evaluation | [OPA](https://www.openpolicyagent.org/docs/philosophy) | Evaluates policies over structured data and query input and returns structured decisions. |
-| Software provenance and attestation verification | [in-toto attestation framework](https://github.com/in-toto/attestation) and [Witness](https://github.com/in-toto/witness) | A signed Statement binds a typed predicate to artifact digests; Witness verifies signed attestation collections against a signed policy. |
+| Software provenance and attestation verification | [in-toto attestation framework](https://github.com/in-toto/attestation) and [Witness](https://github.com/in-toto/witness) | A Statement binds a typed predicate to artifact digests; a DSSE envelope carries signatures; Witness verifies signed attestation collections against a signed policy. |
 | Native merge enforcement | [GitHub rulesets and required checks](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) | Applies required status checks and bypass permissions to targeted branches; check states are set by write-capable producers. |
 | Action-policy qualification | [Actseal](https://github.com/ajaysurya1221/actseal) | Tests a model's action policy under a frozen policy against recorded evaluation evidence and replays it offline; the application owns execution. |
 | Code-claim warrants | [Dorian](https://github.com/ajaysurya1221/dorian) | Turns explicit code claims into checks sealed beside the code and revokes the warrant when a load-bearing check fails. |
@@ -64,7 +65,7 @@ The [migration map](https://github.com/ajaysurya1221/evalopt-graph/blob/main/doc
 and six cross-cutting topics with its own limit, and the
 [portfolio index](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/portfolio.md) describes the four sibling projects.
 The deprecated compatibility surfaces (graph, CLI, providers, Codex bridge, research loop and
-adapters) have no destination; see entry 16 of the map.
+adapters) have no supported compatible migration target in this map; see entry 16.
 
 ## Install
 
@@ -200,9 +201,10 @@ There is no live-model governance campaign or official Docker SWE-bench result i
 
 ## Historical integration examples
 
-The kernel was built host-independent: a host adapted observations from Codex, Claude Code,
-OpenHands, LangGraph, CI or its own runtime into `AcceptanceInput`, then stored the returned decision
-beside the policy and input used to create it. The examples below are preserved as they were. They
+The kernel was designed to accept host-supplied observations through `AcceptanceInput`, so that a
+host could adapt observations from Codex, Claude Code, OpenHands, LangGraph, CI or its own runtime
+into that input and store the returned decision beside the policy and input used to create it. The
+host remains responsible for both steps. The examples below are preserved as they were. They
 are not an invitation to build new evalopt integrations; new systems should start from the
 [alternatives](https://github.com/ajaysurya1221/evalopt-graph#alternatives) above.
 
@@ -213,7 +215,7 @@ wiring only; it is not an external benchmark.
 
 The historical graph, standalone CLI, provider clients, Codex bridge, research loop, and filesystem
 adapters remain as **deprecated compatibility surfaces**. They receive no feature work, are not stable
-API or policy authorities, and have no migration destination
+API or policy authorities, and have no supported compatible migration target in this map
 ([entry 16 of the migration map](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md#the-sixteen-entries)).
 Anything that still imports evalopt should depend only on the ten root exports above.
 

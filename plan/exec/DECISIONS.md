@@ -92,3 +92,9 @@ Independent Codex source review supports the exact-commit AND design and correct
 Public main remains fc3045d, with only existing v0.1.0 tag/release at this read. Four sibling repository read-only API checks show push permission and unarchived main branches. No public push, merge, tag, deployment approval or release has occurred in this run yet.
 
 Timestamp correction: the two preceding heading times were manual transcription errors, corrected against native clock and commit timestamps. Git history retains the original text; execution timing is established by retained native start/finish records, not these narrative headings.
+
+## Task05 acceptance and parallel release/portfolio admission
+
+Task05 corrected head c8f2b1d has independent Codex and fresh Fable ACCEPT. Root inspected its full revision, reran figures/preservation and checked actual GitHub desktop1280x900/phone390x844 rendering; phone table requires21px horizontal overflow, accessible through native scroll. Accepted source integrated without changes. Its preview branch was pushed for rendering while the final Fable review was still pending; this is a reversible authorized review branch, not a main merge/publication claim. Both final reviews are now accepted. Main-target links to the new documents remain pending until merge. Native author379.522s, first review230.344s, revision136.697s, finalreview185.461s.
+
+Task08 and the independent Task07A/B README lanes are now admitted after accepted04/05/06. Each retains its own worktree, file ownership and environment. No release tag or sibling-main merge is authorized by this admission alone.

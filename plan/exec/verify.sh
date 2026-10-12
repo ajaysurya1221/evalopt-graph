@@ -6,7 +6,7 @@ set -euo pipefail
 mkdir -p "$RUN_ARTIFACTS"
 "$UV_BIN" lock --check
 "$UV_BIN" sync --frozen --extra dev
-export PATH="$PWD/.venv/bin:$PATH"
+export PATH="$PWD/.venv/bin:$(dirname "$UV_BIN"):$PATH"
 "$UV_BIN" run --frozen --extra dev python scripts/verify_workflow_pins.py
 "$UV_BIN" run --frozen --extra dev python scripts/verify_test_count.py --minimum 408
 "$UV_BIN" run --frozen --extra dev python -m compileall -q src tests scripts

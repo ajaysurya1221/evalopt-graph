@@ -1,0 +1,7 @@
+# Exact merged-main local verification
+
+Root verified GitHub's merged PR42 state, merge SHA 8c8b7f4583a161947578fdd62d4c6658a1956f55, and retained source branch winddown/20261013/10-r1 at 7043a0879a8a5491c110bd7d8a9f466700f920b7. Git diff between the two trees was empty. The main worktree is separate from both reviewed source and control worktrees.
+
+The first local fetch failed while the existing global fetch.prune=true configuration removed the local origin/main tracking ref and then could not update it. The remote main ref was intact. A subsequent explicit fetch with --no-prune and the full refs/heads/main:refs/remotes/origin/main refspec succeeded and restored the tracking ref; no force flag, global configuration edit or remote deletion occurred. Both attempts and stderr are retained in private artifacts/10-merge. The earlier failed command remains a failure, not a successful fetch.
+
+On the exact merged main, root ran pinned uv0.11.29 sync --frozen --extra dev (CPython3.13.12, twelve installed packages), uv run --frozen --extra dev python scripts/verify_release.py --expected-version0.1.1, and python3 -B plan/exec/preservation.py. Tool outputs reported release identity verified, all75 protected files with zero errors, and clean git status. This record summarizes observed root tool output; it does not establish tagged-main identity, hosted CI, actual hosted artifacts or publication.

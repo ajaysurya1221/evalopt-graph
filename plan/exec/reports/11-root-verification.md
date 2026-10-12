@@ -1,0 +1,7 @@
+# Task11 root source verification
+
+The prepared closeout source passed the complete existing verify.sh runbook in a fresh task-local environment with isolated uv0.11.29 and the frozen lock: workflow pins/count floor, compilation, Ruff check/format, 422 tests, three deterministic demos, 32 authored conformance cases, compatibility smoke, and 75 protected baseline source/test/bench bytes with the allowed version normalization. No configured evalopt type gate exists. Run-local unittest controls passed 11/11 separately. `git diff --check`, authored-document local-link existence checks and a pinned Gitleaks8.30.1 directory scan of plan/exec passed. This is bounded hygiene, not universal secret absence.
+
+The compatibility demo intentionally exercises a blocked/failed gate and expects a nonzero child result; the enclosing smoke script passed. No check or source was edited to obtain success. Raw verification output is retained in private 11-qualification.log and 11-final-source, distinct from hosted CI. All code under src/tests/bench and release workflow/metadata remain unchanged relative to the actual released source; the previously reviewed one-line run-local supervisor amendment and new operational/docs evidence are excluded from the published v0.1.1 bytes. No new release build or upload occurred.
+
+The exact reviewed candidate commit is recorded in the following independent reviews. Final PR/current-main CI, branch retention and restoration remain later separate gates.

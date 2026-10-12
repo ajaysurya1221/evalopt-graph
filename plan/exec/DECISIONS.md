@@ -25,3 +25,10 @@
 - Plan SHA-256: `697f3fd7fa61b294146fff13868c87d6762d00395f39d8085ba52a111eb22b3c`; copied verbatim from the accepted user message, without its implementation-request prefix. The historical final acceptance line is preserved.
 - Memo SHA-256: `e307514fc800c2ff37c8d1a6d9a454bbf4d4addf53acd38611cbbc50b5695e81`.
 - Root controls orchestration. No old benchmark campaign is resumed.
+
+## Task01 probe decisions
+
+- Add `--safe-mode` to worker/reviewer invocations to isolate global customizations; native subscription authentication remains enabled. No model substitution.
+- Terminal JSON does not expose effective effort; record requested effort and that observability limit.
+- Provision uv0.11.29 in run-private tooling because installed global uv is0.12.5; do not replace global tooling.
+- Task00 review found terminal blank lines in extracted tasks. Trim those task files only; preserve PLAN.md verbatim and record the failed initial committed-diff check.

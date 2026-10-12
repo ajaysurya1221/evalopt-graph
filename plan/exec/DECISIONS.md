@@ -79,14 +79,16 @@ Both independent reviews returned REVISE for migration author head8081661. Codex
 
 A fresh read-only full-history scan with the unchanged stock-extended configuration still reports exactly the same17 diagnosed nonsecret occurrences in six historical paths. No new finding comes from the operational packet or migration draft. This is diagnostic evidence only; Task08 still requires the narrow correction, adversarial controls and two independent reviews. Raw redacted result and exit1 are retained privately.
 
-## 2026-10-12 21:11 UTC — Task04 accepted and scanner scope narrowed prospectively
+## 2026-10-12 21:10 UTC — Task04 accepted and scanner scope narrowed prospectively
 
 Task04 final Codex and fresh Fable reviews ACCEPT exact 8f60a3a. Root integrated both author commits unchanged; protected 75-file check passed. Root and Codex independently confirmed four added links return HTTP200. Optional citation improvement is deferred to avoid mutating accepted bytes; the claim remains supported and no required finding remains. CHANGELOG disclosure remains Task05/08. Fable final review native elapsed379.992s.
 
 The root requested a read-only Fable xhigh opinion on narrowing historical scanner exceptions to exact commits in addition to rule/path/value AND constraints. Fable recommends ADD exact historical commit constraints; native source inspection shows this does not skip fragments when the regex check is present. Root accepts the narrower reversible design, subject to native positive/negative controls and both actual-patch reviews. This supersedes the earlier scanner-contract limitation about later identical values: new commit occurrences must stay detectable. No configuration has changed yet. Opinion native elapsed363.668s; self-reported tool counts are not CLI native turn evidence.
 
-## 2026-10-12 21:19 UTC — Scanner design verification corrections
+## 2026-10-12 21:13 UTC — Scanner design verification corrections
 
 Independent Codex source review supports the exact-commit AND design and corrects two details in the retained Fable consultation: an invalid condition value is a configuration load error (only an omitted recognized condition defaults to OR); fresh-commit negatives alone cannot detect a missing regex because the commit mismatch masks it. Actual controls will therefore include a derived configuration changing only the commit lists to the fixture commit, with wrong/near paths, changed captured values and unrelated same-line/same-file secrets, plus missing-regex and OR mutation sentinels. Native dir-mode checks will separately prove empty commit metadata rejects the exemption at matching paths. Source suffixes beyond the stock token capture are not mislabeled changed captures. Root independently read the cited config parser and fragment-level gate. These corrections preserve the narrower chosen design; no opinion waives native tests or actual-patch reviews.
 
 Public main remains fc3045d, with only existing v0.1.0 tag/release at this read. Four sibling repository read-only API checks show push permission and unarchived main branches. No public push, merge, tag, deployment approval or release has occurred in this run yet.
+
+Timestamp correction: the two preceding heading times were manual transcription errors, corrected against native clock and commit timestamps. Git history retains the original text; execution timing is established by retained native start/finish records, not these narrative headings.

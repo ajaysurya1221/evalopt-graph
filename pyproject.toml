@@ -31,7 +31,7 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
-llm = ["anthropic>=1.11.0", "openai>=3.23.0"]  # optional real providers (need API keys via env)
+llm = ["anthropic>=1.11.0", "openai>=3.28.0"]  # optional real providers (need API keys via env)
 yaml = ["pyyaml>=6"]                        # optional: load .evalopt/config.yaml
 dev = ["pytest>=9.1.1", "ruff>=0.16.10", "jsonschema>=4.26.0,<5"]
 all = ["evalopt-graph[llm,yaml,dev]"]         # self-referential to avoid constraint drift

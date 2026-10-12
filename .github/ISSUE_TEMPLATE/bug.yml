@@ -1,5 +1,5 @@
 name: Bug report
-description: Report reproducible incorrect behavior in the kernel or a repository integration.
+description: Report reproducible incorrect behavior in a 0.1.x release or a named commit, with a minimal reproduction.
 title: "[Bug]: "
 labels:
   - bug
@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping improve evalopt. Do not include credentials, private data, or undisclosed security issues. Report vulnerabilities through the private security advisory link below.
+        Standalone feature development of evalopt has ended; bug reports against a `0.1.x` release or a named commit remain open when they include a version and a minimal reproduction. Deprecated compatibility surfaces receive no feature work, and a bug in one of them may be documented rather than fixed. Do not include credentials, private data, or undisclosed security issues. Report vulnerabilities through the private security advisory link in the issue chooser.
   - type: input
     id: version
     attributes:
@@ -61,7 +61,7 @@ body:
     id: context
     attributes:
       label: Additional context
-      description: Explain whether this affects the stable kernel, a deprecated compatibility surface, or a host integration.
+      description: Explain whether this affects the stable kernel (the ten root exports), a deprecated compatibility surface, or a host integration. Feature requests and new integrations are not accepted; see the migration map.
   - type: checkboxes
     id: checks
     attributes:

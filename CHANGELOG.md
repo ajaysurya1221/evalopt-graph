@@ -5,6 +5,25 @@ All notable changes to evalopt are documented here. The project follows
 
 ## [Unreleased]
 
+Standalone feature development has ended. The repository preserves the acceptance kernel and its
+research record; the README notice, the [migration map](docs/migration.md) and the
+[archive decision](docs/decisions/archive-standalone.md) say where each job goes. Deprecated
+compatibility surfaces receive no feature work. The entries below disclose inherited differences
+between the `v0.1.0` tag and the verified main baseline `fc3045d`; there is no claim that the kernel
+is byte-identical to `v0.1.0`. Version numbering, release dates and the final deprecation release
+notes are recorded when a release is actually published; nothing here claims that it has been.
+
+### Fixed
+
+- `AcceptanceInput` now rejects scalar rows: a `gate_results` or `contradictions` value, or a row
+  inside it, that is a string, bytes or not iterable raises `ValueError` with the existing
+  "entries require N string fields" message. Previously a string row of the right length was split
+  into characters and accepted, and a non-iterable value raised `TypeError`.
+  `AcceptanceInput.from_dict` passes rows through the same validation. Contributed by Göktuğ Özkan
+  ([@goktugozkanmd](https://github.com/goktugozkanmd)) in
+  [#4](https://github.com/ajaysurya1221/evalopt-graph/pull/4), commit `624ed11`, with tests. This
+  inherited change had no changelog entry until now.
+
 ### Changed
 
 - The README now opens with the example's expected output, the five decision states, the host

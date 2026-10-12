@@ -22,11 +22,11 @@ Every route leaves domain semantics and enforcement with their owners and keeps 
 
 ## Positions (Astra, Fable)
 
-Fable xhigh ([`03-fable-boundary.md`](../../plan/exec/decisions/03-fable-boundary.md), commit `0663549f652bb868c3a5ad040fb67d6a7bed4663`): a closed route table with per-row disclaimers and a fixed sentence form, verbatim project self-descriptions at a pinned commit, a separate unrouted-surfaces list and a user-demand caption.
+Fable xhigh ([`03-fable-boundary.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/decisions/03-fable-boundary.md), commit `0663549f652bb868c3a5ad040fb67d6a7bed4663`): a closed route table with per-row disclaimers and a fixed sentence form, verbatim project self-descriptions at a pinned commit, a separate unrouted-surfaces list and a user-demand caption.
 
-Astra ([`03-astra-boundary.md`](../../plan/exec/decisions/03-astra-boundary.md), commit `aa28b4c73c1bb5e3928e3318d5d40c0e697fc0ef` on control; lane copy `068a2fc`): concise job-oriented pointers, primary-source citations, paraphrases from current contracts, explicit separation of concerns and host obligations.
+Astra ([`03-astra-boundary.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/decisions/03-astra-boundary.md), commit `aa28b4c73c1bb5e3928e3318d5d40c0e697fc0ef` on control; lane copy `068a2fc`): concise job-oriented pointers, primary-source citations, paraphrases from current contracts, explicit separation of concerns and host obligations.
 
-Fresh Fable xhigh tie-break ([`03-tiebreak.md`](../../plan/exec/reports/03-tiebreak.md), commit `0a7d374`): choose Astra's concise forms; verbatim quotation can import wording too long or context-bound for an index; the fixed row sentence adds no checked content; the demand caption is unsupported and struck; the unrouted list duplicates map entry sixteen.
+Fresh Fable xhigh tie-break ([`03-tiebreak.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/reports/03-tiebreak.md), commit `0a7d374`): choose Astra's concise forms; verbatim quotation can import wording too long or context-bound for an index; the fixed row sentence adds no checked content; the demand caption is unsupported and struck; the unrouted list duplicates map entry sixteen.
 
 ## Rule that decided
 

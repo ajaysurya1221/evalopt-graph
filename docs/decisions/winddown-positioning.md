@@ -18,11 +18,11 @@ Portfolio: Actseal qualifies action policies against supplied evaluation evidenc
 
 ## Positions (Astra, Fable)
 
-Fable xhigh ([`03-fable-positioning.md`](../../plan/exec/decisions/03-fable-positioning.md), commit `0663549f652bb868c3a5ad040fb67d6a7bed4663`): the canonical notice verbatim in five files with a patched sentence where no list exists; intake narrowed to security reports and documentation corrections; "for one migration cycle" replaced in README and `docs/architecture.md`.
+Fable xhigh ([`03-fable-positioning.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/decisions/03-fable-positioning.md), commit `0663549f652bb868c3a5ad040fb67d6a7bed4663`): the canonical notice verbatim in five files with a patched sentence where no list exists; intake narrowed to security reports and documentation corrections; "for one migration cycle" replaced in README and `docs/architecture.md`.
 
-Astra ([`03-astra-positioning.md`](../../plan/exec/decisions/03-astra-positioning.md), commit `aa28b4c73c1bb5e3928e3318d5d40c0e697fc0ef` on control; lane copy `068a2fc`): the notice once in README, context-specific notices elsewhere, "final deprecation release" wording, bug reports retained, portfolio paraphrases verified against current contracts.
+Astra ([`03-astra-positioning.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/decisions/03-astra-positioning.md), commit `aa28b4c73c1bb5e3928e3318d5d40c0e697fc0ef` on control; lane copy `068a2fc`): the notice once in README, context-specific notices elsewhere, "final deprecation release" wording, bug reports retained, portfolio paraphrases verified against current contracts.
 
-Fresh Fable xhigh tie-break ([`03-tiebreak.md`](../../plan/exec/reports/03-tiebreak.md), commit `0a7d374`): choose Astra's wording and maintenance model. Five-file repetition plus patching is the drift the accuracy rule forbids; editing `docs/architecture.md` is outside Task 05's file list; narrowing intake conflicts with Task 05 and the patch policy. Both proposals already agreed on prospective status words and on disclosing inherited changes.
+Fresh Fable xhigh tie-break ([`03-tiebreak.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/reports/03-tiebreak.md), commit `0a7d374`): choose Astra's wording and maintenance model. Five-file repetition plus patching is the drift the accuracy rule forbids; editing `docs/architecture.md` is outside Task 05's file list; narrowing intake conflicts with Task 05 and the patch policy. Both proposals already agreed on prospective status words and on disclosing inherited changes.
 
 ## Rule that decided
 

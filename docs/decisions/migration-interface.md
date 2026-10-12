@@ -16,11 +16,11 @@ Status: accepted. Recorded 2026-10-12 (Task 03); VSA wording revised 2026-10-12 
 
 ## Positions (Astra, Fable)
 
-Fable xhigh ([`03-fable-interface.md`](../../plan/exec/decisions/03-fable-interface.md), commit `0663549f652bb868c3a5ad040fb67d6a7bed4663`): a fixed per-entry template with repeated disclaimers, greppable label tags, a closed destination set and a prohibited-vocabulary list.
+Fable xhigh ([`03-fable-interface.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/decisions/03-fable-interface.md), commit `0663549f652bb868c3a5ad040fb67d6a7bed4663`): a fixed per-entry template with repeated disclaimers, greppable label tags, a closed destination set and a prohibited-vocabulary list.
 
-Astra ([`03-astra-interface.md`](../../plan/exec/decisions/03-astra-interface.md), commit `aa28b4c73c1bb5e3928e3318d5d40c0e697fc0ef` on control; lane copy `068a2fc`): a compact guide with the preservation rule first, a job-to-tool table, sixteen compact rows, shared limitations once, a source appendix and a separate coverage record.
+Astra ([`03-astra-interface.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/decisions/03-astra-interface.md), commit `aa28b4c73c1bb5e3928e3318d5d40c0e697fc0ef` on control; lane copy `068a2fc`): a compact guide with the preservation rule first, a job-to-tool table, sixteen compact rows, shared limitations once, a source appendix and a separate coverage record.
 
-Fresh Fable xhigh tie-break ([`03-tiebreak.md`](../../plan/exec/reports/03-tiebreak.md), commit `0a7d374`): choose Astra's compact map; adopt from Fable the roster closure in `__all__` order, one primary label per row, the appendix columns, the dated VSA check and CHANGELOG-referenced disclosure; reject the vocabulary ban, which would forbid truthful negative statements and discussion of signed in-toto or Witness attestations as external signatures.
+Fresh Fable xhigh tie-break ([`03-tiebreak.md`](https://github.com/ajaysurya1221/evalopt-graph/blob/95b61a3ff9cbe6dc62acde75cf475958546aafc9/plan/exec/reports/03-tiebreak.md), commit `0a7d374`): choose Astra's compact map; adopt from Fable the roster closure in `__all__` order, one primary label per row, the appendix columns, the dated VSA check and CHANGELOG-referenced disclosure; reject the vocabulary ban, which would forbid truthful negative statements and discussion of signed in-toto or Witness attestations as external signatures.
 
 ## Rule that decided
 

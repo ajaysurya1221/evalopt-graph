@@ -78,7 +78,7 @@ def signal_group(pgid, sig):
 def execute(command, cwd, output, stderr, timeout):
     started = time.monotonic()
     with output.open('xb') as out, stderr.open('xb') as err:
-        child = subprocess.Popen(command, cwd=cwd, stdout=out, stderr=err, start_new_session=True)
+        child = subprocess.Popen(command, cwd=cwd, stdin=subprocess.DEVNULL, stdout=out, stderr=err, start_new_session=True)
         timed_out = False
         leftovers = False
         try:
@@ -124,7 +124,6 @@ def main():
     if bad_env:
         raise SystemExit('provider routing variables present: ' + ','.join(bad_env))
     output_dir = root / 'logs' / cfg['id']
-    output_dir.mkdir()  # Refuse accidental replay/overwrite of an existing attempt.
     slot = None
     for n in range(2):
         handle = (root / 'logs' / f'fable-slot-{n}.lock').open('a')
@@ -142,6 +141,9 @@ def main():
     report = Path(cfg['report'])
     if report.exists():
         raise SystemExit('report already exists; use a new attempt id and path')
+    output_dir.mkdir()  # Refuse replay after acquiring a slot and checking admission.
+    immutable = [root/'exec/PLAN.md', root/'exec/CONTRACT.md', *(root/'exec/tasks').glob('*.md')]
+    central_before = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in immutable}
     prompt = Path(cfg['prompt']).read_text()
     command = ['claude', '-p', prompt, '--model', 'claude-fable-5-1[1m]', '--effort', cfg['effort'],
                '--permission-mode', 'bypassPermissions', '--max-turns', str(cfg['turns']),
@@ -150,17 +152,23 @@ def main():
     record = {'id': cfg['id'], 'started_at': now.isoformat(), 'cwd': str(cwd),
               'base': cfg['base'], 'requested_model': 'claude-fable-5-1[1m]',
               'requested_effort': cfg['effort'], 'turn_cap': cfg['turns'], 'command': command,
-              'allow': cfg['allow'], 'report': str(report), 'supervisor_pid': os.getpid()}
+              'allow': cfg['allow'], 'report': str(report), 'supervisor_pid': os.getpid(),
+              'wrapup': cfg.get('wrapup', False), 'central_before': central_before}
     (output_dir / 'start.json').write_text(json.dumps(record, indent=2) + '\n')
     timeout = min(cfg['timeout_seconds'], (end - now).total_seconds())
     result = execute(command, cwd, output_dir/'native.json', output_dir/'stderr.txt', timeout)
     errors = scope_errors(changed_paths(cwd, cfg['base']), cfg['allow'])
+    for name, digest in central_before.items():
+        path = root/name
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+            errors.append('central immutable changed: ' + name)
     result.update(classify(result['exit_code'], result['timed_out'],
-                           (output_dir/'native.json').read_text(),
+                           (output_dir/'native.json').read_bytes().decode('utf-8', errors='replace'),
                            report.read_text() if report.exists() else '', errors, cfg['report_id'], cfg.get('record_type', 'REPORT')))
     if not result['termination_confirmed'] or result['leftover_children']:
         result['state'] = 'PARTIAL'
         result['reasons'].append('process_group_lifecycle')
+    result['central_status_after'] = subprocess.check_output(['git', 'status', '--porcelain', '--', 'plan/exec'], cwd=root.parent, text=True).splitlines()
     result['finished_at'] = datetime.now(timezone.utc).isoformat()
     result['head'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=cwd, text=True).strip()
     (output_dir/'finish.json').write_text(json.dumps(result, indent=2) + '\n')

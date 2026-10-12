@@ -110,3 +110,19 @@ Codex and fresh Fable xhigh independently ACCEPT exact release patch1d814864. Bo
 ## 2026-10-12 21:59 UTC — Qualification invocation correction
 
 The earlier publication preflight's `uv x` spelling is unsupported in pinned uv0.11.29. Task09 retained the actual exit2 failure and changed only the command invocation to `uv tool run --from twine==6.2.0 twine check`. Both unchanged candidate archives then passed. The original preflight and failed output remain historical records; future runbooks use the supported spelling. RECORD hashes establish internal consistency, never producer authentication.
+
+## 2026-10-12 Task10 review boundary and bounded retry
+
+The first final integration review reached native error_max_turns at requested20/native21, exited1, and produced no REVIEW. Native modelUsage also contained an auxiliary claude-haiku-4-5 entry besides the requested claude-fable-5-1. The origin of that auxiliary use is not established by terminal JSON. The unchanged strict classifier rejected the attempt as PARTIAL, including model_identity; no acceptance or substitution is inferred. Preserve its complete private receipts. A later attempt uses an explicit built-in tool roster Bash,Read,Write,Edit,Glob,Grep: no Agent/Task/WebFetch tools. Bash remains capable of broad execution; this restriction is not a security sandbox or proof against all auxiliary calls. Native identity remains strictly checked. Root will separately probe this exact supported CLI flag, retain tests/reviews of the one-line supervisor change, and split final source review from candidate artifact review to fit each requested20-turn cap. Original source/artifact records are not repaired.
+
+## 2026-10-12 release-source and branch-preservation follow-through
+
+The reviewed source candidate advanced from d76d658 to7043a08 only to remove four trailing spaces in an old operational report and clarify that raw native evidence remains private. Both final source reviews accepted7043; both candidate artifact reviews accepted the d76-built bytes after confirming all packaged inputs at7043 were identical. The earlier combined review failed its turn and model-identity gates and remains PARTIAL; it supplied no acceptance.
+
+Fresh Fable xhigh and independent Codex opinions accepted temporarily disabling this repository's automatic branch-deletion preference to satisfy the authorized squash merges and explicit no-deletion rule together. Native readbacks confirmed false, and complete main/tag ruleset and pypi environment responses remained unchanged. PR42 merged without admin/deletion flags, its branch remained at7043, and resulting main8c8b7f4 had exactly the accepted tree. Restoration is required after the final authorized merge; actual final receipt must record it.
+
+The first post-merge local fetch failed under existing global pruning and removed only the local origin/main tracking ref. A full-refspec --no-prune fetch restored it without remote mutation, force or configuration edit. Main's expected CI and CodeQL lanes then passed independent review. The annotated v0.1.1 tag was created once and pushed at exactmain8c8b7f4; publication remains separately gated by actual hosted bytes, attestations and native deployment permission. Historical records retain their original statuses and observation times.
+
+## 2026-10-12 22:57 UTC — actual publication and bounded final receipt
+
+The sole release run38317836286/1 completed successfully. Existing eligible native pypi approval followed independent hosted-byte acceptance; published GitHub4/PyPI2 bytes match. No protection bypass, new build, replacement asset or billing fallback occurred. Final report preparation remains separate from its own review/merge and the mandatory restoration of the temporary branch-cleanup preference. Its last post-merge observations will be retained on the pushed control branch rather than creating an endless self-referential sequence of report-only merges.

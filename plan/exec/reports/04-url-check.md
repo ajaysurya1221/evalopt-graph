@@ -1,0 +1,5 @@
+# Task04 linked-source URL check
+
+Root checked all 32 distinct linked destinations extracted from docs/migration-sources.md at author head `80816612c0ad9ccae4350095869e9fa77515187e` on 2026-10-12 UTC. Schema/predicate identifier URIs that are not navigation links were not treated as web pages. First GET pass: 29 HTTP 200 responses and three GitHub 503 responses (ARCI README/NOTICE and Dorian README). A single targeted retry returned HTTP 200 for all three. Original failures and retry responses remain separately retained in private `artifacts/04-linked-url-check.json` and `04-linked-url-retry.json`.
+
+This establishes observed link availability only. It does not validate standards compliance, semantic equivalence, a working migration, provenance authentication, or public-release completion. Source semantic review remains separate. Relative-link checks were reported by the author and will be independently checked after corrections. No destination content or secret was copied into this report.

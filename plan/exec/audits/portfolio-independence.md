@@ -1,8 +1,12 @@
 # Portfolio independence audit (Task 06, memo S6)
 
 Read-only audit of the four surviving repositories for any dependency on
-`evalopt-graph`. Audited 2026-10-12 19:46–20:05 UTC from the task worktree
-`wt-portfolio-06` (branch `winddown/20261013/06`). No file in the four
+`evalopt-graph`. Audited in the supervised interval 2026-10-12T19:46:32.523296Z to
+2026-10-12T19:52:06.902040Z (334.281 s, retained supervisor receipt `plan/logs/06-audit/`)
+from the task worktree `wt-portfolio-06` (branch `winddown/20261013/06`). Revision R1
+(2026-10-13) corrects this record's stated evidence bounds after the two independent
+reviews; it changes no finding, classification, head, count or disposition. Observations
+marked "R1" were made during the revision with the same read-only tools. No file in the four
 repositories was modified; no model call, no network command and no mutating
 Git command was run there. Tools: ripgrep 15.2.0, `shasum`, `git` read-only
 subcommands (`rev-parse`, `status`, `log`, `describe`, `remote -v`,
@@ -29,8 +33,17 @@ subcommands (`rev-parse`, `status`, `log`, `describe`, `remote -v`,
 
 `git -C <repo> status --short` printed nothing for all four. actseal additionally
 has three linked worktrees under `actseal/.worktrees/` (`ci-artifact-actions`
-@ `9ec4193`, `presence-docs` @ `3549413`, `uv-environments` @ `9289cda`);
-their checked-out files were inside the search scope below and produced no hits.
+@ `9ec4193`, `presence-docs` @ `3549413`, `uv-environments` @ `9289cda`). They were
+**not** inside the search scope of sections 5–6: `actseal/.gitignore:19` ignores
+`.worktrees/`, ripgrep honours `.gitignore` even with `--hidden`, and `rg --files` with the
+audit's globs lists 0 paths under `.worktrees/`. The original record wrongly said they were
+searched with no hits. R1 supplementary direct search, `rg -n -i --hidden -g '!.git'
+-g '!.venv' 'evalopt' actseal/.worktrees`: 36 lines in 24 files, the same eight files in
+each worktree as on `main` (`NOTICE`, `README.md`, `docs/decisions/0002-…`, `plan/PLAN.md`,
+`plan/RECONCILIATION.md`, `plan/SOURCES.md`, `plan/VERIFICATION.md`,
+`tests/docs/test_readme.py`), all class A/D; 0 Python import hits and 0 hits in their
+`pyproject.toml`/`uv.lock`. The S6 conclusion is unchanged by them. The audit's primary
+scope remains the four primary working trees at the heads above.
 
 ## 3. Operating contracts read (safe mode disables automatic discovery)
 
@@ -69,7 +82,14 @@ Installed environments: `ls <repo>/.venv/lib/python*/site-packages/*evalopt*` ma
 nothing in actseal, frontier-scout and ARCI. dorian has no local `.venv`, so its runtime
 environment was not observed; its manifest and lock are the evidence there.
 
-**Result P: 0 of 4 repositories declare, lock, build or install an evalopt package.**
+**Result P: 0 of 4 repositories declare or lock an evalopt package** (manifests, extras,
+groups, three `uv.lock` files and one `requirements.txt` fully inspected). Built-artifact
+evidence is limited to the only artifacts on disk, actseal 0.1.0 wheel/sdist dated 6 Oct and
+older than the current 1.0.1 head; no artifacts exist for the other three and none were
+built. Installed-environment evidence is limited to a site-package directory-name check in
+the three local `.venv`s present (actseal py3.12, frontier-scout py3.14, ARCI py3.13);
+dorian has no local `.venv`. "Built" and "installed" states were therefore not established
+for all four repositories, only observed where artifacts or environments existed.
 
 ## 5. Runtime imports (class I)
 
@@ -92,9 +112,21 @@ string-import or entry-point reference; every hit is prose or a docstring.
 
 ## 6. Targeted `rg -n 'evalopt[-_]graph'` and broader `rg -n -i 'evalopt'`, classified
 
-Scope: whole repository tree including dotfiles (`.github`, `.claude`, `.worktrees`),
-excluding `.git`, `.venv`, `node_modules`, `*.egg-info`, `.mypy_cache`, `.pytest_cache`,
-`.ruff_cache`. Archives were not expanded (actseal `dist/` listings were checked by name only).
+Scope: the four primary working trees on disk at the heads in section 2, including
+dotfiles not otherwise ignored (`.github`, `.claude`), with explicit globs excluding `.git`,
+`.venv`, `node_modules`, `*.egg-info`, `.mypy_cache`, `.pytest_cache`, `.ruff_cache`.
+Actual ignore behaviour: ripgrep was run without `--no-ignore`, so each repository's
+`.gitignore` was honoured; `--hidden` admits dotfiles but does not override `.gitignore`.
+Gitignored, untracked directories present on disk and therefore excluded were: actseal
+`.worktrees/` (see section 2), `dist/` (checked separately by `unzip`/`tar` listing),
+`research/`, `plan/dispatch/`, `plan/local-receipts/`; frontier-scout `.frontier-scout/`;
+ARCI `examples/jev_triage_agent/node_modules/`; dorian none beyond `.venv`-class paths.
+R1 spot check with `--no-ignore` on those excluded paths: actseal `research/` 14 lines in 2
+local research notes and `plan/dispatch/` 7 lines in 4 local dispatch packets/streams, all
+untracked (`git ls-files` lists none), 0 Python imports; `plan/local-receipts/`,
+`.frontier-scout/` and the ARCI `node_modules/` 0. Those untracked local files are not part
+of any repository's committed tree and are not classified line by line. Archives were not
+expanded (actseal `dist/` listings were checked by name only).
 
 ```bash
 rg -n --hidden -g '!.git' -g '!.venv' -g '!node_modules' -g '!*.egg-info' \
@@ -115,11 +147,12 @@ rg -n -i --hidden <same globs> 'evalopt' <repo>
 |---|---|---|---|
 | `NOTICE:12` | A (design) | "Canonical hashing and self-sealing evidence are also informed by the public evalopt-graph design. No evalopt-graph source implementation is included." The same NOTICE attributes Clopper–Pearson primitives to ARCI at `d13dd94124cb71d378a4e76224fc115b750e8133` (Apache-2.0); that commit exists in ARCI (merge of PR #10, 2026-10-06). | Preserve verbatim. |
 | `README.md:181` | D | "Related projects" paragraph links Evalopt Graph as a sibling that "evaluates acceptance policies against supplied evidence". | Wording is Task 07A scope. |
-| `tests/docs/test_readme.py:191` | D (guard) | `RELATED_REPOSITORIES` tuple pins the four sibling URLs including `evalopt-graph`; a documentation-guard test, not an import. | Any 07A README edit must keep or co-update this test. |
+| `tests/docs/test_readme.py:191` | D (guard) | `RELATED_REPOSITORIES` tuple pins the four sibling URLs including `evalopt-graph`; a documentation-guard test, not an import. `test_related_projects_are_three_sentences_naming_four_repositories` (line 636) also requires the "Related projects" section to be one paragraph of exactly three sentences, to contain the `COMPARISON` string (line 136), to end with "against supplied evidence." and to contain `(<url>)` for all four pinned repositories. | Task 07A is README-only and must preserve tests: its README edit must retain the pinned `https://github.com/ajaysurya1221/evalopt-graph` URL and satisfy the guard's three-sentence, `COMPARISON` and closing-phrase constraints. The test is not in 07A scope and is not to be co-edited. |
 | `docs/decisions/0002-minimal-attributed-reuse.md:18` | D (ADR, historical) | Records that canonical JSON / self-sealing pattern "may be adapted from MIT evalopt-graph at `9bbc192443dc713f0f3344939a441c4a66e8a44d`". | Historical decision record; preserve. |
 | `docs/decisions/0002-minimal-attributed-reuse.md:22` | D (ADR) | Explicitly declines a dependency: "Depending on evalopt-graph would introduce an additional acceptance/evidence vocabulary. Neither is needed." | Already states independence. |
 | `plan/SOURCES.md:129`, `:141` | D (planning inventory) | Source/licence inventory pinning evalopt-graph 0.1.0 at `9bbc192…` (that commit exists in the evalopt repository: 2026-10-05 "deps: update optional dependency floors and refresh uv lock"). | Preserve. |
 | `plan/VERIFICATION.md:19` | D (planning inventory) | Licence table row for evalopt-graph, MIT, 0.1.0. | Preserve. |
+| `plan/RECONCILIATION.md:31` | D (planning prose, `-i` only) | "Evidence and assumptions" paragraph: "ARCI, evalopt and Dorian supply relevant existing concepts." A concept-level planning statement, not a dependency, import or link. Omitted from the original table; the twelve-line inventory is now complete. | Preserve. |
 | `plan/PLAN.md:61`, `plan/RECONCILIATION.md:128`, `:147` | D (planning, `-i` only) | Planning reconciliation rows ("adopt separation/canonicalization with notices, not nested dependency"; rejects a "recursive ARCI/evalopt CI gate"). | Preserve. |
 
 Source check behind the NOTICE claim: `src/actseal/serialization.py:134 canonical_json`
@@ -142,7 +175,8 @@ README mentions none of the sibling projects. frontier-scout's README names no s
 project (its only "related" text compares Notari). ARCI's README mentions frontier-scout
 once as a tested subject (`README.md:179`) and never evalopt.
 
-**Result for S6:** no package or runtime dependency anywhere; two attribution sites (ARCI
+**Result for S6:** no declared, locked or imported evalopt dependency in any of the four
+primary trees as inspected (bounds in sections 4, 6 and 8); two attribution sites (ARCI
 adapted source; actseal design/NOTICE) and one documentation link set (actseal README plus
 its guard test and planning records) are legitimate provenance to retain. No
 dependency-removal work exists to do, and none was manufactured.
@@ -164,18 +198,25 @@ git log -1 --format='%H %cI' -- FROZEN.sha256   # e304e81695d19398285c2b47cdc556
 
 All **48** entries verified OK (planning's count of 48 is confirmed; the memo-era figure of
 47 is not current). Every listed path is tracked and byte-identical to HEAD `a5adc83`. The
-manifest covers `AGENTS.md`, `justfile`, `pyproject.toml`, `uv.lock`, four `docs/*.md`,
-four `docs/design/*.md`, six `src/arci/*.py` (`contracts`, `fingerprint`, `hashing`,
-`interfaces`, `schedule`, `schema`), `tests/__init__.py` and 29 files under
-`tests/acceptance/`. `src/arci/hashing.py` (the evalopt-adapted module) is among them, so
-its attribution cannot change without breaking the manifest.
+manifest covers `AGENTS.md`, `justfile`, `pyproject.toml`, `uv.lock`, three `docs/*.md`
+(`AGENT_SEMANTICS`, `STATISTICS`, `TRUST_MODEL`), four `docs/design/*.md`, six
+`src/arci/*.py` (`contracts`, `fingerprint`, `hashing`, `interfaces`, `schedule`, `schema`),
+`tests/__init__.py` and 30 files under `tests/acceptance/` (4 + 3 + 4 + 6 + 1 + 30 = 48).
+`src/arci/hashing.py` (the evalopt-adapted module) is among them, so its attribution cannot
+change without breaking the manifest.
 
 ## 8. Limits of this audit
 
-- Searched the working trees on disk at the heads above, not Git history, other branches,
-  remote state, published PyPI metadata or GitHub repository settings.
+- Searched the four primary working trees on disk at the heads above, not Git history,
+  other branches, actseal's linked worktrees (section 2), remote state, published PyPI
+  metadata or GitHub repository settings.
+- Text searches honoured each repository's `.gitignore`; the gitignored untracked paths
+  that were therefore excluded are listed in section 6 together with an R1 spot check.
 - `.venv` directories were excluded from text search and checked only by site-package
-  directory name; dorian has no local `.venv`.
+  directory name in the three repositories that have one; dorian has no local `.venv`, so
+  no installed state was observed for it.
+- Built-artifact evidence covers only actseal's stale 0.1.0 wheel/sdist; nothing was built
+  for any current head and no artifacts exist for dorian, frontier-scout or ARCI.
 - Archives were listed, not unpacked and grepped (actseal `dist/` 0.1.0 artifacts only).
 - No test suites, linters or type checkers were run in the four repositories; the only
   check executed there is the frozen-hash verification, as the task specifies.

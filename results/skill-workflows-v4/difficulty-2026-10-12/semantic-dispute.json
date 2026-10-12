@@ -1,0 +1,453 @@
+{
+  "category": "committed-patch-review",
+  "conclusions": {
+    "both_retained_findings_supported_in_each_repetition": true,
+    "candidate_execution": false,
+    "corrected_score_computed": false,
+    "demonstrated_missing_defect": false,
+    "demonstrated_model_failure": false,
+    "difficulty_gate_remains_not_validated": true,
+    "larger_benchmark_authorized": false,
+    "new_grader_execution": false,
+    "original_outcomes_unchanged": true
+  },
+  "endpoint_audit_sha256": "c989c7cab58ec3ff8eb0895b406ac3ce6dfbdfc28c9ec6adc7087f18cea18e44",
+  "finding": "An allowed and demonstrated data-loss witness matches the published location/request for delta-base-retention, but the frozen obligation only accepts the kind incorrect-result. That per-obligation kind restriction is absent from the delivered published binding. The frozen grader therefore records a supported unmapped finding and preserves a contract dispute in both repetitions.",
+  "frozen_grading_contract": {
+    "delta_base_allowed_kinds": [
+      "incorrect-result"
+    ],
+    "delta_base_witness_case_ids": [
+      "case-03",
+      "case-13",
+      "case-16",
+      "case-18"
+    ],
+    "match_condition_exact_excerpt": "if supported and _location_matches(task, item, finding, request) and kind in item[\"kinds\"]",
+    "supported_unmapped_result": "contract_dispute; functional_success=null; valid_completion=null"
+  },
+  "kind": "diagnosis_only_preserving_original_results",
+  "limits": [
+    "The projection contains only finite authored input/witness values and typed retained results; free-form agent prose, native IDs and host paths are omitted.",
+    "This is diagnosis under retained-controller custody and separate endpoint review, not a new grade, oracle execution or producer authentication.",
+    "A future version should align the published allowed kinds and obligation mapping and test valid location/request/kind combinations before any separately authorized fresh difficulty screen. Frozen source and original null outcomes remain unchanged."
+  ],
+  "original_report_sha256": "754eb66f0b0425e19f9f41eb55abd53896119a3420a13de3bb7a44ba31cc1f68",
+  "published_contract": {
+    "common_declared_finding_kinds": [
+      "incorrect-result",
+      "data-loss",
+      "unexpected-exception",
+      "test-coverage-loss"
+    ],
+    "common_prompt_exact_excerpt": "Kinds are incorrect-result or data-loss for a wrong return, unexpected-exception for an unexpected raise, or test-coverage-loss for removal of a required test.",
+    "delta_base_binding_for_retained_witness": {
+      "locations": [
+        {
+          "path": "reachability.py",
+          "symbol": "closure",
+          "witness_function": "solve",
+          "witness_module": "service"
+        },
+        {
+          "path": "service.py",
+          "symbol": "solve",
+          "witness_function": "solve",
+          "witness_module": "service"
+        }
+      ],
+      "obligation": "delta-base-retention",
+      "request": {
+        "args": [
+          {
+            "grace": 5,
+            "keep": 0,
+            "now": 20,
+            "objects": {
+              "a": {
+                "base": null,
+                "refs": []
+              },
+              "b": {
+                "base": "a",
+                "refs": []
+              }
+            },
+            "quarantine": {
+              "a": 0
+            },
+            "snapshots": [
+              {
+                "branch": "main",
+                "created": 19,
+                "id": "b",
+                "object": "b",
+                "pinned": false
+              }
+            ],
+            "window": 2
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    "emitted_obligation_binding_fields": [
+      "locations",
+      "obligation",
+      "requests"
+    ],
+    "task_prompt_exact_excerpt": "Only the exact location/request bindings below count toward the named obligations."
+  },
+  "registration_sha256": "5c75186aeb6081b4a7dac4b10704c9992cda7f55b62acc8ae64718c5dd06b0ac",
+  "rows": [
+    {
+      "original_coverage": {
+        "contract_dispute": true,
+        "covered_obligations": [
+          "inclusive-grace-expiry"
+        ],
+        "functional_success": null,
+        "missing_obligations": [
+          "delta-base-retention"
+        ],
+        "unknown_findings": [],
+        "unsupported_findings": []
+      },
+      "original_grades": {
+        "check_claims_supported": true,
+        "claims_supported": null,
+        "contract_dispute": true,
+        "functional_success": null,
+        "response_contract_valid": true,
+        "semantic_failure_evidence_valid": true,
+        "semantic_response_assessable": true,
+        "valid_completion": null
+      },
+      "repetition": 1,
+      "retained_witnesses": [
+        {
+          "baseline_execution_status": "returned",
+          "baseline_value": {
+            "delete": [],
+            "live": [
+              "a",
+              "b"
+            ],
+            "quarantine": {}
+          },
+          "candidate_execution_status": "returned",
+          "candidate_value": {
+            "delete": [
+              "a"
+            ],
+            "live": [
+              "b"
+            ],
+            "quarantine": {}
+          },
+          "case_id": "case-18",
+          "contract_expected": {
+            "kind": "return",
+            "value": {
+              "delete": [],
+              "live": [
+                "a",
+                "b"
+              ],
+              "quarantine": {}
+            }
+          },
+          "finding": {
+            "kind": "data-loss",
+            "path": "reachability.py",
+            "symbol": "closure",
+            "witness": {
+              "args": [
+                {
+                  "grace": 5,
+                  "keep": 0,
+                  "now": 20,
+                  "objects": {
+                    "a": {
+                      "base": null,
+                      "refs": []
+                    },
+                    "b": {
+                      "base": "a",
+                      "refs": []
+                    }
+                  },
+                  "quarantine": {
+                    "a": 0
+                  },
+                  "snapshots": [
+                    {
+                      "branch": "main",
+                      "created": 19,
+                      "id": "b",
+                      "object": "b",
+                      "pinned": false
+                    }
+                  ],
+                  "window": 2
+                }
+              ],
+              "function": "solve",
+              "module": "service"
+            }
+          },
+          "retained_obligation_ids": [],
+          "retained_reason": "introduced_violation",
+          "retained_supported": true
+        },
+        {
+          "baseline_execution_status": "returned",
+          "baseline_value": {
+            "delete": [
+              "a"
+            ],
+            "live": [],
+            "quarantine": {}
+          },
+          "candidate_execution_status": "returned",
+          "candidate_value": {
+            "delete": [],
+            "live": [],
+            "quarantine": {
+              "a": 15
+            }
+          },
+          "case_id": "case-04",
+          "contract_expected": {
+            "kind": "return",
+            "value": {
+              "delete": [
+                "a"
+              ],
+              "live": [],
+              "quarantine": {}
+            }
+          },
+          "finding": {
+            "kind": "incorrect-result",
+            "path": "quarantine.py",
+            "symbol": "collect",
+            "witness": {
+              "args": [
+                {
+                  "grace": 5,
+                  "keep": 1,
+                  "now": 20,
+                  "objects": {
+                    "a": {
+                      "base": null,
+                      "refs": []
+                    }
+                  },
+                  "quarantine": {
+                    "a": 15
+                  },
+                  "snapshots": [],
+                  "window": 0
+                }
+              ],
+              "function": "solve",
+              "module": "service"
+            }
+          },
+          "retained_obligation_ids": [
+            "inclusive-grace-expiry"
+          ],
+          "retained_reason": "introduced_violation",
+          "retained_supported": true
+        }
+      ],
+      "source_sha256": {
+        "grade.json": "659006822384df18b36bccf96e5e39c9cf9df50d9de98a9fb7b965919f6cabd9",
+        "prompt.txt": "cc0929c85f8115a1d36b9f303d12f6546f9625addfeafc402d8423edfe36c74d",
+        "verification.json": "7c82a61fdeca861c66269dfc711126ed5a8635db9988b880dc08c4940a9189ea",
+        "visible-bundle.json": "9eb56d3a87bcee18616a05dda4605428adf4a6b64042f7001928346ecfeb2e31"
+      },
+      "trial_id": "difficulty--backup-reachability-collection--r1--B"
+    },
+    {
+      "original_coverage": {
+        "contract_dispute": true,
+        "covered_obligations": [
+          "inclusive-grace-expiry"
+        ],
+        "functional_success": null,
+        "missing_obligations": [
+          "delta-base-retention"
+        ],
+        "unknown_findings": [],
+        "unsupported_findings": []
+      },
+      "original_grades": {
+        "check_claims_supported": true,
+        "claims_supported": null,
+        "contract_dispute": true,
+        "functional_success": null,
+        "response_contract_valid": true,
+        "semantic_failure_evidence_valid": true,
+        "semantic_response_assessable": true,
+        "valid_completion": null
+      },
+      "repetition": 2,
+      "retained_witnesses": [
+        {
+          "baseline_execution_status": "returned",
+          "baseline_value": {
+            "delete": [],
+            "live": [
+              "a",
+              "b"
+            ],
+            "quarantine": {}
+          },
+          "candidate_execution_status": "returned",
+          "candidate_value": {
+            "delete": [
+              "a"
+            ],
+            "live": [
+              "b"
+            ],
+            "quarantine": {}
+          },
+          "case_id": "case-18",
+          "contract_expected": {
+            "kind": "return",
+            "value": {
+              "delete": [],
+              "live": [
+                "a",
+                "b"
+              ],
+              "quarantine": {}
+            }
+          },
+          "finding": {
+            "kind": "data-loss",
+            "path": "reachability.py",
+            "symbol": "closure",
+            "witness": {
+              "args": [
+                {
+                  "grace": 5,
+                  "keep": 0,
+                  "now": 20,
+                  "objects": {
+                    "a": {
+                      "base": null,
+                      "refs": []
+                    },
+                    "b": {
+                      "base": "a",
+                      "refs": []
+                    }
+                  },
+                  "quarantine": {
+                    "a": 0
+                  },
+                  "snapshots": [
+                    {
+                      "branch": "main",
+                      "created": 19,
+                      "id": "b",
+                      "object": "b",
+                      "pinned": false
+                    }
+                  ],
+                  "window": 2
+                }
+              ],
+              "function": "solve",
+              "module": "service"
+            }
+          },
+          "retained_obligation_ids": [],
+          "retained_reason": "introduced_violation",
+          "retained_supported": true
+        },
+        {
+          "baseline_execution_status": "returned",
+          "baseline_value": {
+            "delete": [
+              "a"
+            ],
+            "live": [],
+            "quarantine": {}
+          },
+          "candidate_execution_status": "returned",
+          "candidate_value": {
+            "delete": [],
+            "live": [],
+            "quarantine": {
+              "a": 15
+            }
+          },
+          "case_id": "case-04",
+          "contract_expected": {
+            "kind": "return",
+            "value": {
+              "delete": [
+                "a"
+              ],
+              "live": [],
+              "quarantine": {}
+            }
+          },
+          "finding": {
+            "kind": "incorrect-result",
+            "path": "quarantine.py",
+            "symbol": "collect",
+            "witness": {
+              "args": [
+                {
+                  "grace": 5,
+                  "keep": 1,
+                  "now": 20,
+                  "objects": {
+                    "a": {
+                      "base": null,
+                      "refs": []
+                    }
+                  },
+                  "quarantine": {
+                    "a": 15
+                  },
+                  "snapshots": [],
+                  "window": 0
+                }
+              ],
+              "function": "solve",
+              "module": "service"
+            }
+          },
+          "retained_obligation_ids": [
+            "inclusive-grace-expiry"
+          ],
+          "retained_reason": "introduced_violation",
+          "retained_supported": true
+        }
+      ],
+      "source_sha256": {
+        "grade.json": "0253da025b2dd79e6d959e0826774ec04e380f41eccab648ac503c3484864cc8",
+        "prompt.txt": "193afee00a37dc182bf0d5cec83199158798e18a58c9daaea36203fff6441d0d",
+        "verification.json": "30daa15781a8666f7bcf828438adb94029b8a577fc3af3e9847c79879ed96049",
+        "visible-bundle.json": "316c382ea01d6b11d8a91b42da0ca8e2237764870929950278672ff45472d462"
+      },
+      "trial_id": "difficulty--backup-reachability-collection--r2--B"
+    }
+  ],
+  "schema_version": "evalopt.v4-semantic-dispute-diagnosis.v1",
+  "source_sha256": {
+    "grading.py": "9c09b9790dceff9d2a4dbfded3550ed902ba3b07a6189de19a7f19233db52f98",
+    "response_contract.py": "65fd6914b8fa628639fc3600d307a9fa5c2308afe5d0cc1c5097edaa44cac946",
+    "task.json": "e9cf5b02c2f49bac75cf852a28352437f3e3090d60d4fc7202a9193bf37e2561",
+    "tasks/author.py": "746dce3a71ff669b50f35dfd4c518df9538ecf9ea92f58152ed09e1cf3f2a714"
+  },
+  "task_id": "backup-reachability-collection"
+}

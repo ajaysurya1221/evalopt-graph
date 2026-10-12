@@ -1,0 +1,531 @@
+{
+  "status": "ACCEPT",
+  "scope": "Independent source review and mutations of retained actual hosted records; no scan-adjudication or dispatch approval",
+  "recorded_at": "2026-10-12T12:00:53.090867+00:00",
+  "helper_sha256": "d4b2d8545d6bd195e5b9162d798d20026f0fab2d5ac812f85e99f5bfb48db32d",
+  "actual_inputs_sha256": "26459bbcbaed693ccfeef86999f130f46af4c9be7358c537b354b4185cde1b41",
+  "baseline_result": {
+    "status": "HOSTED_NONSECRET_LANES_ACCEPTED_PENDING_SCAN_ADJUDICATION",
+    "head": "49a379c7001b5b156f9f75b358da03a4367b252e",
+    "runs": [
+      {
+        "event": "pull_request",
+        "run_id": 38243792456,
+        "run_attempt": 1,
+        "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38243792456",
+        "independent_jobs_succeeded": 10,
+        "failed_jobs": [
+          "compatibility / Gitleaks / full history",
+          "compatibility / CI / required"
+        ]
+      },
+      {
+        "event": "push",
+        "run_id": 38243778569,
+        "run_attempt": 1,
+        "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38243778569",
+        "independent_jobs_succeeded": 10,
+        "failed_jobs": [
+          "compatibility / Gitleaks / full history",
+          "compatibility / CI / required"
+        ]
+      }
+    ],
+    "ci_all_green": false,
+    "scan_findings_adjudicated": false,
+    "dispatch_authorized": false
+  },
+  "negative_checks": [
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243778569",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243778569",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "V4 controls and v1/v2/v3 preservation",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / macOS / Python 3.14",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Quality, demos, smoke, and artifacts",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.14",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.12",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.13",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.11",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Ubuntu / Python 3.10",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "failure",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "skipped",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243792456",
+      "conclusion": "cancelled",
+      "rejected": true
+    },
+    {
+      "name": "compatibility / Windows / clean wheel / Python 3.14",
+      "run": "38243792456",
+      "conclusion": null,
+      "rejected": true
+    },
+    {
+      "run": "38243778569",
+      "mutation": "attempt changed",
+      "rejected": true
+    },
+    {
+      "run": "38243792456",
+      "mutation": "attempt changed",
+      "rejected": true
+    }
+  ],
+  "negative_count": 82
+}

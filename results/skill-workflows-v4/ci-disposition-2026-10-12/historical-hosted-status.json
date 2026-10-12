@@ -1,0 +1,160 @@
+{
+  "ci_all_green": false,
+  "dispatch_authorized": false,
+  "head": "49a379c7001b5b156f9f75b358da03a4367b252e",
+  "observed_at": "2026-10-12T11:57:45.594235+00:00",
+  "observed_job_states": {
+    "38243778569": [
+      {
+        "conclusion": "success",
+        "name": "V4 controls and v1/v2/v3 preservation",
+        "status": "completed"
+      },
+      {
+        "conclusion": "failure",
+        "name": "compatibility / Gitleaks / full history",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Quality, demos, smoke, and artifacts",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.12",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.13",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.11",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.10",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.14",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / macOS / Python 3.14",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Windows / clean wheel / Python 3.14",
+        "status": "completed"
+      },
+      {
+        "conclusion": "failure",
+        "name": "compatibility / CI / required",
+        "status": "completed"
+      }
+    ],
+    "38243792456": [
+      {
+        "conclusion": "success",
+        "name": "V4 controls and v1/v2/v3 preservation",
+        "status": "completed"
+      },
+      {
+        "conclusion": "failure",
+        "name": "compatibility / Gitleaks / full history",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Workflow benchmark / CPython 3.13.12",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / macOS / Python 3.14",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Quality, demos, smoke, and artifacts",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.14",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.12",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.13",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.11",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Ubuntu / Python 3.10",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "compatibility / Windows / clean wheel / Python 3.14",
+        "status": "completed"
+      },
+      {
+        "conclusion": "failure",
+        "name": "compatibility / CI / required",
+        "status": "completed"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "event": "pull_request",
+      "failed_jobs": [
+        "compatibility / Gitleaks / full history",
+        "compatibility / CI / required"
+      ],
+      "independent_jobs_succeeded": 10,
+      "run_attempt": 1,
+      "run_id": 38243792456,
+      "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38243792456"
+    },
+    {
+      "event": "push",
+      "failed_jobs": [
+        "compatibility / Gitleaks / full history",
+        "compatibility / CI / required"
+      ],
+      "independent_jobs_succeeded": 10,
+      "run_attempt": 1,
+      "run_id": 38243778569,
+      "url": "https://github.com/ajaysurya1221/evalopt-graph/actions/runs/38243778569"
+    }
+  ],
+  "scan_findings_adjudicated": false,
+  "schema_version": "evalopt.v4-hosted-ci-gate.v1",
+  "source_sha256": "d4b2d8545d6bd195e5b9162d798d20026f0fab2d5ac812f85e99f5bfb48db32d",
+  "status": "HOSTED_NONSECRET_LANES_ACCEPTED_PENDING_SCAN_ADJUDICATION"
+}

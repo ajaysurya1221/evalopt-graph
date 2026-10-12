@@ -1,8 +1,8 @@
 # Task status
 
-- 00: DONE; Codex ACCEPT; Fable revision pending; commits08c87b8,a545477
-- 01: DONE; Codex ACCEPT; Fable review pending; commita545477
-- 02: IN_PROGRESS; independent reviews and baseline verification running; commit93028ef
+- 00: DONE; Codex + Fable ACCEPT; commits 08c87b8,a545477,6c7a11f
+- 01: DONE; Codex + Fable ACCEPT; commit a545477
+- 02: DONE; Codex + Fable ACCEPT; lane head 5d6df50; 11 offline controls + 422 baseline tests
 - 03: PENDING; reviewers —; commit —
 - 04: PENDING; reviewers —; commit —
 - 05: PENDING; reviewers —; commit —

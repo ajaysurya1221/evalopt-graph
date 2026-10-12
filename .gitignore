@@ -33,3 +33,8 @@ dist/
 bench/metrics.json
 bench/**/*_metrics*.json
 bench/harbor/**/tests/*.whl
+
+# Private STOP wind-down execution output; sanitized records are committed
+/plan/logs/
+/plan/scratch/
+/plan/artifacts/

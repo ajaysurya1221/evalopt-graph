@@ -148,6 +148,7 @@ def main():
     command = ['claude', '-p', prompt, '--model', 'claude-fable-5-1[1m]', '--effort', cfg['effort'],
                '--permission-mode', 'bypassPermissions', '--max-turns', str(cfg['turns']),
                '--output-format', 'json', '--no-session-persistence', '--safe-mode',
+               '--tools', 'Bash,Read,Write,Edit,Glob,Grep',
                '--append-system-prompt', (root / 'exec/CONTRACT.md').read_text()]
     record = {'id': cfg['id'], 'started_at': now.isoformat(), 'cwd': str(cwd),
               'base': cfg['base'], 'requested_model': 'claude-fable-5-1[1m]',

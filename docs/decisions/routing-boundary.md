@@ -1,6 +1,6 @@
 # ADR: Routing and integration boundary
 
-Status: accepted. Recorded 2026-10-12 (Task 03). Decision 3 of the plan's three bias-control decisions. A documentation contract only.
+Status: accepted. Recorded 2026-10-12 (Task 03); VSA wording revised 2026-10-12 UTC in Task 03 revision 1. Decision 3 of the plan's three bias-control decisions. A documentation contract only.
 
 ## Decision
 
@@ -16,7 +16,7 @@ There is no wedge integration. The migration map routes exactly seven jobs, in t
 | PR scope | Frontier Scout |
 | Stochastic regression | ARCI |
 
-External standards and tools are cited from primary documentation with access dates. The four projects are described by concise paraphrases verified against each project's current README and contracts (Tasks 06 and 07A to 07D). They are independent of evalopt and of each other: no successor, conformance or drop-in claim; no package coupling; ARCI's adapted hashing provenance stays attributed as adaptation, never as a dependency. No statement about user demand appears unless proven. Retired SLSA VSA is historical prior art, not a route.
+External standards and tools are cited from primary documentation with access dates. The four projects are described by concise paraphrases verified against each project's current README and contracts (Tasks 06 and 07A to 07D). They are independent of evalopt and of each other: no successor, conformance or drop-in claim; no package coupling; ARCI's adapted hashing provenance stays attributed as adaptation, never as a dependency. No statement about user demand appears unless proven. The cited SLSA VSA v1.0, a retired version, is historical prior art, not a route; the Approved v1.2 page is source-status context only (see [archive-standalone.md](archive-standalone.md)) and adds no route.
 
 Every route leaves domain semantics and enforcement with their owners and keeps policy evaluation, evidence integrity, producer authentication, semantic claim support and operational enforcement separate. The host keeps policy protection, identity, retrieval, isolation and the action that follows a decision. A content hash binds bytes; a trusted signature binds a statement to an identity within its verification system; neither proves a claim true. Unrouted deprecated host surfaces are described once, in the map's sixteenth entry; other files link there.
 

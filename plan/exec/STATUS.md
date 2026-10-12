@@ -1,8 +1,8 @@
 # Task status
 
-- 00: DONE; reviews pending; commit INITIAL
-- 01: PENDING; reviewers —; commit —
-- 02: PENDING; reviewers —; commit —
+- 00: DONE; Codex ACCEPT; Fable revision pending; commits08c87b8,a545477
+- 01: DONE; Codex ACCEPT; Fable review pending; commita545477
+- 02: IN_PROGRESS; independent reviews and baseline verification running; commit93028ef
 - 03: PENDING; reviewers —; commit —
 - 04: PENDING; reviewers —; commit —
 - 05: PENDING; reviewers —; commit —

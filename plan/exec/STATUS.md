@@ -6,7 +6,7 @@
 - 03: IN_PROGRESS; both blind proposals recorded; fresh Fable tie-break running; branch winddown/20261013/03
 - 04: PENDING; reviewers —; commit —
 - 05: PENDING; reviewers —; commit —
-- 06: IN_PROGRESS; audit received two REVISE reviews; bounded wording revision running; branch winddown/20261013/06
+- 06: DONE; Codex + fresh Fable ACCEPT; lane head f030ccd; audit bounds corrected, 0/4 observed coupling, 48 frozen hashes verified
 - 07A: PENDING; reviewers —; commit —
 - 07B: PENDING; reviewers —; commit —
 - 07C: PENDING; reviewers —; commit —

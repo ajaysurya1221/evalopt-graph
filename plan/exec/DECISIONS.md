@@ -39,3 +39,10 @@
 - Agreement on STOP, the sixteen-entry roster, four relationship categories and all preservation limits is retained. A fresh xhigh consultation resolves the three remaining documentation-form differences. Proposals are not implementation authorization; the accepted plan and owned-path limits prevail.
 - Task06's first independent reviews both require correcting the audit's claimed search scope, timestamps, artifact coverage and README-guard handoff. Original reports remain retained; a separate revision report will supersede their inaccurate wording. No dependency removal is justified.
 - Public-history scan diagnosis covers seventeen nonsecret findings at fixed historical paths; it is not approval of a scanner patch. Task08 must preserve stock detections and prove exact value-plus-path scope through negative controls and independent review.
+
+## Task06 accepted; additional orchestration check
+
+- Final audit at `f030ccdb5361ef393b2c8ec41181a773da29c706` passed independent Codex and fresh Fable reviews. Root inspected the correction diff and reran the whitespace/scope check before integration. The original report/reviews remain historical; REPORT06-R1 supersedes the inaccurate original wording.
+- Workspace contract check `python3 -B -m unittest discover -s tools/tests` ran from `/Users/ajay/Developer`: 32 tests passed in 9.828 seconds. No workspace integration file changed.
+- For all remaining inspections, exclude `.env` and credential/authentication stores entirely; command-status probes are sufficient. No secret-file inspection is needed for documentation, package qualification or portfolio README edits.
+- Native receipts, not approximate worker self-reports, establish call timing: 03-proposals 19:46:31.296741–19:59:37.097417 UTC, 785.705 seconds; 03-tiebreak 20:01:28.195144–20:03:46.651851 UTC, 138.358 seconds, all on 2026-10-12. The latter worker report's approximate end time is superseded by this retained native interval.

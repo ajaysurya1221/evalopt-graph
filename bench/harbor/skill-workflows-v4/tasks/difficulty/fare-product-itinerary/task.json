@@ -1,0 +1,1322 @@
+{
+  "allowed_changes": [
+    "service.py",
+    "coverage.py",
+    "pricing.py",
+    "planner.py"
+  ],
+  "attempt_id": "authored-control--fare-product-itinerary",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 0,
+          "tickets": []
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [],
+            "trips": []
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 5,
+          "tickets": [
+            [
+              0,
+              1,
+              "one",
+              5
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "one",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 7,
+          "tickets": [
+            [
+              0,
+              2,
+              "pass",
+              7
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "one",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 100,
+                "id": "pass",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 7,
+                "rides": 2,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 20,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 8,
+          "tickets": [
+            [
+              0,
+              1,
+              "wide",
+              8
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "cheap",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 1,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "duration": 100,
+                "id": "wide",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 8,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 4,
+          "tickets": [
+            [
+              0,
+              3,
+              "chain",
+              4
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "chain",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 4,
+                "rides": 1,
+                "transfer": 10,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 100,
+                "id": "single",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 2,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 8,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 16,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 4,
+          "tickets": [
+            [
+              0,
+              3,
+              "chain",
+              4
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "chain",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 4,
+                "rides": 1,
+                "transfer": 10,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 10,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 20,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 8,
+          "tickets": [
+            [
+              0,
+              1,
+              "chain",
+              4
+            ],
+            [
+              1,
+              2,
+              "chain",
+              4
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "chain",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 4,
+                "rides": 1,
+                "transfer": 10,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 11,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 8,
+          "tickets": [
+            [
+              0,
+              1,
+              "long",
+              4
+            ],
+            [
+              1,
+              2,
+              "long",
+              4
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "long",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 4,
+                "rides": 3,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 100,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 8,
+          "tickets": [
+            [
+              0,
+              1,
+              "one",
+              5
+            ],
+            [
+              1,
+              2,
+              "one",
+              3
+            ],
+            [
+              2,
+              3,
+              "one",
+              0
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 8,
+            "products": [
+              {
+                "duration": 1,
+                "id": "one",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 10,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 20,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 5,
+          "tickets": [
+            [
+              0,
+              2,
+              "cross",
+              5
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 5,
+            "products": [
+              {
+                "duration": 1,
+                "id": "single",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 5,
+                "id": "cross",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 8,
+                "rides": 2,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 1439,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 1441,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": null
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "bus",
+                "modes": [
+                  "bus"
+                ],
+                "price": 1,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "rail",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 8,
+          "tickets": [
+            [
+              0,
+              4,
+              "long",
+              8
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 10,
+                "id": "short",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 3,
+                "rides": 4,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 50,
+                "id": "long",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 8,
+                "rides": 4,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 5,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 11,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 30,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 5,
+          "tickets": [
+            [
+              0,
+              2,
+              "a",
+              5
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "b",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 2,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 100,
+                "id": "a",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 2,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 5,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 3,
+          "tickets": [
+            [
+              0,
+              1,
+              "x",
+              2
+            ],
+            [
+              1,
+              2,
+              "x",
+              1
+            ],
+            [
+              2,
+              3,
+              "x",
+              0
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 3,
+            "products": [
+              {
+                "duration": 100,
+                "id": "x",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 2,
+                "rides": 1,
+                "transfer": 10,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 100,
+                "id": "y",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 3,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 10,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 30,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 6,
+          "tickets": [
+            [
+              0,
+              3,
+              "cross",
+              6
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 6,
+            "products": [
+              {
+                "duration": 80,
+                "id": "cross",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 7,
+                "rides": 3,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 1,
+                "id": "s",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 4,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 1400,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 1440,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 1450,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 5,
+          "tickets": [
+            [
+              0,
+              3,
+              "wide",
+              5
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 99,
+            "products": [
+              {
+                "duration": 100,
+                "id": "a",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 2,
+                "rides": 4,
+                "transfer": 0,
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "duration": 100,
+                "id": "wide",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 5,
+                "rides": 3,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 2,
+                "mode": "bus",
+                "zones": [
+                  "b"
+                ]
+              },
+              {
+                "at": 3,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-17",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 0,
+          "tickets": [
+            [
+              0,
+              1,
+              "zero",
+              0
+            ],
+            [
+              1,
+              2,
+              "zero",
+              0
+            ],
+            [
+              2,
+              3,
+              "zero",
+              0
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 0,
+            "products": [
+              {
+                "duration": 100,
+                "id": "zero",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 0,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 2,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-18",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "cost": 10,
+          "tickets": [
+            [
+              0,
+              4,
+              "mix",
+              6
+            ],
+            [
+              4,
+              5,
+              "single",
+              4
+            ]
+          ]
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "daily_cap": 11,
+            "products": [
+              {
+                "duration": 40,
+                "id": "mix",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 6,
+                "rides": 2,
+                "transfer": 8,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "duration": 1,
+                "id": "single",
+                "modes": [
+                  "bus",
+                  "rail"
+                ],
+                "price": 4,
+                "rides": 1,
+                "transfer": 0,
+                "zones": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "trips": [
+              {
+                "at": 0,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 7,
+                "mode": "rail",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 16,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 23,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              },
+              {
+                "at": 50,
+                "mode": "bus",
+                "zones": [
+                  "a"
+                ]
+              }
+            ]
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "ordinary-bug-repair",
+  "evidence_opportunity": false,
+  "id": "fare-product-itinerary",
+  "instruction": "Repair service.solve(q), an exact fare planner. q={trips,products,daily_cap}. trips is an ordered list (<=8) of {at:nonnegative integer minute,zones:nonempty list of zone strings,mode:string}; times are nondecreasing. products (<=4) have unique string id,price>=0,duration>=1,rides>=1,transfer>=0,zones:list,modes:list. All numbers <=5000. Cap is nonnegative integer. No validation outside this domain is required.\nPartition ALL trips into contiguous nonempty ticket segments. A product purchased at segment index i covers segment [i,end) iff every trip's mode and ALL its zones are allowed, every trip starts strictly before trips[i].at+duration, and consumed boarding groups<=rides. First trip consumes one group. Each subsequent trip consumes one only when its time minus the immediately preceding trip's time is GREATER than transfer; chains of eligible transfers can extend beyond the first transfer window, but never duration. Every covered trip must be eligible, including transfers. A ticket may stop at ANY eligible endpoint; later purchases start exactly at first uncovered trip. Products are reusable without limit.\nA ticket is charged on its first trip's UTC day (at//1440): payment=min(price,max(0,daily_cap-alreadyPaidThatDay)). Coverage may cross midnight; it does not consume the following day's cap. Return null if no full cover, else {cost,tickets} with minimal total payment and tickets=[[start,endExclusive,productID,payment],...]. Among equal costs choose lexicographically smallest complete ticket tuple sequence (compare start,end,ID,payment in that order, ordinary Python integer/string ordering). Empty itinerary returns cost0/tickets[]. Return actual capped payments, not nominal prices. Repair eligibility, transfer-chain and cap interaction defects; all arguments remain unchanged.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: service.py, coverage.py, pricing.py, planner.py. Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n",
+  "schema_version": "evalopt-workflows-v4/1",
+  "source_cluster": "fare-product-itinerary",
+  "split": "difficulty",
+  "task_contract": "implementation",
+  "task_id": "fare-product-itinerary",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ]
+}

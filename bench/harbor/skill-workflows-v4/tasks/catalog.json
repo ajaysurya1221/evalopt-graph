@@ -1,0 +1,58 @@
+[
+  {
+    "category": "committed-patch-review",
+    "evidence_opportunity": false,
+    "id": "backup-reachability-collection",
+    "source_cluster": "backup-reachability-collection",
+    "split": "difficulty"
+  },
+  {
+    "category": "constraint-preservation",
+    "evidence_opportunity": false,
+    "id": "chunked-escaped-tokenizer",
+    "source_cluster": "chunked-escaped-tokenizer",
+    "split": "difficulty"
+  },
+  {
+    "category": "bounded-implementation",
+    "evidence_opportunity": false,
+    "id": "dependency-fair-dispatch",
+    "source_cluster": "dependency-fair-dispatch",
+    "split": "difficulty"
+  },
+  {
+    "category": "ordinary-bug-repair",
+    "evidence_opportunity": false,
+    "id": "fare-product-itinerary",
+    "source_cluster": "fare-product-itinerary",
+    "split": "difficulty"
+  },
+  {
+    "category": "mixed-workspace-review",
+    "evidence_opportunity": false,
+    "id": "http-variant-revalidation",
+    "source_cluster": "http-variant-revalidation",
+    "split": "difficulty"
+  },
+  {
+    "category": "unavailable-or-misleading-evidence",
+    "evidence_opportunity": true,
+    "id": "inherited-glob-policy",
+    "source_cluster": "inherited-glob-policy",
+    "split": "difficulty"
+  },
+  {
+    "category": "ordinary-bug-repair",
+    "evidence_opportunity": false,
+    "id": "mvcc-predicate-serialization",
+    "source_cluster": "mvcc-predicate-serialization",
+    "split": "difficulty"
+  },
+  {
+    "category": "bounded-implementation",
+    "evidence_opportunity": false,
+    "id": "ordered-tree-three-way-merge",
+    "source_cluster": "ordered-tree-three-way-merge",
+    "split": "difficulty"
+  }
+]

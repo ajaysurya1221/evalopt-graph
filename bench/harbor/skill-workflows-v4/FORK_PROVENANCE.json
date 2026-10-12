@@ -1,0 +1,516 @@
+{
+  "entries": [
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/FORK_PROVENANCE.json",
+      "initial_transformed_sha256": "392460c11977ef528155f42d6f6c02941d8139ff03fe58cb09dc3a7d81e8ab22",
+      "source_path": "bench/harbor/skill-workflows-v3/FORK_PROVENANCE.json",
+      "source_sha256": "c202905773d53e8f9bb9e2a9584241cc75664856087eacc24cd6c5f518f51a12"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/PROTOCOL.md",
+      "initial_transformed_sha256": "a5aa7d8883a3a020b9d705a41d00d294fb793d2528e01e294036ea512d6a4ec3",
+      "source_path": "bench/harbor/skill-workflows-v3/PROTOCOL.md",
+      "source_sha256": "a5aa7d8883a3a020b9d705a41d00d294fb793d2528e01e294036ea512d6a4ec3"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/README.md",
+      "initial_transformed_sha256": "7b2c4bdc5b3bebbbf3b845e62c79b8c944d4531a76467482ca0507f6fdb6baa6",
+      "source_path": "bench/harbor/skill-workflows-v3/README.md",
+      "source_sha256": "2bec57900410e0f5da36fcca408b44e06981f94103e307c90724b8fb752b50e9"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/__init__.py",
+      "initial_transformed_sha256": "18c9f42f1653d943be4f64771d4f5c75ce06cb2638272408a1fbd8daca90b7da",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/__init__.py",
+      "source_sha256": "18c9f42f1653d943be4f64771d4f5c75ce06cb2638272408a1fbd8daca90b7da"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/accounting.py",
+      "initial_transformed_sha256": "4307494dbf0bbe81338ba9c453a7d23aba6241383b57fdca5756f0ccdc1fcb28",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/accounting.py",
+      "source_sha256": "4307494dbf0bbe81338ba9c453a7d23aba6241383b57fdca5756f0ccdc1fcb28"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/analysis.py",
+      "initial_transformed_sha256": "5ee4fcb592859d1d417ca6adc9792436f3bfb45d4559309a4433854af143ffe6",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/analysis.py",
+      "source_sha256": "5ee4fcb592859d1d417ca6adc9792436f3bfb45d4559309a4433854af143ffe6"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/campaign.py",
+      "initial_transformed_sha256": "59998f3c0e03a56874d05ee36989b2be52d60d2ea094475c8627e1f84812b9d3",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/campaign.py",
+      "source_sha256": "f86294f3865a5c7185ff4631bed45961ecaec11def88a2d53ee8ea45e9ee177f"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/capture.py",
+      "initial_transformed_sha256": "e53e6d97d385998cabde8b33d3af00245312319d05fc94786b43712540763ab9",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/capture.py",
+      "source_sha256": "e53e6d97d385998cabde8b33d3af00245312319d05fc94786b43712540763ab9"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/case_runner.py",
+      "initial_transformed_sha256": "489dfffb7337c2cbd84e6156c44fd4da4fdf2b1008b5019a7b7a7a1196150fb4",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/case_runner.py",
+      "source_sha256": "489dfffb7337c2cbd84e6156c44fd4da4fdf2b1008b5019a7b7a7a1196150fb4"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/descriptive.py",
+      "initial_transformed_sha256": "dd5adf930b310ba1d9d93e4c3a0d29e83df5047b0eb3d9cff1b21aa78fe957e6",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/descriptive.py",
+      "source_sha256": "dd5adf930b310ba1d9d93e4c3a0d29e83df5047b0eb3d9cff1b21aa78fe957e6"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/framing.py",
+      "initial_transformed_sha256": "3b208ad83e6724d6ade7d55a5f7cf863bd578980a71a88494a9d523315c7c283",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/framing.py",
+      "source_sha256": "3b208ad83e6724d6ade7d55a5f7cf863bd578980a71a88494a9d523315c7c283"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/freeze.py",
+      "initial_transformed_sha256": "14e9ca34e70d840ac377cd391c979943ea5d63119811c46f03277edb22d0f0c8",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/freeze.py",
+      "source_sha256": "a7b2ff8bfd6956cf2b98edef40faef811efac872eec6322bff443eac12f2cce1"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/git_index.py",
+      "initial_transformed_sha256": "3ae7e42efa50419d7bd27319bf362ef216e44f64d9af938b43b92bfbf807a99e",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/git_index.py",
+      "source_sha256": "3ae7e42efa50419d7bd27319bf362ef216e44f64d9af938b43b92bfbf807a99e"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/grading.py",
+      "initial_transformed_sha256": "52ca8f90d2f9a680874c838c3df833ecb755795419d7627d66e06d1344bdf891",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/grading.py",
+      "source_sha256": "52ca8f90d2f9a680874c838c3df833ecb755795419d7627d66e06d1344bdf891"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/harbor_bridge.py",
+      "initial_transformed_sha256": "5dfd5fd6f2c3bf1c4b678e890b7d7f5bd99a6e5c645751d7682bd7d16bbdf69d",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/harbor_bridge.py",
+      "source_sha256": "1dc5a33bd6aae3ae6e69bddcee5f9fb25ac3ef2199055a7034d8d730bb25c7a0"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/lifecycle.py",
+      "initial_transformed_sha256": "8979ece07576e2f2eee3d4f4d5b63301c64fa9a5d41d82bc2f5927a8ac70d991",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/lifecycle.py",
+      "source_sha256": "8979ece07576e2f2eee3d4f4d5b63301c64fa9a5d41d82bc2f5927a8ac70d991"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/materialize.py",
+      "initial_transformed_sha256": "6aa970873292983fdd616c4d259e9439d1de53dade13a6227f9fa05ecfe16295",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/materialize.py",
+      "source_sha256": "e7d72a79db172865d2cb9c37bb8b76ddc92c3e051c2b7d456e7267615d7e2ae7"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/network.py",
+      "initial_transformed_sha256": "979b7856821266280f7477f78b6dd479780b64e46db2d08029157c95719a010f",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/network.py",
+      "source_sha256": "979b7856821266280f7477f78b6dd479780b64e46db2d08029157c95719a010f"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/observe.py",
+      "initial_transformed_sha256": "7d6818049f9f92637f57bbc5af3cffac3bd1af875fae7fcdeb20627db3bd8dd2",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/observe.py",
+      "source_sha256": "7d6818049f9f92637f57bbc5af3cffac3bd1af875fae7fcdeb20627db3bd8dd2"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/policies.py",
+      "initial_transformed_sha256": "5d27498883fe6a8067a62b830dc90391d41758570254b5d69ded4ea519b6df27",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/policies.py",
+      "source_sha256": "5d27498883fe6a8067a62b830dc90391d41758570254b5d69ded4ea519b6df27"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/preflight.py",
+      "initial_transformed_sha256": "ff51f0718b4a9b61115735115e8ddd73a0ba79c59fba26b80524668ac9127fec",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/preflight.py",
+      "source_sha256": "c4430624ce232fc39e6950ad4eef5002d87996ab8f0b0c4ce95e4bad913bf943"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/preservation.py",
+      "initial_transformed_sha256": "e99796c13ffec64c3e2269b3b3f481a5e1483d49bb4ad71163bc9f22e00f12c4",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/preservation.py",
+      "source_sha256": "ef737f32561606c1ddaab4b1445de6e6fbe5e5115530bb55357f98be63db5388"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/records.py",
+      "initial_transformed_sha256": "b965b99a66dc3a34bbf7047917a81e690de2a1513a89168a81dc2657ec086ff3",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/records.py",
+      "source_sha256": "b965b99a66dc3a34bbf7047917a81e690de2a1513a89168a81dc2657ec086ff3"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/registration.py",
+      "initial_transformed_sha256": "da3448fe27a057aa4b9e7399f2ae2399a331c9e5c04fa3465d7c1225dfc9ee9a",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/registration.py",
+      "source_sha256": "da3448fe27a057aa4b9e7399f2ae2399a331c9e5c04fa3465d7c1225dfc9ee9a"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/replay_grade.py",
+      "initial_transformed_sha256": "4810219fac70f589083fa15da8ef7bd2792bb746ba34f161a22f64e2ab729b75",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/replay_grade.py",
+      "source_sha256": "4810219fac70f589083fa15da8ef7bd2792bb746ba34f161a22f64e2ab729b75"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/reporting.py",
+      "initial_transformed_sha256": "44bee0cd393b799e09e98bd0d44dfb7cbb666fa793104c90f9620a780129dcd9",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/reporting.py",
+      "source_sha256": "44bee0cd393b799e09e98bd0d44dfb7cbb666fa793104c90f9620a780129dcd9"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/snapshot.py",
+      "initial_transformed_sha256": "39596f8741940f2d4d56eb62027615fc191ace88d70567a9c242f7923d206809",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/snapshot.py",
+      "source_sha256": "39596f8741940f2d4d56eb62027615fc191ace88d70567a9c242f7923d206809"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/store.py",
+      "initial_transformed_sha256": "5140f329365963201aafccdd486df2fa20ac6a2bd099429911de546d3225abe9",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/store.py",
+      "source_sha256": "5140f329365963201aafccdd486df2fa20ac6a2bd099429911de546d3225abe9"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/verifier.py",
+      "initial_transformed_sha256": "f0c16798db7b2985160a74659298e4bdc628eb18a2448ce24ab1fe49967a62e7",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/verifier.py",
+      "source_sha256": "f0c16798db7b2985160a74659298e4bdc628eb18a2448ce24ab1fe49967a62e7"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/evalopt_v4/verifier_container.py",
+      "initial_transformed_sha256": "8f316bdf77755048c270e5406a6abb1266ca4c2b65cfaaf6a1cb5b61eb8cf026",
+      "source_path": "bench/harbor/skill-workflows-v3/evalopt_v3/verifier_container.py",
+      "source_sha256": "814560e101569e2cb72cd8ee46099345b971e76e9599eb15c2cb0d832c3d1667"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/run.py",
+      "initial_transformed_sha256": "e4a58290a2ab58658743a16495a1a1bb5d7627308d37fa3b356dd3006fd316c3",
+      "source_path": "bench/harbor/skill-workflows-v3/run.py",
+      "source_sha256": "3d9e04f4f6e7bf5025f89b90240270102813d7245f9c40deb36a3b31c8838289"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/runtime/Dockerfile",
+      "initial_transformed_sha256": "f7c4907f9218d712739843ce6c3ce8e5d87cd338f79c65cb9fb480294edcbab7",
+      "source_path": "bench/harbor/skill-workflows-v3/runtime/Dockerfile",
+      "source_sha256": "f7c4907f9218d712739843ce6c3ce8e5d87cd338f79c65cb9fb480294edcbab7"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/runtime/Verifier.Dockerfile",
+      "initial_transformed_sha256": "87c551844fc3648a9165c5a8639ad5dd703c40600cd9dac1ec56e9449c6878c8",
+      "source_path": "bench/harbor/skill-workflows-v3/runtime/Verifier.Dockerfile",
+      "source_sha256": "87c551844fc3648a9165c5a8639ad5dd703c40600cd9dac1ec56e9449c6878c8"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/runtime/codex.toml",
+      "initial_transformed_sha256": "558dfb8ac663b2249d9e3176acb3f33cd8f8af8c838b682ee9b07f55bd1e4165",
+      "source_path": "bench/harbor/skill-workflows-v3/runtime/codex.toml",
+      "source_sha256": "558dfb8ac663b2249d9e3176acb3f33cd8f8af8c838b682ee9b07f55bd1e4165"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/runtime/requirements.lock",
+      "initial_transformed_sha256": "c5dc455c8d1acaccba0a284ca606d4fc9befee8983f7221410469335baf336fc",
+      "source_path": "bench/harbor/skill-workflows-v3/runtime/requirements.lock",
+      "source_sha256": "c5dc455c8d1acaccba0a284ca606d4fc9befee8983f7221410469335baf336fc"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/README.md",
+      "initial_transformed_sha256": "7e508e8baa8f2a52f418167e9fbd6be52948d66344676c02599351516561969b",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/README.md",
+      "source_sha256": "7e508e8baa8f2a52f418167e9fbd6be52948d66344676c02599351516561969b"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/binary_framing/baseline/framing.py",
+      "initial_transformed_sha256": "25b77153419bf1b0be11e1afffc3b5864134aef048b3362da87e72d0a0cffc60",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/binary_framing/baseline/framing.py",
+      "source_sha256": "25b77153419bf1b0be11e1afffc3b5864134aef048b3362da87e72d0a0cffc60"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/binary_framing/regressed/framing.py",
+      "initial_transformed_sha256": "d32c299ae3bbd935b0cdeb4c228d7c1dc98a902dedcfcf8ad01a63139af5f7ed",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/binary_framing/regressed/framing.py",
+      "source_sha256": "d32c299ae3bbd935b0cdeb4c228d7c1dc98a902dedcfcf8ad01a63139af5f7ed"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/fixed_width/bad/records.py",
+      "initial_transformed_sha256": "acbdf70112f631a51e66f2e3e3dcc7c23dcd63abed95a869c64da7d782058b80",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/fixed_width/bad/records.py",
+      "source_sha256": "acbdf70112f631a51e66f2e3e3dcc7c23dcd63abed95a869c64da7d782058b80"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/fixed_width/good/records.py",
+      "initial_transformed_sha256": "b38f8e019526bb4cd17fc3de915ba99ba0ef593584d7d35bae4add1333a76e09",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/fixed_width/good/records.py",
+      "source_sha256": "b38f8e019526bb4cd17fc3de915ba99ba0ef593584d7d35bae4add1333a76e09"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/object_copy/baseline/objects.py",
+      "initial_transformed_sha256": "1216e6aeeba757d5cd2b7e90dc9963a0e428be285222d48b114b870e14e6d12a",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/object_copy/baseline/objects.py",
+      "source_sha256": "1216e6aeeba757d5cd2b7e90dc9963a0e428be285222d48b114b870e14e6d12a"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/object_copy/clean/objects.py",
+      "initial_transformed_sha256": "875b09cbb3b163234fa73f08c0dedb677324c27757316245409d66557522339c",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/object_copy/clean/objects.py",
+      "source_sha256": "875b09cbb3b163234fa73f08c0dedb677324c27757316245409d66557522339c"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/object_copy/regressed/objects.py",
+      "initial_transformed_sha256": "ffca1b8a4aed3ef3d2e056e7743ba98ef5f2ac198a3bb4d7ac3f245ba2e41b97",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/object_copy/regressed/objects.py",
+      "source_sha256": "ffca1b8a4aed3ef3d2e056e7743ba98ef5f2ac198a3bb4d7ac3f245ba2e41b97"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/truncated_test_log/available/probe.py",
+      "initial_transformed_sha256": "344d408d06e06276b4d71385280c14265cfa52ce5dee22114c76a373fc6636dd",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/truncated_test_log/available/probe.py",
+      "source_sha256": "344d408d06e06276b4d71385280c14265cfa52ce5dee22114c76a373fc6636dd"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/truncated_test_log/unavailable/probe.py",
+      "initial_transformed_sha256": "65404454a78f2dd41ca918b4f0bedbfc65eb573277d086512bc305ab432f330e",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/truncated_test_log/unavailable/probe.py",
+      "source_sha256": "65404454a78f2dd41ca918b4f0bedbfc65eb573277d086512bc305ab432f330e"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/wrong_architecture_binary/available/probe.py",
+      "initial_transformed_sha256": "7baf1158908cb71077d6d1ec74304cf648455ca83dc2a18fa54c6b5561a512a4",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/wrong_architecture_binary/available/probe.py",
+      "source_sha256": "7baf1158908cb71077d6d1ec74304cf648455ca83dc2a18fa54c6b5561a512a4"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/fixtures/grading/wrong_architecture_binary/unavailable/probe.py",
+      "initial_transformed_sha256": "87c086cfa59967ea301c5321de9f764fdeb691dc74b8f7aa1c20b1cfd08cda2f",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/fixtures/grading/wrong_architecture_binary/unavailable/probe.py",
+      "source_sha256": "87c086cfa59967ea301c5321de9f764fdeb691dc74b8f7aa1c20b1cfd08cda2f"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_accounting.py",
+      "initial_transformed_sha256": "ce64a9bf6b4551fdae90c3a0d5ed530aaf7a3a8fd123e9045bcf774811fb602e",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_accounting.py",
+      "source_sha256": "892f4da13613c33cca7c8969620579b747468029f84031411e6eb8a19625568a"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_campaign.py",
+      "initial_transformed_sha256": "619cc7fe0d8bb30eb34e24fd6a605e67876456dfeed7b715acaf412235f17bb6",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_campaign.py",
+      "source_sha256": "32350dc5fa5cef7546c47b532a1efd829dd52f14965733d39e03e1183892c2f6"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_campaign_positive_replay.py",
+      "initial_transformed_sha256": "629ac6c3c5fee7f05f6cd27c107997a31e326d5789cb31021b1599ba6ae1e557",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_campaign_positive_replay.py",
+      "source_sha256": "bba8e18a76ce5c5502c3fea32f1bdfcc717ad7d83069ee3645ceeac35c7e1cbd"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_capture.py",
+      "initial_transformed_sha256": "435654f32691bd75a846906a6b772b16c68ee4ea6d7ead4c884267bbad5a8581",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_capture.py",
+      "source_sha256": "4d51d0755a8cfa711c8d163d8aaf07da0609bfc38ff78ba49352d49850e97552"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_cli.py",
+      "initial_transformed_sha256": "25551aa9c8dd5dabe10f271e74fdf7a0af4d5fa13315b2ba1571c2fbdd223b57",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_cli.py",
+      "source_sha256": "33f595924744038380b27fcbf1a88155994d758fa5e336084dfc18044208a659"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_descriptive.py",
+      "initial_transformed_sha256": "bf24de7e6f2b3ca253199f744eb1b2375c2d4b155f0bd8795da030b993a664ab",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_descriptive.py",
+      "source_sha256": "4c819f780b5690aef4f7b335b935ccf8167ddffbfc560e1b726841be60d52550"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_framing.py",
+      "initial_transformed_sha256": "ffce9d68ac2725cfcc1b470c7343131304fdcf57bbc5771837049b1757f071e9",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_framing.py",
+      "source_sha256": "2ea40c8e8d092b0834a3241cf7fa4451eebe59416c953054056efa89fc315c95"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_freeze.py",
+      "initial_transformed_sha256": "533caaf76a553343b832c501eae767ecd5faecccec991dd4b7b488cd19fff3e8",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_freeze.py",
+      "source_sha256": "036064a6ae6255343648cba155ced7ad336654fa8ae4171ede2e3429336ae51e"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_fresh_tasks.py",
+      "initial_transformed_sha256": "76f0461a7da6998d32c4a857354131bc9362a794efd8ae72f4f375cef96bb721",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_fresh_tasks.py",
+      "source_sha256": "76f0461a7da6998d32c4a857354131bc9362a794efd8ae72f4f375cef96bb721"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_git_index.py",
+      "initial_transformed_sha256": "ffb21a7f637d7445ff9e67258b0690b979300f6cf594426be56b35e4bda681f9",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_git_index.py",
+      "source_sha256": "db7100725f0895d7c409e00603871e7b354d9eec717233dce8a1ce55dafd018f"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_grading.py",
+      "initial_transformed_sha256": "f78de0b9cee1aaa98a87ab367ca5de5d2dadb20faccfaacdc281802d827b9e04",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_grading.py",
+      "source_sha256": "325a567e6a1cbbd6ed018f3ddd66ca5aaea6df9b449a78bee37d6654da230c58"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_harbor_bridge.py",
+      "initial_transformed_sha256": "151c2450f1d155bd4845a6fc00115e1303a11a8585c8ca9e7674b6d212ba8236",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_harbor_bridge.py",
+      "source_sha256": "95770a75b01deb5b6ef82594f649f23d29fd0818b1d7aa2f14e3b361c1bd3db0"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_materialize.py",
+      "initial_transformed_sha256": "d5e74446f2a421b41b5a002b818ae4584241e96c06c592aad3d3b60b0d0c5f02",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_materialize.py",
+      "source_sha256": "c7da7b1a6a69168ccd139dec3644779c668fdc49dc83763c30a248fc6463bbef"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_network.py",
+      "initial_transformed_sha256": "e475b86d645747fda936c98ba45b74d94d6adb5b113377173ecb79fa128f52f9",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_network.py",
+      "source_sha256": "1a4a7cb161caca55fd7b9a8d8467c3357a2da6455051f09da528abc9dbd5a1e1"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_observe.py",
+      "initial_transformed_sha256": "9d31aa29a7b381ba314983c79fa8b3d6fa026838ea18f7ac8a89b28706fbd938",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_observe.py",
+      "source_sha256": "e7cb5b6e9088af4cf3e20ede30ea2a8d8600e767e1bb0b5a070dd7a1ee801b2e"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_phase_observations.py",
+      "initial_transformed_sha256": "da2f57757f4d35ad703bbf1b16780946567abc5a1b00b15f2277ecbd473efced",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_phase_observations.py",
+      "source_sha256": "3d62bd7ab5881fdc21cbd9753e36da3a3b3606e4b6a3caa1f0e7f54f6d76f25e"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_policies.py",
+      "initial_transformed_sha256": "ebef7826c3af61770ea8714a51ae009759357c92423282ce8066f443e9f15795",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_policies.py",
+      "source_sha256": "b6380d36f1fd49037c59f1c51c6aceccb25a864edd8ca03554e452650329fd31"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_preflight.py",
+      "initial_transformed_sha256": "4f5b668ff75a6b433499efca61b2df7ca57022510b4266b99228763b798af4a6",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_preflight.py",
+      "source_sha256": "e03998fa07ef0818946456abb5ef0dfbb993cd8c060d9e6f757a1962bbf084b9"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_preservation.py",
+      "initial_transformed_sha256": "56547b0690c3a39ee002b3126dfd05ef88cf9d8a49d74a338707ae67571b69f0",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_preservation.py",
+      "source_sha256": "9a27eb1df5e7b76050e6f19af75357675e46a561d9016928200a34f92f69e46e"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_records.py",
+      "initial_transformed_sha256": "a4aa8bafee5b581332acb0e624efd1adfcb9ec4d87c46cb1af0cc29d2e60f060",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_records.py",
+      "source_sha256": "7fe96d2561e7e44bb9578372e35516cb19d9e26ac6ffe9141b16bdd99b32b1ba"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_replay_grade.py",
+      "initial_transformed_sha256": "eb49216ded3b23b0351eccfdba6b0e61b4a3d93b282bf9fb892cf5c1af90697a",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_replay_grade.py",
+      "source_sha256": "5c813c9b0c9b0b2b171d757203bbb14061c28598bbed35fa6a1064c2e34eabd5"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_reporting.py",
+      "initial_transformed_sha256": "e17cae078758b92f6dddd3730c9e9c47a55dcee803a7ca30c96814b20e7e1c35",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_reporting.py",
+      "source_sha256": "6f4cf05afb0814bd6ca090e5e475adda38c071f50d65f65f509e7228fed96523"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_response_transport.py",
+      "initial_transformed_sha256": "ed83ab8ed2a6e78a167c7f5cffecad41eeb6455bad2a52e180ba2ef67dd7a6a5",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_response_transport.py",
+      "source_sha256": "70d41c46f85e30be10c25493cb0ad04b0b125975e1fc761a1b5b5c6ce1d569fb"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_snapshot.py",
+      "initial_transformed_sha256": "dc3a881e0983dee18e82da8b44102f8b0114d877752782b848cc8f70ebdf0242",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_snapshot.py",
+      "source_sha256": "04d56f7dc88278af706e32d7440cbcfed7cd1fd4b749c11bcffd6d32a63b199f"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_store.py",
+      "initial_transformed_sha256": "987ad41e3473ce176713f415203f6051f1c3183a459238ac090087966fbcf9f0",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_store.py",
+      "source_sha256": "e940b7371f6acd00ac737c7b9026d6e581399ead2313402e6684821196b008ec"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_study.py",
+      "initial_transformed_sha256": "53e9f45999b2e20f0e2e25b57dda541039f712fa8bee78ea8427b0c0c74e2520",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_study.py",
+      "source_sha256": "ebef332023f26f9d65b39b3cf226962c6033452152b3ede13a3dd897365b214e"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_verifier_container.py",
+      "initial_transformed_sha256": "00513e30b55dce4f724902617c74678c51d50cb1cd52fbecae69990c9a42d3ec",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_verifier_container.py",
+      "source_sha256": "58bf4a7f2f84e87130546ea77cef783e2384c93585c495374d54b998c28b4d8c"
+    },
+    {
+      "destination_path": "bench/harbor/skill-workflows-v4/tests/test_verifier_docker.py",
+      "initial_transformed_sha256": "a97bab6d439235cad87d0957f4c1c7a141679db6f34514c34d6e7ad0481f1863",
+      "source_path": "bench/harbor/skill-workflows-v3/tests/test_verifier_docker.py",
+      "source_sha256": "687b3dc6d07a8961cde786aeeb4e424ffc2fc085bf817d2aca63af11d0bd9e3c"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/ATTRIBUTION.md",
+      "initial_transformed_sha256": "e94ba3fe03843110b144a82f953bab1c6e1fa93debe9a340063270918f563869",
+      "source_path": "skills/eval-opt-v3/ATTRIBUTION.md",
+      "source_sha256": "e94ba3fe03843110b144a82f953bab1c6e1fa93debe9a340063270918f563869"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/LICENSE",
+      "initial_transformed_sha256": "ba432d7337ee44c2f26ec826d4c6a11e96a7fe2015d4c8f20e9253dc116a59ed",
+      "source_path": "skills/eval-opt-v3/LICENSE",
+      "source_sha256": "ba432d7337ee44c2f26ec826d4c6a11e96a7fe2015d4c8f20e9253dc116a59ed"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/SKILL.md",
+      "initial_transformed_sha256": "d05a0bede9ad3f896c4052c6231b814a4c86170e9b25cd7c846599c1a9b07e60",
+      "source_path": "skills/eval-opt-v3/SKILL.md",
+      "source_sha256": "7d969159a3a5d8c58123a606f5b513bfcf8860e467623a48b05ebc8af817345f"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/agents/openai.yaml",
+      "initial_transformed_sha256": "ba73bca4ffc1b4160cb3e7ab52c32662fe8600173870c789ae9568874f0cbce3",
+      "source_path": "skills/eval-opt-v3/agents/openai.yaml",
+      "source_sha256": "4445be3fca1904f57c48d8b8b60299c9f0c5781a93f3b4eed300f258dcfe1ff3"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/references/debugging.md",
+      "initial_transformed_sha256": "f6c48fd20267955377d82787f27f9054a4e541f78ba0dbc4c6369d3440cef921",
+      "source_path": "skills/eval-opt-v3/references/debugging.md",
+      "source_sha256": "f6c48fd20267955377d82787f27f9054a4e541f78ba0dbc4c6369d3440cef921"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/references/evidence-dispute.md",
+      "initial_transformed_sha256": "09005a6f7e1f4a3acef30af7de8dfe288aa9a5118a192c337699510423109710",
+      "source_path": "skills/eval-opt-v3/references/evidence-dispute.md",
+      "source_sha256": "09005a6f7e1f4a3acef30af7de8dfe288aa9a5118a192c337699510423109710"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/references/evidence-record.md",
+      "initial_transformed_sha256": "1d8fec2d59e7a92f9869c5115261015d8b070e23de0e2e6fb2c4fa5d0a3694a7",
+      "source_path": "skills/eval-opt-v3/references/evidence-record.md",
+      "source_sha256": "1d8fec2d59e7a92f9869c5115261015d8b070e23de0e2e6fb2c4fa5d0a3694a7"
+    },
+    {
+      "destination_path": "skills/eval-opt-v4/references/review.md",
+      "initial_transformed_sha256": "8bdf1aeba9b9324dcac49b3ec6c9a08d1f0388d08a732543c298e1b9ea480ed2",
+      "source_path": "skills/eval-opt-v3/references/review.md",
+      "source_sha256": "8bdf1aeba9b9324dcac49b3ec6c9a08d1f0388d08a732543c298e1b9ea480ed2"
+    }
+  ],
+  "exclusions": [
+    "authored tasks",
+    "bytecode caches"
+  ],
+  "kind": "initial_namespace_fork",
+  "namespace_substitutions": [
+    "skill-workflows-v3 => skill-workflows-v4",
+    "evalopt_v3 => evalopt_v4",
+    "evalopt.v3 => evalopt.v4",
+    "eval-opt-v3 => eval-opt-v4"
+  ],
+  "schema_version": "evalopt-workflows-v4/1",
+  "scope": "v3 harness without authored tasks plus portable skill; subsequent v4 edits are reviewed independently",
+  "source_commit": "d8e6903df1aa12d35e1f7356200609617060baed"
+}

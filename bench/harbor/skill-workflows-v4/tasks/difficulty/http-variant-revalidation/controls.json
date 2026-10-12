@@ -1,0 +1,131 @@
+{
+  "initial_check_exit": 0,
+  "negative_snapshots": [],
+  "positive_check_exit": 0,
+  "positive_response": {
+    "blockers": [],
+    "checks": [],
+    "findings": [
+      {
+        "kind": "incorrect-result",
+        "path": "variants.py",
+        "symbol": "matches",
+        "witness": {
+          "args": [
+            {
+              "entries": [
+                {
+                  "body": "payload",
+                  "headers": {
+                    "vary": [
+                      "lang",
+                      "encoding"
+                    ]
+                  },
+                  "id": "a",
+                  "max_age": 10,
+                  "request_headers": {
+                    "encoding": "gzip",
+                    "lang": "en"
+                  },
+                  "stored_at": 0,
+                  "url": "/x"
+                }
+              ],
+              "not_modified": null,
+              "now": 5,
+              "request": {
+                "headers": {
+                  "encoding": "br",
+                  "lang": "en"
+                },
+                "url": "/x"
+              }
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      },
+      {
+        "kind": "incorrect-result",
+        "path": "revalidation.py",
+        "symbol": "merge",
+        "witness": {
+          "args": [
+            {
+              "entries": [
+                {
+                  "body": "payload",
+                  "headers": {
+                    "content-type": "text",
+                    "etag": "v1",
+                    "warning": "old"
+                  },
+                  "id": "a",
+                  "max_age": 0,
+                  "request_headers": {},
+                  "stored_at": 0,
+                  "url": "/x"
+                }
+              ],
+              "not_modified": {
+                "headers": {
+                  "etag": "v2"
+                }
+              },
+              "now": 5,
+              "request": {
+                "headers": {},
+                "url": "/x"
+              }
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      },
+      {
+        "kind": "incorrect-result",
+        "path": "variants.py",
+        "symbol": "matches",
+        "witness": {
+          "args": [
+            {
+              "entries": [
+                {
+                  "body": "payload",
+                  "headers": {},
+                  "id": "a",
+                  "max_age": 10,
+                  "request_headers": {
+                    "authorization": "secret-a"
+                  },
+                  "stored_at": 0,
+                  "url": "/x"
+                }
+              ],
+              "not_modified": null,
+              "now": 5,
+              "request": {
+                "headers": {
+                  "authorization": "secret-b"
+                },
+                "url": "/x"
+              }
+            }
+          ],
+          "function": "solve",
+          "module": "service"
+        }
+      }
+    ],
+    "status": "completed"
+  },
+  "positive_snapshot": "agent",
+  "review_mutants": {
+    "all-vary-fields": "defect-controls/all-vary-fields",
+    "authorization-isolation": "defect-controls/authorization-isolation",
+    "revalidation-preserves-metadata": "defect-controls/revalidation-preserves-metadata"
+  }
+}

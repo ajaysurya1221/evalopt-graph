@@ -1,0 +1,18 @@
+{
+  "initial_check_exit": 0,
+  "negative_snapshots": [
+    "agent",
+    "mutant-1",
+    "mutant-2",
+    "mutant-3"
+  ],
+  "positive_check_exit": 1,
+  "positive_response": {
+    "blockers": [],
+    "checks": [],
+    "findings": [],
+    "status": "completed"
+  },
+  "positive_snapshot": "oracle",
+  "review_mutants": {}
+}

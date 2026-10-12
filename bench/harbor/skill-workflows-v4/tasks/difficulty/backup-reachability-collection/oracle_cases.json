@@ -1,0 +1,822 @@
+[
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {},
+          "quarantine": {},
+          "snapshots": [],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "one",
+              "object": "a",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a",
+          "b"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": "a",
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "one",
+              "object": "b",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [
+          "a"
+        ],
+        "live": [],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {
+            "a": 15
+          },
+          "snapshots": [],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [],
+        "quarantine": {
+          "a": 16
+        }
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {
+            "a": 16
+          },
+          "snapshots": [],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [],
+        "quarantine": {
+          "a": 20
+        }
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 0,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "b",
+          "c"
+        ],
+        "quarantine": {
+          "a": 20
+        }
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 2,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": null,
+              "refs": []
+            },
+            "c": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 1,
+              "id": "a",
+              "object": "a",
+              "pinned": false
+            },
+            {
+              "branch": "main",
+              "created": 2,
+              "id": "b",
+              "object": "b",
+              "pinned": false
+            },
+            {
+              "branch": "main",
+              "created": 3,
+              "id": "c",
+              "object": "c",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "b"
+        ],
+        "quarantine": {
+          "a": 20
+        }
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 2,
+              "id": "z",
+              "object": "a",
+              "pinned": false
+            },
+            {
+              "branch": "main",
+              "created": 2,
+              "id": "a",
+              "object": "b",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a",
+          "b"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "a",
+              "object": "a",
+              "pinned": true
+            },
+            {
+              "branch": "main",
+              "created": 2,
+              "id": "b",
+              "object": "b",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a",
+          "b"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "one",
+              "created": 0,
+              "id": "a",
+              "object": "a",
+              "pinned": false
+            },
+            {
+              "branch": "two",
+              "created": 0,
+              "id": "b",
+              "object": "b",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a"
+        ],
+        "quarantine": {
+          "b": 20
+        }
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 0,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 15,
+              "id": "a",
+              "object": "a",
+              "pinned": false
+            },
+            {
+              "branch": "main",
+              "created": 14,
+              "id": "b",
+              "object": "b",
+              "pinned": false
+            }
+          ],
+          "window": 5
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a",
+          "b"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": [
+                "b"
+              ]
+            },
+            "b": {
+              "base": null,
+              "refs": [
+                "a"
+              ]
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "a",
+              "object": "a",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": "a",
+              "refs": []
+            },
+            "c": {
+              "base": "b",
+              "refs": [
+                "d"
+              ]
+            },
+            "d": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "a",
+              "object": "c",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {
+            "a": 0
+          },
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "a",
+              "object": "a",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [
+          "a"
+        ],
+        "live": [],
+        "quarantine": {
+          "b": 18
+        }
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {
+            "a": 10,
+            "b": 18
+          },
+          "snapshots": [],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [
+          "c"
+        ],
+        "live": [
+          "a",
+          "b"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 1,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": "a",
+              "refs": []
+            },
+            "c": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {
+            "a": 0,
+            "c": 10
+          },
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "b",
+              "object": "b",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [],
+        "quarantine": {
+          "a": 20,
+          "b": 20
+        }
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 0,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": null,
+              "refs": []
+            }
+          },
+          "quarantine": {},
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 0,
+              "id": "a",
+              "object": "a",
+              "pinned": false
+            }
+          ],
+          "window": 0
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  },
+  {
+    "expect": {
+      "kind": "return",
+      "value": {
+        "delete": [],
+        "live": [
+          "a",
+          "b"
+        ],
+        "quarantine": {}
+      }
+    },
+    "request": {
+      "args": [
+        {
+          "grace": 5,
+          "keep": 0,
+          "now": 20,
+          "objects": {
+            "a": {
+              "base": null,
+              "refs": []
+            },
+            "b": {
+              "base": "a",
+              "refs": []
+            }
+          },
+          "quarantine": {
+            "a": 0
+          },
+          "snapshots": [
+            {
+              "branch": "main",
+              "created": 19,
+              "id": "b",
+              "object": "b",
+              "pinned": false
+            }
+          ],
+          "window": 2
+        }
+      ],
+      "function": "solve",
+      "module": "service"
+    }
+  }
+]

@@ -1,0 +1,921 @@
+{
+  "allowed_changes": [],
+  "attempt_id": "authored-control--http-variant-revalidation",
+  "cases": [
+    {
+      "case_id": "case-01",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 5,
+          "body": "payload",
+          "headers": {},
+          "id": "a",
+          "state": "hit"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "vary": [
+                    "lang",
+                    "encoding"
+                  ]
+                },
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {
+                  "encoding": "gzip",
+                  "lang": "en"
+                },
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {
+                "encoding": "br",
+                "lang": "en"
+              },
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 5,
+          "body": "payload",
+          "headers": {
+            "vary": [
+              "lang"
+            ]
+          },
+          "id": "a",
+          "state": "hit"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "vary": [
+                    "lang"
+                  ]
+                },
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {
+                  "lang": "en"
+                },
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {
+                "lang": "en"
+              },
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 0,
+          "body": "payload",
+          "headers": {
+            "content-type": "text",
+            "etag": "v2"
+          },
+          "id": "a",
+          "state": "revalidated"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "content-type": "text",
+                  "etag": "v1",
+                  "warning": "old"
+                },
+                "id": "a",
+                "max_age": 0,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": {
+              "headers": {
+                "etag": "v2"
+              }
+            },
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "vary": [
+                    "*"
+                  ]
+                },
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {
+                  "authorization": "secret-a"
+                },
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {
+                "authorization": "secret-b"
+              },
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {
+                  "authorization": "a"
+                },
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {
+                "authorization": "a"
+              },
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-10",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "etag": "v1",
+          "id": "a",
+          "state": "stale"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "etag": "v1"
+                },
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 10,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 2,
+          "body": "payload",
+          "headers": {},
+          "id": "new",
+          "state": "hit"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "z",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 2,
+                "url": "/x"
+              },
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 2,
+                "url": "/x"
+              },
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "new",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 3,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {},
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/other"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "state": "miss"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "etag": "v1"
+                },
+                "id": "a",
+                "max_age": 0,
+                "request_headers": {
+                  "lang": "en"
+                },
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": {
+              "headers": {
+                "vary": [
+                  "lang"
+                ]
+              }
+            },
+            "now": 5,
+            "request": {
+              "headers": {
+                "lang": "fr"
+              },
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 0,
+          "body": "payload",
+          "headers": {
+            "etag": "v1",
+            "warning": "new"
+          },
+          "id": "a",
+          "state": "revalidated"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "etag": "v1",
+                  "warning": "old"
+                },
+                "id": "a",
+                "max_age": 0,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": {
+              "headers": {
+                "warning": "new"
+              }
+            },
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 0,
+          "body": "payload",
+          "headers": {
+            "vary": [
+              "lang"
+            ]
+          },
+          "id": "a",
+          "state": "revalidated"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "vary": [
+                    "lang"
+                  ]
+                },
+                "id": "a",
+                "max_age": 0,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": {
+              "headers": {}
+            },
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-16",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 4,
+          "body": "payload",
+          "headers": {
+            "vary": [
+              "lang"
+            ]
+          },
+          "id": "right",
+          "state": "hit"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "vary": [
+                    "lang"
+                  ]
+                },
+                "id": "wrong",
+                "max_age": 10,
+                "request_headers": {
+                  "lang": "fr"
+                },
+                "stored_at": 4,
+                "url": "/x"
+              },
+              {
+                "body": "payload",
+                "headers": {
+                  "vary": [
+                    "lang"
+                  ]
+                },
+                "id": "right",
+                "max_age": 10,
+                "request_headers": {
+                  "lang": "en"
+                },
+                "stored_at": 1,
+                "url": "/x"
+              }
+            ],
+            "not_modified": null,
+            "now": 5,
+            "request": {
+              "headers": {
+                "lang": "en"
+              },
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-17",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 5,
+          "body": "payload",
+          "headers": {
+            "etag": "v1"
+          },
+          "id": "a",
+          "state": "hit"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "etag": "v1"
+                },
+                "id": "a",
+                "max_age": 10,
+                "request_headers": {},
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": {
+              "headers": {
+                "etag": "should-ignore"
+              }
+            },
+            "now": 5,
+            "request": {
+              "headers": {},
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    },
+    {
+      "case_id": "case-18",
+      "expect": {
+        "kind": "return",
+        "value": {
+          "age": 0,
+          "body": "payload",
+          "headers": {
+            "content-type": "json",
+            "etag": "v1",
+            "vary": []
+          },
+          "id": "a",
+          "state": "revalidated"
+        }
+      },
+      "preserve_args": true,
+      "request": {
+        "args": [
+          {
+            "entries": [
+              {
+                "body": "payload",
+                "headers": {
+                  "etag": "v1",
+                  "vary": [
+                    "lang"
+                  ]
+                },
+                "id": "a",
+                "max_age": 0,
+                "request_headers": {
+                  "authorization": "x",
+                  "lang": "en"
+                },
+                "stored_at": 0,
+                "url": "/x"
+              }
+            ],
+            "not_modified": {
+              "headers": {
+                "content-type": "json",
+                "vary": []
+              }
+            },
+            "now": 5,
+            "request": {
+              "headers": {
+                "authorization": "x",
+                "lang": "en"
+              },
+              "url": "/x"
+            }
+          }
+        ],
+        "function": "solve",
+        "module": "service"
+      }
+    }
+  ],
+  "category": "mixed-workspace-review",
+  "defect_obligations": [
+    {
+      "id": "all-vary-fields",
+      "kinds": [
+        "incorrect-result"
+      ],
+      "path": "variants.py",
+      "supported_locations": [
+        {
+          "path": "variants.py",
+          "symbol": "matches",
+          "witness_function": "solve",
+          "witness_module": "service"
+        },
+        {
+          "path": "service.py",
+          "symbol": "solve",
+          "witness_function": "solve",
+          "witness_module": "service"
+        }
+      ],
+      "symbol": "matches",
+      "witness_case_ids": [
+        "case-03"
+      ]
+    },
+    {
+      "id": "revalidation-preserves-metadata",
+      "kinds": [
+        "incorrect-result"
+      ],
+      "path": "revalidation.py",
+      "supported_locations": [
+        {
+          "path": "revalidation.py",
+          "symbol": "merge",
+          "witness_function": "solve",
+          "witness_module": "service"
+        },
+        {
+          "path": "service.py",
+          "symbol": "solve",
+          "witness_function": "solve",
+          "witness_module": "service"
+        }
+      ],
+      "symbol": "merge",
+      "witness_case_ids": [
+        "case-05",
+        "case-14",
+        "case-15",
+        "case-18"
+      ]
+    },
+    {
+      "id": "authorization-isolation",
+      "kinds": [
+        "incorrect-result"
+      ],
+      "path": "variants.py",
+      "supported_locations": [
+        {
+          "path": "variants.py",
+          "symbol": "matches",
+          "witness_function": "solve",
+          "witness_module": "service"
+        },
+        {
+          "path": "service.py",
+          "symbol": "solve",
+          "witness_function": "solve",
+          "witness_module": "service"
+        }
+      ],
+      "symbol": "matches",
+      "witness_case_ids": [
+        "case-07",
+        "case-08",
+        "case-09"
+      ]
+    }
+  ],
+  "evidence_opportunity": false,
+  "id": "http-variant-revalidation",
+  "instruction": "Review ALL committed, staged and unstaged changes relative to benchmark-base for service.solve(q). This is a bounded structured HTTP-cache model, not an unstated RFC exercise. q={entries,request,now,not_modified}. entries<=10 have unique id,url,request_headers (lowercase header names to strings), headers (lowercase names to strings except vary:list of lowercase names or '*'), stored_at0..now,max_age>=0,body:string. request={url,headers:string mapping}; now integer0..100. not_modified is null or {headers:new response-header mapping}. URLs/strings are exact literal comparisons; absent request-header differs from present empty string.\nAn entry matches iff URL matches, stored/request authorization values are equal INCLUDING absence, vary contains no '*', and EVERY listed vary header has equal stored/current request value. Duplicate vary fields are neutral; empty vary permits any nonauthorization headers. Select newest matching stored_at, breaking ties by lexicographic id. If none return {state:miss}. If age=now-stored_at<max_age return {state:hit,id,body,headers,age}, ignoring not_modified. Otherwise if no update return {state:stale,id,etag:headerOrNull}. With update, merge headers by replacing supplied keys while retaining other old keys; drop old warning unless update supplies warning. Re-check variant matching against merged vary and the ORIGINAL stored request; if mismatched return miss. Otherwise return {state:revalidated,id,body,headers:merged,age:0}; body never replaced by a304. Inputs remain unchanged.\nRequired introduced-defect coverage: all-field Vary matching (variants.matches), preservation of unmodified revalidation metadata (revalidation.merge), and authorization isolation (variants.matches). service.solve is also a supported location. Review the final combined workspace while inspecting all layers; do not make repairs.\nAll input domains and required behavior are stated above. Preserve all arguments. Use Python standard library only, no package installation or network. The supplied verify.py is a frozen smoke check, not the complete contract. The controller reporting contract specifies phase-bound observations; never substitute an observation from another phase or invent an execution.\n\nAllowed content edits: none (review only). Change only the contents of those existing regular files. Preserve their modes. All other initial files, directories, modes, and Git metadata are frozen; incidental stat-cache refresh is handled by the common controller contract. Do not create, remove or rename workspace files. Put temporary probes under /tmp.\n\nReview all supplied workspace layers against benchmark-base. Do not modify any file or Git metadata. The finite witness domain is exactly these requests (without expected answers):\n[{\"args\": [{\"entries\": [], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"vary\": [\"lang\", \"encoding\"]}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {\"encoding\": \"gzip\", \"lang\": \"en\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"encoding\": \"br\", \"lang\": \"en\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"vary\": [\"lang\"]}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {\"lang\": \"en\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"lang\": \"en\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"content-type\": \"text\", \"etag\": \"v1\", \"warning\": \"old\"}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"etag\": \"v2\"}}, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"vary\": [\"*\"]}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {\"authorization\": \"secret-a\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"authorization\": \"secret-b\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {\"authorization\": \"a\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"authorization\": \"a\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"etag\": \"v1\"}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 10, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"z\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 2, \"url\": \"/x\"}, {\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 2, \"url\": \"/x\"}, {\"body\": \"payload\", \"headers\": {}, \"id\": \"new\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 3, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/other\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"etag\": \"v1\"}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {\"lang\": \"en\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"vary\": [\"lang\"]}}, \"now\": 5, \"request\": {\"headers\": {\"lang\": \"fr\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"etag\": \"v1\", \"warning\": \"old\"}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"warning\": \"new\"}}, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"vary\": [\"lang\"]}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {}}, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"vary\": [\"lang\"]}, \"id\": \"wrong\", \"max_age\": 10, \"request_headers\": {\"lang\": \"fr\"}, \"stored_at\": 4, \"url\": \"/x\"}, {\"body\": \"payload\", \"headers\": {\"vary\": [\"lang\"]}, \"id\": \"right\", \"max_age\": 10, \"request_headers\": {\"lang\": \"en\"}, \"stored_at\": 1, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"lang\": \"en\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"etag\": \"v1\"}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"etag\": \"should-ignore\"}}, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"etag\": \"v1\", \"vary\": [\"lang\"]}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {\"authorization\": \"x\", \"lang\": \"en\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"content-type\": \"json\", \"vary\": []}}, \"now\": 5, \"request\": {\"headers\": {\"authorization\": \"x\", \"lang\": \"en\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}]\nEach finding is {path:workspace-relative POSIX filename,symbol:unqualified function name,kind:incorrect-result|unexpected-exception|data-loss,witness:{module,function,args}}. The witness must equal a request in this finite domain and is data, never verifier code. Report demonstrated introduced contract violations: baseline satisfies the expectation and candidate violates it. Duplicate supported findings are neutral; unsupported findings and missed defects fail. Only the exact location/request bindings below count toward the named obligations. A different demonstrated in-domain counterexample may become a contract dispute rather than silently satisfying an obligation. Do not report stylistic preferences.\n\nAccepted obligation/location/witness bindings (no expected answers):\n[{\"locations\": [{\"path\": \"variants.py\", \"symbol\": \"matches\", \"witness_function\": \"solve\", \"witness_module\": \"service\"}, {\"path\": \"service.py\", \"symbol\": \"solve\", \"witness_function\": \"solve\", \"witness_module\": \"service\"}], \"obligation\": \"all-vary-fields\", \"requests\": [{\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"vary\": [\"lang\", \"encoding\"]}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {\"encoding\": \"gzip\", \"lang\": \"en\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"encoding\": \"br\", \"lang\": \"en\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}]}, {\"locations\": [{\"path\": \"revalidation.py\", \"symbol\": \"merge\", \"witness_function\": \"solve\", \"witness_module\": \"service\"}, {\"path\": \"service.py\", \"symbol\": \"solve\", \"witness_function\": \"solve\", \"witness_module\": \"service\"}], \"obligation\": \"revalidation-preserves-metadata\", \"requests\": [{\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"content-type\": \"text\", \"etag\": \"v1\", \"warning\": \"old\"}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"etag\": \"v2\"}}, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"etag\": \"v1\", \"warning\": \"old\"}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"warning\": \"new\"}}, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"vary\": [\"lang\"]}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {}}, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {\"etag\": \"v1\", \"vary\": [\"lang\"]}, \"id\": \"a\", \"max_age\": 0, \"request_headers\": {\"authorization\": \"x\", \"lang\": \"en\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": {\"headers\": {\"content-type\": \"json\", \"vary\": []}}, \"now\": 5, \"request\": {\"headers\": {\"authorization\": \"x\", \"lang\": \"en\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}]}, {\"locations\": [{\"path\": \"variants.py\", \"symbol\": \"matches\", \"witness_function\": \"solve\", \"witness_module\": \"service\"}, {\"path\": \"service.py\", \"symbol\": \"solve\", \"witness_function\": \"solve\", \"witness_module\": \"service\"}], \"obligation\": \"authorization-isolation\", \"requests\": [{\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {\"authorization\": \"secret-a\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"authorization\": \"secret-b\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {\"authorization\": \"a\"}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}, {\"args\": [{\"entries\": [{\"body\": \"payload\", \"headers\": {}, \"id\": \"a\", \"max_age\": 10, \"request_headers\": {}, \"stored_at\": 0, \"url\": \"/x\"}], \"not_modified\": null, \"now\": 5, \"request\": {\"headers\": {\"authorization\": \"a\"}, \"url\": \"/x\"}}], \"function\": \"solve\", \"module\": \"service\"}]}]\n",
+  "max_findings": 12,
+  "preserve_review_args": true,
+  "schema_version": "evalopt-workflows-v4/1",
+  "source_cluster": "http-variant-revalidation",
+  "split": "difficulty",
+  "task_contract": "review",
+  "task_id": "http-variant-revalidation",
+  "visible_command": [
+    "python3",
+    "-B",
+    "verify.py"
+  ],
+  "workspace_layers": {
+    "baseline": "baseline",
+    "committed": "committed",
+    "index": "index",
+    "workspace": "agent"
+  }
+}

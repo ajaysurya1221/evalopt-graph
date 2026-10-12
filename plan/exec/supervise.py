@@ -163,7 +163,7 @@ def main():
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
             errors.append('central immutable changed: ' + name)
     result.update(classify(result['exit_code'], result['timed_out'],
-                           (output_dir/'native.json').read_bytes().decode('utf-8', errors='replace'),
+                           (output_dir/'native.json').read_bytes(),
                            report.read_text() if report.exists() else '', errors, cfg['report_id'], cfg.get('record_type', 'REPORT')))
     if not result['termination_confirmed'] or result['leftover_children']:
         result['state'] = 'PARTIAL'

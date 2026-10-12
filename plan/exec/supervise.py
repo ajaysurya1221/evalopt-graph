@@ -18,7 +18,7 @@ ADMISSION_END = '2026-10-13T04:37:18+00:00'
 RUN_END = '2026-10-13T05:22:18+00:00'
 
 
-def classify(exit_code, timed_out, raw, report, scope_errors, expected_id="02"):
+def classify(exit_code, timed_out, raw, report, scope_errors, expected_id="02", expected_kind="REPORT"):
     reasons = []
     try:
         obj = json.loads(raw)
@@ -42,7 +42,7 @@ def classify(exit_code, timed_out, raw, report, scope_errors, expected_id="02"):
     ident = re.escape(expected_id)
     valid_report = re.match(r'^REPORT ' + ident + r' [—-] Status:? DONE(?:[ |].*)?$', header)
     valid_review = re.match(r'^REVIEW ' + ident + r' [—-] Reviewer\b.*?\| Verdict:? ACCEPT(?:[ |].*)?$', header)
-    if not (valid_report or valid_review):
+    if not ((expected_kind == "REPORT" and valid_report) or (expected_kind == "REVIEW" and valid_review)):
         reasons.append('missing_or_nonaccepted_report')
     if scope_errors:
         reasons.append('out_of_scope')
@@ -157,7 +157,7 @@ def main():
     errors = scope_errors(changed_paths(cwd, cfg['base']), cfg['allow'])
     result.update(classify(result['exit_code'], result['timed_out'],
                            (output_dir/'native.json').read_text(),
-                           report.read_text() if report.exists() else '', errors, cfg['report_id']))
+                           report.read_text() if report.exists() else '', errors, cfg['report_id'], cfg.get('record_type', 'REPORT')))
     if not result['termination_confirmed'] or result['leftover_children']:
         result['state'] = 'PARTIAL'
         result['reasons'].append('process_group_lifecycle')

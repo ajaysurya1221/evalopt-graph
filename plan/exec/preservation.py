@@ -23,7 +23,8 @@ def main():
         if old != new:
             errors.append(name + ': bytes changed')
     new_names = subprocess.check_output(['git','ls-files','src','tests','bench'],cwd=ROOT,text=True).splitlines()
-    errors += [n + ': new protected path' for n in new_names if n not in names]
+    untracked = subprocess.check_output(['git','ls-files','--others','--exclude-standard','src','tests','bench'],cwd=ROOT,text=True).splitlines()
+    errors += [n + ': new protected path' for n in sorted(set(new_names + untracked)) if n not in names]
     plan = ROOT/'plan/exec/PLAN.md'
     if hashlib.sha256(plan.read_bytes()).hexdigest() != '697f3fd7fa61b294146fff13868c87d6762d00395f39d8085ba52a111eb22b3c':
         errors.append('approved PLAN bytes changed')

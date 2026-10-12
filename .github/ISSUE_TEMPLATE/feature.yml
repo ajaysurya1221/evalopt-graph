@@ -1,51 +1,44 @@
-name: Design proposal
-description: Propose a focused kernel, adapter, documentation, or conformance improvement.
-title: "[Proposal]: "
+name: Migration or documentation guidance
+description: Report a gap or error in the migration map, portfolio index or documentation. New kernel, adapter or integration capability is not accepted.
+title: "[Docs]: "
 labels:
-  - enhancement
+  - documentation
 body:
   - type: markdown
     attributes:
       value: |
-        evalopt deliberately keeps orchestration outside its stable kernel. Explain the trust-boundary impact of the proposal and the smallest public surface that solves the problem.
+        Standalone feature development of evalopt has ended. This form is for corrections and clarifications to the documentation, the migration map (https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md) and the portfolio index. Requests for new features, root exports, adapters, converters or integrations, and requests for another project to support evalopt semantics, are not accepted; see the alternatives in the README. Do not include credentials or private data.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which document
+      options:
+        - Migration map (docs/migration.md) or its source and coverage appendices
+        - Portfolio index (docs/portfolio.md)
+        - README or contribution and security guidance
+        - Architecture, evidence or release documentation
+        - Decision records (docs/decisions)
+    validations:
+      required: true
+  - type: input
+    id: entry
+    attributes:
+      label: Entry, section or line
+      description: For example, migration map entry 13 (Replay), or a heading.
+    validations:
+      required: true
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What concrete user or integration problem needs to be solved?
-    validations:
-      required: true
-  - type: dropdown
-    id: boundary
-    attributes:
-      label: Primary area
-      options:
-        - Stable governance kernel
-        - Host or verifier adapter
-        - Deprecated compatibility surface
-        - Documentation or examples
-        - Conformance or evaluation
+      label: What is wrong or unclear
+      description: Quote the current wording and say what you checked, including the evalopt version or commit and the destination's own documentation where relevant.
     validations:
       required: true
   - type: textarea
-    id: behavior
+    id: proposed
     attributes:
-      label: Proposed behavior
-      description: Describe inputs, outputs, invariants, and failure behavior without assuming a specific agent runtime.
-    validations:
-      required: true
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives considered
-      description: Could the host own this behavior without changing the kernel?
-    validations:
-      required: true
-  - type: textarea
-    id: compatibility
-    attributes:
-      label: Compatibility and evidence impact
-      description: Note effects on the ten-symbol API, serialized records, replay, reason codes, or evidence claims.
+      label: Proposed correction
+      description: Suggested wording. Corrections must keep the stated limits; the map does not claim lossless mapping of decision states or reason codes, and a hash is not a signature.
     validations:
       required: true
   - type: checkboxes
@@ -54,6 +47,8 @@ body:
       label: Checklist
       options:
         - label: I searched existing issues and discussions.
+          required: true
+        - label: This is a documentation or migration correction, not a request for new capability or an integration.
           required: true
         - label: I have not presented authored or generated cases as benchmark or SOTA evidence.
           required: true

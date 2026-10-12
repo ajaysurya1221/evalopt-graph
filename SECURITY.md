@@ -4,6 +4,11 @@ Evalopt sits on an acceptance boundary. Security reports are welcome, especially
 decision integrity, record authorization, replay divergence, parser ambiguity, evidence substitution,
 or ways untrusted host state can influence a kernel decision.
 
+Standalone feature development has ended (see the notice in the [README](README.md) and the
+[archive decision](docs/decisions/archive-standalone.md)); this policy continues to apply. Security
+fixes to the `0.1.x` line remain possible as patch releases: a final deprecation release does not rule
+out a later security patch. No support period, end date or response capacity is promised.
+
 ## Supported versions
 
 | Version | Supported |
@@ -35,8 +40,9 @@ Use synthetic evidence and scrubbed traces in reproductions.
 - An initial assessment and next-step update within seven business days.
 - Coordinated disclosure after a fix is available, with credit if requested.
 
-These are targets, not a service-level agreement. Complex reports may take longer, but material status
-changes will be communicated through the private advisory.
+These are targets, not a service-level agreement or a promise of capacity. After the end of standalone
+development they are best-effort targets of a single maintainer. Complex reports may take longer, but
+material status changes will be communicated through the private advisory.
 
 ## Security boundary
 

@@ -1,5 +1,9 @@
 # evalopt-graph
 
+> Standalone feature development has ended. This repository preserves the acceptance kernel and its research record. For new systems, use the alternatives listed below. Existing evidence remains subject to its original versions and limitations. Evalopt evaluates supplied evidence against policy; it is not a semantic truth oracle.
+>
+> [Alternatives](https://github.com/ajaysurya1221/evalopt-graph#alternatives) · [Migration map](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md) · [Portfolio index](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/portfolio.md) · [Why](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/decisions/archive-standalone.md)
+
 **Make acceptance policy explicit and replayable.**
 
 Your harness runs the checks and supplies observations.
@@ -37,6 +41,32 @@ Conformance evidence only; no external capability or comparative result is claim
 >
 > This workflow is exercised with authored inputs. Evalopt neither runs those checks nor discovers weakened tests itself.
 
+## Alternatives
+
+New systems should start from one of these destinations. Seven jobs, one destination each, in the
+order fixed by the [migration map](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md). These are job-oriented
+pointers, not tested drop-in replacements. The four sibling projects are independent of evalopt and
+of each other. This guide and the sources it inspected supply no automatic or lossless mapping of
+evalopt's five decision states, reason codes or decision records into any destination. A content
+hash binds bytes; a trusted signature binds a statement to an identity within its verification
+system; neither proves a claim true.
+
+| Your job | Go to | What it does, in its own terms |
+| --- | --- | --- |
+| General policy evaluation | [OPA](https://www.openpolicyagent.org/docs/philosophy) | Evaluates policies over structured data and query input and returns structured decisions. |
+| Software provenance and attestation verification | [in-toto attestation framework](https://github.com/in-toto/attestation) and [Witness](https://github.com/in-toto/witness) | A Statement binds a typed predicate to artifact digests; a DSSE envelope carries signatures; Witness verifies signed attestation collections against a signed policy. |
+| Native merge enforcement | [GitHub rulesets and required checks](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) | Applies required status checks and bypass permissions to targeted branches; check states are set by write-capable producers. |
+| Action-policy qualification | [Actseal](https://github.com/ajaysurya1221/actseal) | Tests a model's action policy under a frozen policy against recorded evaluation evidence and replays it offline; the application owns execution. |
+| Code-claim warrants | [Dorian](https://github.com/ajaysurya1221/dorian) | Turns explicit code claims into checks sealed beside the code and revokes the warrant when a load-bearing check fails. |
+| PR scope | [Frontier Scout](https://github.com/ajaysurya1221/frontier-scout) | Checks a diff against the base commit's scope policy and compiles the same policy into Claude Code permissions and hooks; a research preview. |
+| Stochastic regression | [ARCI](https://github.com/ajaysurya1221/agent-reliability-ci) | Freezes a repeated experiment, gates a change on relative non-inferiority and exports a replayable failure; its hashing helpers were adapted from evalopt with attribution, not as a dependency. |
+
+The [migration map](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md) covers each of the ten stable exports
+and six cross-cutting topics with its own limit, and the
+[portfolio index](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/portfolio.md) describes the four sibling projects.
+The deprecated compatibility surfaces (graph, CLI, providers, Codex bridge, research loop and
+adapters) have no supported compatible migration target in this map; see entry 16.
+
 ## Install
 
 Install into an isolated environment (Python 3.10–3.14), then run the example below:
@@ -44,7 +74,7 @@ Install into an isolated environment (Python 3.10–3.14), then run the example 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install evalopt-graph==0.1.0
+python -m pip install evalopt-graph==0.1.1
 ```
 
 On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`.
@@ -165,14 +195,18 @@ prove semantic truth, deployed behavior, source correctness, or model capability
   nothing about model capability.
 
 Read the [evidence report](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md) and
-[prospective external protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps.
+[external evaluation protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md) for the claims, controls, and gaps.
+The protocol is preserved as a historical document; no new benchmark programme runs.
 There is no live-model governance campaign or official Docker SWE-bench result in this release.
 
-## Integrate it anywhere
+## Historical integration examples
 
-The kernel is host-independent: adapt observations from Codex, Claude Code, OpenHands, LangGraph, CI,
-or your own runtime into `AcceptanceInput`, then store the returned decision beside the policy and input
-used to create it.
+The kernel was designed to accept host-supplied observations through `AcceptanceInput`, so that a
+host could adapt observations from Codex, Claude Code, OpenHands, LangGraph, CI or its own runtime
+into that input and store the returned decision beside the policy and input used to create it. The
+host remains responsible for both steps. The examples below are preserved as they were. They
+are not an invitation to build new evalopt integrations; new systems should start from the
+[alternatives](https://github.com/ajaysurya1221/evalopt-graph#alternatives) above.
 
 An optional
 [Harbor 0.18 conformance task](https://github.com/ajaysurya1221/evalopt-graph/blob/main/bench/harbor/README.md)
@@ -180,27 +214,35 @@ demonstrates verifier-side mapping without importing Harbor into the kernel. It 
 wiring only; it is not an external benchmark.
 
 The historical graph, standalone CLI, provider clients, Codex bridge, research loop, and filesystem
-adapters remain as **deprecated compatibility surfaces for one migration cycle**. They are not stable
-API or policy authorities. New integrations should depend only on the ten root exports above.
+adapters remain as **deprecated compatibility surfaces**. They receive no feature work, are not stable
+API or policy authorities, and have no supported compatible migration target in this map
+([entry 16 of the migration map](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md#the-sixteen-entries)).
+Anything that still imports evalopt should depend only on the ten root exports above.
 
 ## Documentation
 
+- [Migration map: where each evalopt concept goes](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/migration.md)
+- [Portfolio index: the four independent sibling projects](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/portfolio.md)
+- [Wind-down decisions](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/decisions/archive-standalone.md)
 - [Architecture and trust boundaries](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/architecture.md)
 - [Evidence results and limitations](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_RESULTS.md)
-- [Prospective benchmark protocol](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md)
+- [External evaluation protocol (historical, preserved; no new benchmark programme)](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/BENCHMARK_PROTOCOL.md)
 - [Harbor integration](https://github.com/ajaysurya1221/evalopt-graph/blob/main/bench/harbor/README.md)
+- [v0.1.1 final deprecation release notes](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/releases/v0.1.1.md)
 - [v0.1.0 release notes](https://github.com/ajaysurya1221/evalopt-graph/blob/main/docs/releases/v0.1.0.md)
 - [Changelog](https://github.com/ajaysurya1221/evalopt-graph/blob/main/CHANGELOG.md)
 
-## Community and security
+## Maintenance and security
 
-Bug reports, focused proposals, documentation improvements, and integrations are welcome. Start with
+This repository is in maintenance: new features, integrations and root exports are not accepted.
+Bug reports against `0.1.x` with a version and a minimal reproduction, corrections to the
+documentation and migration map, and private security reports remain open. Start with
 the [contribution guide](https://github.com/ajaysurya1221/evalopt-graph/blob/main/CONTRIBUTING.md) and
 follow the [Code of Conduct](https://github.com/ajaysurya1221/evalopt-graph/blob/main/CODE_OF_CONDUCT.md).
 
 Please report vulnerabilities privately using
 [GitHub Security Advisories](https://github.com/ajaysurya1221/evalopt-graph/security/advisories/new), not a
-public issue. See the [security policy](https://github.com/ajaysurya1221/evalopt-graph/blob/main/SECURITY.md) for supported versions and response expectations.
+public issue. See the [security policy](https://github.com/ajaysurya1221/evalopt-graph/blob/main/SECURITY.md) for supported versions and the bounded maintenance statement.
 
 ## Development
 

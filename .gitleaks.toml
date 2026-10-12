@@ -9,3 +9,61 @@ condition = "AND"
 paths = ['''^tests/(test_context_hygiene|test_unattended)\.py$''']
 regexTarget = "match"
 regexes = ['''sk-abcdefghij1234567890''']
+
+[[allowlists]]
+description = "H4: exact historical nonsecret; see plan/exec/reports/08-scan-preflight.md"
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "secret"
+commits = ["49a379c7001b5b156f9f75b358da03a4367b252e"]
+paths = [
+    '''^bench/harbor/skill\-workflows\-v4/tasks/manifest\.json$''',
+    '''^results/skill\-workflows\-v4/offline\-package\-2026\-10\-12/reviews\.json$''',
+]
+regexes = ['''^429252aed4b6276232a2a509de69c0b779fb21e1a5442cc3ad3721114e284fd3$''']
+
+[[allowlists]]
+description = "HN: exact historical nonsecret; see plan/exec/reports/08-scan-preflight.md"
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "secret"
+commits = ["a352c38a764afeb0f406848ebd14591af21a486b"]
+paths = [
+    '''^results/skill\-workflows\-v1/heldout\-comparison\-2026\-10\-10/bundle/sealed\-tasks/candidate\-manifest\.json$''',
+    '''^results/skill\-workflows\-v1/heldout\-comparison\-2026\-10\-10/bundle/sealed\-manifest\.json$''',
+]
+regexes = ['''^e814041bd09d1fb4f833aa2ca25ec1d2486633e1a2801310dfb4f14c18e0bd9d$''']
+
+[[allowlists]]
+description = "HO: exact historical nonsecret; see plan/exec/reports/08-scan-preflight.md"
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "secret"
+commits = ["a352c38a764afeb0f406848ebd14591af21a486b"]
+paths = [
+    '''^results/skill\-workflows\-v1/heldout\-comparison\-2026\-10\-10/bundle/sealed\-tasks/candidate\-manifest\.json$''',
+    '''^results/skill\-workflows\-v1/heldout\-comparison\-2026\-10\-10/bundle/sealed\-manifest\.json$''',
+]
+regexes = ['''^100e5b33df33a7f63fe6697fa70525dedc3de5fb3131224b5633acca8279feac$''']
+
+[[allowlists]]
+description = "D: exact historical nonsecret; see plan/exec/reports/08-scan-preflight.md"
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "secret"
+commits = ["4c5467e1862dec0da5b53b61293e564040d1e5d0"]
+paths = [
+    '''^results/skill\-workflows\-v1/transfer\-comparison\-2026\-10\-10/operations/bounded\-continuation/controller/classifier\.py$''',
+]
+regexes = ['''^duplicate/unmatched$''']
+
+[[allowlists]]
+description = "T: exact historical nonsecret; see plan/exec/reports/08-scan-preflight.md"
+targetRules = ["github-pat"]
+condition = "AND"
+regexTarget = "secret"
+commits = ["49a379c7001b5b156f9f75b358da03a4367b252e"]
+paths = [
+    '''^results/skill\-workflows\-v4/offline\-package\-2026\-10\-12/compatibility\.json$''',
+]
+regexes = ['''^ghp[_]SYNTHETICSYNTHETICSYNTHETICSYNTHETIC$''']

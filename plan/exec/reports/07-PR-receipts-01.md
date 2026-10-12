@@ -1,0 +1,3 @@
+# Portfolio PR receipts, first publication stage
+
+2026-10-12 around 22:11 UTC: Actseal PR70 (`https://github.com/ajaysurya1221/actseal/pull/70`) remains OPEN at `52dbc14554486e8ff9e31455d550bfc3d43f139e`, with all17 returned check/status entries SUCCESS (includes separate push/PR runs). Both independent reviews and root full verification are retained. Dorian PR44 (`https://github.com/ajaysurya1221/dorian/pull/44`) is OPEN at `5222f256ba23c2fa345fb5a2f6d033c336dcbcc1`; both reviews and root verification accepted, hosted tests were still running. Raw API snapshots are retained privately. These README-only branches were pushed and PRs attached to this chat. Neither sibling main was merged.

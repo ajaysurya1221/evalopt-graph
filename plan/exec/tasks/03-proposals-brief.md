@@ -1,0 +1,13 @@
+TASK 03-P: Independent documentation-contract proposals — Fable xhigh.
+
+This is the blind proposal stage of approved Task 03. Use this brief alone. Do not read Astra proposal files, earlier private discussions or another model's proposals. STOP is fixed: no new capability, API, schema, converter, integration or shared dependency. Preserve zero runtime dependencies, fail-closed behavior, the evidence-not-truth boundary and all older results. The final v0.1.1 deprecation release is authorized; archival remains human-only. Source semantics remain baseline fc3045d.
+
+Propose three bounded documentation contracts: (1) migration-map structure and non-equivalence labels; (2) naming and positioning text; (3) routing to existing domain tools and standards. The coverage roster has the ten stable exports (GovernancePolicy, ClaimRecord, EvidenceRequest, EvidenceMaterial, EvidenceAttestation, SupportAssessment, EvidenceAuthority, AcceptanceInput, AcceptanceDecision, evaluate_acceptance) plus six topics: terminal states/reasons, serialization/hash binding, replay, host authentication/signatures, freshness/record authority, and deprecated host surfaces.
+
+Distinguish conceptual analogy, host responsibility, project-specific semantics and unsupported equivalence. The cited SLSA VSA v1.0 specification is Retired: historical prior art only. Hashes are not signatures; attestations are not semantic truth. Promise no automatic or lossless mapping of the five states.
+
+Routes: general policy to OPA; software provenance and attestation verification to in-toto/Witness; merge enforcement to GitHub rulesets/required checks; action-policy qualification to Actseal; code-claim warrants to Dorian; PR scope to Frontier Scout; stochastic regression to ARCI. The four projects remain independent. Positioning says standalone feature development ended and the repository preserves its kernel and research. Do not claim archival or v0.1.1 publication before actual evidence. No renaming.
+
+Own only plan/exec/decisions/03-fable-interface.md, 03-fable-positioning.md and 03-fable-boundary.md in your task worktree, plus the central REPORT below. Do not implement ADRs or public docs yet. Write and commit the three proposals on your lane. Do not echo proposal contents in stdout or REPORT: root must write its own before reading yours. REPORT contains paths, commit and checks only. Do not launch subagents or other model processes. You are not alone; preserve others' files.
+
+Checks: git diff --check against the lane base; only the three owned files changed. First line: REPORT 03-P — Status DONE. Write REPORT to /Users/ajay/Developer/.evalopt-worktrees/wt-control-00/plan/exec/reports/03-proposals.md.

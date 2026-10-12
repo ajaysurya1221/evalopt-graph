@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  RELEASE_VERSION: "0.1.0"
+  RELEASE_VERSION: "0.1.1"
   UV_VERSION: "0.11.29"
 
 jobs:
@@ -114,7 +114,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag="$GITHUB_REF_NAME"
-          title="evalopt v${RELEASE_VERSION} — Evidence over vibes"
+          title="evalopt v${RELEASE_VERSION} — Final deprecation release"
           gh api "repos/${GH_REPO}/git/ref/tags/${tag}" >/dev/null
           mapfile -t assets < <(find bundle/dist bundle/release-assets -maxdepth 1 -type f -print | sort)
           test "${#assets[@]}" -eq 4
@@ -123,7 +123,7 @@ jobs:
             echo "Refusing to modify an already-published release" >&2
             exit 1
           elif [[ "$state" == "true" ]]; then
-            gh release edit "$tag" --title "$title" --notes-file docs/releases/v0.1.0.md
+            gh release edit "$tag" --title "$title" --notes-file docs/releases/v0.1.1.md
             existing_dir="$RUNNER_TEMP/existing-release-assets"
             mkdir -p "$existing_dir"
             gh release download "$tag" --dir "$existing_dir"
@@ -145,7 +145,7 @@ jobs:
               --draft \
               --verify-tag \
               --title "$title" \
-              --notes-file docs/releases/v0.1.0.md
+              --notes-file docs/releases/v0.1.1.md
           fi
 
   publish-pypi:

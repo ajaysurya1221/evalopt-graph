@@ -1,0 +1,11 @@
+# Root observations for Task04 first review
+
+Pinned candidate: 80816612c0ad9ccae4350095869e9fa77515187e, three documentation files only. Root read the candidate map/source appendix and decisive baseline code, ran committed-diff whitespace and preservation (75 protected files unchanged). Native worker completion elapsed703.517 seconds; any self-reported timing in REPORT04 is not the external receipt.
+
+1. Row12 at docs/migration.md:70 says “deserializing validates or authorizes nothing.” This is overbroad: AcceptanceInput.from_dict invokes constructor schema/shape checks; EvidenceMaterial.from_dict validates base64 and constructor constraints. A direct baseline invocation with wrong schema and empty locator raised ValueError in each respectively. Narrow to: deserialization may validate shape depending on type, but does not by itself establish record-hash consistency, authority, provenance or truth; use the record-specific validation and evaluation path. No source repair is appropriate.
+2. Row13 says “No other tool replays an evalopt decision.” The inspected route set does not establish a universal negative over all tools. Bound to the cited destinations/documentation and absence of a supplied or validated compatibility adapter.
+3. Current “v0.1.1 is prospective” wording is accurate before publication but would become stale if unchanged after authorized release. Prefer a durable separation of baseline mapping from release status, with a link to release records rather than a permanent prospective claim. This is wording maintenance, not a publication claim or release authorization.
+
+Independent Codex and fresh Fable reviews are pending; these observations do not accept the map or broaden task ownership. Product suite was not rerun for prose; no source, test, benchmark or retained research artifact changed.
+
+Execution limit: the first attempted command referenced a nonexistent control-worktree .venv and exited127 before either constructor ran. A corrected stdlib-only python3 -B invocation imported this candidate’s unchanged src tree and confirmed ValueError for unsupported schema_version and empty final_locator. This is a direct source check, not an installed-package smoke.

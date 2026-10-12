@@ -41,6 +41,9 @@ class Controls(unittest.TestCase):
             self.assertTrue(result['timed_out'])
             self.assertTrue(result['termination_confirmed'])
             self.assertFalse(m.group_live(result['pid']))
+    def test_later_accept_cannot_override_reject(self):
+        report='REVIEW 02 — Reviewer Fable high | Verdict REJECT | Follow-ups: obtain a new review | Verdict ACCEPT'
+        self.assertEqual(m.classify(0,False,self.valid(),report,[],expected_kind='REVIEW')['state'],'PARTIAL')
     def test_wrong_record_type(self):
         self.assertEqual(m.classify(0,False,self.valid(),'REVIEW 02 — Reviewer Fable high | Verdict ACCEPT',[])['state'],'PARTIAL')
     def test_scope(self):

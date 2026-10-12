@@ -41,7 +41,7 @@ def classify(exit_code, timed_out, raw, report, scope_errors, expected_id="02", 
     header = next((line.strip().lstrip('# ').replace('**', '') for line in report.splitlines() if line.strip()), '')
     ident = re.escape(expected_id)
     valid_report = re.match(r'^REPORT ' + ident + r' [—-] Status:? DONE(?:[ |].*)?$', header)
-    valid_review = re.match(r'^REVIEW ' + ident + r' [—-] Reviewer\b.*?\| Verdict:? ACCEPT(?:[ |].*)?$', header)
+    valid_review = re.match(r'^REVIEW ' + ident + r' [—-] Reviewer\b[^|\n]*\| Verdict:? ACCEPT(?:[ |].*)?$', header)
     if not ((expected_kind == "REPORT" and valid_report) or (expected_kind == "REVIEW" and valid_review)):
         reasons.append('missing_or_nonaccepted_report')
     if scope_errors:

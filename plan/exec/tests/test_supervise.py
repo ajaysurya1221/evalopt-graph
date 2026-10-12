@@ -41,6 +41,8 @@ class Controls(unittest.TestCase):
             self.assertTrue(result['timed_out'])
             self.assertTrue(result['termination_confirmed'])
             self.assertFalse(m.group_live(result['pid']))
+    def test_wrong_record_type(self):
+        self.assertEqual(m.classify(0,False,self.valid(),'REVIEW 02 — Reviewer Fable high | Verdict ACCEPT',[])['state'],'PARTIAL')
     def test_scope(self):
         self.assertEqual(m.scope_errors(['docs/migration.md','src/kernel.py'],['docs/*.md']),['src/kernel.py'])
     def test_real_process_success_nonzero_timeout(self):
@@ -51,6 +53,6 @@ class Controls(unittest.TestCase):
                 self.assertEqual(result['timed_out'],timed)
                 if code is not None:self.assertEqual(result['exit_code'],code)
     def test_review(self):
-        self.assertEqual(m.classify(0,False,self.valid(),'REVIEW 02 — Reviewer Fable high | Verdict ACCEPT',[])['state'],'DONE')
+        self.assertEqual(m.classify(0,False,self.valid(),'REVIEW 02 — Reviewer Fable high | Verdict ACCEPT',[],expected_kind='REVIEW')['state'],'DONE')
 
 if __name__=='__main__': unittest.main()

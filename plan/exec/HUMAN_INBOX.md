@@ -1,15 +1,12 @@
 # Human inbox
 
-v0.1.1 is published and its public bytes have been independently checked. The closeout PR is merged, final main CI passes, and the temporary branch-cleanup preference is restored. No release approval or machine-work blocker remains. The actions below are deliberately human-owned.
+v0.1.1 is published and its public bytes have been independently checked. The closeout PR is merged, final main CI passes, and the temporary branch-cleanup preference is restored. No evalopt release approval remains outstanding. The portfolio follow-up has one human-review blocker below. The actions below are deliberately human-owned.
 
-## 1. Decide the four independent README pull requests
+## 1. Obtain Frontier Scout's required GitHub approval
 
-These are reviewed, pushed README-only changes with passing checks. This run is not authorized to merge another repository's main. Open each PR, inspect its small diff and checks, and use its normal merge controls if you accept it. No dependency or runtime integration is introduced.
+Updated 13 October 2026 after the user's explicit authorization to merge the four README PRs. Actseal #70, Dorian #44 and ARCI #14 are now merged through normal squash merges; their source branches are retained. The original inbox's instruction to decide all four PRs is superseded by this follow-up authorization and those actual merges. See [follow-up evidence](PORTFOLIO_MERGE_FOLLOWUP.md).
 
-- [Actseal PR #70](https://github.com/ajaysurya1221/actseal/pull/70)
-- [Dorian PR #44](https://github.com/ajaysurya1221/dorian/pull/44)
-- [Frontier Scout PR #81](https://github.com/ajaysurya1221/frontier-scout/pull/81)
-- [ARCI PR #14](https://github.com/ajaysurya1221/agent-reliability-ci/pull/14)
+[Frontier Scout PR #81](https://github.com/ajaysurya1221/frontier-scout/pull/81) has passing CI and accepted independent offline reviews, but GitHub requires **one eligible reviewer's approval**. The PR author cannot self-approve. Ask an eligible reviewer to open **Files changed → Review changes → Approve** on the unchanged head `b0d2ae108e62ef7c8a890e8294104a577217b4f8`. No protection was relaxed and no native approval was fabricated. Its source branch must remain preserved when the later normal merge occurs; automatic branch cleanup is currently enabled in that repository. This run has not merged it.
 
 ## 2. Archive evalopt only after closure and PR disposition
 

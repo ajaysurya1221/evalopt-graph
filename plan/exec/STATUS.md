@@ -15,3 +15,12 @@
 - 09: DONE; original95b61a3 and rebuilt d76 candidate artifacts each independently accepted by Codex and fresh Fable; actual hosted bytes qualified separately
 - 10: DONE; PR42 merged to8c8b7f4; required mainCI pass; annotatedv0.1.1 release38317836286/1 published; hosted-byte Codex/Fable ACCEPT; published channels and full workflow independently accepted by Codex; see release-receipt.json
 - 11: DONE; closeout source ba5db207 independently accepted by Codex + fresh Fable; PR43 merged to b52c875; final main CI 11 jobs/95 steps pass; cleanup preference restored and protections unchanged; terminal observations separately reviewed by Codex; reports/11-r1.md and TERMINAL_RECEIPT.md supersede the prepared-endpoint status
+
+## Authorized portfolio merge follow-up — 13 October 2026
+
+Original task statuses above retain their end-of-wind-down meaning. The later explicit user merge authorization supersedes their no-merge restriction for these four PRs only.
+
+- PM-07A: MERGED; original exact-head Codex/Fable ACCEPT, refreshed source/CI ACCEPT, operational Codex/Fable ACCEPT; Actseal70 → ad62ec8; cleanup restored and branch retained; independent actual-operation/main CI ACCEPT (8 jobs/85 steps).
+- PM-07B: MERGED; original exact-head Codex/Fable ACCEPT and refreshed source/CI ACCEPT; Dorian44 → 5962bbe; branch retained; resulting main CI accepted.
+- PM-07D: MERGED; original exact-head Codex/Fable ACCEPT and refreshed source/CI ACCEPT; ARCI14 → 06e8744; branch retained and frozen48 preserved; independent resulting-main CI ACCEPT (4 jobs,49 successful steps,4 expected conditional skips).
+- PM-07C: BLOCKED; original exact-head Codex/Fable ACCEPT, refreshed CI passed; Frontier81 remains open at b0d2ae1 because a required native GitHub approval is missing. Settings and main unchanged.
